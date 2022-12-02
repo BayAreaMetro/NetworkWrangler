@@ -20,88 +20,97 @@ import pandas as pd
 import os, argparse
 
 
-if __name__ == '__main__':
-    
+if __name__ == "__main__":
+
     # NetworkProjects directory, this is where the local repos are located
-    networkProjects_folder = 'M:\\Application\\Model One\\NetworkProjects'
+    networkProjects_folder = "M:\\Application\\Model One\\NetworkProjects"
 
     # arguments
-    parser = argparse.ArgumentParser(description=USAGE, formatter_class=argparse.RawDescriptionHelpFormatter,)
-    parser.add_argument('tag_name', help='name of the tag to be created')
-    parser.add_argument('tag_message', help='tagging message')
-    parser.add_argument('network_creation_log', help='network creation log listing all projects to be tagged')
+    parser = argparse.ArgumentParser(
+        description=USAGE,
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+    )
+    parser.add_argument("tag_name", help="name of the tag to be created")
+    parser.add_argument("tag_message", help="tagging message")
+    parser.add_argument(
+        "network_creation_log",
+        help="network creation log listing all projects to be tagged",
+    )
 
     args = parser.parse_args()
-    print('tag name: {}'.format(args.tag_name))
-    print('tagging message: {}'.format(args.tag_message))
-    print('network creation log: {}'.format(args.network_creation_log))
-
+    print("tag name: {}".format(args.tag_name))
+    print("tagging message: {}".format(args.tag_message))
+    print("network creation log: {}".format(args.network_creation_log))
 
     # Step 1: create a dataframe to store project_name and the commit (SHA1_id) to tag
 
-    projects_df = pd.DataFrame(columns=['project_name', 'SHA1_id'])
+    projects_df = pd.DataFrame(columns=["project_name", "SHA1_id"])
 
     with open(args.network_creation_log) as f:
         log_lines = list(enumerate(f))
         for line_num, line in log_lines:
 
             # get name of project
-            if 'Applying project' in line:
-                project_name = line.split('] of type')[0].split('Applying project [')[1]
+            if "Applying project" in line:
+                project_name = line.split("] of type")[0].split("Applying project [")[1]
                 # print(project_name)
 
                 # with NetworkWrangler log file format, the SHA1_id is usually in the next line
                 # which also contains the project's name
-                next_line = log_lines[line_num+1][1]
+                next_line = log_lines[line_num + 1][1]
                 if project_name in next_line:
-                    SHA1_id = next_line.split('| '+project_name)[0].split('|')[-1].strip()
+                    SHA1_id = (
+                        next_line.split("| " + project_name)[0].split("|")[-1].strip()
+                    )
                     # print(SHA1_id)
-                    
+
                     # add 'project_name', 'SHA1_id' to the dataframe
                     projects_df.loc[len(projects_df.index)] = [project_name, SHA1_id]
-                
+
                 elif project_name not in next_line:
-                    print('No SHA1_id in the next line for project: ', project_name)
+                    print("No SHA1_id in the next line for project: ", project_name)
 
     # manually add SHA1_id for project 'Move_buses_to_HOV_EXP_lanes' which has
     # a different format in the log
-    projects_df.loc[len(projects_df.index)] = ['Move_buses_to_HOV_EXP_lanes',
-                                               'b8ac63bfe873df1c80e2c8ecd67904ad3970b721']
+    projects_df.loc[len(projects_df.index)] = [
+        "Move_buses_to_HOV_EXP_lanes",
+        "b8ac63bfe873df1c80e2c8ecd67904ad3970b721",
+    ]
 
     # drop duplicates
     projects_df.drop_duplicates(inplace=True)
-    print('tagging {} projects'.format(projects_df.shape[0]))
+    print("tagging {} projects".format(projects_df.shape[0]))
 
     # set project_name as index
-    projects_df.set_index('project_name', inplace=True)
-
+    projects_df.set_index("project_name", inplace=True)
 
     # Step 2: loop through the projects and add tag to the corresponding commit
 
     for project in projects_df.index:
-        print('Project: ', project)
+        print("Project: ", project)
 
         # try to open the existing repo
         try:
             repo = git.Repo(os.path.join(networkProjects_folder, project))
 
-            # optional: print out existing tags, sorted by time of creation            
+            # optional: print out existing tags, sorted by time of creation
             # existing_tags = sorted(repo.tags, key=lambda t: t.commit.committed_date)
             # print('existing_tags: {}'.format(existing_tags))
 
-
             # try creating the tag to the right commit
             commit_ref = repo.commit(projects_df.SHA1_id[project])
-            print('commit_reference: {}'.format(commit_ref))
+            print("commit_reference: {}".format(commit_ref))
             try:
-                print('create tag {} with comment {}'.format(args.tag_name, args.tag_message))
-                repo.create_tag(args.tag_name,
-                                ref=commit_ref, 
-                                message = args.tag_message)
-            
+                print(
+                    "create tag {} with comment {}".format(
+                        args.tag_name, args.tag_message
+                    )
+                )
+                repo.create_tag(args.tag_name, ref=commit_ref, message=args.tag_message)
+
             # if the tag already exists, cannot create, will skip
             except:
                 print('cannot create tag "{}"'.format(args.tag_name))
 
         except:
-            print('repo {} doest not exist'.format(project))
+            print("repo {} doest not exist".format(project))

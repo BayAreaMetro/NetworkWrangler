@@ -5,7 +5,7 @@ Installation script for NetworkWrangler package
 import os
 import setuptools
 
-VERSION="1.5"
+VERSION = "1.5"
 
 classifiers = [
     "Development Status :: 5 - Production/Stable",
@@ -27,18 +27,18 @@ with open("requirements.txt") as f:
 install_requires = [r.strip() for r in requirements]
 
 setuptools.setup(
-    name                            = "NetworkWrangler",
-    version                         = VERSION,
-    description                     = "Wrangles networks for MTC Travel Model 1/1.5",
-    long_description                = long_description,
-    long_description_content_type   = "text/markdown",
-    url                             = "https://github.com/BayAreaMetro/NetworkWrangler",
-    license                         = "Apache 2",
-    platforms                       = "any",
-    packages                        = ["Wrangler"],
-    include_package_data            = True,
-    install_requires                = install_requires,
-    scripts                         = [
+    name="NetworkWrangler",
+    version=VERSION,
+    description="Wrangles networks for MTC Travel Model 1/1.5",
+    long_description=long_description,
+    long_description_content_type="text/markdown",
+    url="https://github.com/BayAreaMetro/NetworkWrangler",
+    license="Apache 2",
+    platforms="any",
+    packages=["Wrangler"],
+    include_package_data=True,
+    install_requires=install_requires,
+    scripts=[
         "scripts/build_network_mtc.py",
         "scripts/build_network_mtc_blueprint.py",
     ],
