@@ -1413,11 +1413,13 @@ class TransitNetwork(Network):
         el_links_df         = links_df.loc[ links_df.TOLLCLASS >= 11 ]
         notruck_links_df    = links_df.loc[ (links_df.TOLLCLASS==0) & (links_df.USE==4)]        
         gp_links_df         = links_df.loc[ (links_df.USE==1)&((links_df.FT<=3)|(links_df.FT==5)|(links_df.FT==7)|(links_df.FT==8)|(links_df.FT==10))]
+        # Revert commit https://github.com/BayAreaMetro/NetworkWrangler/commit/dd7cc3cf8b738ab79e51d2ac2150d5fd58102cdc
+        # to reproduce TIP_2023 network 2
         gp_notruck_links_df = gp_links_df.append(notruck_links_df)
         dummy_links_df      = links_df.loc[ links_df.FT==6 ]
 
         WranglerLogger.debug("Found {} hov links, {} express lane links and {} general purpose links".format(
-                             len(hov_links_df), len(el_links_df), len(gp_notruck_links_df)))
+                             len(hov_links_df), len(el_links_df), len(gp_links_df))) # len(gp_notruck_links_df)))
 
         # dummy B -> hov A, a_GP1 will be the first point of dummy access link
         hov_group1_df  = pandas.merge(left=hov_links_df, right=dummy_links_df[["a","b"]],
@@ -1428,7 +1430,7 @@ class TransitNetwork(Network):
                                       how="inner", left_on=["b"], right_on=["a"], suffixes=["","_GP2"]).drop(columns="a_GP2")
 
         # merge to the full GP links for complete info
-        hov_group1_df  = pandas.merge(left=hov_group1_df, right=gp_notruck_links_df, how="inner",
+        hov_group1_df  = pandas.merge(left=hov_group1_df, right=gp_links_df, how="inner",
                                       left_on=["a_GP1", "b_GP2"], right_on=["a","b"], suffixes=["","_GP"]).drop(columns=["a_GP1","b_GP2"])
 
         WranglerLogger.debug("Found general purpose links for {} out of {} hov links: \n{}".format(
@@ -1479,7 +1481,7 @@ class TransitNetwork(Network):
                                       how="inner", left_on=["b"], right_on=["a"], suffixes=["","_GP2"]).drop(columns="a_GP2")
 
         # merge to the full GP links for complete info
-        el_group1_df  = pandas.merge(left=el_group1_df, right=gp_notruck_links_df, how="inner",
+        el_group1_df  = pandas.merge(left=el_group1_df, right=gp_links_df, how="inner",
                                       left_on=["a_GP1", "b_GP2"], right_on=["a","b"], suffixes=["","_GP"]).drop(columns=["a_GP1","b_GP2"])
 
         WranglerLogger.debug("Found general purpose links for {} out of {} el links: \n{}".format(
