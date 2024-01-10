@@ -1415,7 +1415,7 @@ class TransitNetwork(Network):
         gp_links_df         = links_df.loc[ (links_df.USE==1)&((links_df.FT<=3)|(links_df.FT==5)|(links_df.FT==7)|(links_df.FT==8)|(links_df.FT==10))]
         # Revert commit https://github.com/BayAreaMetro/NetworkWrangler/commit/dd7cc3cf8b738ab79e51d2ac2150d5fd58102cdc
         # to reproduce TIP_2023 network 2
-        gp_notruck_links_df = gp_links_df.append(notruck_links_df)
+        # gp_notruck_links_df = gp_links_df.append(notruck_links_df)
         dummy_links_df      = links_df.loc[ links_df.FT==6 ]
 
         WranglerLogger.debug("Found {} hov links, {} express lane links and {} general purpose links".format(
