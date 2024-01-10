@@ -204,13 +204,15 @@ class TransitLine(object):
                 if timeper not in all_timepers: raise NetworkException('"' + timeper + '" is not a valid time period')
                 timeper_idx = 1 + all_timepers.index(timeper)
             attr_set = 'FREQ[' + str(timeper_idx) + ']'
-            # max = length of time period -- make sure frequency doesn't exceed this
-            MAX_FREQ = TransitLine.HOURS_PER_TIMEPERIOD[modeltype][timeper]*60.0
-            if float(freqs[i]) > MAX_FREQ:
-                WranglerLogger.debug("setFreqs(): line {} frequency {} for {} exceeds max {}; using max".format(
-                    self.name, float(freqs[i]), timeper, MAX_FREQ))
-                freqs[i] = MAX_FREQ
-    
+# Revert https://github.com/BayAreaMetro/NetworkWrangler/commit/9384bdc9b68e327561dbbb117cd578130aa31289
+# Since it was not implemented at the time the TIP_2023 network was first built
+#            # max = length of time period -- make sure frequency doesn't exceed this
+#            MAX_FREQ = TransitLine.HOURS_PER_TIMEPERIOD[modeltype][timeper]*60.0
+#            if float(freqs[i]) > MAX_FREQ:
+#                WranglerLogger.debug("setFreqs(): line {} frequency {} for {} exceeds max {}; using max".format(
+#                    self.name, float(freqs[i]), timeper, MAX_FREQ))
+#                freqs[i] = MAX_FREQ
+#    
             if(allowDowngrades):
                 self.attr[attr_set] = float(freqs[i])
             else:
