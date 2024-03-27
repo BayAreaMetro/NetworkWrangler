@@ -2,14 +2,14 @@ import os
 
 # MANDATORY. Set this to be the Project Name.
 # e.g. "RTP2021", "TIP2021", etc
-PROJECT = "TIP2023"
+PROJECT = "TIP2025"
 
 # MANDATORY. Set this to be the Scenario Name e.g. "NoProject","Project"
 # for TIP2023, we only have to build the Project network
 SCENARIO = "Project"
 
 # MANDATORY. Set this to be the git tag for checking out network projects.
-TAG = "TIP_2023"
+TAG = "TIP_2025"
 
 # MANDATORY. Set this to the directory in which to write your outputs.
 # "hwy" and "trn" subdirectories will be created here.
