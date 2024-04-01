@@ -413,7 +413,8 @@ TIP_PROJECTS = collections.OrderedDict([
                        {'name':'FBP_AL_021_South_Bay_Connect',                                            'variants_include':['Alt2']},
                        {'name':'Transform_AC_Transbay_Improvements',                                      'variants_include':['Alt2']},
                        'FBP_SC_042_I280_Downtown_Access_Improvements',
-                       {'name':'EXP_uncommitted_noAllLaneTolling', 'kwargs':{'MODELYEAR':'2040'},         'variants_include':['NextGenFwy']}],
+                       {'name':'EXP_uncommitted_noAllLaneTolling', 'kwargs':{'MODELYEAR':'2040'},         'variants_include':['NextGenFwy']},
+                       {'name':'BP_Transbay_Crossing',                                                    'variants_exclude':['Alt2']}],
                 'trn':['MAJ_MuniForward_Uncommitted',
                        {'name':'FBP_MU_046_ACE_Freq_Inc',       'kwargs':{'MODELYEAR':'2040'}},
                        'MAJ_BRT030001_BART_to_SanJose',
@@ -442,7 +443,8 @@ TIP_PROJECTS = collections.OrderedDict([
                        {'name':'Transform_AC_Transbay_Improvements',                                      'variants_include':['Alt2']},
                        {'name':'EIR2_ReXGreen',                                                           'variants_include':['Alt2']},
                        'FBP_CC_019_CCCTA_Freq_Increase',
-                       {'name':'EIR2_Fix_Alt2',                 'kwargs':{'MODELYEAR':'2040'},            'variants_include':['Alt2']}]
+                       {'name':'EIR2_Fix_Alt2',                 'kwargs':{'MODELYEAR':'2040'},            'variants_include':['Alt2']},
+                       {'name':'BP_Transbay_Crossing',                                                    'variants_exclude':['Alt2']}]
         }),
         (2045, {'hwy':['BP_Vision_Zero',
                        {'name':'EXP_uncommitted_all',           'kwargs':{'MODELYEAR':'2045'},            'variants_exclude':['Alt1', 'NextGenFwy']},
@@ -462,12 +464,10 @@ TIP_PROJECTS = collections.OrderedDict([
                        {'name':'MAJ_Bay_Area_Forward_all',      'kwargs':{'MODELYEAR':'2050'}},
                        'EXP_Blueprint',
                        'FBP_SC_041_Envision_Highway_Minor',
-                       'STIP_ITS_SM',
-                       {'name':'BP_Transbay_Crossing',                                                    'variants_exclude':['Alt2']}],
+                       'STIP_ITS_SM'],
                 'trn':[{'name':'MAJ_SOL070020_I80_I680_SR12_Int_2B_7', 'kwargs':{'PHASE':"'6'"},          'variants_exclude':['Alt1']},
                        {'name':'MAJ_SOL070020_I80_I680_SR12_Int_2B_7', 'kwargs':{'PHASE':"'7'"},          'variants_exclude':['Alt1']},
-                       'FBP_SC_028_Stevens_Creek_LRT',
-                       {'name':'BP_Transbay_Crossing',                                                    'variants_exclude':['Alt2']}]
+                       'FBP_SC_028_Stevens_Creek_LRT']
         })
     ])
 
