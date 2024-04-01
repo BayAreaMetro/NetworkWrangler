@@ -127,6 +127,7 @@ COMMITTED_PROJECTS = collections.OrderedDict([
                'GTFS2023_AC_ACTransit',
                'GTFS2023_SM_SamTrans',
                'GTFS2023_Other_Operators',
+               'MAJ_Treasure_Island_Ferry',
                # Transit_Frequency_Updates_Using_511
                # Update transit frequency for BART and Caltrain using 511 2023-09 data due to big service update in Sept 2023
                # Asana task: https://app.asana.com/0/1204085012544660/1205493838123328/f  
@@ -465,7 +466,6 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                        'Transform_SeamlessTransit',
                        'MAJ_Treasure_Island_Congestion_Pricing',
                        'RRSP_East_West_Connector',
-                       'MAJ_Treasure_Island_Ferry',
                        'FBP_NP_079_Trower_Ext',
                        {'name':'MAJ_SOL070020_I80_I680_SR12_Int_2B_7', 'kwargs':{'PHASE':"'3'"},          'variants_exclude':['Alt1']},
                        {'name':'MAJ_SOL070020_I80_I680_SR12_Int_2B_7', 'kwargs':{'PHASE':"'4'"},          'variants_exclude':['Alt1']},
