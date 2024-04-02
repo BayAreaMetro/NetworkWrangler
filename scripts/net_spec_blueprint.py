@@ -60,7 +60,7 @@ COMMITTED_PROJECTS = collections.OrderedDict([
                'I80_AdaptiveRampMetering',
                'VAR170021_Freeway_Performance_I880',
                'SonomaCounty_Transit_NoBuild2050',
-               'SF_MuniForward_Committed',
+               {'name':'SF_MuniForward_Committed', 'kwargs':{'MODELYEAR':'2020'}},  # This applies for multiple years on the roadway side
                'FBP_MU_029_Broadway_Transit_Only_Lanes',
                'EXP_Blueprint_NoProject',
                'FBP_AL_067_Rte84Wide',
@@ -113,6 +113,7 @@ COMMITTED_PROJECTS = collections.OrderedDict([
                'FBP_NP_036_SR29_Imola_PNR',
                'ALA170052_Fruitvale_Ave_ped_improvements',
                'SF_070005_VanNess_BRT',
+               {'name':'SF_MuniForward_Committed', 'kwargs':{'MODELYEAR':'2023'}},  # This applies for multiple years on the roadway side
                'EXP_Blueprint_NoProject',
                'EXP_ObservedPrices_2023'
                ],
@@ -227,6 +228,7 @@ COMMITTED_PROJECTS = collections.OrderedDict([
                'CC_170061_Bus_On_Shoulder_680BRT',
                'MAJ_SCL050009_VTA_Eastridge_Extension',
                'MAJ_Geary_BRT_Phase2',
+               {'name':'SF_MuniForward_Committed', 'kwargs':{'MODELYEAR':'2025'}},  # This applies for multiple years on the roadway side
                'MRN050034_101_MarinSonNarrows_Phase2',
                'EXP_Blueprint_NoProject',
                'EXP_SL030_I80_RedTopRd_to_I505',
@@ -241,6 +243,7 @@ COMMITTED_PROJECTS = collections.OrderedDict([
     }),
     (2030, {
         'hwy':[{'name':'Bridge_Toll_Updates_2_2pct', 'kwargs':{'MODELYEAR':'2030'}},
+               {'name':'SF_MuniForward_Committed', 'kwargs':{'MODELYEAR':'2030'}},  # This applies for multiple years on the roadway side
                'EXP_Blueprint_NoProject'],
         'trn':[{'name':'BART_NoProject',             'branch':'PBA50plus_DBP'},
             ]
