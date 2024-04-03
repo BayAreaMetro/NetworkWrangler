@@ -454,6 +454,7 @@ TIP_PROJECTS = collections.OrderedDict([
                        'FBP_SC_106_VTA_LRT_Modernization']
         }),
         (2050, {'hwy':['BP_Vision_Zero',
+                       {'name':'EXP_uncommitted_all',           'kwargs':{'MODELYEAR':'2050'},            'variants_exclude':['Alt1', 'NextGenFwy']},
                        {'name':'MAJ_SOL070020_I80_I680_SR12_Int_2B_7', 'kwargs':{'PHASE':"'6'"},          'variants_exclude':['Alt1']},
                        {'name':'MAJ_SOL070020_I80_I680_SR12_Int_2B_7', 'kwargs':{'PHASE':"'7'"},          'variants_exclude':['Alt1']},
                        'FBP_SC_028_Stevens_Creek_LRT',
