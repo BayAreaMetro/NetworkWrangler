@@ -20,7 +20,7 @@ if __name__ == '__main__':
     parser.add_argument("--restart_mode", choices=['hwy','trn'], help="If restart_year is passed, this is also required.")
     parser.add_argument("--create_project_diffs", help="Pass this to create proejct diffs information for each project. NOTE: THIS WILL BE SLOW", action="store_true")
     parser.add_argument("net_spec", metavar="network_specification.py", help="Script which defines required variables indicating how to build the network")
-    parser.add_argument("netvariant", choices=["Baseline", "Blueprint", "Alt1", "Alt2", "NextGenFwy","TIP2023", "NGFNoProject", "NGFNoProjectNoSFCordon", "NGFround2NoProject"], help="Specify which network variant network to create.")
+    parser.add_argument("netvariant", choices=["Baseline", "Blueprint", "Alt1", "Alt2", "NextGenFwy","TIP2023", "TIP2025", "NGFNoProject", "NGFNoProjectNoSFCordon", "NGFround2NoProject"], help="Specify which network variant network to create.")
     args = parser.parse_args()
 
     NOW              = time.strftime("%Y%b%d.%H%M%S")
