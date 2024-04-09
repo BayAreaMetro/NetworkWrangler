@@ -197,11 +197,8 @@ COMMITTED_PROJECTS = collections.OrderedDict([
                 {'name':'Transit_Frequency_Updates_Using_511', 
                 'kwargs':{'regional_gtfs_zip':'r"M:\\Data\\Transit\\511\\2023-09.zip"', 
                           'operator':'"Sonoma County Transit"'}},
-#               https://app.asana.com/0/0/1206596966483061/f
-#               Santa Rosa CityBus implementation is not in use and why since their GTFS data is inaccurate
-#                {'name':'Transit_Frequency_Updates_Using_511', 
-#                'kwargs':{'regional_gtfs_zip':'r"M:\\Data\\Transit\\511\\2023-09.zip"', 
-#                          'operator':'"Santa Rosa CityBus"'}},
+                # Santa Rosa CityBus implementation isn't used since their GTFS data is inaccurate
+                #  https://app.asana.com/0/0/1206596966483061/f
                 {'name':'Transit_Frequency_Updates_Using_511', 
                 'kwargs':{'regional_gtfs_zip':'r"M:\\Data\\Transit\\511\\2023-09.zip"', 
                           'operator':'"WestCat (Western Contra Costa)"'}}, 
@@ -375,7 +372,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                 ]
         }),
         (2030, {'hwy':['MAJ_SanPablo_BRT',
-                       {'name':'BP_Tolls_On_Congested_Freeways_2030',                                     'variants_exclude':['NGFNoProject', 'NGFNoProjectNoSFCordon','NGFround2NoProject'], 'DraftBlueprint':True},
+                       {'name':'BP_Tolls_On_Congested_Freeways_2030',                                     'variants_exclude':['NGFNoProject', 'NGFNoProjectNoSFCordon','NGFround2NoProject']},
                        {'name':'BP_Vision_Zero',                                                          'variants_exclude':['NGFNoProject', 'NGFNoProjectNoSFCordon','NGFround2NoProject'], 'DraftBlueprint':True},
                        {'name':'FBP_AL_021_South_Bay_Connect',                                            'variants_exclude':['Alt2']},
                        'FBP_MU_044_Richmond_Ferry_Serv_Incr',
@@ -442,7 +439,8 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
         }),
         (2035, {'hwy':[{'name':'MAJ_MuniForward_Uncommitted',                                             'variants_exclude':['NGFNoProject', 'NGFNoProjectNoSFCordon'], 'branch':'PBA50plus_DBP'},
                        'MAJ_Treasure_Island_Congestion_Pricing',
-                       {'name':'BP_Tolls_On_Congested_Freeways_2035',                                     'variants_exclude':['NGFNoProject', 'NGFNoProjectNoSFCordon','NGFround2NoProject'], 'DraftBlueprint':True},
+                       {'name':'BP_Tolls_On_Congested_Freeways_2035',                                     'variants_exclude':['NGFNoProject', 'NGFNoProjectNoSFCordon','NGFround2NoProject']},
+                       {'name':'NGF_BlueprintSegmented',                                                  'variants_exclude':['NGFNoProject', 'NGFNoProjectNoSFCordon','NGFround2NoProject'], 'DraftBlueprint':True},
                        {'name':'BP_Vision_Zero',                                                          'variants_exclude':['NGFNoProject', 'NGFNoProjectNoSFCordon','NGFround2NoProject'], 'DraftBlueprint':True},
                        'RRSP_East_West_Connector',
                        {'name':'Transform_I680_Multimodal_Imp',                                           'variants_exclude':['NGFNoProject', 'NGFNoProjectNoSFCordon']},
