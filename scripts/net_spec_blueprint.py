@@ -596,7 +596,14 @@ for YEAR in COMMITTED_PROJECTS.keys():
             for netmode in ['hwy','trn']:
                 for project in BLUEPRINT_PROJECTS[YEAR][netmode]:
                     if not isinstance(project, dict): continue
+
                     if 'DraftBlueprint' in project.keys() and project ['DraftBlueprint']: 
+                        # special handling for NGF_BlueprintSegmented -- need to use TAG PBA50plus_DBP
+                        # See NGF Round1 All-Lanes Tolling (for DBP)
+                        # https://app.asana.com/0/1204959680579890/1207041586456560/f
+                        if project['name'] in ['NGF_BlueprintSegmented']:
+                            project['tag'] = 'PBA50plus_DBP'                        
+
                         NETWORK_PROJECTS[YEAR][netmode].append(project)
     else:
         # blueprint, alt1, alt2
