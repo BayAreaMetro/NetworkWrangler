@@ -398,6 +398,7 @@ if __name__ == '__main__':
             "P2a_AllLaneTollingPlusArterials_ImproveTransit",   "P2b_AllLaneTollingPlusArterials_Affordable",
             "P3b_3Cordons_Affordable",                          "P3a_3Cordons_ImproveTransit",
             "P4_NoNewPricing",                                  "P1x_AllLaneTolling_PricingOnly",
+            "R2P1_AllLaneTolling",   
             "R2P4_2035_Express_Lanes",                          "R2P5_Conversion_Only",
             "R2P6_Dual_Express_Lanes"], 
         help="Specify which network variant network to create.")
@@ -415,7 +416,7 @@ if __name__ == '__main__':
         import geopandas
 
     if (args.project_name == 'NGF_R2'):
-        PIVOT_DIR        = r"L:\Application\Model_One\NextGenFwys_Round2\INPUT_DEVELOPMENT\Networks\NGF_Networks_NGFround2NoProject_02\net_2035_NGFround2NoProject"
+        PIVOT_DIR        = r"L:\Application\Model_One\NextGenFwys_Round2\INPUT_DEVELOPMENT\Networks\NGF_Networks_NGFround2NoProject_03\net_2035_NGFround2NoProject"
         PIVOT_YEAR       = 2035
         TRN_NET_NAME     = "transitLines"
         # some of the NGF NetworkProjects use geopandas (namely NGF_TrnFreqBoostsCordons and NGF_TrnExtendedServiceHours_Cordons)
