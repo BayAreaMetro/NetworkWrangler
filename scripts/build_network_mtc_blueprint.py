@@ -52,6 +52,8 @@ if __name__ == '__main__':
     # Use the NGF_NoProject git tag when building a Next Gen Freeways No Project variant
     if NET_VARIANT=="NGFNoProject" or NET_VARIANT=="NGFNoProjectNoSFCordon":
        TAG = "NGF_NoProject"
+    if NET_VARIANT=="NGFround2NoProject":
+       TAG = "NGF_R2_NoProject"
 
     # Verify mandatory fields are set
     if TAG==None:
