@@ -58,7 +58,7 @@ NGF_PROJECTS = {
     'R2P5_Conversion_Only':{
         'hwy':[
             'PBA2050_RTP_ID_attributes',
-            {'name':'EXP_uncommitted_noAllLaneTolling',     'kwargs':{'MODELYEAR':'2035','PATHWAY':"'P5'"},     'branch':'NGF'},
+            {'name':'EXP_uncommitted_noAllLaneTolling',     'kwargs':{'MODELYEAR':'2035','PATHWAY':"P5"},     'branch':'master'},
         ],
         'trn':[
         ]
