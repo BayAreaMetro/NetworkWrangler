@@ -27,6 +27,20 @@ NGF_PROJECTS = {
         ],   
         'trn':[]
     },
+
+    # Pathway 1: Round 2 All lane tolling
+    # https://app.asana.com/0/1203644633064654/1206291041610290/f
+    'R2P1_AllLaneTolling':{
+        'hwy':[
+            'NGF_CarpoolLanes',
+            'NGF_BlueprintSegmented',
+            'NGF_HOV3_to_HOV2',
+         ],
+        'trn':[
+            'NGF_NoProject_farefiles',      # ensures these files get included; note this is not a real project
+        ]
+    },
+
     # NGF Round 2 pathway definitions: https://mtcdrive.app.box.com/file/1381469356636?s=8mpbmehocafa83lckc6bsatrhow87cne
 
     # Pathway 4: Pathway 4 2035 Express Lanes (would be most similar to Round 1 No New Pricing)
@@ -54,7 +68,7 @@ NGF_PROJECTS = {
     'R2P6_Dual_Express_Lanes':{
         'hwy':[
             'PBA2050_RTP_ID_attributes',
-            {'name':'EXP_uncommitted_noAllLaneTolling',     'kwargs':{'MODELYEAR':'2035','PATHWAY':"'P6'"},     'branch':'NGF'},
+            {'name':'EXP_uncommitted_noAllLaneTolling',     'kwargs':{'MODELYEAR':'2035','PATHWAY':"P6"},     'branch':'master'},
         ],
         'trn':[
         ]
