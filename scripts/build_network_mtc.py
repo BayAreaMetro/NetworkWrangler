@@ -416,7 +416,7 @@ if __name__ == '__main__':
         import geopandas
 
     if (args.project_name == 'NGF_R2'):
-        PIVOT_DIR        = r"L:\Application\Model_One\NextGenFwys_Round2\INPUT_DEVELOPMENT\Networks\NGF_Networks_NGFround2NoProject_03\net_2035_NGFround2NoProject"
+        PIVOT_DIR        = r"L:\Application\Model_One\NextGenFwys_Round2\INPUT_DEVELOPMENT\Networks\NGF_Networks_NGFround2NoProject_04\net_2035_NGFround2NoProject"
         PIVOT_YEAR       = 2035
         TRN_NET_NAME     = "transitLines"
         # some of the NGF NetworkProjects use geopandas (namely NGF_TrnFreqBoostsCordons and NGF_TrnExtendedServiceHours_Cordons)
