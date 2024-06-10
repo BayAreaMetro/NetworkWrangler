@@ -51,6 +51,7 @@ NGF_PROJECTS = {
             {'name':'EXP_uncommitted_noAllLaneTolling',     'kwargs':{'MODELYEAR':'2035','PATHWAY':"'P4'"},     'branch':'NGF'},
          ],
         'trn':[
+            'NGF_NoProject_farefiles',      # ensures these files get included; note this is not a real project
         ]
     },
     # Pathway 5: 2035 Express Lanes Conversion Only
@@ -61,6 +62,7 @@ NGF_PROJECTS = {
             {'name':'EXP_uncommitted_noAllLaneTolling',     'kwargs':{'MODELYEAR':'2035','PATHWAY':"P5"},     'branch':'master'},
         ],
         'trn':[
+            'NGF_NoProject_farefiles',      # ensures these files get included; note this is not a real project
         ]
     },
     # Pathway 6: 2035 Dual Express Lanes (1 EL lanes if total number of lanes <= 3)
@@ -71,6 +73,7 @@ NGF_PROJECTS = {
             {'name':'EXP_uncommitted_noAllLaneTolling',     'kwargs':{'MODELYEAR':'2035','PATHWAY':"P6"},     'branch':'master'},
         ],
         'trn':[
+            'NGF_NoProject_farefiles',      # ensures these files get included; note this is not a real project
         ]
     },
 }
