@@ -48,7 +48,7 @@ NGF_PROJECTS = {
     'R2P4_2035_Express_Lanes':{
         'hwy':[
             'PBA2050_RTP_ID_attributes',
-            {'name':'EXP_uncommitted_noAllLaneTolling',     'kwargs':{'MODELYEAR':'2035','PATHWAY':"'P4'"},     'branch':'NGF'},
+            {'name':'EXP_uncommitted_noAllLaneTolling',     'kwargs':{'MODELYEAR':'2035','PATHWAY':"'P4'"},     'branch':'master'},
          ],
         'trn':[
             'NGF_NoProject_farefiles',      # ensures these files get included; note this is not a real project
