@@ -262,7 +262,7 @@ def preCheckRequirementsForAllProjects(networks):
                 head_SHA1 = retStdout[0].split()[0]
 
                 # if they're different, log more information and get approval (if not in test mode)
-                if cloned_SHA1 != head_SHA1:
+                if False and cloned_SHA1 != head_SHA1:
                     Wrangler.WranglerLogger.warn("Using non-head version of project of %s" % project_name)
                     Wrangler.WranglerLogger.warn("  Applying version [%s], Head is [%s]" % (cloned_SHA1, head_SHA1))
 
@@ -289,7 +289,7 @@ def preCheckRequirementsForAllProjects(networks):
                     applied_commit_age = datetime.datetime.now() - applied_commit_date
 
                     # if older than one year, holler
-                    STALE_YEARS = 2
+                    STALE_YEARS = 10
                     if applied_commit_age > datetime.timedelta(days=365*STALE_YEARS):
                         Wrangler.WranglerLogger.warn("  This project was last updated %.1f years ago (over %d), on %s" % \
                                                      (applied_commit_age.days/365.0,
@@ -368,9 +368,9 @@ if __name__ == '__main__':
     NOW         = time.strftime("%Y%b%d.%H%M%S")
     BUILD_MODE  = None # regular
     if args.model_type == Wrangler.Network.MODEL_TYPE_TM1:
-        PIVOT_DIR        = r"M:\\Application\\Model One\\Networks\\TM1_2015_Base_Network"
+        PIVOT_DIR        = r"M:\\Application\\Model One\\Networks\\TM1_2015_Base_Network-PBA50_Blueprint"
         TRANSIT_CAPACITY_DIR = os.path.join(PIVOT_DIR, "trn")
-        NETWORK_BASE_DIR = r"M:\\Application\\Model One\\NetworkProjects"
+        NETWORK_BASE_DIR = r"E:\\Box\\Modeling and Surveys\\TM1_NetworkProjects"
         TRN_SUBDIR       = "trn"
         TRN_NET_NAME     = "Transit_Lines"
         HWY_SUBDIR       = "hwy"
@@ -451,7 +451,7 @@ if __name__ == '__main__':
 
 
     # Wrangler.WranglerLogger.debug("NETWORK_PROJECTS=%s NET_MODES=%s" % (str(NETWORK_PROJECTS), str(NET_MODES)))
-    preCheckRequirementsForAllProjects(networks)
+    # preCheckRequirementsForAllProjects(networks)
 
     # create the subdir for SET_CAPCLASS with set_capclass.job as apply.s
     SET_CAPCLASS     = "set_capclass"

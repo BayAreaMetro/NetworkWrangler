@@ -4,7 +4,7 @@ import os
 PROJECT  = "Blueprint"
 
 # MANDATORY. Set this to be the git tag for checking out network projects.
-TAG = "HEAD"
+TAG = "PBA50_Blueprint"
 
 # A Alamedaproject can either be a simple string, or it can be
 # a dictionary with with keys 'name', 'tag' (optional), and 'kwargs' (optional)

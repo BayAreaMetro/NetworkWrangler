@@ -1,4 +1,4 @@
-import sys
+import os, sys
 from .Faresystem import Faresystem
 from .Linki import Linki
 from .Network import Network
@@ -6,6 +6,10 @@ from .NetworkException import NetworkException
 from .PTSystem import PTSystem
 from .PNRLink import PNRLink
 from .Supplink import Supplink
+
+# add ..\_static for dataTable import
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(os.path.realpath(__file__)), "..","_static"))) # for dataTable
+
 from .TransitAssignmentData import TransitAssignmentData ##
 from .TransitCapacity import TransitCapacity
 from .TransitLine import TransitLine
