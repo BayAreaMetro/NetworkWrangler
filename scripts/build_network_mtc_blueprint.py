@@ -361,6 +361,8 @@ if __name__ == '__main__':
     parser.add_argument("--configword", help="optional word for network specification script")
     parser.add_argument("--model_type", choices=[Wrangler.Network.MODEL_TYPE_TM1, Wrangler.Network.MODEL_TYPE_TM2],
                         default=Wrangler.Network.MODEL_TYPE_TM1)
+    parser.add_argument("--restart_year", help="Pass year to 'restart' building network starting from this rather than from the beginning. e.g., 2025")
+    parser.add_argument("--restart_mode", choices=['hwy','trn'], help="If restart_year is passed, this is also required.")
     parser.add_argument("net_spec", metavar="network_specification.py", help="Script which defines required variables indicating how to build the network")
     parser.add_argument("netvariant", choices=["Baseline", "Blueprint", "Alt1", "Alt2"], help="Specify which network variant network to create.")
     args = parser.parse_args()
@@ -422,9 +424,34 @@ if __name__ == '__main__':
 
     os.environ["CHAMP_node_names"] = os.path.join(PIVOT_DIR,"Node Description.xls")
 
+    PIVOT_DIR_HWY = PIVOT_DIR
+    PIVOT_DIR_TRN = PIVOT_DIR
+
+    # restart means we want to start with that year/mode
+    # e.g., for restart=2020 trn, start applying 2020 transit projects, using 2020 hwy and 2015 transit
+    #       for restart=2020 hwy, start applying 2020 hwy projects, using 2015 hwy and 2015 transit
+    #
+    if args.restart_year or args.restart_mode:
+        # both are required
+        if not args.restart_year or not args.restart_mode:
+            Wrangler.WranglerLogger.fatal("Both args.restart_year and args.restart_mode are required if one is supplied; args={}".format(args))
+            sys.exit(-1)
+
+        ALL_NETWORK_YEARS = list(NETWORK_PROJECTS.keys())
+        restart_year_index = ALL_NETWORK_YEARS.index(int(args.restart_year))
+        trn_network_year = ALL_NETWORK_YEARS[restart_year_index-1]
+        hwy_network_year = ALL_NETWORK_YEARS[restart_year_index] if args.restart_mode == "trn" else ALL_NETWORK_YEARS[restart_year_index-1]
+
+        PIVOT_DIR_HWY = os.path.join("..", "BlueprintNetworks", "net_{}_{}".format(hwy_network_year, NET_VARIANT))
+        PIVOT_DIR_TRN = os.path.join("..", "BlueprintNetworks", "net_{}_{}".format(trn_network_year, NET_VARIANT))
+        TRN_NET_NAME  = "transitLines"
+
+        Wrangler.WranglerLogger.info("Using PIVOT_DIR_HWY: {}".format(PIVOT_DIR_HWY))
+        Wrangler.WranglerLogger.info("Using PIVOT_DIR_TRN: {}".format(PIVOT_DIR_TRN))
+
     networks = {
         'hwy' :Wrangler.HighwayNetwork(modelType=args.model_type, modelVersion=1.0,
-                                       basenetworkpath=os.path.join(PIVOT_DIR,"hwy"),
+                                       basenetworkpath=os.path.join(PIVOT_DIR_HWY,"hwy"),
                                        networkBaseDir=NETWORK_BASE_DIR,
                                        networkProjectSubdir=NETWORK_PROJECT_SUBDIR,
                                        networkSeedSubdir=NETWORK_SEED_SUBDIR,
@@ -435,7 +462,7 @@ if __name__ == '__main__':
                                        networkName="hwy",
                                        tierNetworkName=HWY_NET_NAME),
         'trn':Wrangler.TransitNetwork( modelType=args.model_type, modelVersion=1.0,
-                                       basenetworkpath=os.path.join(PIVOT_DIR,"trn"),
+                                       basenetworkpath=os.path.join(PIVOT_DIR_TRN,"trn"),
                                        networkBaseDir=NETWORK_BASE_DIR,
                                        networkProjectSubdir=NETWORK_PROJECT_SUBDIR,
                                        networkSeedSubdir=NETWORK_SEED_SUBDIR,
@@ -464,10 +491,18 @@ if __name__ == '__main__':
 
     # Network Loop #2: Now that everything has been checked, build the networks.
     for YEAR in NETWORK_PROJECTS.keys():
+        if args.restart_year and YEAR < int(args.restart_year):
+            Wrangler.WranglerLogger.info("Restart year {} specified; skipping {}".format(args.restart_year, YEAR))
+            continue
+
         projects_for_year = NETWORK_PROJECTS[YEAR]
 
         appliedcount = 0
         for netmode in NET_MODES:
+            if args.restart_mode == "trn" and netmode == "hwy" and YEAR == int(args.restart_year):
+                Wrangler.WranglerLogger.info("Restart mode {} specified; skipping {}".format(args.restart_mode, netmode))
+                continue
+
             Wrangler.WranglerLogger.info("Building {} {} networks".format(YEAR, netmode))
 
             for project in projects_for_year[netmode]:
