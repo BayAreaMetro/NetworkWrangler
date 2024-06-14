@@ -382,6 +382,19 @@ class Network(object):
         
         (retcode, retstdout, retstderr) = self._runAndLog(cmd, joinedTempDir)
 
+        # try to resolve issue related to git cloning from Box
+        # see NetworkWrangler: try to fix git issues if git clone fails https://app.asana.com/0/13098083395690/1206943005010445/f
+        if (retcode == 128) and ("Box" in joinedBaseDir):
+            git_fix_cmd = r'git fsck --full'
+            (retcode, retstdout, retstderr) = self._runAndLog(git_fix_cmd, os.path.join(joinedBaseDir, networkdir))
+
+            git_fix_cmd = r'git gc'
+            (retcode, retstdout, retstderr) = self._runAndLog(git_fix_cmd, os.path.join(joinedBaseDir, networkdir))
+
+            # and now try again...
+            (retcode, retstdout, retstderr) = self._runAndLog(cmd, joinedTempDir)
+
+
         if retcode != 0:
             if not projectsubdir:
                 raise NetworkException("Git clone failed; see log file")
