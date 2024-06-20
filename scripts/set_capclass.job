@@ -14,7 +14,6 @@
 ;  - Facility Type (FT)
 ;  - Traffic Operations (TOS)
 ;  - Signal Coordination (SIGCOR)
-;  - Route number (ROUTENUM) - I280 faster speeds
 ;
 ; => sets Free Flow Speed (FFS) based on CAPCLASS
 ; => sets Capacity (CAP) based on CAPCLASS
@@ -83,10 +82,6 @@ RUN PGM=HWYNET
     IF (FT=7 & AT=3 & SIGCOR=1) CAPCLASS=50
     IF (FT=7 & AT=4 & SIGCOR=1) CAPCLASS=60
     IF (FT=7 & AT=5 & SIGCOR=1) CAPCLASS=60
-
-    ; Update for 280 higher speeds
-    ; See also: https://github.com/BayAreaMetro/TM1_2015_Base_Network/commit/372870e8324aafc94ad834ca93ca1fc7d3170270
-    IF ((ROUTENUM==280) && (AT>2)) CAPCLASS=62
 
     SPDCLASS=CAPCLASS
     ;-----------------------------------------------------------------------
@@ -157,8 +152,7 @@ RUN PGM=HWYNET
     IF (CAPCLASS=58) FFS=65
     IF (CAPCLASS=59) FFS=50        ;TOS Fwy-to-Fwy (AT=4,5)
     IF (CAPCLASS=60) FFS=40        ;Arterial Sig. Coor. (AT=4,5)
-    ;-----------------------------------------------------------------------
-    IF (CAPCLASS=62) FFS=75
+
 
     ;-----------------------------------------------------------------------
     ; Code Capacities for Links
@@ -229,7 +223,6 @@ RUN PGM=HWYNET
     IF (CAPCLASS=59) CAP=2050      ;TOS Fwy-to-Fwy (AT=4,5)
     IF (CAPCLASS=60) CAP=1100      ;Arterial Signal Coordination (AT=4,5)
     ;-----------------------------------------------------------------------
-    IF (CAPCLASS=62) CAP=2150
 
     ;-----------------------------------------------------------------------
     ;     Free-Flow Time Variable
@@ -250,7 +243,7 @@ RUN PGM=HWYNET
     SPDCAP SPEED[31]=45,60,45,25,35,18,30,60,50,25
     SPDCAP SPEED[41]=50,65,50,30,40,18,35,65,45,30
     SPDCAP SPEED[51]=50,65,55,35,40,18,40,65,50,40
-    SPDCAP SPEED[61]=50,75
+    SPDCAP SPEED[61]=0,0,0
 
     ; INDEX is CAPCLASS
     SPDCAP CAPACITY[01]=1850,2050,1450,600,1450,0,900,2150,2100,1500
@@ -259,7 +252,6 @@ RUN PGM=HWYNET
     SPDCAP CAPACITY[31]=1950,2100,1600,700,1550,0,1000,2200,1950,1000
     SPDCAP CAPACITY[41]=2000,2150,1650,900,1550,0,1050,2250,2000,1050
     SPDCAP CAPACITY[51]=2000,2150,1650,950,1550,0,1050,2250,2050,1100
-    SPDCAP CAPACITY[61]=2000,2150
 
     REPORT SPEED=YES CAPACITY=YES        ;report speed/capacity tables in network
 

@@ -217,21 +217,21 @@ def writeRequirementsToScreen(REQUIREMENTS, req_type='prereq'):
     else:
         return None
 
-    print "Match type 2:   Perfect match    "
-    print "Match type 1:   Possible match   "
-    print "Match type 0:   No match         "
-    print "------------------------------   "
+    print("Match type 2:   Perfect match    ")
+    print("Match type 1:   Possible match   ")
+    print("Match type 0:   No match         ")
+    print("------------------------------   ")
     
     for net in REQUIREMENTS.keys():
         proj_name_max_width = 22
-        print "--------------------------------------------------------------------------------------------"
-        print "%s" % net.upper()
-        print "--------------------------------------------------------------------------------------------"
-        print "                       REQ    NET                          MATCH POSSIBLE               NET "
-        print "PROJECT                TYPE   TYPE  %-23sLEVEL %-23sTYPE" % (print_req.upper(), print_req.upper()+' MATCH')
-        print "---------------------- ------ ----- ---------------------- ----- ---------------------- ----"
+        print("--------------------------------------------------------------------------------------------")
+        print("%s" % net.upper())
+        print("--------------------------------------------------------------------------------------------")
+        print("                       REQ    NET                          MATCH POSSIBLE               NET ")
+        print("PROJECT                TYPE   TYPE  %-23sLEVEL %-23sTYPE" % (print_req.upper(), print_req.upper()+' MATCH'))
+        print("---------------------- ------ ----- ---------------------- ----- ---------------------- ----")
         if REQUIREMENTS[net].keys() == []:
-            print "NO %sS FOUND FOR %s NETWORK TYPE" % (print_req.upper(), net.upper())
+            print("NO %sS FOUND FOR %s NETWORK TYPE" % (print_req.upper(), net.upper()))
             
         for proj in REQUIREMENTS[net].keys():
             for req in REQUIREMENTS[net][proj].keys():
@@ -269,8 +269,8 @@ def writeRequirementsToScreen(REQUIREMENTS, req_type='prereq'):
                         else:
                             line_to_print = line_to_print + '\n' + line_part_one + "%-6s%-23s%-4s\n" %("NA","MISSING","NA")
                     i += 1
-                print line_to_print
-        print '\n'
+                print(line_to_print)
+        print('\n')
 
 def getProjectAttributes(project):
     # Start with TAG if not build mode, no kwargs
@@ -303,7 +303,7 @@ if __name__ == '__main__':
     os.environ['CHAMP_NODE_NAMES'] = CHAMP_NODE_NAMES
     
     if len(args) < 1:
-        print USAGE
+        print(USAGE)
         sys.exit(2)        
     NETWORK_CONFIG  = args[0]
     
@@ -322,7 +322,7 @@ if __name__ == '__main__':
         if o=="-c": CONFIG_WORD = a
         
     if BUILD_MODE not in [None,"test"]:
-        print USAGE
+        print(USAGE)
         sys.exit(2)
     
     if BUILD_MODE=="test":
@@ -334,25 +334,25 @@ if __name__ == '__main__':
     
     # Verify mandatory fields are set
     if PROJECT==None:
-        print "PROJECT not set in %s" % NETWORK_CONFIG
+        print(f"PROJECT not set in {NETWORK_CONFIG}")
         sys.exit(2)
     if YEAR==None:
-        print "YEAR not set in %s" % NETWORK_CONFIG
+        print(f"YEAR not set in {NETWORK_CONFIG}")
         sys.exit(2)
     if SCENARIO==None:
-        print "SCENARIO not set in %s" % NETWORK_CONFIG
+        print(f"SCENARIO not set in {NETWORK_CONFIG}")
         sys.exit(2)
     if TAG==None:
-        print "TAG not set in %s" % NETWORK_CONFIG
+        print(f"TAG not set in {NETWORK_CONFIG}")
         sys.exit(2)
     if OUT_DIR==None:
-        print "OUT_DIR not set in %s" % NETWORK_CONFIG
+        print(f"OUT_DIR not set in {NETWORK_CONFIG}")
         sys.exit(2)
     if TRANSIT_CAPACITY_DIR==None:
-        print "TRANSIT_CAPACITY_DIR not set in %s" % NETWORK_CONFIG
+        print(f"TRANSIT_CAPACITY_DIR not set in {NETWORK_CONFIG}")
         sys.exit(2)
     if NETWORK_PROJECTS==None:
-        print "NETWORK_PROJECTS not set in %s" % NETWORK_CONFIG
+        print(f"NETWORK_PROJECTS not set in {NETWORK_CONFIG}")
         sys.exit(2)
 
     # Set up logging
@@ -464,7 +464,7 @@ if __name__ == '__main__':
                 (prereqs, coreqs, conflicts) = networks[netmode].getReqs(networkdir=project_name, projectsubdir=tail, tag=tag,
                                                                          projtype=projType, tempdir=TEMP_SUBDIR)                
 
-            print "Checking projType... %s" % projType
+            print(f"Checking projType... {projType}") 
             if projType=='plan':
                 #Open specs file and get list of projects
                 specFile = os.path.join(TEMP_SUBDIR,NETWORK_PLAN_SUBDIR,'planSpecs.csv')
@@ -675,4 +675,4 @@ if __name__ == '__main__':
     
     Wrangler.WranglerLogger.debug("Wrote transit report to %s" % transit_report_filename)
     Wrangler.WranglerLogger.debug("Successfully completed running %s" % os.path.abspath(__file__))
-    print "Remember to copy MissionLocalDelay.csv from the Muni_2011Oct dir!"
+    print("Remember to copy MissionLocalDelay.csv from the Muni_2011Oct dir!")

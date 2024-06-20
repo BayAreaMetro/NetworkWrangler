@@ -201,9 +201,9 @@ if __name__ == '__main__':
             continue
 
         # Initialize output subdirectories up a level (not in scratch)
-        hwypath=os.path.join("..", SCENARIO, OUT_DIR.format(YEAR),HWY_SUBDIR)
+        hwypath=os.path.join("..", SCENARIO, OUT_DIR.format(YEAR),build_network_mtc.HWY_SUBDIR)
         if not os.path.exists(hwypath): os.makedirs(hwypath)
-        trnpath = os.path.join("..", SCENARIO, OUT_DIR.format(YEAR),TRN_SUBDIR)
+        trnpath = os.path.join("..", SCENARIO, OUT_DIR.format(YEAR),build_network_mtc.TRN_SUBDIR)
         if not os.path.exists(trnpath): os.makedirs(trnpath)
 
         networks['hwy'].write(path=hwypath,name=HWY_NET_NAME,suppressQuery=True,

@@ -1,4 +1,5 @@
 import collections, csv, os, re, shutil, subprocess, time
+import copy
 from socket         import gethostname, getfqdn
 
 from .HwySpecsRTP import HwySpecsRTP
@@ -31,7 +32,8 @@ class HighwayNetwork(Network):
 
         # read them
         HighwayNetwork.cube_hostnames = []
-        f = open(r"Y:\COMMPATH\HostnamesWithCube.txt")
+        env = copy.copy(os.environ)
+        f = open(env['CUBE_HOST_FILE'])
         for line in f:
             if line[0] == "#": continue
             HighwayNetwork.cube_hostnames.append(line.split()[0])  # use the first token of non-comment lines
@@ -146,7 +148,7 @@ class HighwayNetwork(Network):
 
             # dispatch it, cube license
             hostname = gethostname().lower()
-            if hostname not in HighwayNetwork.getCubeHostnames():
+            if False: #hostname not in HighwayNetwork.getCubeHostnames():
                 print("Dispatching cube script to taraval from %s".format(hostname))
                 f = open(os.path.join(applyDir,'runtpp_dispatch.tmp'), 'w')
                 f.write("runtpp " + applyScript + "\n")

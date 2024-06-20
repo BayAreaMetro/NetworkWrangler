@@ -22,8 +22,8 @@ def getCubeHostnames():
 
     # at mtc, assume cube license is available
     if fqdn.endswith("mtc.ca.gov"): return [ gethostname().lower() ]
-
-    f = open(r"Y:\COMMPATH\HostnamesWithCube.txt")
+    env = copy.copy(os.environ)
+    f = open(env['CUBE_HOST_FILE'])
     for line in f:
         if line[0] == "#": continue
         hostnames.append(line.split()[0])  # use the first token of non-comment lines
@@ -88,10 +88,9 @@ def export_cubenet_to_csvs(file, extra_link_vars=[], extra_node_vars=[],
                 sys.exit(2)
              
             env["MACHINES"] = CUBE_COMPUTER
-        
-            cmd = r'y:\champ\util\bin\dispatch-one.bat "runtpp ' + script + '"'
-            print(cmd)
-            proc = subprocess.Popen( cmd, cwd = filedir, stdout=subprocess.PIPE, stderr=subprocess.PIPE, env=env)
+
+            cmd = f'runtpp "{script}"'
+            proc = subprocess.Popen( cmd, cwd = filedir, stdout=subprocess.PIPE, stderr=subprocess.PIPE )#, env=env)
             for line in proc.stdout:
                 if type(line)==bytes: line = line.decode()  # convert to string, not byetes
                 line = line.strip('\r\n')
