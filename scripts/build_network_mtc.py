@@ -422,6 +422,10 @@ if __name__ == '__main__':
         # some of the NGF NetworkProjects use geopandas (namely NGF_TrnFreqBoostsCordons and NGF_TrnExtendedServiceHours_Cordons)
         # doing this import here in order to catch installation issues early
         import geopandas
+    
+    if args.project_name == 'TIP2025':
+        PIVOT_DIR        = r"M:\Application\\Model One\\Networks\\TM1_2015_Base_Network-TIP_2023"
+        TRN_NET_NAME     = "transitLines"
 
     TRANSIT_CAPACITY_DIR = os.path.join(PIVOT_DIR, "trn")
 
@@ -436,6 +440,8 @@ if __name__ == '__main__':
     if 'NGF' in args.project_name:
         SCENARIO    = args.NGF_netvariant
         NET_VARIANT = args.NGF_netvariant
+    else:
+        NET_VARIANT = None
 
     OUT_DIR         = "{}_network_".format(PROJECT) + "{}"
     if SCENARIO:
