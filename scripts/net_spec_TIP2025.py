@@ -342,7 +342,6 @@ TIP_PROJECTS = collections.OrderedDict([
                        {'name':'MAJ_Bay_Area_Forward_all',      'kwargs':{'MODELYEAR':'2035'}},
                        {'name':'BP_Tolls_On_Congested_Freeways_2035',                                     'variants_exclude':['NextGenFwy']},
                        'FBP_AL_076_TelegraphDiet',
-                       'FBP_SN_018_Cotati_101_RailroadAve_Impr',
                        'FBP_NP_079_Trower_Ext',
                        'EXP_Blueprint',
                        {'name':'EIR1_No_SR37',                                                            'variants_include':['Alt1']},
