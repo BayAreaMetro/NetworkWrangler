@@ -1507,7 +1507,7 @@ class TransitNetwork(Network):
         el_links_df         = links_df.loc[ links_df.TOLLCLASS >= 11 ]
         notruck_links_df    = links_df.loc[ (links_df.TOLLCLASS==0) & (links_df.USE==4)]        
         gp_links_df         = links_df.loc[ (links_df.USE==1)&((links_df.FT<=3)|(links_df.FT==5)|(links_df.FT==7)|(links_df.FT==8)|(links_df.FT==10))]
-        gp_notruck_links_df = gp_links_df.append(notruck_links_df)
+        gp_notruck_links_df = pandas.concat([gp_links_df, notruck_links_df])
         dummy_links_df      = links_df.loc[ links_df.FT==6 ]
 
         WranglerLogger.debug("Found {} hov links, {} express lane links and {} general purpose links".format(
