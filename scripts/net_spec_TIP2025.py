@@ -289,7 +289,6 @@ TIP_PROJECTS = collections.OrderedDict([
                        'ALA210028_I80_HOV_Bus_Lane_Ext',
                        'FBP_AL_067_Rte84Wide',
                        'SCL210026_Julian_James_Conversion',
-                       'Futures_SMART_to_Healdsburg',
                        {'name':'FBP_CC_040_041_042_I680_SR4_Int_Phases_1_2_4_5', 'kwargs':{'PHASE':"'1'"},  'variants_exclude':['Alt1']},
                        {'name':'FBP_CC_040_041_042_I680_SR4_Int_Phases_1_2_4_5', 'kwargs':{'PHASE':"'2'"},  'variants_exclude':['Alt1']},
                        {'name':'FBP_CC_050_SR4_Operation_Improvements_EB',                                  'variants_exclude':['Alt1']},
@@ -327,7 +326,9 @@ TIP_PROJECTS = collections.OrderedDict([
                        {'name':'EIR2_PDA_Freq_Incr',            'kwargs':{'MODELYEAR':'2030'},            'variants_include':['Alt2']},
                        {'name':'EIR2_Fix_Alt2',                 'kwargs':{'MODELYEAR':'2030'},            'variants_include':['Alt2']},
                        {'name':'Transform_SR37_Widening_Interim',                                         'variants_exclude':['Alt1']},
-                       {'name':'SON090002_SMART_NorthPetaluma',                                           'variants_exclude':['Baseline']}]
+                       {'name':'SON090002_SMART_NorthPetaluma',                                           'variants_exclude':['Baseline']},
+                       'Futures_SMART_to_Healdsburg',
+]
         }),
         (2035, {'hwy':['MAJ_Treasure_Island_Congestion_Pricing',
                        'BP_Vision_Zero',
