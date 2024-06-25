@@ -29,6 +29,7 @@ NGF_PROJECTS = {
             'NGF_CarpoolLanes',
             'NGF_BlueprintSegmented',
             'NGF_HOV3_to_HOV2',
+            'NGF_r2_BRTonParallelArterials'
          ],
         'trn':[
             'NGF_NoProject_farefiles',      # ensures these files get included; note this is not a real project
