@@ -38,6 +38,10 @@ NGF_PROJECTS = {
          ],
         'trn':[
             'NGF_NoProject_farefiles',      # ensures these files get included; note this is not a real project
+            # Complementary strategy - Transit improvements (frequency boosts for parallel buses, feeder buses, and shuttles)
+            {'name':'NGF_r2_TrnFreqBoosts', 'kwargs':{
+                'NoProject_dir' : 'r"L:\\Application\\Model_One\\NextGenFwys_Round2\\Scenarios\\2035_TM160_NGF_r2_NoProject_04_pretollcalib\\OUTPUT\\trn"'
+            }}
         ]
     },
 
@@ -74,6 +78,8 @@ NGF_PROJECTS = {
         ],
         'trn':[
             'NGF_NoProject_farefiles',      # ensures these files get included; note this is not a real project
+            # Complementary strategy
+            'NGF_r2_TrnFreqBoosts',
         ]
     },
 }
