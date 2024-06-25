@@ -21,12 +21,6 @@ TAG = "HEAD"
 
 # Pathways - note these are 2035 projects
 NGF_PROJECTS = {
-    'BlueprintSegmented':{
-        'hwy':[
-            'NGF_BlueprintSegmented',      # All lane tolling on freeways
-        ],   
-        'trn':[]
-    },
 
     # Pathway 1: Round 2 All lane tolling
     # https://app.asana.com/0/1203644633064654/1206291041610290/f
