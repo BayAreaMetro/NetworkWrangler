@@ -1,4 +1,4 @@
-import argparse,collections,copy,datetime,os,pandas,shutil,sys,time
+import argparse,collections,copy,datetime,os,pandas,pathlib,shutil,sys,tempfile,time
 import Wrangler
 
 # Based on NetworkWrangler\scripts\build_network.py
@@ -157,6 +157,7 @@ if __name__ == '__main__':
                 continue
 
             Wrangler.WranglerLogger.info("Building {} {} networks".format(YEAR, netmode))
+            project_diff_report_num = 1
 
             for project in projects_for_year[netmode]:
                 (project_name, projType, tag, branch, kwargs) = build_network_mtc.getProjectAttributes(project)
@@ -167,8 +168,18 @@ if __name__ == '__main__':
                     continue
 
                 # save a copy of this network instance for comparison
-                if args.create_project_diffs:
-                    network_without_project = copy.deepcopy(networks[netmode])
+                network_without_project = None
+                if args.create_project_diffs and (project not in build_network_mtc.SKIP_PROJ_DIFFS):
+                    if netmode == "trn":
+                        network_without_project = copy.deepcopy(networks[netmode])
+                    elif netmode == 'hwy':
+                        # the network state is not in the object, but in the files in scratch. write these to tempdir
+                        network_without_project = pathlib.Path(tempfile.mkdtemp())
+                        Wrangler.WranglerLogger.debug(f"Saving previous network into tempdir {network_without_project}")
+                        networks[netmode].writeShapefile(network_without_project, 
+                                                         links_file='roadway_links_prev.shp', nodes_file='roadway_nodes_prev.shp')
+                        # copy tolls there as well
+                        shutil.copy("tolls.csv", network_without_project / "tolls_prev.csv")
 
                 applied_SHA1 = None
                 cloned_SHA1 = networks[netmode].cloneProject(networkdir=project_name, tag=tag,branch=branch,
@@ -179,13 +190,11 @@ if __name__ == '__main__':
                 appliedcount += 1
 
                 # Create difference report for this project
-                # TODO: roadway not supported yet
-                if args.create_project_diffs and netmode!="hwy":
+                if args.create_project_diffs and (project not in build_network_mtc.SKIP_PROJ_DIFFS):
                     # difference information to be store in network_dir netmode_projectname
-                    # e.g. BlueprintNetworks\net_2050_Blueprint\trn_BP_Transbay_Crossing
+                    # e.g. BlueprintNetworks\net_2050_Blueprint\01_trn_BP_Transbay_Crossing
                     project_diff_folder = os.path.join("..", "BlueprintNetworks", 
-                                                       "net_{}_{}".format(YEAR, NET_VARIANT), 
-                                                       "{}_{}".format(build_network_mtc.HWY_SUBDIR if netmode == "hwy" else build_network_mtc.TRN_SUBDIR, project_name))
+                         f"net_{YEAR}_{project_diff_report_num:02}_{build_network_mtc.HWY_SUBDIR if netmode == 'hwy' else build_network_mtc.TRN_SUBDIR}_{project_name}")
                     hwypath=os.path.join("..", "BlueprintNetworks", "net_{}_{}".format(YEAR, NET_VARIANT), build_network_mtc.HWY_SUBDIR)
 
                     # the project may get applied multiple times -- e.g., for different phases
@@ -197,9 +206,12 @@ if __name__ == '__main__':
 
                     Wrangler.WranglerLogger.debug("Creating project_diff_folder: {}".format(project_diff_folder_with_suffix))
                     
-                    # new!
-                    networks[netmode].reportDiff(network_without_project, project_diff_folder_with_suffix, project_name,
-                                                 roadwayNetworkFile=os.path.join(os.path.abspath(hwypath), HWY_NET_NAME))
+                    reported_diff_ret = networks[netmode].reportDiff(netmode, other_network=network_without_project, 
+                                                 directory=project_diff_folder_with_suffix, report_description=project_name)
+                    del network_without_project
+
+                    if reported_diff_ret:
+                        project_diff_report_num += 1
 
                 # if hwy project has set_capclass override, copy it to set_capclass/apply.s
                 set_capclass_override = os.path.join(TEMP_SUBDIR, project_name, "set_capclass.job")

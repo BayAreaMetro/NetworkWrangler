@@ -77,6 +77,12 @@ THIS_FILE = os.path.realpath(__file__)
 TRN_SUBDIR       = "trn"
 HWY_SUBDIR       = "hwy"
 
+# don't bother creating project diffs for these
+SKIP_PROJ_DIFFS = [
+    'PROJ_attributes',
+    'No_zero_length_links'
+]
+
 ###############################################################################
 
 ###############################################################################
@@ -406,6 +412,8 @@ if __name__ == '__main__':
 
     NOW         = time.strftime("%Y%b%d.%H%M%S")
     BUILD_MODE  = None # regular
+    TRN_NET_NAME     = "transit_Lines" # refers to https://github.com/BayAreaMetro/TM1_2015_Base_Network/blob/master/trn/transit_lines/Transit_Lines.block
+    HWY_NET_NAME     = "freeflow.net"
 
     if (args.project_name == 'NGF'):
         PIVOT_DIR        = r"L:\Application\Model_One\NextGenFwys\INPUT_DEVELOPMENT\Networks\NGF_Networks_NoProjectNoSFCordon_08\net_2035_NGFNoProjectNoSFCordon"
@@ -425,13 +433,8 @@ if __name__ == '__main__':
     
     if args.project_name == 'TIP2025':
         PIVOT_DIR        = r"M:\Application\\Model One\\Networks\\TM1_2015_Base_Network-TIP_2023"
-        TRN_NET_NAME     = "transitLines"
 
     TRANSIT_CAPACITY_DIR = os.path.join(PIVOT_DIR, "trn")
-
-    if 'NGF' not in args.project_name:
-        TRN_NET_NAME     = "transit_Lines" # refers to https://github.com/BayAreaMetro/TM1_2015_Base_Network/blob/master/trn/transit_lines/Transit_Lines.block
-    HWY_NET_NAME     = "freeflow.net"
 
     # Read the configuration
     NETWORK_CONFIG  = args.net_spec
@@ -545,7 +548,7 @@ if __name__ == '__main__':
 
                 # save a copy of this network instance for comparison
                 network_without_project = None
-                if args.create_project_diffs:
+                if args.create_project_diffs and (project not in SKIP_PROJ_DIFFS):
                     if netmode == "trn":
                         network_without_project = copy.deepcopy(networks[netmode])
                     elif netmode == 'hwy':
@@ -554,6 +557,8 @@ if __name__ == '__main__':
                         Wrangler.WranglerLogger.debug(f"Saving previous network into tempdir {network_without_project}")
                         networks[netmode].writeShapefile(network_without_project, 
                                                          links_file='roadway_links_prev.shp', nodes_file='roadway_nodes_prev.shp')
+                        # copy tolls there as well
+                        shutil.copy("tolls.csv", network_without_project / "tolls_prev.csv")
 
                 applied_SHA1 = None
                 cloned_SHA1 = networks[netmode].cloneProject(networkdir=project_name, tag=tag, branch=branch,
@@ -564,7 +569,7 @@ if __name__ == '__main__':
                 appliedcount += 1
 
                 # Create difference report for this project
-                if args.create_project_diffs:
+                if args.create_project_diffs and (project not in SKIP_PROJ_DIFFS):
                     # difference information to be store in network_dir netmode_projectname
                     # e.g. BlueprintNetworks\net_2050_Blueprint\01_trn_BP_Transbay_Crossing
                     project_diff_folder = os.path.join("..", OUT_DIR.format(YEAR),

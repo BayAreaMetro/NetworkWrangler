@@ -490,7 +490,10 @@ class HighwayNetwork(Network):
             for suffix in ['shp','shx','cpg','dbf','prj']:
                 shutil.move(other_network / f"{prefix}.{suffix}", 
                             pathlib.Path(directory) / f"{prefix}.{suffix}")
+        shutil.move(other_network / "tolls_prev.csv",
+                    pathlib.Path(directory) / "tolls_prev.csv")
 
         # copy the shapefiles from there into directory
         self.writeShapefile(path=directory)
+        shutil.copy("tolls.csv", pathlib.Path(directory) / "tolls.csv")
         return True
