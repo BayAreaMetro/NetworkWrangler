@@ -34,7 +34,7 @@
       <connection class='federated'>
         <named-connections>
           <named-connection caption='roadway_links' name='ogrdirect.07b1d8v0evnmli1e0agj81lnlrjz'>
-            <connection class='ogrdirect' directory='E:/GitHub/NetworkWrangler/scripts/NGF_R2_R2P4_2035_Express_Lanes_network_2035/02_hwy_EXP_uncommitted_noAllLaneTolling' filename='roadway_links.shp' password='' server='' tablename='' />
+            <connection class='ogrdirect' directory='.' filename='roadway_links.shp' password='' server='' tablename='' />
           </named-connection>
         </named-connections>
         <_.fcp.ObjectModelEncapsulateLegacy.false...relation join='full' type='join'>
