@@ -1,4 +1,4 @@
-import copy, os, re, string, subprocess, sys, tempfile
+import copy, os, pathlib, re, shutil, string, subprocess, sys, tempfile
 from .Logger import WranglerLogger
 from .NetworkException import NetworkException
 from .Regexes import git_commit_pattern
@@ -500,10 +500,19 @@ class Network(object):
         """
         pass
 
-    def reportDiff(self, other_network, directory, report_description, roadwayNetworkFile=None):
+    def reportDiff(self, netmode, other_network, directory, report_description):
         """
-        Implemented by subclass
+        Implemented by subclass for the most part.
+        Returns True if diffs were reported, false otherwise.
         """
-        WranglerLogger.debug("Network.reportDiff() passed with other_network={} directory={} roadwayNetworkFile={}".format(
-            other_network, directory, roadwayNetworkFile))
+        WranglerLogger.debug(f"Network.reportDiff() passed with other_network={other_network} directory={directory} " +
+            f"report_description={report_description}")
         
+        # create the report directory
+        os.makedirs(directory)
+
+        # copy the tableau file into place
+        TABLEAU_TEMPLATE = pathlib.Path(__file__).parent.parent / "ProjectMapping" / f"ProjectMapping_{netmode}.twb"
+        shutil.copyfile(TABLEAU_TEMPLATE, pathlib.Path(directory) / f"ProjectMapping_{report_description}.twb")
+
+        return True

@@ -1743,16 +1743,19 @@ class TransitNetwork(Network):
                                projectname=(networkdir + "\\" + projectsubdir if projectsubdir else networkdir),
                                year=pyear, projectdesc=pdesc)
 
-    def reportDiff(self, other_network, directory, report_description, roadwayNetworkFile=None):
+    def reportDiff(self, netmode, other_network, directory, report_description):
         """
         Reports the difference ebetween this network and the other_network into the given directory.
 
         NOTE: this imports pandas, geopandas and shapely
+
+        Returns True if diffs were reported, false otherwise.
+
         """
+        WranglerLogger.debug(f"TransitNetwork.reportDiff() passed with other_network={other_network} directory={directory} " +
+            f"report_description={report_description}")
+
         # first check if changes happened
-        WranglerLogger.debug("TransitNetwork.reportDiff() passed with other_network={} directory={} roadwayNetworkFile={}".format(
-            other_network, directory, roadwayNetworkFile))
-        
         added_lines_text = []
         deleted_lines_text = []
         modified_lines_text = []
@@ -1778,11 +1781,11 @@ class TransitNetwork(Network):
 
         if len(added_lines) + len(deleted_lines) + len(modified_lines) == 0:
             WranglerLogger.info("No project diffs reported")
-            return
+            return False
 
-        # create the report directory
-        os.makedirs(directory)
-            
+        # call parent version to create dir and copy in tableau
+        Network.reportDiff(self, netmode, other_network, directory, report_description)
+
         import pandas
         import geopandas
 
@@ -1882,7 +1885,12 @@ class TransitNetwork(Network):
 
 
         # OK now we make the PDF with arcpy (!!)
-        import arcpy
+        try:
+            import arcpy
+        except ImportError:
+            WranglerLogger.warn("arcpy module not available; no pdf will be created")
+            return True
+
         arcpy.env.workspace = directory
         arcpy.env.overwriteOutput = True
         WranglerLogger.debug("imported arcpy; workspace={}".format(arcpy.env.workspace))
@@ -2076,3 +2084,4 @@ class TransitNetwork(Network):
                 WranglerLogger.fatal("Exception occurred: {}".format(e))
                 WranglerLogger.fatal(traceback.format_exc())
 
+        return True

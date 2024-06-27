@@ -1,4 +1,4 @@
-import collections, csv, os, re, shutil, subprocess, time
+import collections, csv, os, pathlib, re, shutil, subprocess, time
 from socket         import gethostname, getfqdn
 
 from .HwySpecsRTP import HwySpecsRTP
@@ -470,3 +470,27 @@ class HighwayNetwork(Network):
         WranglerLogger.debug("Wrote {} links to {}".format(len(links_gdf), os.path.join(path, links_file)))
 
         return nodes_dict
+
+    def reportDiff(self, netmode, other_network, directory, report_description):
+        """
+        Reports the difference ebetween this network and the other_network into the given directory.
+
+        NOTE: this imports pandas, geopandas and shapely
+
+        Returns True if diffs were reported, false otherwise.
+        """
+        WranglerLogger.debug(f"HighwayNetwork.reportDiff() passed with other_network={other_network} directory={directory} " +
+            f"report_description={report_description}")
+        
+        # call parent version to create dir and copy in tableau
+        Network.reportDiff(self, netmode, other_network, directory, report_description)
+        
+        # here, other_network is a tempdir with shapefiles
+        for prefix in ['roadway_links_prev','roadway_nodes_prev']:
+            for suffix in ['shp','shx','cpg','dbf','prj']:
+                shutil.move(other_network / f"{prefix}.{suffix}", 
+                            pathlib.Path(directory) / f"{prefix}.{suffix}")
+
+        # copy the shapefiles from there into directory
+        self.writeShapefile(path=directory)
+        return True
