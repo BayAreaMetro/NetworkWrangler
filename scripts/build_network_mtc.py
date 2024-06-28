@@ -393,7 +393,8 @@ if __name__ == '__main__':
     parser.add_argument("--configword", help="optional word for network specification script")
     parser.add_argument("--continue_on_warning", help="Don't prompt the user to continue if there are warnings; just warn and continue", action="store_true")
     parser.add_argument("--skip_precheck_requirements", help="Don't precheck network requirements, stale projects, non-HEAD projects, etc", action="store_true")
-    parser.add_argument("--create_project_diffs", help="Pass this to create proejct diffs information for each project. NOTE: THIS WILL BE SLOW", action="store_true")
+    parser.add_argument("--create_project_diffs", help="Pass this to create project diffs information for EVERY project. NOTE: THIS WILL BE SLOW", action="store_true")
+    parser.add_argument("--create_project_diff",  help="Pass a project name to create project diffs information for that project", type=str, default=None)
     parser.add_argument("project_name", help="required project name, for example NGF")
     parser.add_argument("--scenario", help="optional SCENARIO name")
     parser.add_argument("net_spec", metavar="network_specification.py", help="Script which defines required variables indicating how to build the network")
@@ -548,7 +549,7 @@ if __name__ == '__main__':
 
                 # save a copy of this network instance for comparison
                 network_without_project = None
-                if args.create_project_diffs and (project not in SKIP_PROJ_DIFFS):
+                if (args.create_project_diffs and (project not in SKIP_PROJ_DIFFS)) or (args.create_project_diff == project):
                     if netmode == "trn":
                         network_without_project = copy.deepcopy(networks[netmode])
                     elif netmode == 'hwy':
@@ -569,19 +570,18 @@ if __name__ == '__main__':
                 appliedcount += 1
 
                 # Create difference report for this project
-                if args.create_project_diffs and (project not in SKIP_PROJ_DIFFS):
+                if (args.create_project_diffs and (project not in SKIP_PROJ_DIFFS)) or (args.create_project_diff == project):
                     # difference information to be store in network_dir netmode_projectname
                     # e.g. BlueprintNetworks\net_2050_Blueprint\01_trn_BP_Transbay_Crossing
-                    project_diff_folder = os.path.join("..", OUT_DIR.format(YEAR),
-                        f"{project_diff_report_num:02}_{HWY_SUBDIR if netmode == 'hwy' else TRN_SUBDIR}_{project_name}")
-                    hwypath=os.path.join("..",  OUT_DIR.format(YEAR), HWY_SUBDIR)
+                    project_diff_folder = pathlib.Path.cwd().parent / OUT_DIR.format(YEAR) / f"ProjectDiffs" / \
+                        f"{project_diff_report_num:02}_{HWY_SUBDIR if netmode == 'hwy' else TRN_SUBDIR}_{project_name}"
 
                     # the project may get applied multiple times -- e.g., for different phases
                     suffix_num = 1
                     project_diff_folder_with_suffix = project_diff_folder
-                    while os.path.exists(project_diff_folder_with_suffix):
+                    while project_diff_folder_with_suffix.exists():
                         suffix_num += 1
-                        project_diff_folder_with_suffix = "{}_{}".format(project_diff_folder, suffix_num)
+                        project_diff_folder_with_suffix = pathlib.Path(f"{str(project_diff_folder)}_{suffix_num}")
 
                     Wrangler.WranglerLogger.debug(f"Creating project_diff_folder: {project_diff_folder_with_suffix}")
                     Wrangler.WranglerLogger.debug(f"network_without_project: {network_without_project}")
