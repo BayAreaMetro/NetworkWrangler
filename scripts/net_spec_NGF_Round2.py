@@ -74,8 +74,6 @@ NGF_PROJECTS = {
         ],
         'trn':[
             'NGF_NoProject_farefiles',      # ensures these files get included; note this is not a real project
-            # Complementary strategy
-            'NGF_r2_TrnFreqBoosts',
         ]
     },
 }
