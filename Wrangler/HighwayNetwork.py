@@ -408,7 +408,7 @@ class HighwayNetwork(Network):
             
         if not suppressValidation: self.validateTurnPens(netfile,'turnPenValidations.csv')
 
-    def writeShapefile(self, path: str, links_file='roadway_links.shp', nodes_file='roadway_nodes.shp'):
+    def writeShapefile(self, path: str, links_file='roadway_links.shp', nodes_file='roadway_nodes.shp', skip_nodes=True):
         """ Writes the roadway network as shape files for links and nodes.
 
         Args:
@@ -443,14 +443,15 @@ class HighwayNetwork(Network):
         import pandas
         import geopandas
         import shapely
-        node_data = []
-        for node_num in sorted(nodes_dict.keys()):
-            node_data.append([node_num, nodes_dict[node_num][0], nodes_dict[node_num][1]])
-        nodes_df = pandas.DataFrame(data=node_data, columns=["N","X","Y"])
-        nodes_gdf = geopandas.GeoDataFrame(nodes_df, geometry=geopandas.points_from_xy(nodes_df.X, nodes_df.Y),
-                                           crs="EPSG:26910") # https://epsg.io/26910
-        nodes_gdf.to_file(filename=os.path.join(path, nodes_file))
-        WranglerLogger.debug("Wrote {} nodes to {}".format(len(nodes_gdf), os.path.join(path, nodes_file)))
+        if not skip_nodes:
+            node_data = []
+            for node_num in sorted(nodes_dict.keys()):
+                node_data.append([node_num, nodes_dict[node_num][0], nodes_dict[node_num][1]])
+            nodes_df = pandas.DataFrame(data=node_data, columns=["N","X","Y"])
+            nodes_gdf = geopandas.GeoDataFrame(nodes_df, geometry=geopandas.points_from_xy(nodes_df.X, nodes_df.Y),
+                                               crs="EPSG:26910") # https://epsg.io/26910
+            nodes_gdf.to_file(filename=os.path.join(path, nodes_file))
+            WranglerLogger.debug("Wrote {} nodes to {}".format(len(nodes_gdf), os.path.join(path, nodes_file)))
 
         ## create link GeoDataFrame and write shapefile
         link_data = []
@@ -486,10 +487,9 @@ class HighwayNetwork(Network):
         Network.reportDiff(self, netmode, other_network, directory, report_description)
         
         # here, other_network is a tempdir with shapefiles
-        for prefix in ['roadway_links_prev','roadway_nodes_prev']:
-            for suffix in ['shp','shx','cpg','dbf','prj']:
-                shutil.move(other_network / f"{prefix}.{suffix}", 
-                            pathlib.Path(directory) / f"{prefix}.{suffix}")
+        for suffix in ['shp','shx','cpg','dbf','prj']:
+            shutil.move(other_network / f"roadway_links_prev.{suffix}", 
+                        pathlib.Path(directory) / f"roadway_links_prev.{suffix}")
         shutil.move(other_network / "tolls_prev.csv",
                     pathlib.Path(directory) / "tolls_prev.csv")
 
