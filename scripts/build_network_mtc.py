@@ -556,10 +556,7 @@ if __name__ == '__main__':
                         # the network state is not in the object, but in the files in scratch. write these to tempdir
                         network_without_project = pathlib.Path(tempfile.mkdtemp())
                         Wrangler.WranglerLogger.debug(f"Saving previous network into tempdir {network_without_project}")
-                        networks[netmode].writeShapefile(network_without_project, 
-                                                         links_file='roadway_links_prev.shp', nodes_file='roadway_nodes_prev.shp')
-                        # copy tolls there as well
-                        shutil.copy("tolls.csv", network_without_project / "tolls_prev.csv")
+                        networks[netmode].writeShapefile(network_without_project, suffix="_prev")
 
                 applied_SHA1 = None
                 cloned_SHA1 = networks[netmode].cloneProject(networkdir=project_name, tag=tag, branch=branch,

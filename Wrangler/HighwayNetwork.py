@@ -408,13 +408,15 @@ class HighwayNetwork(Network):
             
         if not suppressValidation: self.validateTurnPens(netfile,'turnPenValidations.csv')
 
-    def writeShapefile(self, path: str, links_file='roadway_links.shp', nodes_file='roadway_nodes.shp', skip_nodes=True):
-        """ Writes the roadway network as shape files for links and nodes.
-
+    def writeShapefile(self, path: pathlib.Path, suffix:str='', skip_nodes:bool=True):
+        """ Writes the roadway network as shape files for links and nodes (if skip_nodes=False).
         Args:
-            path (str): The directory in which to write the shapefile.
-            links_file (str, optional): Name of the roadway links shapefile. Defaults to 'roadway_links.shp'.
-            nodes_file (str, optional): Name of the roadway nodes shapefile. Defaults to 'roadway_nodes.shp'.
+            path (pathlib.Path): The directory in which to write the shapefile.
+            suffix (str, optional): 
+              Links file will be written as roadway_links{suffix}.shp
+              Nodes file will be written as roadway_nodes{suffix}.shp
+              Tolls file will be written as tolls{suffix}.csv and tolls_long{suffix}.csv (which moves timeperiod and vehicle class to columns)
+            skip_nodes (bool): pass True to skip writing roadway nodes shapefile
 
         Returns:
             nodes_dict: nodenum -> [X,Y]
@@ -425,7 +427,7 @@ class HighwayNetwork(Network):
         # Export as csvs
         import tempfile
         tempdir = tempfile.mkdtemp()
-        WranglerLogger.debug("Writing roadway network to tempdir {}".format(tempdir))
+        WranglerLogger.debug(f"Writing roadway network to tempdir {tempdir}")
 
         Network.allNetworks['hwy'].write(path=tempdir, name="freeflow.net", writeEmptyFiles=False, suppressQuery=True, suppressValidation=True)
         tempnet = os.path.join(tempdir, "freeflow.net")
@@ -437,7 +439,7 @@ class HighwayNetwork(Network):
                                         links_csv=os.path.join(tempdir,"cubenet_links.csv"),
                                         nodes_csv=os.path.join(tempdir,"cubenet_nodes.csv"),
                                         exportIfExists=True)
-        WranglerLogger.debug("Have {} nodes and {} links".format(len(nodes_dict), len(links_dict)))
+        WranglerLogger.debug(f"Have {len(nodes_dict)} nodes and {len(links_dict)} links")
 
         ## create node GeoDataFrame and write shapefile
         import pandas
@@ -450,8 +452,8 @@ class HighwayNetwork(Network):
             nodes_df = pandas.DataFrame(data=node_data, columns=["N","X","Y"])
             nodes_gdf = geopandas.GeoDataFrame(nodes_df, geometry=geopandas.points_from_xy(nodes_df.X, nodes_df.Y),
                                                crs="EPSG:26910") # https://epsg.io/26910
-            nodes_gdf.to_file(filename=os.path.join(path, nodes_file))
-            WranglerLogger.debug("Wrote {} nodes to {}".format(len(nodes_gdf), os.path.join(path, nodes_file)))
+            nodes_gdf.to_file(filename=path / f"roadway_nodes{suffix}.shp")
+            WranglerLogger.debug(f"Wrote {len(nodes_gdf)} nodes to {path / f'roadway_nodes{suffix}.shp'}")
 
         ## create link GeoDataFrame and write shapefile
         link_data = []
@@ -467,8 +469,37 @@ class HighwayNetwork(Network):
         links_df = pandas.DataFrame(data=link_data, columns=["A","B","DISTANCE"] + link_vars)
         links_df = links_df.astype({'LANES':'int8', 'USE':'int8', 'FT':'int8', 'TOLLCLASS':int, 'ROUTENUM':'int8'})
         links_gdf = geopandas.GeoDataFrame(links_df, geometry=link_geometry, crs="EPSG:26910")
-        links_gdf.to_file(filename=os.path.join(path, links_file))
-        WranglerLogger.debug("Wrote {} links to {}".format(len(links_gdf), os.path.join(path, links_file)))
+        links_gdf.to_file(filename=path / f"roadway_links{suffix}.shp")
+        WranglerLogger.debug(f"Wrote {len(links_gdf)} links to {path / f'roadway_links{suffix}.shp'}")
+
+        # copy tolls there as well
+        shutil.copy("tolls.csv", path / f"tolls{suffix}.csv")
+        
+        # make tolls.csv long (move vehicle class and time period to column) and write to tolls_long{suffix}.csv
+        tolls_df = pandas.read_csv("tolls.csv")
+        # WranglerLogger.debug(f"Read tolls.csv; tolls_df.head:\n{tolls_df.head()}")
+        # move vehicle classes first
+        tolls_df = pandas.wide_to_long(
+            tolls_df, 
+            stubnames=["tollea","tollam","tollmd","tollpm","tollev"],
+            i=["facility_name","fac_index","tollclass","tollseg","tolltype","use","toll_flat"],
+            j="vehicle_class",
+            sep="_",
+            suffix="(da|s2|s3|vsm|sml|med|lrg)"
+        ).reset_index(drop=False)
+        # WranglerLogger.debug(f"After first wide_to_long; tolls_df.head:\n{tolls_df.head()}")
+        # now time periods
+        tolls_df = pandas.wide_to_long(
+            tolls_df,
+            stubnames="toll",
+            i=["facility_name","fac_index","tollclass","tollseg","tolltype","use","toll_flat","vehicle_class"],
+            j="timeperiod",
+            sep="",
+            suffix="(ea|am|md|pm|ev)"
+        ).reset_index(drop=False)
+        # WranglerLogger.debug(f"After second wide_to_long; tolls_df.head:\n{tolls_df.head()}")
+        tolls_df.to_csv(path / f"tolls_long{suffix}.csv", index=False)
+        WranglerLogger.debug(f"Wrote {path / f'tolls_long{suffix}.csv'}")
 
         return nodes_dict
 
@@ -492,8 +523,8 @@ class HighwayNetwork(Network):
                         pathlib.Path(directory) / f"roadway_links_prev.{suffix}")
         shutil.move(other_network / "tolls_prev.csv",
                     pathlib.Path(directory) / "tolls_prev.csv")
-
+        shutil.move(other_network / "tolls_long_prev.csv",
+                    pathlib.Path(directory) / "tolls_long_prev.csv")
         # copy the shapefiles from there into directory
         self.writeShapefile(path=directory)
-        shutil.copy("tolls.csv", pathlib.Path(directory) / "tolls.csv")
         return True
