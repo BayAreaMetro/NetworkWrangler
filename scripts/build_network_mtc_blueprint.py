@@ -34,6 +34,7 @@ if __name__ == '__main__':
 
     PROJECT = "Blueprint"
     TAG     = None
+    ADDITONAL_ROADWAY_ATTRS = []
 
     # Read the configuration
     NETWORK_CONFIG = args.net_spec
