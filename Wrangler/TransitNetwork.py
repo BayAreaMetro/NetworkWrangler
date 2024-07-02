@@ -1743,7 +1743,7 @@ class TransitNetwork(Network):
                                projectname=(networkdir + "\\" + projectsubdir if projectsubdir else networkdir),
                                year=pyear, projectdesc=pdesc)
 
-    def reportDiff(self, netmode, other_network, directory, report_description):
+    def reportDiff(self, netmode, other_network, directory, report_description, additional_roadway_attrs):
         """
         Reports the difference ebetween this network and the other_network into the given directory.
 
@@ -1789,7 +1789,7 @@ class TransitNetwork(Network):
         import pandas
         import geopandas
 
-        nodes_dict = Network.allNetworks["hwy"].writeShapefile(path=directory)
+        nodes_dict = Network.allNetworks["hwy"].writeShapefile(path=directory, additional_roadway_attrs=additional_roadway_attrs)
 
         nodes_gdf = geopandas.GeoDataFrame()
         links_gdf = geopandas.GeoDataFrame()

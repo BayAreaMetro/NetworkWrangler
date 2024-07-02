@@ -177,7 +177,7 @@ if __name__ == '__main__':
                         # the network state is not in the object, but in the files in scratch. write these to tempdir
                         network_without_project = pathlib.Path(tempfile.mkdtemp())
                         Wrangler.WranglerLogger.debug(f"Saving previous network into tempdir {network_without_project}")
-                        networks[netmode].writeShapefile(network_without_project, suffix="_prev")
+                        networks[netmode].writeShapefile(network_without_project, suffix="_prev",additional_roadway_attrs=ADDITONAL_ROADWAY_ATTRS)
 
                 applied_SHA1 = None
                 cloned_SHA1 = networks[netmode].cloneProject(networkdir=project_name, tag=tag,branch=branch,
@@ -204,7 +204,8 @@ if __name__ == '__main__':
                     Wrangler.WranglerLogger.debug(f"Creating project_diff_folder: {project_diff_folder_with_suffix}")
                     
                     reported_diff_ret = networks[netmode].reportDiff(netmode, other_network=network_without_project, 
-                                                 directory=project_diff_folder_with_suffix, report_description=project_name)
+                                                 directory=project_diff_folder_with_suffix, report_description=project_name,
+                                                 additional_roadway_attrs=ADDITONAL_ROADWAY_ATTRS)
                     del network_without_project
 
                     if reported_diff_ret:

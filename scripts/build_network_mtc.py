@@ -80,9 +80,13 @@ HWY_SUBDIR       = "hwy"
 # don't bother creating project diffs for these
 SKIP_PROJ_DIFFS = [
     'PROJ_attributes',
+    'PBA2050_RTP_ID_attributes',
     'No_zero_length_links'
 ]
 
+# roadway attributes to include; used by HighwayNetwork.writeShapefile() and HighwayNetwork.reportDiff()
+ADDITONAL_ROADWAY_ATTRS = [
+]
 ###############################################################################
 
 ###############################################################################
@@ -556,7 +560,8 @@ if __name__ == '__main__':
                         # the network state is not in the object, but in the files in scratch. write these to tempdir
                         network_without_project = pathlib.Path(tempfile.mkdtemp())
                         Wrangler.WranglerLogger.debug(f"Saving previous network into tempdir {network_without_project}")
-                        networks[netmode].writeShapefile(network_without_project, suffix="_prev")
+                        networks[netmode].writeShapefile(network_without_project, suffix="_prev",
+                                                         additional_roadway_attrs=ADDITONAL_ROADWAY_ATTRS)
 
                 applied_SHA1 = None
                 cloned_SHA1 = networks[netmode].cloneProject(networkdir=project_name, tag=tag, branch=branch,
@@ -569,7 +574,7 @@ if __name__ == '__main__':
                 # Create difference report for this project
                 if (args.create_project_diffs and (project not in SKIP_PROJ_DIFFS)) or (args.create_project_diff == project):
                     # difference information to be store in network_dir netmode_projectname
-                    # e.g. BlueprintNetworks\net_2050_Blueprint\01_trn_BP_Transbay_Crossing
+                    # e.g. BlueprintNetworks\net_2050_Blueprint\ProjectDiffs\01_trn_BP_Transbay_Crossing
                     project_diff_folder = pathlib.Path.cwd().parent / OUT_DIR.format(YEAR) / f"ProjectDiffs" / \
                         f"{project_diff_report_num:02}_{HWY_SUBDIR if netmode == 'hwy' else TRN_SUBDIR}_{project_name}"
 
@@ -584,7 +589,8 @@ if __name__ == '__main__':
                     Wrangler.WranglerLogger.debug(f"network_without_project: {network_without_project}")
                     
                     reported_diff_ret = networks[netmode].reportDiff(netmode, other_network=network_without_project,
-                        directory=project_diff_folder_with_suffix, report_description=project_name)
+                        directory=project_diff_folder_with_suffix, report_description=project_name,
+                        additional_roadway_attrs=ADDITONAL_ROADWAY_ATTRS)
                     del network_without_project
 
                     if reported_diff_ret:

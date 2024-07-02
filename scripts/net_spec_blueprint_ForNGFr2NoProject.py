@@ -5,8 +5,11 @@ PROJECT  = "Blueprint"
 
 # MANDATORY. Set this to be the git tag for checking out network projects.
 TAG = "HEAD"              # Use this tag if you want NetworkWrangler to use the latest version in the local repo to build the network
-# TAG = "PBA50_Blueprint"    # This is the default tag since this is the netspec for the Blueprint 
-# For NGF variants, the default TAG will be replaced by the alternative TAG "NGF_NoProject"  (this is handled with code in build_network_mtc_blueprint.py) 
+
+# roadway attributes to include; used by HighwayNetwork.writeShapefile() and HighwayNetwork.reportDiff()
+ADDITONAL_ROADWAY_ATTRS = [
+    'PROJ', # added by PROJ_attributes
+]
 
 # A project can either be a simple string, or it can be
 # a dictionary with with keys 'name', 'tag' (optional), and 'kwargs' (optional)

@@ -9,6 +9,12 @@ PROJECT  = "NGF"
 #TAG = "PBA50_Blueprint"    # Use this tag if you want to replicate the network built for PBA50
 TAG = "HEAD"
 
+# roadway attributes to include; used by HighwayNetwork.writeShapefile() and HighwayNetwork.reportDiff()
+ADDITONAL_ROADWAY_ATTRS = [
+    'PROJ',           # added by PROJ_attributes
+    'PBA2050_RTP_ID', # added by PBA2050_RTP_ID_attributes
+]
+
 # A project can either be a simple string, or it can be
 # a dictionary with with keys 'name', 'tag' (optional), and 'kwargs' (optional)
 # to specify a special tag or special keyword args for the projects apply() call.
@@ -26,6 +32,7 @@ NGF_PROJECTS = {
     # https://app.asana.com/0/1203644633064654/1206291041610290/f
     'R2P1_AllLaneTolling':{
         'hwy':[
+            'PBA2050_RTP_ID_attributes',
             'NGF_CarpoolLanes',
             'NGF_BlueprintSegmented',
             'NGF_HOV3_to_HOV2',

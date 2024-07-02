@@ -500,16 +500,15 @@ class Network(object):
         """
         pass
 
-    def reportDiff(self, netmode, other_network, directory, report_description):
+    def reportDiff(self, netmode:str, other_network, directory:pathlib.Path, report_description):
         """
         Implemented by subclass for the most part.
         Returns True if diffs were reported, false otherwise.
         """
-        WranglerLogger.debug(f"Network.reportDiff() passed with other_network={other_network} directory={directory} " +
-            f"report_description={report_description}")
+        WranglerLogger.debug(f"Network.reportDiff() passed with {other_network=} {directory=} {report_description=}")
         
         # create the report directory
-        os.makedirs(directory)
+        directory.mkdir(parents=True, exist_ok=True)
 
         # copy the tableau file into place
         TABLEAU_TEMPLATE = pathlib.Path(__file__).parent.parent / "ProjectMapping" / f"ProjectMapping_{netmode}.twb"

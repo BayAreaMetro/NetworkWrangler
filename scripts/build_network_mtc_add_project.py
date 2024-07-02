@@ -1,4 +1,4 @@
-import argparse,collections,copy,datetime,os,pandas,re,shutil,sys,time
+import argparse,collections,copy,datetime,os,pathlib,re,shutil,sys,tempfile,time
 import Wrangler
 
 import build_network_mtc
@@ -14,9 +14,9 @@ USAGE = """
   the network project.  Default use case is PPA.
 
 """
-PPA_DIR    = "L:\\RTP2021_PPA\\Projects"
+PPA_DIR    = pathlib.Path("L:\\RTP2021_PPA\\Projects")
 NODE_NAMES = "M:\\Application\\Model One\\Networks\\TM1_2015_Base_Network\\Node Description.xls"
-THIS_FILE  = os.path.realpath(__file__)
+THIS_FILE  = pathlib.Path(__file__)
 
 # for transit network validation output
 os.environ["CHAMP_node_names"] = NODE_NAMES
@@ -72,7 +72,7 @@ def findBaseDirectory(future):
 
 def determineProjectDirectory(OUTPUT_DIR, BASE_DIR, project_short_id):
 
-    dir_list          = sorted(os.listdir(OUTPUT_DIR))
+    dir_list          = sorted(os.listdir(str(OUTPUT_DIR)))
     dir_re_str        = r"^{}_{}_(\d\d)$".format(re.escape(BASE_DIR), re.escape(project_short_id))
     dir_re            = re.compile(dir_re_str)
     existing_suffixes = []
@@ -142,13 +142,14 @@ if __name__ == '__main__':
     for SCENARIO in FUTURES:
         NOW              = time.strftime("%Y%b%d.%H%M%S")
         if args.input_network:
-          print("Using input network {}".format(args.input_network))
-          BASE_DIR       = args.input_network
-          PIVOT_DIR      = args.input_network
+          BASE_DIR       = pathlib.Path(args.input_network).absolute()
+          PIVOT_DIR      = BASE_DIR
         else:
           BASE_DIR       = findBaseDirectory(SCENARIO)   # e.g. 2050_TM150_PPA_BF_00
-          PIVOT_DIR      = os.path.join(PPA_DIR, BASE_DIR, "INPUT")  # full path of input network
-        TRANSIT_CAPACITY_DIR = os.path.join(PIVOT_DIR, "trn")
+          PIVOT_DIR      = PPA_DIR / BASE_DIR / "INPUT"  # full path of input network
+        print(f"Using BASE_DIR {BASE_DIR}")
+        print(f"Using PIVOT_DIR {PIVOT_DIR}")
+        TRANSIT_CAPACITY_DIR = PIVOT_DIR / "trn"
 
         # setup kwargs to pass
         kwargs           = {}
@@ -163,18 +164,18 @@ if __name__ == '__main__':
           kwargs[args.kwarg2[0]] = '"{}"'.format(args.kwarg2[1])
 
         if args.output_network:
-            print("Using output network {}".format(args.output_network))
-            OUTPUT_DIR       = args.output_network
+            OUTPUT_DIR       = pathlib.Path(args.output_network).absolute()
             # make OUTPUT_DIR
-            if not os.path.exists(OUTPUT_DIR): os.mkdir(OUTPUT_DIR)
+            OUTPUT_DIR.mkdir(exist_ok=True)
             OUTPUT_FUTURE_DIR = OUTPUT_DIR
+            print(f"Using output network {OUTPUT_DIR=}")
             # move into it so the scratch is here
             os.chdir(OUTPUT_DIR)
 
         else:
-            OUTPUT_DIR       = os.path.join(PPA_DIR, args.project_short_id)
+            OUTPUT_DIR       = PPA_DIR / args.project_short_id
             # make OUTPUT_DIR
-            if not os.path.exists(OUTPUT_DIR): os.mkdir(OUTPUT_DIR)
+            OUTPUT_DIR.mkdir(exist_ok=True)
 
             OUTPUT_FUTURE_DIR = determineProjectDirectory(OUTPUT_DIR, BASE_DIR, args.project_short_id)
             os.mkdir(OUTPUT_FUTURE_DIR)
@@ -219,10 +220,8 @@ if __name__ == '__main__':
         if TRANSIT_CAPACITY_DIR:
             Wrangler.TransitNetwork.capacity = Wrangler.TransitCapacity(directory=TRANSIT_CAPACITY_DIR)
 
+        project_diff_report_num = 1
         for netmode in ["hwy","trn"]:
-
-            if args.create_project_diffs:
-                network_without_project = copy.deepcopy(networks[netmode])
 
             # if applying project
             if (netmode == "hwy" and args.hwy) or (netmode == "trn" and args.trn):
@@ -231,38 +230,45 @@ if __name__ == '__main__':
                 for my_project in args.project:
 
                     Wrangler.WranglerLogger.info("Applying project [%s] of type [%s]" % (my_project, netmode))
+
+                    network_without_project = None
+                    if args.create_project_diffs:
+                      if netmode == "trn":
+                        network_without_project = copy.deepcopy(networks[netmode])
+                      elif netmode == 'hwy':
+                        # the network state is not in the object, but in the files in scratch. write these to tempdir
+                        network_without_project = pathlib.Path(tempfile.mkdtemp())
+                        Wrangler.WranglerLogger.debug(f"Saving previous network into tempdir {network_without_project}")
+                        networks[netmode].writeShapefile(network_without_project, suffix="_prev",
+                                                         additional_roadway_attrs=[])
+                        
                     cloned_SHA1 = networks[netmode].cloneProject(networkdir=my_project, tag=args.tag,
                                                                  projtype="project", tempdir=TEMP_SUBDIR, **kwargs)
                     (parentdir, networkdir, gitdir, projectsubdir) = networks[netmode].getClonedProjectArgs(my_project, None, "project", TEMP_SUBDIR)
 
                     applied_SHA1 = networks[netmode].applyProject(parentdir, networkdir, gitdir, projectsubdir, **kwargs)
 
+                    # Create difference report for this project
+                    if args.create_project_diffs:
+                      project_diff_folder = pathlib.Path(OUTPUT_FUTURE_DIR) / "ProjectDiffs" / \
+                        f"{project_diff_report_num:02}_{netmode}_{my_project}"
+
+                      # the project may get applied multiple times -- e.g., for different phases
+                      suffix_num = 1
+                      project_diff_folder_with_suffix = project_diff_folder
+                      while project_diff_folder_with_suffix.exists():
+                        suffix_num += 1
+                        project_diff_folder_with_suffix = pathlib.Path(f"{str(project_diff_folder)}_{suffix_num}")
+                      Wrangler.WranglerLogger.debug(f"Creating project_diff_folder: {project_diff_folder_with_suffix}")
+                      Wrangler.WranglerLogger.debug(f"network_without_project: {network_without_project}")
+              
+                      reported_diff_ret = networks[netmode].reportDiff(netmode, other_network=network_without_project,
+                                                                       directory=project_diff_folder_with_suffix, report_description=my_project,
+                                                                       additional_roadway_attrs=[])
+
             # write networks
             final_path = os.path.join(OUTPUT_FUTURE_DIR,netmode)
             if not os.path.exists(final_path): os.makedirs(final_path)
-
-            # Create difference report for this project
-            # TODO: roadway not supported yet
-            if args.create_project_diffs and netmode!="hwy":
-                # difference information to be store in network_dir netmode_projectname
-                # e.g. BlueprintNetworks\net_2050_Blueprint\trn_BP_Transbay_Crossing
-                project_diff_folder = os.path.join(
-                   "..", final_path,
-                    "{}_{}".format(build_network_mtc.HWY_SUBDIR if netmode == "hwy" else build_network_mtc.TRN_SUBDIR, my_project))
-                hwypath=os.path.join("..", final_path, build_network_mtc.HWY_SUBDIR)
-
-                # the project may get applied multiple times -- e.g., for different phases
-                suffix_num = 1
-                project_diff_folder_with_suffix = project_diff_folder
-                while os.path.exists(project_diff_folder_with_suffix):
-                    suffix_num += 1
-                    project_diff_folder_with_suffix = "{}_{}".format(project_diff_folder, suffix_num)
-
-                Wrangler.WranglerLogger.debug("Creating project_diff_folder: {}".format(project_diff_folder_with_suffix))
-                    
-                # new!
-                networks[netmode].reportDiff(network_without_project, project_diff_folder_with_suffix, my_project,
-                                            roadwayNetworkFile=os.path.join(os.path.abspath(hwypath), HWY_NET_NAME))
 
             if netmode=="hwy":
 

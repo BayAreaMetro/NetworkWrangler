@@ -408,10 +408,11 @@ class HighwayNetwork(Network):
             
         if not suppressValidation: self.validateTurnPens(netfile,'turnPenValidations.csv')
 
-    def writeShapefile(self, path: pathlib.Path, suffix:str='', skip_nodes:bool=True):
+    def writeShapefile(self, path: pathlib.Path, additional_roadway_attrs:list[str], suffix:str='', skip_nodes:bool=True):
         """ Writes the roadway network as shape files for links and nodes (if skip_nodes=False).
         Args:
             path (pathlib.Path): The directory in which to write the shapefile.
+            additional_roadway_attrs: List if additional (non-standard) attributes to include in shapefiles
             suffix (str, optional): 
               Links file will be written as roadway_links{suffix}.shp
               Nodes file will be written as roadway_nodes{suffix}.shp
@@ -427,14 +428,14 @@ class HighwayNetwork(Network):
         # Export as csvs
         import tempfile
         tempdir = tempfile.mkdtemp()
-        WranglerLogger.debug(f"Writing roadway network to tempdir {tempdir}")
+        WranglerLogger.debug(f"Writing roadway network to tempdir {tempdir}; {additional_roadway_attrs=}")
 
         Network.allNetworks['hwy'].write(path=tempdir, name="freeflow.net", writeEmptyFiles=False, suppressQuery=True, suppressValidation=True)
         tempnet = os.path.join(tempdir, "freeflow.net")
 
         # read the roadway network csvs
         import Cube
-        link_vars = ['LANES','USE','FT','TOLLCLASS','ROUTENUM','ROUTEDIR','PROJ']
+        link_vars = ['LANES','USE','FT','TOLLCLASS','ROUTENUM','ROUTEDIR'] + additional_roadway_attrs
         (nodes_dict, links_dict) = Cube.import_cube_nodes_links_from_csvs(tempnet, extra_link_vars=link_vars,
                                         links_csv=os.path.join(tempdir,"cubenet_links.csv"),
                                         nodes_csv=os.path.join(tempdir,"cubenet_nodes.csv"),
@@ -503,7 +504,7 @@ class HighwayNetwork(Network):
 
         return nodes_dict
 
-    def reportDiff(self, netmode, other_network, directory, report_description):
+    def reportDiff(self, netmode, other_network, directory, report_description, additional_roadway_attrs):
         """
         Reports the difference ebetween this network and the other_network into the given directory.
 
@@ -511,8 +512,8 @@ class HighwayNetwork(Network):
 
         Returns True if diffs were reported, false otherwise.
         """
-        WranglerLogger.debug(f"HighwayNetwork.reportDiff() passed with other_network={other_network} directory={directory} " +
-            f"report_description={report_description}")
+        WranglerLogger.debug(f"HighwayNetwork.reportDiff() passed with {other_network=} {directory=} " +
+            f"{report_description=} {additional_roadway_attrs=}")
         
         # call parent version to create dir and copy in tableau
         Network.reportDiff(self, netmode, other_network, directory, report_description)
@@ -526,5 +527,5 @@ class HighwayNetwork(Network):
         shutil.move(other_network / "tolls_long_prev.csv",
                     pathlib.Path(directory) / "tolls_long_prev.csv")
         # copy the shapefiles from there into directory
-        self.writeShapefile(path=directory)
+        self.writeShapefile(path=directory, additional_roadway_attrs=additional_roadway_attrs)
         return True
