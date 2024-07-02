@@ -36,7 +36,8 @@ NGF_PROJECTS = {
             'NGF_CarpoolLanes',
             'NGF_BlueprintSegmented',
             'NGF_HOV3_to_HOV2',
-            'NGF_r2_BRTonParallelArterials', # Road Space Reallocation and BRT Improvements on Parallel Arterials   
+            'NGF_r2_BRTonParallelArterials',           # Road Space Reallocation and BRT Improvements on Parallel Arterials
+            'NGF_r2_RemoveSIGCORonParallelArterials',  # Limiting Diversion on Parallel Arterials with SIGCOR Removal   
             {'name':'BP_Vision_Zero',                                   'branch':'NGF'}, # Speed Limit Reductions
          ],
         'trn':[
