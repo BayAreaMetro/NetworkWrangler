@@ -207,8 +207,8 @@ class Network(object):
 
         # if we're checking model version, check model type as well
         if version == "modelVersion":
-            # legacy: assume CHAMP
-            project_model_type = Network.MODEL_TYPE_CHAMP
+            # legacy: assume TM1
+            project_model_type = Network.MODEL_TYPE_TM1
             try:
                 project_model_type = self.getAttr("modelType", parentdir=parentdir, networkdir=networkdir, gitdir=gitdir, projectsubdir=projectsubdir)
                 WranglerLogger.debug("Found project_model_type {}".format(project_model_type))

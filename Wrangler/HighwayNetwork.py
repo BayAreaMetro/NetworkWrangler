@@ -69,6 +69,14 @@ class HighwayNetwork(Network):
         self.hwyspecsdir = hwyspecsdir
         self.hwyspecs = hwyspecs
         
+    def checkVersion(self, version, parentdir, networkdir, gitdir, projectsubdir=None):
+        """
+        NOP
+
+        We really haven't used this so just don't worry about it.
+        """
+        return
+
     def applyBasenetwork(self, parentdir, networkdir, gitdir, tierNetworkName):
         
         # copy the base network file to my workspace
