@@ -15,6 +15,11 @@ TAG = "HEAD"
 # "hwy" and "trn" subdirectories will be created here.
 OUT_DIR = SCENARIO + "_network_{}"  # YEAR
 
+# roadway attributes to include; used by HighwayNetwork.writeShapefile() and HighwayNetwork.reportDiff()
+ADDITONAL_ROADWAY_ATTRS = [
+    'PROJ', # added by PROJ_attributes
+]
+
 # MANDATORY.  Should be a dictionary with keys "hwy", "muni", "rail", "bus"
 # to a list of projects.  A project can either be a simple string, or it can be
 # a dictionary with with keys 'name', 'tag' (optional), and 'kwargs' (optional)

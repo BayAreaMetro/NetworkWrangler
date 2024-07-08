@@ -133,6 +133,9 @@ if __name__ == '__main__':
 
     HWY_NET_NAME     = "freeflow.net"
     TRN_NET_NAME     = "transitLines"
+    ADDITONAL_ROADWAY_ATTRS = ['PROJ'] # added by PROJ_attributes
+    if 'PBA2050_RTP_ID_attributes' in args.project:
+       ADDITONAL_ROADWAY_ATTRS = ADDITONAL_ROADWAY_ATTRS + ['PBA2050_RTP_ID']
 
     if args.future == "all":
         FUTURES = ["CleanAndGreen", "RisingTides", "BackToTheFuture"]
@@ -232,7 +235,7 @@ if __name__ == '__main__':
                     Wrangler.WranglerLogger.info("Applying project [%s] of type [%s]" % (my_project, netmode))
 
                     network_without_project = None
-                    if args.create_project_diffs:
+                    if args.create_project_diffs and (my_project not in build_network_mtc.SKIP_PROJ_DIFFS):
                       if netmode == "trn":
                         network_without_project = copy.deepcopy(networks[netmode])
                       elif netmode == 'hwy':
@@ -240,7 +243,7 @@ if __name__ == '__main__':
                         network_without_project = pathlib.Path(tempfile.mkdtemp())
                         Wrangler.WranglerLogger.debug(f"Saving previous network into tempdir {network_without_project}")
                         networks[netmode].writeShapefile(network_without_project, suffix="_prev",
-                                                         additional_roadway_attrs=[])
+                                                         additional_roadway_attrs=ADDITONAL_ROADWAY_ATTRS)
                         
                     cloned_SHA1 = networks[netmode].cloneProject(networkdir=my_project, tag=args.tag,
                                                                  projtype="project", tempdir=TEMP_SUBDIR, **kwargs)
@@ -249,7 +252,7 @@ if __name__ == '__main__':
                     applied_SHA1 = networks[netmode].applyProject(parentdir, networkdir, gitdir, projectsubdir, **kwargs)
 
                     # Create difference report for this project
-                    if args.create_project_diffs:
+                    if args.create_project_diffs and (my_project not in build_network_mtc.SKIP_PROJ_DIFFS):
                       project_diff_folder = pathlib.Path(OUTPUT_FUTURE_DIR) / "ProjectDiffs" / \
                         f"{project_diff_report_num:02}_{netmode}_{my_project}"
 
@@ -264,7 +267,7 @@ if __name__ == '__main__':
               
                       reported_diff_ret = networks[netmode].reportDiff(netmode, other_network=network_without_project,
                                                                        directory=project_diff_folder_with_suffix, report_description=my_project,
-                                                                       additional_roadway_attrs=[])
+                                                                       additional_roadway_attrs=ADDITONAL_ROADWAY_ATTRS)
 
             # write networks
             final_path = os.path.join(OUTPUT_FUTURE_DIR,netmode)
