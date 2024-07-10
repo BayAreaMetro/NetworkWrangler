@@ -137,7 +137,7 @@ class Network(object):
         gitdir: the checkout location of the network project
         projectsubdir: the subdir if it exists, None otherwise
         """
-
+        WranglerLogger.debug(f"Network.getAttr() with {type(self)=} {attr_name=} {parentdir=} {networkdir=} {gitdir=} {projectsubdir=}")
         if attr_name not in ['year', 'desc', 'modelType', 'modelVersion', 'wranglerVersion', 'prereqs', 'coreqs', 'conflicts', 'networks']:
             WranglerLogger.fatal('%s is not a valid attribute type for a network project' % (attr_name))
             return
@@ -500,18 +500,24 @@ class Network(object):
         """
         pass
 
-    def reportDiff(self, netmode:str, other_network, directory:pathlib.Path, report_description):
+    def reportDiff(self, netmode:str, other_network, directory:pathlib.Path, report_description, project_gitdir):
         """
         Implemented by subclass for the most part.
         Returns True if diffs were reported, false otherwise.
         """
-        WranglerLogger.debug(f"Network.reportDiff() passed with {other_network=} {directory=} {report_description=}")
+        WranglerLogger.debug(f"Network.reportDiff() passed with {other_network=} {directory=} {report_description=} {project_gitdir=}")
         
         # create the report directory
         directory.mkdir(parents=True, exist_ok=True)
 
         # copy the tableau file into place
-        TABLEAU_TEMPLATE = pathlib.Path(__file__).parent.parent / "ProjectMapping" / f"ProjectMapping_{netmode}.twb"
-        shutil.copyfile(TABLEAU_TEMPLATE, pathlib.Path(directory) / f"ProjectMapping_{report_description}.twb")
+        TABLEAU_TEMPLATE = pathlib.Path(project_gitdir) / f"ProjectMapping_{netmode}.twb"
+        if TABLEAU_TEMPLATE.exists():
+            shutil.copyfile(TABLEAU_TEMPLATE, pathlib.Path(directory) / f"ProjectMapping_{report_description}.twb")
+            WranglerLogger.debug(f"Copying project specific tableau from {TABLEAU_TEMPLATE}")
+        
+        else:
+            TABLEAU_TEMPLATE = pathlib.Path(__file__).parent.parent / "ProjectMapping" / f"ProjectMapping_{netmode}.twb"
+            shutil.copyfile(TABLEAU_TEMPLATE, pathlib.Path(directory) / f"ProjectMapping_{report_description}.twb")
 
         return True

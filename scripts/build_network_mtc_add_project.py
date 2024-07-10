@@ -266,7 +266,8 @@ if __name__ == '__main__':
                       Wrangler.WranglerLogger.debug(f"network_without_project: {network_without_project}")
               
                       reported_diff_ret = networks[netmode].reportDiff(netmode, other_network=network_without_project,
-                                                                       directory=project_diff_folder_with_suffix, report_description=my_project,
+                                                                       directory=project_diff_folder_with_suffix, 
+                                                                       report_description=my_project, project_gitdir=gitdir,
                                                                        additional_roadway_attrs=ADDITONAL_ROADWAY_ATTRS)
 
             # write networks

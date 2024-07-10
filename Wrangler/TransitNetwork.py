@@ -1743,7 +1743,7 @@ class TransitNetwork(Network):
                                projectname=(networkdir + "\\" + projectsubdir if projectsubdir else networkdir),
                                year=pyear, projectdesc=pdesc)
 
-    def reportDiff(self, netmode, other_network, directory, report_description, additional_roadway_attrs):
+    def reportDiff(self, netmode, other_network, directory, report_description, project_gitdir, additional_roadway_attrs):
         """
         Reports the difference ebetween this network and the other_network into the given directory.
 
@@ -1752,8 +1752,8 @@ class TransitNetwork(Network):
         Returns True if diffs were reported, false otherwise.
 
         """
-        WranglerLogger.debug(f"TransitNetwork.reportDiff() passed with other_network={other_network} directory={directory} " +
-            f"report_description={report_description}")
+        WranglerLogger.debug(f"TransitNetwork.reportDiff() passed with {other_network=} {directory=} " +
+            f"{report_description=} {project_gitdir=}")
 
         # first check if changes happened
         added_lines_text = []
@@ -1784,7 +1784,7 @@ class TransitNetwork(Network):
             return False
 
         # call parent version to create dir and copy in tableau
-        Network.reportDiff(self, netmode, other_network, directory, report_description)
+        Network.reportDiff(self, netmode, other_network, directory, report_description, report_description)
 
         import pandas
         import geopandas

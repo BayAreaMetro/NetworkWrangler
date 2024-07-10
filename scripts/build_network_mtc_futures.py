@@ -180,8 +180,9 @@ if __name__ == '__main__':
                     Wrangler.WranglerLogger.debug("Creating project_diff_folder: {}".format(project_diff_folder_with_suffix))
                     
                     # new!
-                    networks[netmode].reportDiff(network_without_project, project_diff_folder_with_suffix, project_name,
-                                                 roadwayNetworkFile=os.path.join(os.path.abspath(hwypath), HWY_NET_NAME))
+                    networks[netmode].reportDiff(netmode, other_network=network_without_project,
+                                                 directory=project_diff_folder_with_suffix, 
+                                                 report_description=project_name, project_gitdir=gitdir)
 
                 # if hwy project has set_capclass override, copy it to set_capclass/apply.s
                 set_capclass_override = os.path.join(TEMP_SUBDIR, project_name, "set_capclass.job")
