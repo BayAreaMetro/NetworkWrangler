@@ -15,7 +15,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=build_network_mtc.USAGE, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--configword", help="optional word for network specification script")
     parser.add_argument("--continue_on_warning", help="Don't prompt the user to continue if there are warnings; just warn and continue", action="store_true")
-    parser.add_argument("--skip_precheck_requirements", help="Don't precheck network requirements, stale projects, non-HEAD projects, etc", action="store_true")
+    parser.add_argument("--skip_precheck_requirements", help="Don't precheck network requirements, stale projects, non-HEAD projects, etc", action="store_true", default=True)
     parser.add_argument("--restart_year", help="Pass year to 'restart' building network starting from this rather than from the beginning. e.g., 2025")
     parser.add_argument("--restart_mode", choices=['hwy','trn'], help="If restart_year is passed, this is also required.")
     parser.add_argument("--create_project_diffs", help="Pass this to create project diffs information for EVERY project. NOTE: THIS WILL BE SLOW", action="store_true")

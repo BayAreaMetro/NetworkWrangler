@@ -396,7 +396,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=USAGE, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--configword", help="optional word for network specification script")
     parser.add_argument("--continue_on_warning", help="Don't prompt the user to continue if there are warnings; just warn and continue", action="store_true")
-    parser.add_argument("--skip_precheck_requirements", help="Don't precheck network requirements, stale projects, non-HEAD projects, etc", action="store_true")
+    parser.add_argument("--skip_precheck_requirements", help="Don't precheck network requirements, stale projects, non-HEAD projects, etc", action="store_true", default=True)
     parser.add_argument("--create_project_diffs", help="Pass this to create project diffs information for EVERY project. NOTE: THIS WILL BE SLOW", action="store_true")
     parser.add_argument("--create_project_diff",  help="Pass a project name to create project diffs information for that project", type=str, default=None)
     parser.add_argument("project_name", help="required project name, for example NGF")
