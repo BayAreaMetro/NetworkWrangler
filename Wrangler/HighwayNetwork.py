@@ -443,7 +443,8 @@ class HighwayNetwork(Network):
 
         # read the roadway network csvs
         import Cube
-        link_vars = ['LANES','USE','FT','TOLLCLASS','ROUTENUM','ROUTEDIR'] + additional_roadway_attrs
+        link_vars = ['LANES','USE','FT','TOLLCLASS','ROUTENUM','ROUTEDIR',
+                     'CITYID','CITYNAME','SIGCOR','TOS','AUX','HOT','BRT','REGFREIGHT'] + additional_roadway_attrs
         (nodes_dict, links_dict) = Cube.import_cube_nodes_links_from_csvs(tempnet, extra_link_vars=link_vars,
                                         links_csv=os.path.join(tempdir,"cubenet_links.csv"),
                                         nodes_csv=os.path.join(tempdir,"cubenet_nodes.csv"),
@@ -476,7 +477,8 @@ class HighwayNetwork(Network):
                               nodes_dict[link_a_b[1]][1])
             ]))
         links_df = pandas.DataFrame(data=link_data, columns=["A","B","DISTANCE"] + link_vars)
-        links_df = links_df.astype({'LANES':'int8', 'USE':'int8', 'FT':'int8', 'TOLLCLASS':int, 'ROUTENUM':'int8'})
+        links_df = links_df.astype({'LANES':'int8', 'USE':'int8', 'FT':'int8', 'TOLLCLASS':int, 'ROUTENUM':int,
+                                    'CITYID':int, 'SIGCOR':'int8','TOS':'int8','AUX':'int8','HOT':'int8','BRT':'int8','REGFREIGHT':'int8'})
         links_gdf = geopandas.GeoDataFrame(links_df, geometry=link_geometry, crs="EPSG:26910")
         links_gdf.to_file(filename=path / f"roadway_links{suffix}.shp")
         WranglerLogger.debug(f"Wrote {len(links_gdf)} links to {path / f'roadway_links{suffix}.shp'}")
