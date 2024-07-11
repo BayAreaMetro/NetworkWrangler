@@ -38,7 +38,7 @@ NGF_PROJECTS = {
             'NGF_HOV3_to_HOV2',
             'NGF_r2_BRTonParallelArterials',           # Road Space Reallocation and BRT Improvements on Parallel Arterials
             'NGF_r2_RemoveSIGCORonParallelArterials',  # Limiting Diversion on Parallel Arterials with SIGCOR Removal   
-            {'name':'BP_Vision_Zero',                                   'branch':'NGF'}, # Speed Limit Reductions
+            {'name':'BP_Vision_Zero',                                   'branch':'NGF_IncFwyFFS'}, # Speed Limit Reductions
          ],
         'trn':[
             'NGF_NoProject_farefiles',      # ensures these files get included; note this is not a real project
