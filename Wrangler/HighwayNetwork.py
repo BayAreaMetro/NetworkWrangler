@@ -444,7 +444,7 @@ class HighwayNetwork(Network):
         # read the roadway network csvs
         import Cube
         link_vars = ['LANES','USE','FT','TOLLCLASS','ROUTENUM','ROUTEDIR',
-                     'CITYID','CITYNAME','SIGCOR','TOS','AUX','HOT','BRT','REGFREIGHT'] + additional_roadway_attrs
+                     'CITYID','CITYNAME','FFS','SIGCOR','TOS','AUX','HOT','BRT','REGFREIGHT'] + additional_roadway_attrs
         (nodes_dict, links_dict) = Cube.import_cube_nodes_links_from_csvs(tempnet, extra_link_vars=link_vars,
                                         links_csv=os.path.join(tempdir,"cubenet_links.csv"),
                                         nodes_csv=os.path.join(tempdir,"cubenet_nodes.csv"),
