@@ -458,6 +458,7 @@ if __name__ == '__main__':
     LOG_FILENAME = "build%snetwork_%s_%s_%s.info.LOG" % ("TEST" if BUILD_MODE=="test" else "", PROJECT, SCENARIO, NOW)
     Wrangler.setupLogging(LOG_FILENAME,
                           LOG_FILENAME.replace("info", "debug"))
+    Wrangler.WranglerLogger.debug(f"args={args}")
     
     exec(open(NETWORK_CONFIG).read())
 
@@ -547,13 +548,13 @@ if __name__ == '__main__':
                 (project_name, projType, tag, branch, kwargs) = getProjectAttributes(project)
                 if tag == None: tag = TAG
 
-                Wrangler.WranglerLogger.info("Applying project [{}] of type [{}] on branch [{}] with tag [{}] and kwargs[{}]".format(project_name, projType, branch, tag, kwargs))
+                Wrangler.WranglerLogger.info(f"Applying project [{project_name=}] [{projType=}] on [{branch=}] with [{tag=}] and [{kwargs=}]")
                 if projType=='plan':
                     continue
 
                 # save a copy of this network instance for comparison
                 network_without_project = None
-                if (args.create_project_diffs and (project not in SKIP_PROJ_DIFFS)) or (args.create_project_diff == project):
+                if (args.create_project_diffs and (project not in SKIP_PROJ_DIFFS)) or (args.create_project_diff == project_name):
                     if netmode == "trn":
                         network_without_project = copy.deepcopy(networks[netmode])
                     elif netmode == 'hwy':
@@ -572,7 +573,7 @@ if __name__ == '__main__':
                 appliedcount += 1
 
                 # Create difference report for this project
-                if (args.create_project_diffs and (project not in SKIP_PROJ_DIFFS)) or (args.create_project_diff == project):
+                if (args.create_project_diffs and (project not in SKIP_PROJ_DIFFS)) or (args.create_project_diff == project_name):
                     # difference information to be store in network_dir netmode_projectname
                     # e.g. BlueprintNetworks\net_2050_Blueprint\ProjectDiffs\01_trn_BP_Transbay_Crossing
                     project_diff_folder = pathlib.Path.cwd().parent / OUT_DIR.format(YEAR) / f"ProjectDiffs" / \
