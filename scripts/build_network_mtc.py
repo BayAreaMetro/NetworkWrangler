@@ -539,22 +539,44 @@ if __name__ == '__main__':
     for YEAR in NETWORK_PROJECTS.keys():
         projects_for_year = NETWORK_PROJECTS[YEAR]
 
+        # run special project set_capclass as the last hwy project
+        projects_for_year['hwy'].append(SET_CAPCLASS)
+
         appliedcount = 0
         for netmode in NET_MODES:
             Wrangler.WranglerLogger.info("Building {} {} networks".format(YEAR, netmode))
             project_diff_report_num = 1
 
             for project in projects_for_year[netmode]:
-                (project_name, projType, tag, branch, kwargs) = getProjectAttributes(project)
-                if tag == None: tag = TAG
 
-                Wrangler.WranglerLogger.info(f"Applying project [{project_name=}] [{projType=}] on [{branch=}] with [{tag=}] and [{kwargs=}]")
+                # set_capclass is special -- it's not a project, but resides in Wrangler
+                if type(project)==str and project==SET_CAPCLASS:
+                    # this is only necessary if there's been a roadway project already applied
+                    if appliedcount == 0: continue
+                    project_name = SET_CAPCLASS
+                    parentdir = TEMP_SUBDIR
+                    networkdir = SET_CAPCLASS
+                    gitdir = os.path.join(TEMP_SUBDIR, SET_CAPCLASS)
+                    projType = 'project'
+                    kwargs = {'MODELYEAR':'{}'.format(YEAR)}
+
+                else:
+                    # clone the git folder for this project
+                    (project_name, projType, tag, branch, kwargs) = getProjectAttributes(project)
+                    if tag == None: tag = TAG
+
+                    applied_SHA1 = None
+                    cloned_SHA1 = networks[netmode].cloneProject(networkdir=project_name, tag=tag, branch=branch,
+                                                                 projtype=projType, tempdir=TEMP_SUBDIR, **kwargs)
+                    (parentdir, networkdir, gitdir, projectsubdir) = networks[netmode].getClonedProjectArgs(project_name, None, projType, TEMP_SUBDIR)
+
+                Wrangler.WranglerLogger.debug(f"Applying project [{parentdir=}] [{project_name=}] [{projType=}] on [{branch=}] with [{tag=}] and [{kwargs=}]")
                 if projType=='plan':
                     continue
 
                 # save a copy of this network instance for comparison
                 network_without_project = None
-                if (args.create_project_diffs and (project not in SKIP_PROJ_DIFFS)) or (args.create_project_diff == project_name):
+                if (args.create_project_diffs and (project_name not in SKIP_PROJ_DIFFS)) or (args.create_project_diff == project_name):
                     if netmode == "trn":
                         network_without_project = copy.deepcopy(networks[netmode])
                     elif netmode == 'hwy':
@@ -564,15 +586,11 @@ if __name__ == '__main__':
                         networks[netmode].writeShapefile(network_without_project, suffix="_prev",
                                                          additional_roadway_attrs=ADDITONAL_ROADWAY_ATTRS)
 
-                applied_SHA1 = None
-                cloned_SHA1 = networks[netmode].cloneProject(networkdir=project_name, tag=tag, branch=branch,
-                                                             projtype=projType, tempdir=TEMP_SUBDIR, **kwargs)
-                (parentdir, networkdir, gitdir, projectsubdir) = networks[netmode].getClonedProjectArgs(project_name, None, projType, TEMP_SUBDIR)
-
+                # apply project
                 applied_SHA1 = networks[netmode].applyProject(parentdir, networkdir, gitdir, projectsubdir, **kwargs)
                 appliedcount += 1
 
-                # Create difference report for this project
+                # Create difference report for this project_name
                 if (args.create_project_diffs and (project not in SKIP_PROJ_DIFFS)) or (args.create_project_diff == project_name):
                     # difference information to be store in network_dir netmode_projectname
                     # e.g. BlueprintNetworks\net_2050_Blueprint\ProjectDiffs\01_trn_BP_Transbay_Crossing
@@ -613,11 +631,6 @@ if __name__ == '__main__':
         if not os.path.exists(hwypath): os.makedirs(hwypath)
         trnpath = os.path.join("..", OUT_DIR.format(YEAR),TRN_SUBDIR)
         if not os.path.exists(trnpath): os.makedirs(trnpath)
-
-        # apply set_capclass before writing any hwy network
-        kwargs = {'MODELYEAR':'{}'.format(YEAR)}
-        applied_SHA1 = networks['hwy'].applyProject(parentdir=TEMP_SUBDIR, networkdir=SET_CAPCLASS,
-                                                    gitdir=os.path.join(TEMP_SUBDIR, SET_CAPCLASS), **kwargs)
         
         networks['hwy'].write(path=hwypath,name=HWY_NET_NAME,suppressQuery=True,
                               suppressValidation=True) # MTC TM1 doesn't have turn penalties
