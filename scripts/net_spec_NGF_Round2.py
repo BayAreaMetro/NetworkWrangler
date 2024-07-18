@@ -34,8 +34,9 @@ NGF_PROJECTS = {
         'hwy':[
             'PBA2050_RTP_ID_attributes',
             {'name':'EXP_uncommitted_noAllLaneTolling',     'kwargs':{'MODELYEAR':'2035','PATHWAY':"P5"},     'branch':'master'},
-            'NGF_BlueprintSegmented',
+            'NGF_r2_EL_to_HOV2',
             'NGF_r2_ALT_on_All_Fwys',                     # All-Lane-Tolling on All Freeways (fill in any gaps after NGF_BlueprintSegmented)
+            'NGF_BlueprintSegmented',
             'NGF_HOV3_to_HOV2',
             'NGF_CarpoolLanes',
             'NGF_r2_BRTonParallelArterials',           # Road Space Reallocation and BRT Improvements on Parallel Arterials
