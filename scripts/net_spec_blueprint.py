@@ -76,6 +76,7 @@ COMMITTED_PROJECTS = collections.OrderedDict([
                'ACGo',
                'CC_050025_EBart_to_Antioch',
                'GGTransit_Committed',
+               'GGT_remove_access_restrictions',
                'SCL110005_BART_to_Berryessa',
                'SF_010015_Transbay_Terminal',
                'SF_070027_Yerba_Buena_Ramp_Imp',
