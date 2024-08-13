@@ -40,8 +40,8 @@ NGF_PROJECTS = {
             'NGF_HOV3_to_HOV2',
             'NGF_CarpoolLanes',
             'NGF_r2_BRTonParallelArterials',           # Road Space Reallocation and BRT Improvements on Parallel Arterials
-            'NGF_r2_RemoveSIGCORonParallelArterials',  # Limiting Diversion on Parallel Arterials with SIGCOR Removal   
-            {'name':'BP_Vision_Zero',                                   'branch':'NGF_IncFwyFFS'}, # Speed Limit Reductions
+            #'NGF_r2_RemoveSIGCORonParallelArterials',  # Limiting Diversion on Parallel Arterials with SIGCOR Removal   
+            #{'name':'BP_Vision_Zero',                                   'branch':'NGF_IncFwyFFS'}, # Speed Limit Reductions
          ],
         'trn':[
             'NGF_NoProject_farefiles',      # ensures these files get included; note this is not a real project
@@ -52,7 +52,22 @@ NGF_PROJECTS = {
         ]
     },
 
-    # NGF Round 2 pathway definitions: https://mtcdrive.app.box.com/file/1381469356636?s=8mpbmehocafa83lckc6bsatrhow87cne
+    # NGF Round 2 pathway 
+    # Transit complementary strategy definitions: https://app.asana.com/0/1203644633064654/1208037147689342/f
+    'R2P2_MBUF':{
+        'hwy':[
+         ],
+        'trn':[
+            'NGF_NoProject_farefiles',      # ensures these files get included; note this is not a real project
+            # Complementary strategy - Transit improvements (frequency boosts for parallel buses, feeder buses, and EPC buses)
+            {'name':'NGF_r2_TrnFreqBoosts', 'kwargs':{
+                'NoProject_dir' : 'r"L:\\Application\\Model_One\\NextGenFwys_Round2\\Scenarios\\2035_TM160_NGF_r2_NoProject_06\\OUTPUT\\trn"'
+            }},
+            {'name':'NGF_r2_TrnFreqBoosts_Path2', 'kwargs':{
+                'NoProject_dir' : 'r"L:\\Application\\Model_One\\NextGenFwys_Round2\\Scenarios\\2035_TM160_NGF_r2_NoProject_06\\OUTPUT\\trn"'
+            }}
+        ]
+    },
 
     # Pathway 4: Pathway 4 2035 Express Lanes (would be most similar to Round 1 No New Pricing)
     # https://app.asana.com/0/1203644633064654/1206115787970079/f
