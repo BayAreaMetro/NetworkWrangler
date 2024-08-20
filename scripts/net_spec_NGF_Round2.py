@@ -56,16 +56,7 @@ NGF_PROJECTS = {
     # Transit complementary strategy definitions: https://app.asana.com/0/1203644633064654/1208037147689342/f
     'R2P2_MBUF':{
         'hwy':[
-            'PBA2050_RTP_ID_attributes',
-            {'name':'EXP_uncommitted_noAllLaneTolling',     'kwargs':{'MODELYEAR':'2035','PATHWAY':"P5"},     'branch':'master'},
-            'NGF_r2_EL_to_HOV2',
-            'NGF_r2_ALT_on_All_Fwys',                     # All-Lane-Tolling on All Freeways (fill in any gaps after NGF_BlueprintSegmented)
-            'NGF_BlueprintSegmented',
-            'NGF_HOV3_to_HOV2',
-            'NGF_CarpoolLanes',
             'NGF_r2_BRTonParallelArterials',           # Road Space Reallocation and BRT Improvements on Parallel Arterials
-            #'NGF_r2_RemoveSIGCORonParallelArterials',  # Limiting Diversion on Parallel Arterials with SIGCOR Removal   
-            #{'name':'BP_Vision_Zero',                                   'branch':'NGF_IncFwyFFS'}, # Speed Limit Reductions
          ],
           'trn':[
             'NGF_NoProject_farefiles',      # ensures these files get included; note this is not a real project
