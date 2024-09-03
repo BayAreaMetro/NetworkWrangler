@@ -253,17 +253,16 @@ if __name__ == '__main__':
             Wrangler.TransitNetwork.capacity.writeTransitPrefixToVehicle(directory = trnpath)
 
         # build the Baseline, with Sea Level Rise effects
-        # TODO: punting to Final Blueprint
-        if NET_VARIANT=="Baseline" and YEAR>=2035 and False:
+        if NET_VARIANT=="Baseline" and YEAR>=2035:
 
             # Sea Level Rise effects
             # no inundation prior to 2035
             # 1 foot between 2035 and 2045
             # 2 foot in 2050
             if YEAR >= 2035 and YEAR < 2050:
-                BP_SLR_PROJECT = {'name':"BP_Sea_Level_Rise_Inundation", 'kwargs':{'MODELYEAR':'2035'}}
+                SLR_PROJECT = {'name':"RTP25_Sea_Level_Rise_Inundation", 'kwargs':{'MODELYEAR':'2035'}}
             if YEAR == 2050:
-                BP_SLR_PROJECT = {'name':"BP_Sea_Level_Rise_Inundation", 'kwargs':{'MODELYEAR':'2050'}}
+                SLR_PROJECT = {'name':"RTP25_Sea_Level_Rise_Inundation", 'kwargs':{'MODELYEAR':'2050'}}
 
             # it would be nice if this were more automatic...
             networks['hwy'].saveNetworkFiles(suffix="_pre_SLR", to_suffix=True)
@@ -273,8 +272,8 @@ if __name__ == '__main__':
             networks_bp_baseline['trn'] = copy.deepcopy(networks['trn'])
 
             for netmode in build_network_mtc.NET_MODES:
-                (project_name, projType, tag, branch, kwargs) = build_network_mtc.getProjectAttributes(BP_SLR_PROJECT)
-                # Wrangler.WranglerLogger.debug("BP SLR Project {} has project_name=[{}] projType=[{}] tag=[{}] kwargs=[{}]".format(BP_SLR_PROJECT,
+                (project_name, projType, tag, branch, kwargs) = build_network_mtc.getProjectAttributes(SLR_PROJECT)
+                # Wrangler.WranglerLogger.debug("SLR Project {} has project_name=[{}] projType=[{}] tag=[{}] kwargs=[{}]".format(SLR_PROJECT,
                 #                                project_name, projType, tag, kwargs))
                 applied_SHA1 = None
                 copyloned_SHA1 = networks_bp_baseline[netmode].cloneProject(networkdir=project_name, tag=tag, branch=branch,
@@ -292,7 +291,7 @@ if __name__ == '__main__':
 
             networks_bp_baseline['hwy'].write(path=hwypath,name=HWY_NET_NAME,suppressQuery=True,
                                            suppressValidation=True) # MTC doesn't have turn penalties
-
+            
             networks_bp_baseline['trn'].write(path=trnpath,
                                            name="transitLines",
                                            writeEmptyFiles = False,
@@ -308,6 +307,5 @@ if __name__ == '__main__':
 
             # revert back to the plus rowadway network without BP_Sea_Level_Rise_Inundation
             networks['hwy'].saveNetworkFiles(suffix="_pre_SLR", to_suffix=False)
-
 
     Wrangler.WranglerLogger.debug("Successfully completed running %s" % os.path.abspath(__file__))
