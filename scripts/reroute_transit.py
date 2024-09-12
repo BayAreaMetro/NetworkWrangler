@@ -4,6 +4,9 @@ Modify transit affected by SLR flooding. Including:
 - if called with transit_option == bus, reroute/remove bus segments that are flooded. 
 - if called with transit_option == rail, create bus shuttle services for rail lines with partial shutdown to connect the remaining segments.
 
+Example call:
+python reroute_transit.py --bus --rail 2035 "M:\Application\PBA50Plus_Data_Processing\SLR\tag_TM1_roadway_links\SLR_Del_20240820.csv" "M:\Application\Model One\RTP2025\INPUT_DEVELOPMENT\Networks\BlueprintNetworks_v18\net_2035_Blueprint\shapefiles" --slr_fact_sheet "C:\Users\ywang\Box\Plan Bay Area 2050+\Blueprint\Data\SLR\SLR_network_factsheet.xlsx" "M:\Application\PBA50Plus_Data_Processing\SLR\reroute_TM1_transit"
+
 """
 import geopandas as gpd
 import pandas as pd
@@ -545,118 +548,120 @@ def format_for_initDotPy(all_lines_rerouted_final, text_file_path):
     if os.path.exists(text_file_path):
         os.remove(text_file_path)
 
-    all_lines_rerouted_final['rerouted_stopSign'].fillna('na', inplace=True)
-    all_lines_rerouted_final.loc[all_lines_rerouted_final['rerouted_stopSign']=='', 'rerouted_stopSign'] = 'na'
-
-    # logging.debug('\n{}'.format(all_lines_rerouted_final['rerouted_stopSign'].value_counts(dropna=False)))
     with open(text_file_path, 'w') as file_out:
+        for index, row in all_lines_rerouted_final.iterrows():
 
-        # segments that can reroute
-        df_rerouted = all_lines_rerouted_final.loc[all_lines_rerouted_final['rerouted_stopSign'] != 'na']
-
-        # print(df_rerouted.dtypes())
-        df_rerouted_agg = df_rerouted.groupby([
-            df_rerouted['reroute_segment'].apply(tuple),
-            df_rerouted['rerouted'].apply(tuple),
-            'rerouted_stopSign', 
-            'start', 
-            'end'])['line'].apply(lambda x: ','.join(x)).reset_index()
-        logging.debug(df_rerouted_agg)
-        df_rerouted_agg.sort_values(by='reroute_segment', inplace=True)
-
-        for index, row in df_rerouted_agg.iterrows():
-            line = '# reroute segment {}: {}\n'.format(row['reroute_segment'], row['line'])
-            file_out.write(line)
-            line = 'net.replaceSegmentInTransitLines(\n'
-            file_out.write(line)
-            line = '    nodeA={},\n'.format(row['start'])
-            file_out.write(line)
-            line = '    nodeB={},\n'.format(row['end'])
-            file_out.write(line)
-            line = '    newNodes={},\n'.format(row['rerouted_stopSign'])
-            file_out.write(line)
-            line = '    )\n'
-            file_out.write(line)
-        
-        # segments that cannot reroute
-        df_cannot_reroute = all_lines_rerouted_final.loc[all_lines_rerouted_final['rerouted_stopSign'] == 'na']
-        for index, row in df_cannot_reroute.iterrows():
-            if not '-' in row['line']:
-                if ('end of line' in str(row['rerouted'])):
-                    line = '# {} remove end of line segment {}\n'.format(row['line'], row['reroute_segment'])
+            # successfully rerouted
+            if not 'cannot reroute' in str(row['rerouted']):
+                if not '-' in row['line']:
+                    line = '# reroute segment {}: {}\n'.format(row['reroute_segment'], row['line'])
                     file_out.write(line)
                     line = 'line = net.line("{}")\n'.format(row['line'])
                     file_out.write(line)
-                    line = 'line.extendLine(oldnode   ={},\n'.format(row['start'])
+                    line = 'line.replaceSegment(node1             ={},\n'.format(row['start'])
                     file_out.write(line)
-                    line = '                newsection={},\n'.format([row['start']])
+                    line = '                    node2             ={},\n'.format(row['end'])
                     file_out.write(line)
-                    line = '                beginning =False)\n'
+                    line = '                    newsection        ={},\n'.format(row['rerouted_stopSign'])
                     file_out.write(line)
-                elif ('start of line' in str(row['rerouted'])):
-                    line = '# {} remove start of line segment {}\n'.format(row['line'], row['reroute_segment'])
+                    line = '                    preserveStopStatus=True)\n'
+                    file_out.write(line)
+                else:
+                    line = '# reroute segment {}: {}\n'.format(row['reroute_segment'], row['line'])
+                    file_out.write(line)
+                    line = '"""\n'
                     file_out.write(line)
                     line = 'line = net.line("{}")\n'.format(row['line'])
                     file_out.write(line)
-                    line = 'line.extendLine(oldnode   ={},\n'.format(row['end'])
+                    line = 'line.replaceSegment(node1             ={},\n'.format(row['start'])
                     file_out.write(line)
-                    line = '                newsection={},\n'.format([row['end']])
+                    line = '                    node2             ={},\n'.format(row['end'])
                     file_out.write(line)
-                    line = '                beginning =True)\n'
+                    line = '                    newsection        ={},\n'.format(row['rerouted_stopSign'])
                     file_out.write(line)
-            else:
+                    line = '                    preserveStopStatus=True)\n'
+                    file_out.write(line)
+                    line = '"""\n'
+                    file_out.write(line)
+            # could not reroute    
+            elif 'cannot reroute' in str(row['rerouted']):
+                # if it is the end of line that couldn't reroute
                 if ('end of line' in str(row['rerouted'])):
-                    line = '# {} remove end of line segment {}\n'.format(row['line'], row['reroute_segment'])
-                    file_out.write(line)
-                    line = "try:\n"
-                    file_out.write(line)
-                    line = '    line = net.line("{}")\n'.format(row['line'])
-                    file_out.write(line)
-                    line = '    line.extendLine(oldnode   ={},\n'.format(row['start'])
-                    file_out.write(line)
-                    line = '                    newsection={},\n'.format([row['start']])
-                    file_out.write(line)
-                    line = '                    beginning =False)\n'
-                    file_out.write(line)
-                    line = 'except:\n'
-                    file_out.write(line)
-                    line = '    net.replaceSegmentInTransitLines(\n'
-                    file_out.write(line)
-                    line = '    nodeA={},\n'.format(row['start'])
-                    file_out.write(line)
-                    line = '    nodeB={},\n'.format(row['end'])
-                    file_out.write(line)
-                    line = '    newNodes={},\n'.format([row['start']])
-                    file_out.write(line)
-                    line = '    )\n'
-                    file_out.write(line)
-
-                elif ('start of line' in str(row['rerouted'])):
-                    line = '# {} remove start of line segment {}\n'.format(row['line'], row['reroute_segment'])
-                    file_out.write(line)
-                    line = "try:\n"
-                    file_out.write(line)
-                    line = '    line = net.line("{}")\n'.format(row['line'])
-                    file_out.write(line)
-                    line = '    line.extendLine(oldnode   ={},\n'.format(row['end'])
-                    file_out.write(line)
-                    line = '                    newsection={},\n'.format([row['end']])
-                    file_out.write(line)
-                    line = '                    beginning =True)\n'
-                    file_out.write(line)                
-                    line = 'except:\n'
-                    file_out.write(line)
-                    line = '    net.replaceSegmentInTransitLines(\n'
-                    file_out.write(line)
-                    line = '    nodeA={},\n'.format(row['start'])
-                    file_out.write(line)
-                    line = '    nodeB={},\n'.format(row['end'])
-                    file_out.write(line)
-                    line = '    newNodes={},\n'.format([row['end']])
-                    file_out.write(line)
-                    line = '    )\n'
-                    file_out.write(line)
-
+                    if not '-' in row['line']:
+                    # if ('end of line' in str(row['rerouted'])):
+                        line = '# {} remove end of line segment {}\n'.format(row['line'], row['reroute_segment'])
+                        file_out.write(line)
+                        line = 'line = net.line("{}")\n'.format(row['line'])
+                        file_out.write(line)
+                        line = 'line.extendLine(oldnode   ={},\n'.format(row['start'])
+                        file_out.write(line)
+                        line = '                newsection={},\n'.format([row['start']])
+                        file_out.write(line)
+                        line = '                beginning =False)\n'
+                        file_out.write(line)
+                    elif '-' in row['line']:
+                        line = '# {} remove end of line segment {}\n'.format(row['line'], row['reroute_segment'])
+                        file_out.write(line)
+                        line = "try:\n"
+                        file_out.write(line)
+                        line = '    line = net.line("{}")\n'.format(row['line'])
+                        file_out.write(line)
+                        line = '    line.extendLine(oldnode   ={},\n'.format(row['start'])
+                        file_out.write(line)
+                        line = '                    newsection={},\n'.format([row['start']])
+                        file_out.write(line)
+                        line = '                    beginning =False)\n'
+                        file_out.write(line)
+                        line = 'except:\n'
+                        file_out.write(line)
+                        line = '    net.replaceSegmentInTransitLines(\n'
+                        file_out.write(line)
+                        line = '    nodeA={},\n'.format(row['start'])
+                        file_out.write(line)
+                        line = '    nodeB={},\n'.format(row['end'])
+                        file_out.write(line)
+                        line = '    newNodes={},\n'.format([row['start']])
+                        file_out.write(line)
+                        line = '    )\n'
+                        file_out.write(line)
+                # if it is the start of line that couldn't reroute
+                elif ('start of line' in str(row['rerouted'])):    
+                    if not '-' in row['line']:
+                        line = '# {} remove start of line segment {}\n'.format(row['line'], row['reroute_segment'])
+                        file_out.write(line)
+                        line = 'line = net.line("{}")\n'.format(row['line'])
+                        file_out.write(line)
+                        line = 'line.extendLine(oldnode   ={},\n'.format(row['end'])
+                        file_out.write(line)
+                        line = '                newsection={},\n'.format([row['end']])
+                        file_out.write(line)
+                        line = '                beginning =True)\n'
+                        file_out.write(line)
+                    elif '-' in row['line']:
+                        line = '# {} remove start of line segment {}\n'.format(row['line'], row['reroute_segment'])
+                        file_out.write(line)
+                        line = "try:\n"
+                        file_out.write(line)
+                        line = '    line = net.line("{}")\n'.format(row['line'])
+                        file_out.write(line)
+                        line = '    line.extendLine(oldnode   ={},\n'.format(row['end'])
+                        file_out.write(line)
+                        line = '                    newsection={},\n'.format([row['end']])
+                        file_out.write(line)
+                        line = '                    beginning =True)\n'
+                        file_out.write(line)                
+                        line = 'except:\n'
+                        file_out.write(line)
+                        line = '    net.replaceSegmentInTransitLines(\n'
+                        file_out.write(line)
+                        line = '    nodeA={},\n'.format(row['start'])
+                        file_out.write(line)
+                        line = '    nodeB={},\n'.format(row['end'])
+                        file_out.write(line)
+                        line = '    newNodes={},\n'.format([row['end']])
+                        file_out.write(line)
+                        line = '    )\n'
+                        file_out.write(line)
     file_out.close()
 
 def find_nearest_stop(rail_stations_gdf, bus_stops_gdf):
@@ -697,22 +702,17 @@ def create_rail_connecting_shuttle(G, TM1_nodes_G_nodes_dict, rail_segments_need
         )
         rail_segments_need_shuttle.loc[index, 'shuttle_route'] = str(row['shuttle_route'])
 
-    # return rail_segments_need_shuttle
-
 
 if __name__ == '__main__':
 
     parser = argparse.ArgumentParser(description=USAGE, formatter_class=argparse.RawDescriptionHelpFormatter,)
-    # parser.add_argument("transit_option",       choices=['bus','rail'], help="reroute bus line segments or create bus shuttle for rail segments")
     parser.add_argument("--bus",                dest='bus', action='store_true', help="reroute bus line segments")
     parser.add_argument("--rail",               dest='rail', action='store_true', help="create bus shuttle for rail segments")
     parser.add_argument("year",                 help="Year for the rerouting, currently 2035 or 2050")
     parser.add_argument("del_link_file_path",   help="File path of link deletion, which would require rerouting transit")
     parser.add_argument("base_network_dir",     help="Directory of base network files, typically the 'shapefile' folder created with cube_to_shape script")
-    # TODO: make the following arg optional, only required if transit_option == rail
-    parser.add_argument("--slr_fact_sheet",       help='File path of SLR fact sheet')
+    parser.add_argument("--slr_fact_sheet",     help='File path of SLR fact sheet')
     parser.add_argument("qaqc_dir",             help="Directory of QAQC files")
-    # parser.add_argument("text_file_path",       help="File path of text file with TM1 NetworkProject file __init__.py format")
     args = parser.parse_args()
 
     if not args.bus and not args.rail:
@@ -767,8 +767,7 @@ if __name__ == '__main__':
         logging.info('slr fact sheet: {}'.format(SLR_FACT_SHEET))
     logging.info('QAQC and export directory: {}'.format(QAQC_DIR))
 
-
-    # tm1_link_delete = pd.read_csv(r'M:\Application\PBA50Plus_Data_Processing\SLR\tag_TM1_roadway_links\SLR_Del_20240820.csv')
+    # load SLR roadway link flooding (deletion) data
     tm1_link_delete = pd.read_csv(DEL_LINK_FILE)
     logging.info('total {} roadway links tagged as flooded'.format(len(tm1_link_delete[['A', 'B']].drop_duplicates())))
     logging.info('count deleted links by year and scenario: \n{}'.format(tm1_link_delete.groupby(['SCENARIO', 'YEAR'])['A'].count()))
@@ -777,24 +776,19 @@ if __name__ == '__main__':
     tm1_link_delete = tm1_link_delete.loc[tm1_link_delete['YEAR'] <= int(YEAR)]
     logging.info('keep {} roadway links flooded for the current year'.format(tm1_link_delete.shape[0]))
 
-
-    # roadway_links_gdf_2035 = gpd.read_file(
-    #     r'M:\Application\Model One\RTP2025\INPUT_DEVELOPMENT\Networks\BlueprintNetworks_v18\net_2035_Blueprint\shapefiles\network_links.shp')
+    # load pre-SLR roadway links data
     base_roadway_links_gdf = gpd.read_file(os.path.join(BASE_NETWORK_DIR, 'network_links.shp'))
     logging.info('loaded {} rows of roadway links from {}'.format(len(base_roadway_links_gdf), os.path.join(BASE_NETWORK_DIR, 'network_links.shp')))
     logging.info('link count by FT: \n{}'.format(base_roadway_links_gdf['FT'].value_counts()))
 
-    # base_tm1_trn_links = gpd.read_file(
-    # r'M:\Application\Model One\RTP2025\INPUT_DEVELOPMENT\Networks\BlueprintNetworks_v18\net_2035_Blueprint\shapefiles\network_trn_links.shp')
+    # load pre-SLR transit links data
     base_tm1_trn_links = gpd.read_file(os.path.join(BASE_NETWORK_DIR, 'network_trn_links.shp'))
     logging.info('loaded trn_links from {}, {} rows in trn_links, {} unique A-B pairs'.format(
         os.path.join(BASE_NETWORK_DIR, 'network_trn_links.shp'),
         len(base_tm1_trn_links), 
         len(base_tm1_trn_links[['A', 'B']].drop_duplicates())))
 
-    # tm1_trn_stops_2035 = gpd.read_file(
-    # r'M:\Application\Model One\RTP2025\INPUT_DEVELOPMENT\Networks\BlueprintNetworks_v18\net_2035_Blueprint\shapefiles\network_trn_stops.shp'
-    # )
+    # load pre-SLR transit stops data
     base_tm1_trn_stops = gpd.read_file(os.path.join(BASE_NETWORK_DIR, 'network_trn_stops.shp'))
     logging.info('loaded trn_stops from {}, {} rows, by IS_STOP: \n{}'.format(
         os.path.join(BASE_NETWORK_DIR, 'network_trn_stops.shp'),
