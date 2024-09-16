@@ -103,6 +103,17 @@ NGF_PROJECTS = {
             'NGF_NoProject_farefiles',      # ensures these files get included; note this is not a real project
         ]
     },
+    
+    # Sensitivity test: No Project with local road speed limit reductions 
+    # https://app.asana.com/0/1203644633064654/1208321467422880/f
+    'R2NP_wFFSreduction':{
+        'hwy':[
+            {'name':'BP_Vision_Zero',                                   'branch':'NGF_IncFwyFFS'}, # Speed Limit Reductions
+         ],
+        'trn':[
+            'NGF_NoProject_farefiles',      # ensures these files get included; note this is not a real project
+        ]
+    },
 }
 
 # Put them together for NETWORK_PROJECTS
