@@ -694,13 +694,15 @@ class TransitLine(object):
         s = 'Line name \"%s\" freqs=%s' % (self.name, str(self.getFreqs()))
         return s
 
-    def createGeoDataFrames(self, nodes_dict: dict, modeltype=Network.MODEL_TYPE_TM1, line_name_suffix=""):
+    def createGeoDataFrames(self, nodes_dict: dict, modeltype=Network.MODEL_TYPE_TM1, line_name_suffix="", include_reverse_for_two_way=False):
         """
         Create and return shapefile rows similar in format to those exported by 
         https://github.com/BayAreaMetro/travel-model-one/blob/master/utilities/cube-to-shapefile/cube_to_shapefile.py
 
         Args:
             nodes_dict (dict): nodenum -> [X,Y]
+            include_reverse_for_two_way (bool): set to True to also include reverse of the line for non-oneway lines
+              (with Cube's convention of linename-)
         
         Returns:
           (nodes_gdf, links_gdf,lines_gdf), a tuple of three geopandas GeoDataFrames
@@ -773,7 +775,7 @@ class TransitLine(object):
             }]
 
         # if not oneway, then add reverse line
-        if self.isOneWay() == False:
+        if self.isOneWay() == False and include_reverse_for_two_way:
             lines.append({
                 'NAME':      "{}{}".format(self.name + "-",line_name_suffix),
                 'LONG_NAME': self.attr['LONGNAME'] if 'LONGNAME' in self.attr.keys() else '',
