@@ -275,6 +275,18 @@ if __name__ == '__main__':
                 (project_name, projType, tag, branch, kwargs) = build_network_mtc.getProjectAttributes(SLR_PROJECT)
                 # Wrangler.WranglerLogger.debug("SLR Project {} has project_name=[{}] projType=[{}] tag=[{}] kwargs=[{}]".format(SLR_PROJECT,
                 #                                project_name, projType, tag, kwargs))
+
+                # save a copy of this network instance for comparison
+                network_without_project = None
+                if (args.create_project_diffs and (project_name not in build_network_mtc.SKIP_PROJ_DIFFS)) or (args.create_project_diff == project_name):
+                    if netmode == "trn":
+                        network_without_project = copy.deepcopy(networks_bp_baseline[netmode])
+                    elif netmode == 'hwy':
+                        # the network state is not in the object, but in the files in scratch. write these to tempdir
+                        network_without_project = pathlib.Path(tempfile.mkdtemp())
+                        Wrangler.WranglerLogger.debug(f"Saving previous network into tempdir {network_without_project}")
+                        networks_bp_baseline[netmode].writeShapefile(network_without_project, suffix="_prev",additional_roadway_attrs=ADDITONAL_ROADWAY_ATTRS)
+
                 applied_SHA1 = None
                 copyloned_SHA1 = networks_bp_baseline[netmode].cloneProject(networkdir=project_name, tag=tag, branch=branch,
                                                                          projtype=projType, tempdir=TEMP_SUBDIR, **kwargs)
@@ -286,6 +298,32 @@ if __name__ == '__main__':
                 trnpath = os.path.join("..", "BlueprintNetworks", "net_{}_{}".format(YEAR, NET_VARIANT), build_network_mtc.TRN_SUBDIR)
                 if not os.path.exists(trnpath): os.makedirs(trnpath)
 
+                # Create difference report for this project
+                if (args.create_project_diffs and (project_name not in build_network_mtc.SKIP_PROJ_DIFFS)) or (args.create_project_diff == project_name):
+                    # difference information to be store in network_dir netmode_projectname
+                    # e.g. BlueprintNetworks\net_2050_Blueprint\01_trn_BP_Transbay_Crossing
+                    project_diff_folder = pathlib.Path.cwd().parent / "BlueprintNetworks" / f"ProjectDiffs_{NET_VARIANT}" / \
+                         f"net_{YEAR}_{project_diff_report_num:02}_{build_network_mtc.HWY_SUBDIR if netmode == 'hwy' else build_network_mtc.TRN_SUBDIR}_{project_name}"
+
+                    # the project may get applied multiple times -- e.g., for different phases
+                    suffix_num = 1
+                    project_diff_folder_with_suffix = project_diff_folder
+                    while project_diff_folder_with_suffix.exists():
+                        suffix_num += 1
+                        project_diff_folder_with_suffix = pathlib.Path(f"{str(project_diff_folder)}_{suffix_num}")
+
+                    Wrangler.WranglerLogger.debug(f"Creating project_diff_folder: {project_diff_folder_with_suffix}")
+                    
+                    reported_diff_ret = networks_bp_baseline[netmode].reportDiff(
+                        netmode, other_network=network_without_project, 
+                        directory=project_diff_folder_with_suffix, project_gitdir=gitdir, 
+                        report_description=project_name, additional_roadway_attrs=ADDITONAL_ROADWAY_ATTRS)
+                    del network_without_project
+
+                    if reported_diff_ret:
+                        project_diff_report_num += 1
+        
+            # apply set_capclass project
             applied_SHA1 = networks_bp_baseline['hwy'].applyProject(parentdir=TEMP_SUBDIR, networkdir=SET_CAPCLASS,
                                                                  gitdir=os.path.join(TEMP_SUBDIR, SET_CAPCLASS))
 
