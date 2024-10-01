@@ -103,6 +103,18 @@ NGF_PROJECTS = {
             'NGF_NoProject_farefiles',      # ensures these files get included; note this is not a real project
         ]
     },
+
+    # Pathway 6A: 2035 Dual Express Lanes (no capacity increase, 2 EL lanes if total number of lanes <= 3)
+    # https://app.asana.com/0/1203644633064654/1208347476026379/f
+    'R2P6a_DualEL_ConversionOnly':{
+        'hwy':[
+            'PBA2050_RTP_ID_attributes',
+            {'name':'EXP_uncommitted_noAllLaneTolling',     'kwargs':{'MODELYEAR':'2035','PATHWAY':"P5"},     'branch':'master'},
+        ],
+        'trn':[
+            'NGF_NoProject_farefiles',      # ensures these files get included; note this is not a real project
+        ]
+    },
     
     # Sensitivity test: No Project with local road speed limit reductions 
     # https://app.asana.com/0/1203644633064654/1208321467422880/f
