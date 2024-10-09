@@ -412,7 +412,7 @@ if __name__ == '__main__':
             "R2P1_AllLaneTolling",                              "R2P2_MBUF",  
             "R2P4_2035_Express_Lanes",                          "R2P5_Conversion_Only",
             "R2P6_Dual_Express_Lanes",                          "R2P6a_DualEL_ConversionOnly",
-            "R2NP_wFFSreduction"], 
+            "R2P8_DualEL_ConversionOnly",                      "R2NP_wFFSreduction"], 
         help="Specify which network variant network to create.")
     args = parser.parse_args()
 
