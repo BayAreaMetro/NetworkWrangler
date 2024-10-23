@@ -254,7 +254,7 @@ if __name__ == '__main__':
                     # Create difference report for this project
                     if args.create_project_diffs and (my_project not in build_network_mtc.SKIP_PROJ_DIFFS):
                       project_diff_folder = pathlib.Path(OUTPUT_FUTURE_DIR) / "ProjectDiffs" / \
-                        f"{project_diff_report_num:02}_{netmode}_{my_project}"
+                        f"{netmode}_{project_diff_report_num:02}_{my_project}"
 
                       # the project may get applied multiple times -- e.g., for different phases
                       suffix_num = 1

@@ -193,7 +193,7 @@ if __name__ == '__main__':
                     # difference information to be store in network_dir netmode_projectname
                     # e.g. BlueprintNetworks\net_2050_Blueprint\01_trn_BP_Transbay_Crossing
                     project_diff_folder = pathlib.Path.cwd().parent / "BlueprintNetworks" / f"ProjectDiffs_{NET_VARIANT}" / \
-                         f"net_{YEAR}_{project_diff_report_num:02}_{build_network_mtc.HWY_SUBDIR if netmode == 'hwy' else build_network_mtc.TRN_SUBDIR}_{project_name}"
+                         f"net_{YEAR}_{build_network_mtc.HWY_SUBDIR if netmode == 'hwy' else build_network_mtc.TRN_SUBDIR}_{project_diff_report_num:02}_{project_name}"
 
                     # the project may get applied multiple times -- e.g., for different phases
                     suffix_num = 1
