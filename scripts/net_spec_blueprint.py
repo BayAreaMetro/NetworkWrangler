@@ -133,7 +133,6 @@ COMMITTED_PROJECTS = collections.OrderedDict([
                'GTFS2023_AC_ACTransit',
                'GTFS2023_SM_SamTrans',
                'GTFS2023_Other_Operators',
-               'MAJ_Treasure_Island_Ferry',
                # Transit_Frequency_Updates_Using_511
                # Update transit frequency for BART and Caltrain using 511 2023-09 data due to big service update in Sept 2023
                # Asana task: https://app.asana.com/0/1204085012544660/1205493838123328/f  
@@ -216,7 +215,10 @@ COMMITTED_PROJECTS = collections.OrderedDict([
                           'operator':'"Emery Go-Round"'}},
                 {'name':'Transit_Frequency_Updates_Using_511',
                 'kwargs':{'regional_gtfs_zip':'"2023-09.zip"',
-                          'operator':'"Vacaville City Coach"'}},      
+                          'operator':'"Vacaville City Coach"'}},
+                # Treasure Island Ferry is added via 'MAJ_Treasure_Island_Ferry' rather than Sep2023 GTFS
+                # https://app.asana.com/0/0/1206560526595918/1208653731926585/f
+                'MAJ_Treasure_Island_Ferry',
         ]
     }),
     (2025, {
