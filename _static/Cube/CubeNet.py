@@ -20,8 +20,8 @@ def getCubeHostnames():
     hostnames = []
     fqdn = getfqdn().lower() # fully qualified domain name
 
-    # at mtc, assume cube license is available
-    if fqdn.endswith("mtc.ca.gov"): return [ gethostname().lower() ]
+    # for MTC and consultants, assume cube license is available
+    if True: return [ gethostname().lower() ]
 
     f = open(r"Y:\COMMPATH\HostnamesWithCube.txt")
     for line in f:

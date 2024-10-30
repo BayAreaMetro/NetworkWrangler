@@ -24,8 +24,8 @@ class HighwayNetwork(Network):
 
         fqdn = getfqdn().lower() # fully qualified domain name
 
-        # at mtc, assume cube license is available
-        if fqdn.endswith("mtc.ca.gov"):
+        # for MTC and consultants, assume cube license is available
+        if True:
             HighwayNetwork.cube_hostnames = [ gethostname().lower() ]
             return HighwayNetwork.cube_hostnames
 
