@@ -137,8 +137,8 @@ COMMITTED_PROJECTS = collections.OrderedDict([
                # Transit_Frequency_Updates_Using_511
                # Update transit frequency for BART and Caltrain using 511 2023-09 data due to big service update in Sept 2023
                # Asana task: https://app.asana.com/0/1204085012544660/1205493838123328/f  
-               # Update transit frequency for other operators using 511 2023-05 data 
-               # Asana task: https://app.asana.com/0/1204085012544660/1205328142972885/f
+               # Update transit frequency for other operators using 511 2023-09 data 
+               # Asana task: https://app.asana.com/0/1204085012544660/1205943132254853/f
                {'name':'Transit_Frequency_Updates_Using_511', 
                 'kwargs':{'regional_gtfs_zip':'"2023-09.zip"',
                           'operator':'"Bay Area Rapid Transit"'}},
@@ -207,10 +207,7 @@ COMMITTED_PROJECTS = collections.OrderedDict([
                 {'name':'Transit_Frequency_Updates_Using_511', 
                 'kwargs':{'regional_gtfs_zip':'"2023-09.zip"', 
                           'operator':'"WestCat (Western Contra Costa)"'}}, 
-#                {'name':'Transit_Frequency_Updates_Using_511', 
-#                'kwargs':{'regional_gtfs_zip':'r"M:\\Data\\Transit\\511\\2023-09.zip"', 
-#                          'operator':'"Rio Vista Delta Breeze"'}}, 
-#                no model routes for Rio Vista Delta Breeze
+                # no model routes for Rio Vista Delta Breeze
                 {'name':'Transit_Frequency_Updates_Using_511', 
                 'kwargs':{'regional_gtfs_zip':'"2023-09.zip"', 
                           'operator':'"Dumbarton Express Consortium"'}}, 
