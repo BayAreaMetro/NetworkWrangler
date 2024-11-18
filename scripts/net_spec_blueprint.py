@@ -21,11 +21,11 @@ ADDITONAL_ROADWAY_ATTRS = [
 COMMITTED_PROJECTS = collections.OrderedDict([
     (2015, {
         'hwy':['PROJ_attributes',  # adds PROJ attributes to NODE and LINK
-               {'name':'Bridge_Toll_Updates_2_2pct', 'kwargs':{'MODELYEAR':'2015'}}],
+               {'name':'Bridge_Toll_Updates_rtp2025', 'kwargs':{'MODELYEAR':'2015'}}],
         'trn':[]
     }),
     (2020, {
-        'hwy':[{'name':'Bridge_Toll_Updates_2_2pct', 'kwargs':{'MODELYEAR':'2020'}},
+        'hwy':[{'name':'Bridge_Toll_Updates_rtp2025', 'kwargs':{'MODELYEAR':'2020'}},
                {'name':'EXP_237B',                   'kwargs':{'FUTURE':"PBA50"}}, # todo: update this to support PBA50
                'EXP_580C',
                'EXP_680D',
@@ -101,7 +101,7 @@ COMMITTED_PROJECTS = collections.OrderedDict([
                 ],
     }),
     (2023, {
-        'hwy':[{'name':'Bridge_Toll_Updates_2_2pct', 'kwargs':{'MODELYEAR':'2023'}},
+        'hwy':[{'name':'Bridge_Toll_Updates_rtp2025', 'kwargs':{'MODELYEAR':'2023'}},
                'EXP_CC_050028_I680_SB_HOV_Completion',
                'EXP_101B1',
                'EXP_101B2',
@@ -222,7 +222,7 @@ COMMITTED_PROJECTS = collections.OrderedDict([
         ]
     }),
     (2025, {
-        'hwy':[{'name':'Bridge_Toll_Updates_2_2pct', 'kwargs':{'MODELYEAR':'2025'}},             
+        'hwy':[{'name':'Bridge_Toll_Updates_rtp2025', 'kwargs':{'MODELYEAR':'2025'}},             
                'ALA150001_I680_SR84_Int_Wid',
                'SOL110006_Jepson_1B_1C',
                'SCL190008_US101_DLC_Int_Imp',
@@ -243,29 +243,29 @@ COMMITTED_PROJECTS = collections.OrderedDict([
                ]
     }),
     (2030, {
-        'hwy':[{'name':'Bridge_Toll_Updates_2_2pct', 'kwargs':{'MODELYEAR':'2030'}},
+        'hwy':[{'name':'Bridge_Toll_Updates_rtp2025', 'kwargs':{'MODELYEAR':'2030'}},
                {'name':'SF_MuniForward_Committed', 'kwargs':{'MODELYEAR':'2030'}},  # This applies for multiple years on the roadway side
                'EXP_Blueprint_NoProject'],
         'trn':[{'name':'BART_NoProject',             'branch':'PBA50plus_DBP'},
             ]
     }),
     (2035, {
-        'hwy':[{'name':'Bridge_Toll_Updates_2_2pct', 'kwargs':{'MODELYEAR':'2035'}},
+        'hwy':[{'name':'Bridge_Toll_Updates_rtp2025', 'kwargs':{'MODELYEAR':'2035'}},
                'EXP_Blueprint_NoProject'],
         'trn':[]
     }),
     (2040, {
-        'hwy':[{'name':'Bridge_Toll_Updates_2_2pct', 'kwargs':{'MODELYEAR':'2040'}},
+        'hwy':[{'name':'Bridge_Toll_Updates_rtp2025', 'kwargs':{'MODELYEAR':'2040'}},
                'EXP_Blueprint_NoProject'],
         'trn':[]
     }),
     (2045, {
-        'hwy':[{'name':'Bridge_Toll_Updates_2_2pct', 'kwargs':{'MODELYEAR':'2045'}},
+        'hwy':[{'name':'Bridge_Toll_Updates_rtp2025', 'kwargs':{'MODELYEAR':'2045'}},
                'EXP_Blueprint_NoProject'],
         'trn':[]
     }),
     (2050, {
-        'hwy':[{'name':'Bridge_Toll_Updates_2_2pct', 'kwargs':{'MODELYEAR':'2050'}},
+        'hwy':[{'name':'Bridge_Toll_Updates_rtp2025', 'kwargs':{'MODELYEAR':'2050'}},
                'EXP_Blueprint_NoProject'],
         'trn':[]
     })
