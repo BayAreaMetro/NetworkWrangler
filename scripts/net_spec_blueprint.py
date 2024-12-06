@@ -570,6 +570,8 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    'EXP_Blueprint',
                        ],
                 'trn':[
+                        {'name':'FBP_SM_020_Regional_Express_Buses', 'kwargs':{'PHASE':"'Phase1_4Routes'"}},
+                        {'name':'FBP_SM_020_Regional_Express_Buses', 'kwargs':{'PHASE':"'Phase2_2Routes'"}},
                     #    {'name':'FBP_MU_046_ACE_Freq_Inc',       'kwargs':{'MODELYEAR':'2045'}},
                     #    'FBP_SC_106_VTA_LRT_Modernization',
                        ]
