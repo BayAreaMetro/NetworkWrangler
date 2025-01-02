@@ -446,13 +446,11 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                        ]
         }),
         (2035, {'hwy':[
-                        'MAJ_AC_Frequency_Improvement',
                     #    {'name':'MAJ_MuniForward_Uncommitted',                                             'branch':'PBA50plus_DBP'},
                     #    'MAJ_Treasure_Island_Congestion_Pricing',
                     #    'BP_Tolls_On_Congested_Freeways_2035',
                         {'name': 'NGF_BlueprintSegmented'},
                         'BP_Vision_Zero',
-
                     #    'RRSP_East_West_Connector',
                     #    'Transform_I680_Multimodal_Imp',
                     #    'FBP_SM_022_I380_Widening',
@@ -470,7 +468,6 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    {'name':'EIR1_No_SR37',                                                            'variants_include':['Alt1']},
                        ],
                 'trn':[
-                        'MAJ_AC_Frequency_Improvement',
                     #    {'name':'MAJ_MuniForward_Uncommitted',                                             'branch':'PBA50plus_DBP'},
                     #    {'name':'FBP_SM_020_Regional_Express_Buses',    'kwargs':{'PHASE':"'Phase2_2Routes'"}},
                     #    'RRSP_South_East_Waterfront_Transit_Imp',
@@ -574,8 +571,6 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    'EXP_Blueprint',
                        ],
                 'trn':[
-                        {'name':'FBP_SM_020_Regional_Express_Buses', 'kwargs':{'PHASE':"'Phase1_4Routes'"}},
-                        {'name':'FBP_SM_020_Regional_Express_Buses', 'kwargs':{'PHASE':"'Phase2_2Routes'"}},
                     #    {'name':'FBP_MU_046_ACE_Freq_Inc',       'kwargs':{'MODELYEAR':'2045'}},
                     #    'FBP_SC_106_VTA_LRT_Modernization',
                        ]
