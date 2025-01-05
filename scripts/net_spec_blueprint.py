@@ -490,7 +490,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                        ]
         }),
         (2040, {'hwy':[
-                        'FBP_AL_055_DubBlvd_NCanyons_Ex',           
+                        'FBP_AL_055_DubBlvd_NCanyons_Ext',
                         'BP_Vision_Zero',
                     #    'FBP_SC_050_I680_Montague_Int_Imp', 
                     #    'FBP_MU_029_ACRapid_2040',
