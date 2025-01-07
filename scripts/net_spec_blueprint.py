@@ -319,7 +319,6 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    'FBP_SC_039_SR237WBWide',      
                     #    'FBP_AL_051_7St_Grade_Sep_West',
                     #    'FBP_AL_044_I880_Whipple_Imps',
-                    #    'FBP_AL_055_DubBlvd_NCanyons_Ext',
                     #    'FBP_SN_017_Arata_Int',
                     #    'FBP_CC_017_Brentwood_Intermodal',
                     #    'FBP_SF_030_Balboa_Park_Area_2',
@@ -490,8 +489,8 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                        ]
         }),
         (2040, {'hwy':[
-                        'FBP_AL_055_DubBlvd_NCanyons_Ext',
                         'BP_Vision_Zero',
+                        'FBP_AL_055_DubBlvd_NCanyons_Ext',
                     #    'FBP_SC_050_I680_Montague_Int_Imp', 
                     #    'FBP_MU_029_ACRapid_2040',
                     #    'FBP_NP_074_SoscolWide',
