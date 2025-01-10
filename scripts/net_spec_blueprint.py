@@ -292,7 +292,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    'FBP_MU_041_Hovercraft_Pilot',
                         'BP_Vision_Zero',
                     #    'EXP_Blueprint',
-                    #    'MAJ_AC_Frequency_Improvement',
+
                     #    'FBP_MU_044_SouthSF_Ferry_Serv_Incr',
                     #    'FBP_MU_029_ACRapid_2025',
                     #    'RRSP_E14_Mission_Corridor',
@@ -346,7 +346,6 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                 'trn':[
                     #    'FBP_AL_001_NewarkFremPDA',
                     #    {'name':'FBP_MU_059_ACTransbay_Freq_Incr',                                         'variants_exclude':['Alt2']},
-                    #    'MAJ_AC_Frequency_Improvement',
                     #    {'name': 'RRSP_Alameda_Point_Transit_Improvements',  'kwargs':{'BUILT':"'unbuilt'"},'branch':'PBA50plus_DBP'},
                     #    'MAJ_MTC050027_Berkeley_Ferry',
                     #    'MAJ_WETA_Service_Frequency_Increase',
@@ -450,6 +449,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    'BP_Tolls_On_Congested_Freeways_2035',
                         {'name': 'NGF_BlueprintSegmented'},
                         'BP_Vision_Zero',
+                        'MAJ_AC_Frequency_Improvement',
                     #    'RRSP_East_West_Connector',
                     #    'Transform_I680_Multimodal_Imp',
                     #    'FBP_SM_022_I380_Widening',
@@ -469,6 +469,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                 'trn':[
                     #    {'name':'MAJ_MuniForward_Uncommitted',                                             'branch':'PBA50plus_DBP'},
                     #    {'name':'FBP_SM_020_Regional_Express_Buses',    'kwargs':{'PHASE':"'Phase2_2Routes'"}},
+                        'MAJ_AC_Frequency_Improvement',
                     #    'RRSP_South_East_Waterfront_Transit_Imp',
                     #    'FBP_MU_062_ReX_Red',
                     #    'Transform_I680_Multimodal_Imp',
