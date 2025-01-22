@@ -375,6 +375,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                        ]
         }),
         (2030, {'hwy':[
+                        'ALA110002_I880_Industrial_Interchange',
                     #    'MAJ_SanPablo_BRT',
                     #    'BP_Tolls_On_Congested_Freeways_2030',
                         'BP_Vision_Zero',
