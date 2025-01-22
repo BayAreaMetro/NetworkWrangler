@@ -320,7 +320,6 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    'FBP_AL_062_TassajaraWide',
                     #    'FBP_SC_039_SR237WBWide',      
                     #    'FBP_AL_051_7St_Grade_Sep_West',
-                    #    'FBP_AL_055_DubBlvd_NCanyons_Ext',
                     #    'FBP_SN_017_Arata_Int',
                     #    'FBP_CC_017_Brentwood_Intermodal',
                     #    'FBP_SF_030_Balboa_Park_Area_2',
