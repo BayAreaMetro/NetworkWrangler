@@ -375,7 +375,6 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                        ]
         }),
         (2030, {'hwy':[
-                        'ALA110002_I880_Industrial_Interchange',
                     #    'MAJ_SanPablo_BRT',
                     #    'BP_Tolls_On_Congested_Freeways_2030',
                         'BP_Vision_Zero',
@@ -401,6 +400,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    'FBP_CC_066_CypressWide',
                     #    'FBP_SC_059_SR237EBWide',
                        'FBP_AL_044_I880_Whipple_Imps',
+                       'ALA110002_I880_Industrial_Interchange',
                     #    'FBP_AL_064_UnionCityWide',
                     #    'FBP_SC_074_US101_BuenaVista_Int',
                     #    'EXP_Blueprint',
