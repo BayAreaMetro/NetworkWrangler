@@ -377,6 +377,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                        ]
         }),
         (2030, {'hwy':[
+                        'ALA110002_I880_Industrial_Interchange',
                     #    'MAJ_SanPablo_BRT',
                     #    'BP_Tolls_On_Congested_Freeways_2030',
                         'BP_Vision_Zero',
@@ -435,8 +436,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    {'name':'FBP_MuniForward_Uncommitted_Rail',                                        'branch':'PBA50plus_DBP'},
                     #    'FBP_CC_036_I80_ExpBus_Impr',
                     #    'FBP_CC_021_Ant_Mart_Herc_Ferry',
-                    #    'FBP_AL_045_Oak_Ala_Access_Pr',
-                       'FBP_AL_044_I880_Whipple_Imps',                    
+                    #    'FBP_AL_045_Oak_Ala_Access_Pr',                    
                     #    'FBP_CC_028_Hercules_Station',
                     #    {'name':'FBP_SF_012_Geneva_Harney_BRT',  'kwargs':{'MODELYEAR':'2030'}},
                     #    {'name':'FBP_CC_15_23rd_St_BRT',         'kwargs':{'MODELYEAR':'2030'}},
