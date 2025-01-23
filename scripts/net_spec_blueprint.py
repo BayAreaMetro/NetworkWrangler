@@ -247,6 +247,7 @@ COMMITTED_PROJECTS = collections.OrderedDict([
                {'name':'SF_MuniForward_Committed', 'kwargs':{'MODELYEAR':'2030'}},  # This applies for multiple years on the roadway side
                'EXP_Blueprint_NoProject',
                'FBP_SM_035_Peninsula_101_OnOffRamps',
+               'FBP_SC_082_US101_25_Interchang_committed'
                ],
         'trn':[{'name':'BART_NoProject',             'branch':'PBA50plus_DBP'},
             ]
