@@ -413,9 +413,9 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                        'FBP_SM_042_Hwy1_ManorDrive',
                     #    'FBP_SL_042_Jepson_2B_2C',
                     #    'FBP_CC_024_Oakley_PNR_Tri_Delta',
-                    #    'FBP_SC_083_US101_Zanker_Skyport_Interchange',
+                        'FBP_SC_083_US101_Zanker_Skyport_Interchange',
                     #    'FBP_SL_022_SonomaBlvd_Diet',
-                    #    'FBP_SM_027_US101_92',
+                        'FBP_SM_027_US101_92',
                     #    'FBP_SM_007_ElCamino_CompleteStreets',
                        ],
                 'trn':[
@@ -536,6 +536,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    {'name':'FBP_AL_021_South_Bay_Connect',                                            'variants_include':['Alt2']},
                     #    {'name':'Transform_AC_Transbay_Improvements',                                      'variants_include':['Alt2']},
                     #    'FBP_SC_042_I280_Downtown_Access_Improvements'
+                        'SCL210002_US101_SR152_Interchange'
                        ],
                 'trn':[
                     #    {'name':'FBP_MU_046_ACE_Freq_Inc',       'kwargs':{'MODELYEAR':'2040'}},
