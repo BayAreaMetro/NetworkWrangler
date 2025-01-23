@@ -57,7 +57,7 @@ NETWORK_PROJECTS = collections.OrderedDict([
         'trn':[]
     }),
     (2040, {
-        'hwy':[], 
+        'hwy':['SCL210002_US101_SR152_Interchange'], 
         'trn':[]
     }),
     (2045, {
