@@ -245,13 +245,18 @@ COMMITTED_PROJECTS = collections.OrderedDict([
     (2030, {
         'hwy':[{'name':'Bridge_Toll_Updates_rtp2025', 'kwargs':{'MODELYEAR':'2030'}},
                {'name':'SF_MuniForward_Committed', 'kwargs':{'MODELYEAR':'2030'}},  # This applies for multiple years on the roadway side
-               'EXP_Blueprint_NoProject'],
+               'EXP_Blueprint_NoProject',
+               'FBP_SM_035_Peninsula_101_OnOffRamps',
+               'FBP_SC_082_US101_25_Interchang_committed'
+               ],
         'trn':[{'name':'BART_NoProject',             'branch':'PBA50plus_DBP'},
             ]
     }),
     (2035, {
         'hwy':[
-               'EXP_Blueprint_NoProject'],
+               'EXP_Blueprint_NoProject',
+               'SCL190011_I280_Wolfe_Interchange'
+            ],
         'trn':[]
     }),
     (2040, {
@@ -318,7 +323,6 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    'FBP_AL_062_TassajaraWide',
                     #    'FBP_SC_039_SR237WBWide',      
                     #    'FBP_AL_051_7St_Grade_Sep_West',
-                    #    'FBP_AL_044_I880_Whipple_Imps',
                     #    'FBP_SN_017_Arata_Int',
                     #    'FBP_CC_017_Brentwood_Intermodal',
                     #    'FBP_SF_030_Balboa_Park_Area_2',
@@ -329,7 +333,6 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    'FBP_SL_053_PeabodyWide',
                     #    'FBP_SC_073_BlossomHill_101Wide',
                     #    'FBP_SC_082_US101_25_Interchange',
-                    #    'FBP_SM_035_Peninsula_101_OnOffRamps',
                     #    'FBP_CC_045_SanPabloDam_Interchange_Phase2',
                     #    'FBP_CC_030_OakleyAmtrak',
                     #    'STIP_ProduceAve',
@@ -399,18 +402,24 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    'FBP_CC_064_CaminoTassajaraWide',
                     #    'FBP_CC_066_CypressWide',
                     #    'FBP_SC_059_SR237EBWide',
+                       'FBP_AL_044_I880_Whipple_Imps',
+                       'ALA110002_I880_Industrial_Interchange',
                     #    'FBP_AL_064_UnionCityWide',
                     #    'FBP_SC_074_US101_BuenaVista_Int',
                     #    'EXP_Blueprint',
                     #    'FBP_SC_054_SR17_Corridor_Relief',
                     #    'FBP_AL_043_A_StreetWide',
                     #    'FBP_CC_061_062_West_Leland_Ext_Phases1_2',
-                    #    'FBP_SM_042_Hwy1_ManorDrive',
+<<<<<<< HEAD
+                        'FBP_SM_042_Hwy1_ManorDrive',
+=======
+                       'FBP_SM_042_Hwy1_ManorDrive',
+>>>>>>> dd2667bc590398d93ac3889b3c5b6aab226ccb6f
                     #    'FBP_SL_042_Jepson_2B_2C',
                     #    'FBP_CC_024_Oakley_PNR_Tri_Delta',
-                    #    'FBP_SC_083_US101_Zanker_Skyport_Interchange',
+                        'FBP_SC_083_US101_Zanker_Skyport_Interchange',
                     #    'FBP_SL_022_SonomaBlvd_Diet',
-                    #    'FBP_SM_027_US101_92',
+                        'FBP_SM_027_US101_92',
                     #    'FBP_SM_007_ElCamino_CompleteStreets',
                        ],
                 'trn':[
@@ -531,6 +540,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    {'name':'FBP_AL_021_South_Bay_Connect',                                            'variants_include':['Alt2']},
                     #    {'name':'Transform_AC_Transbay_Improvements',                                      'variants_include':['Alt2']},
                     #    'FBP_SC_042_I280_Downtown_Access_Improvements'
+                        'SCL210002_US101_SR152_Interchange'
                        ],
                 'trn':[
                     #    {'name':'FBP_MU_046_ACE_Freq_Inc',       'kwargs':{'MODELYEAR':'2040'}},
