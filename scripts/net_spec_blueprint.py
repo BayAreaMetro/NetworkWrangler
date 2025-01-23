@@ -253,7 +253,9 @@ COMMITTED_PROJECTS = collections.OrderedDict([
     }),
     (2035, {
         'hwy':[
-               'EXP_Blueprint_NoProject'],
+               'EXP_Blueprint_NoProject',
+               'SCL190011_I280_Wolfe_Interchange'
+            ],
         'trn':[]
     }),
     (2040, {
