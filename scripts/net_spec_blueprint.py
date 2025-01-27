@@ -417,9 +417,9 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
 >>>>>>> dd2667bc590398d93ac3889b3c5b6aab226ccb6f
                     #    'FBP_SL_042_Jepson_2B_2C',
                     #    'FBP_CC_024_Oakley_PNR_Tri_Delta',
-                        'FBP_SC_083_US101_Zanker_Skyport_Interchange',
+                    #    'FBP_SC_083_US101_Zanker_Skyport_Interchange',
                     #    'FBP_SL_022_SonomaBlvd_Diet',
-                        'FBP_SM_027_US101_92',
+                    #    'FBP_SM_027_US101_92',
                     #    'FBP_SM_007_ElCamino_CompleteStreets',
                        ],
                 'trn':[
