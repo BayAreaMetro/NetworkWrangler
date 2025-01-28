@@ -240,6 +240,7 @@ COMMITTED_PROJECTS = collections.OrderedDict([
                'SON090002_SMART_NorthPetaluma',
                'MAJ_SCL050009_VTA_Eastridge_Extension',
                'MAJ_Geary_BRT_Phase2',
+               'SamTrans_2024_restore_expand_services'
                ]
     }),
     (2030, {
