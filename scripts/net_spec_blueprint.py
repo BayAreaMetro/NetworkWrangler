@@ -501,7 +501,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    'FBP_SC_050_I680_Montague_Int_Imp', 
                     #    'FBP_MU_029_ACRapid_2040',
                     #    'FBP_NP_074_SoscolWide',
-                    #    'FBP_CC_059_PittAntiochWide',
+                        'FBP_CC_059_PittAntiochWide',
                     #    {'name':'FBP_CC_051_SR4_Operation_Improvements_WB',                                'variants_exclude':['Alt1']},
                     #    'FBP_CC_037_680_AuxLanes',
                     #    {'name':'RRSP_EC_Cap_Imp_ECR_Bus',                                                 'branch':'PBA50plus_DBP'},
