@@ -319,7 +319,6 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    {'name':'MAJ_Bay_Area_Forward_all',      'kwargs':{'MODELYEAR':'2025'}},
                     #    'FBP_CC_057_LoneTreeWide',
                     #    'FBP_CC_063_BrentwoodWide',
-                    #    'FBP_CC_067_WillowPassWide',
                     #    'FBP_CC_065_LaurelWide',
                     #    'FBP_SC_039_SR237WBWide',      
                     #    'FBP_AL_051_7St_Grade_Sep_West',
@@ -536,8 +535,10 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    {'name':'Transform_Valley_Link',                                                   'variants_include':['Alt2']},
                     #    {'name':'FBP_AL_021_South_Bay_Connect',                                            'variants_include':['Alt2']},
                     #    {'name':'Transform_AC_Transbay_Improvements',                                      'variants_include':['Alt2']},
-                    #    'FBP_SC_042_I280_Downtown_Access_Improvements'
-                        'SCL210002_US101_SR152_Interchange'
+                    #    'FBP_SC_042_I280_Downtown_Access_Improvements',
+                        'SCL210002_US101_SR152_Interchange',
+                        'FBP_CC_067_WillowPassWide',
+
                        ],
                 'trn':[
                     #    {'name':'FBP_MU_046_ACE_Freq_Inc',       'kwargs':{'MODELYEAR':'2040'}},
