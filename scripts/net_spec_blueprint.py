@@ -321,7 +321,6 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    'FBP_CC_063_BrentwoodWide',
                     #    'FBP_CC_067_WillowPassWide',
                     #    'FBP_CC_065_LaurelWide',
-                    #    'FBP_AL_062_TassajaraWide',
                     #    'FBP_SC_039_SR237WBWide',      
                     #    'FBP_AL_051_7St_Grade_Sep_West',
                     #    'FBP_SN_017_Arata_Int',
@@ -418,6 +417,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    'FBP_SL_022_SonomaBlvd_Diet',
                     #    'FBP_SM_027_US101_92',
                     #    'FBP_SM_007_ElCamino_CompleteStreets',
+                        'FBP_AL_062_TassajaraWide',
                        ],
                 'trn':[
                         {'name':'BP_PDA_Transit_Enhancements',                                       'branch':'PBA50plus_DBP'},
