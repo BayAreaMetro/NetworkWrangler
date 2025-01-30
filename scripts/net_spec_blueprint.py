@@ -1,6 +1,6 @@
 import os
 # MANDATORY. Set this to be the Project Name.
-# e.g. "RTP2021", "TIP2021", etc
+# e.g. "RTP2021", "TIP2021", etc (NetworkWranglerTest)
 PROJECT  = "Blueprint"
 
 # MANDATORY. Set this to be the git tag for checking out network projects.
@@ -503,7 +503,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    'FBP_CC_018_BRT_Brentwood',
                     #    'FBP_SC_043_I280_Mainline_Impr',
                     #    'MAJ_ElCaminoReal_BRT',
-                    #    'FBP_AL_042_I680_Stoneridge_Widening',
+                        'FBP_AL_042_I680_Stoneridge_Widening',
                     #    {'name':'FBP_CC_040_041_042_I680_SR4_Int_Phases_1_2_4_5', 'kwargs':{'PHASE':"'5'"},         'variants_exclude':['Alt1']},
                     #    {'name':'EXP_uncommitted_all',                            'kwargs':{'MODELYEAR':'2040'},    'variants_exclude':['Alt1']},
                     #    {'name':'EIR1_EXP_uncommitted_all',                       'kwargs':{'MODELYEAR':'2040'},    'variants_include':['Alt1']},
