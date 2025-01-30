@@ -1,7 +1,7 @@
 
 These are the Tableau template files used to generate project diffs when the `--create_project_diffs` or 
-`--create_project_diff` arguments are invoked via  [build_network_mtc.py](..\scripts\build_network_mtc.py) 
-or [build_network_mtc_blueprint.py](..\scripts\build_network_mtc_blueprint.py).
+`--create_project_diff` arguments are invoked via  [build_network_mtc.py](../scripts/build_network_mtc.py) 
+or [build_network_mtc_blueprint.py](../scripts/build_network_mtc_blueprint.py).
 
 In order to update them, I recommend the following process:
 
