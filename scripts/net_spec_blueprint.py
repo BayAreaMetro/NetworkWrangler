@@ -224,7 +224,6 @@ COMMITTED_PROJECTS = collections.OrderedDict([
     (2025, {
         'hwy':[{'name':'Bridge_Toll_Updates_rtp2025', 'kwargs':{'MODELYEAR':'2025'}},             
                'ALA150001_I680_SR84_Int_Wid',
-               'SOL110006_Jepson_1B_1C',
                'SCL190008_US101_DLC_Int_Imp',
                'CC_170061_Bus_On_Shoulder_680BRT',
                'MAJ_SCL050009_VTA_Eastridge_Extension',
@@ -248,7 +247,8 @@ COMMITTED_PROJECTS = collections.OrderedDict([
                {'name':'SF_MuniForward_Committed', 'kwargs':{'MODELYEAR':'2030'}},  # This applies for multiple years on the roadway side
                'EXP_Blueprint_NoProject',
                'FBP_SM_035_Peninsula_101_OnOffRamps',
-               'FBP_SC_082_US101_25_Interchang_committed'
+               'FBP_SC_082_US101_25_Interchang_committed',
+               'SOL110006_Jepson_1B_1C',
                ],
         'trn':[{'name':'BART_NoProject',             'branch':'PBA50plus_DBP'},
             ]
