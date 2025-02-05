@@ -21,11 +21,11 @@ ADDITONAL_ROADWAY_ATTRS = [
 COMMITTED_PROJECTS = collections.OrderedDict([
     (2015, {
         'hwy':['PROJ_attributes',  # adds PROJ attributes to NODE and LINK
-               {'name':'Bridge_Toll_Updates_2_2pct', 'kwargs':{'MODELYEAR':'2015'}}],
+               {'name':'Bridge_Toll_Updates_rtp2025', 'kwargs':{'MODELYEAR':'2015'}}],
         'trn':[]
     }),
     (2020, {
-        'hwy':[{'name':'Bridge_Toll_Updates_2_2pct', 'kwargs':{'MODELYEAR':'2020'}},
+        'hwy':[{'name':'Bridge_Toll_Updates_rtp2025', 'kwargs':{'MODELYEAR':'2020'}},
                {'name':'EXP_237B',                   'kwargs':{'FUTURE':"PBA50"}}, # todo: update this to support PBA50
                'EXP_580C',
                'EXP_680D',
@@ -58,7 +58,6 @@ COMMITTED_PROJECTS = collections.OrderedDict([
                'ALA050014_SR84_Widening',
                'ALA170011_BayBridge_HOV_Connectors',
                'ALA150047_TelegraphAve_Complete_Streets',
-               'SM_110047_SR92_ElCam_Ramp_Mod',
                'SCL190002_280_Foothill_improvement',
                'SCL190006_101SB_offramp_improvement',
                'I80_AdaptiveRampMetering',
@@ -101,7 +100,7 @@ COMMITTED_PROJECTS = collections.OrderedDict([
                 ],
     }),
     (2023, {
-        'hwy':[{'name':'Bridge_Toll_Updates_2_2pct', 'kwargs':{'MODELYEAR':'2023'}},
+        'hwy':[{'name':'Bridge_Toll_Updates_rtp2025', 'kwargs':{'MODELYEAR':'2023'}},
                'EXP_CC_050028_I680_SB_HOV_Completion',
                'EXP_101B1',
                'EXP_101B2',
@@ -222,9 +221,8 @@ COMMITTED_PROJECTS = collections.OrderedDict([
         ]
     }),
     (2025, {
-        'hwy':[{'name':'Bridge_Toll_Updates_2_2pct', 'kwargs':{'MODELYEAR':'2025'}},             
+        'hwy':[{'name':'Bridge_Toll_Updates_rtp2025', 'kwargs':{'MODELYEAR':'2025'}},             
                'ALA150001_I680_SR84_Int_Wid',
-               'SOL110006_Jepson_1B_1C',
                'SCL190008_US101_DLC_Int_Imp',
                'CC_170061_Bus_On_Shoulder_680BRT',
                'MAJ_SCL050009_VTA_Eastridge_Extension',
@@ -233,39 +231,48 @@ COMMITTED_PROJECTS = collections.OrderedDict([
                'MRN050034_101_MarinSonNarrows_Phase2',
                'EXP_Blueprint_NoProject',
                'EXP_SL030_I80_RedTopRd_to_I505',
-               'EXP_AL025_I680_SR84_to_Alcosta'
+               'EXP_AL025_I680_SR84_to_Alcosta',
+               'FBP_NP_044_Soscol_Junction',
                ],
         'trn':['SF_010028_Caltrain_Modernization',
                'SON090002_SMART_to_Windsor',
                'SON090002_SMART_NorthPetaluma',
                'MAJ_SCL050009_VTA_Eastridge_Extension',
                'MAJ_Geary_BRT_Phase2',
+               'SamTrans_2024_restore_expand_services',
+               'FBP_NP_044_Soscol_Junction',
                ]
     }),
     (2030, {
-        'hwy':[{'name':'Bridge_Toll_Updates_2_2pct', 'kwargs':{'MODELYEAR':'2030'}},
+        'hwy':[{'name':'Bridge_Toll_Updates_rtp2025', 'kwargs':{'MODELYEAR':'2030'}},
                {'name':'SF_MuniForward_Committed', 'kwargs':{'MODELYEAR':'2030'}},  # This applies for multiple years on the roadway side
-               'EXP_Blueprint_NoProject'],
+               'EXP_Blueprint_NoProject',
+               'FBP_SM_035_Peninsula_101_OnOffRamps',
+               'FBP_SC_082_US101_25_Interchang_committed',
+               'SOL110006_Jepson_1B_1C',
+               ],
         'trn':[{'name':'BART_NoProject',             'branch':'PBA50plus_DBP'},
             ]
     }),
     (2035, {
-        'hwy':[{'name':'Bridge_Toll_Updates_2_2pct', 'kwargs':{'MODELYEAR':'2035'}},
-               'EXP_Blueprint_NoProject'],
+        'hwy':[
+               'EXP_Blueprint_NoProject',
+               'SCL190011_I280_Wolfe_Interchange'
+            ],
         'trn':[]
     }),
     (2040, {
-        'hwy':[{'name':'Bridge_Toll_Updates_2_2pct', 'kwargs':{'MODELYEAR':'2040'}},
+        'hwy':[
                'EXP_Blueprint_NoProject'],
         'trn':[]
     }),
     (2045, {
-        'hwy':[{'name':'Bridge_Toll_Updates_2_2pct', 'kwargs':{'MODELYEAR':'2045'}},
+        'hwy':[
                'EXP_Blueprint_NoProject'],
         'trn':[]
     }),
     (2050, {
-        'hwy':[{'name':'Bridge_Toll_Updates_2_2pct', 'kwargs':{'MODELYEAR':'2050'}},
+        'hwy':[
                'EXP_Blueprint_NoProject'],
         'trn':[]
     })
@@ -285,14 +292,13 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
         }),
         (2025, {'hwy':[
                     #    {'name': 'RRSP_Alameda_Point_Transit_Improvements', 'kwargs':{'BUILT':"'unbuilt'"}, 'branch':'PBA50plus_DBP'},
-                    #    'MAJ_MTC050027_Berkeley_Ferry',
                     #    'MAJ_WETA_Service_Frequency_Increase',                       
                     #    {'name':'Transform_SR37_Widening_Interim',                                           'variants_exclude':['Alt1']},
                     #    'MAJ_SF_Congestion_Pricing',
                     #    'FBP_MU_041_Hovercraft_Pilot',
                         'BP_Vision_Zero',
                     #    'EXP_Blueprint',
-                    #    'MAJ_AC_Frequency_Improvement',
+
                     #    'FBP_MU_044_SouthSF_Ferry_Serv_Incr',
                     #    'FBP_MU_029_ACRapid_2025',
                     #    'RRSP_E14_Mission_Corridor',
@@ -300,7 +306,6 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    'FBP_CC_054_CrowCanyonWide',
                     #    'FBP_NP_038_TSP_On_SR29',
                     #    {'name':'FBP_CC_050_SR4_Operation_Improvements_EB',                                  'variants_exclude':['Alt1']},
-                    #    'FBP_NP_044_Soscol_Junction',
                     #    'FBP_SL_033_FairgroundsWide',
                     #    {'name':'MAJ_SOL070020_I80_I680_SR12_Int_2B_7','kwargs':{'PHASE':"'2B'"}},
                     #    {'name':'FBP_CC_040_041_042_I680_SR4_Int_Phases_1_2_4_5', 'kwargs':{'PHASE':"'1'"},  'variants_exclude':['Alt1']},
@@ -313,13 +318,9 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    {'name':'MAJ_Bay_Area_Forward_all',      'kwargs':{'MODELYEAR':'2025'}},
                     #    'FBP_CC_057_LoneTreeWide',
                     #    'FBP_CC_063_BrentwoodWide',
-                    #    'FBP_CC_067_WillowPassWide',
                     #    'FBP_CC_065_LaurelWide',
-                    #    'FBP_AL_062_TassajaraWide',
                     #    'FBP_SC_039_SR237WBWide',      
                     #    'FBP_AL_051_7St_Grade_Sep_West',
-                    #    'FBP_AL_044_I880_Whipple_Imps',
-                    #    'FBP_AL_055_DubBlvd_NCanyons_Ext',
                     #    'FBP_SN_017_Arata_Int',
                     #    'FBP_CC_017_Brentwood_Intermodal',
                     #    'FBP_SF_030_Balboa_Park_Area_2',
@@ -330,7 +331,6 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    'FBP_SL_053_PeabodyWide',
                     #    'FBP_SC_073_BlossomHill_101Wide',
                     #    'FBP_SC_082_US101_25_Interchange',
-                    #    'FBP_SM_035_Peninsula_101_OnOffRamps',
                     #    'FBP_CC_045_SanPabloDam_Interchange_Phase2',
                     #    'FBP_CC_030_OakleyAmtrak',
                     #    'STIP_ProduceAve',
@@ -347,9 +347,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                 'trn':[
                     #    'FBP_AL_001_NewarkFremPDA',
                     #    {'name':'FBP_MU_059_ACTransbay_Freq_Incr',                                         'variants_exclude':['Alt2']},
-                    #    'MAJ_AC_Frequency_Improvement',
                     #    {'name': 'RRSP_Alameda_Point_Transit_Improvements',  'kwargs':{'BUILT':"'unbuilt'"},'branch':'PBA50plus_DBP'},
-                    #    'MAJ_MTC050027_Berkeley_Ferry',
                     #    'MAJ_WETA_Service_Frequency_Increase',
                     #    {'name':'FBP_MU_046_ACE_Freq_Inc',       'kwargs':{'MODELYEAR':'2025'}},                       
                     #    {'name':'Transform_SR37_Widening_Interim',                                         'variants_exclude':['Alt1']},
@@ -362,7 +360,6 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    {'name':'GGT_Service_Imp',                                                         'branch':'PBA50plus_DBP'},
                     #    'FBP_MU_029_ACRapid_2025',
                     #    'RRSP_E14_Mission_Corridor',
-                    #    'FBP_NP_044_Soscol_Junction',
                     #    'MAJ_RedwoodCity_SF_Ferry',
                     #    {'name':'MAJ_SOL070020_I80_I680_SR12_Int_2B_7','kwargs':{'PHASE':"'2B'"}},
                     #    {'name':'FBP_SF_012_Geneva_Harney_BRT',  'kwargs':{'MODELYEAR':'2025'}},
@@ -401,23 +398,25 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    'FBP_CC_064_CaminoTassajaraWide',
                     #    'FBP_CC_066_CypressWide',
                     #    'FBP_SC_059_SR237EBWide',
+                    #    'FBP_AL_044_I880_Whipple_Imps',
+                    #    'ALA110002_I880_Industrial_Interchange',
                     #    'FBP_AL_064_UnionCityWide',
                     #    'FBP_SC_074_US101_BuenaVista_Int',
                     #    'EXP_Blueprint',
                     #    'FBP_SC_054_SR17_Corridor_Relief',
                     #    'FBP_AL_043_A_StreetWide',
                     #    'FBP_CC_061_062_West_Leland_Ext_Phases1_2',
-                    #    'FBP_SM_042_Hwy1_ManorDrive',
+                       'FBP_SM_042_Hwy1_ManorDrive',
                     #    'FBP_SL_042_Jepson_2B_2C',
                     #    'FBP_CC_024_Oakley_PNR_Tri_Delta',
                     #    'FBP_SC_083_US101_Zanker_Skyport_Interchange',
                     #    'FBP_SL_022_SonomaBlvd_Diet',
                     #    'FBP_SM_027_US101_92',
                     #    'FBP_SM_007_ElCamino_CompleteStreets',
+                        'FBP_AL_062_TassajaraWide',
                        ],
                 'trn':[
                         {'name':'BP_PDA_Transit_Enhancements',                                       'branch':'PBA50plus_DBP'},
-                    #    {'name':'FBP_SM_020_Regional_Express_Buses', 'kwargs':{'PHASE':"'Phase1_4Routes'"}},
                     #    {'name':'FBP_MU_046_ACE_Freq_Inc',       'kwargs':{'MODELYEAR':'2030'}},
                     #    'BART_Irvington_Infill',
                        'MAJ_REG090037_BART_Core_Cap',
@@ -435,6 +434,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    'FBP_CC_021_Ant_Mart_Herc_Ferry',
                     #    'FBP_AL_045_Oak_Ala_Access_Pr',
                     #    'FBP_CC_028_Hercules_Station',
+                        'MAJ_MTC050027_Berkeley_Ferry'
                     #    {'name':'FBP_SF_012_Geneva_Harney_BRT',  'kwargs':{'MODELYEAR':'2030'}},
                     #    {'name':'FBP_CC_15_23rd_St_BRT',         'kwargs':{'MODELYEAR':'2030'}},
                     #    'FBP_CC_024_Oakley_PNR_Tri_Delta',
@@ -450,6 +450,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    'BP_Tolls_On_Congested_Freeways_2035',
                         {'name': 'NGF_BlueprintSegmented'},
                         'BP_Vision_Zero',
+                        'MAJ_AC_Frequency_Improvement',
                     #    'RRSP_East_West_Connector',
                     #    'Transform_I680_Multimodal_Imp',
                     #    'FBP_SM_022_I380_Widening',
@@ -468,7 +469,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                        ],
                 'trn':[
                     #    {'name':'MAJ_MuniForward_Uncommitted',                                             'branch':'PBA50plus_DBP'},
-                    #    {'name':'FBP_SM_020_Regional_Express_Buses',    'kwargs':{'PHASE':"'Phase2_2Routes'"}},
+                        'MAJ_AC_Frequency_Improvement',
                     #    'RRSP_South_East_Waterfront_Transit_Imp',
                     #    'FBP_MU_062_ReX_Red',
                     #    'Transform_I680_Multimodal_Imp',
@@ -490,10 +491,11 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
         }),
         (2040, {'hwy':[
                         'BP_Vision_Zero',
+                        'FBP_AL_055_DubBlvd_NCanyons_Ext',
                     #    'FBP_SC_050_I680_Montague_Int_Imp', 
                     #    'FBP_MU_029_ACRapid_2040',
-                    #    'FBP_NP_074_SoscolWide',
-                    #    'FBP_CC_059_PittAntiochWide',
+                        'FBP_NP_074_SoscolWide',
+                        'FBP_CC_059_PittAntiochWide',
                     #    {'name':'FBP_CC_051_SR4_Operation_Improvements_WB',                                'variants_exclude':['Alt1']},
                     #    'FBP_CC_037_680_AuxLanes',
                     #    {'name':'RRSP_EC_Cap_Imp_ECR_Bus',                                                 'branch':'PBA50plus_DBP'},
@@ -501,7 +503,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    'FBP_NP_033_Napa_PNR_Lots',
                     #    'FBP_CC_018_BRT_Brentwood',
                     #    'FBP_SC_043_I280_Mainline_Impr',
-                    #    'MAJ_ElCaminoReal_BRT',
+                       'MAJ_ElCaminoReal_BRT',
                     #    'FBP_AL_042_I680_Stoneridge_Widening',
                     #    {'name':'FBP_CC_040_041_042_I680_SR4_Int_Phases_1_2_4_5', 'kwargs':{'PHASE':"'5'"},         'variants_exclude':['Alt1']},
                     #    {'name':'EXP_uncommitted_all',                            'kwargs':{'MODELYEAR':'2040'},    'variants_exclude':['Alt1']},
@@ -515,7 +517,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    'FBP_SC_094_LawrenceWide',
                     #    'FBP_NP_066_Newell_Dr',
                     #    'EXP_Blueprint',
-                    #    'FBP_AL_052_AutoMallWide',
+                        'FBP_AL_052_AutoMallWide',
                     #    'FBP_CC_038_SR242_Clayton_OnOffRamps',
                     #    'FBP_SC_047_I280_Winchester_OffRamp',
                     #    'FBP_SC_076_US101_Taylor_Interchange',
@@ -528,7 +530,10 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    {'name':'Transform_Valley_Link',                                                   'variants_include':['Alt2']},
                     #    {'name':'FBP_AL_021_South_Bay_Connect',                                            'variants_include':['Alt2']},
                     #    {'name':'Transform_AC_Transbay_Improvements',                                      'variants_include':['Alt2']},
-                    #    'FBP_SC_042_I280_Downtown_Access_Improvements'
+                    #    'FBP_SC_042_I280_Downtown_Access_Improvements',
+                        'SCL210002_US101_SR152_Interchange',
+                        'FBP_CC_067_WillowPassWide',
+
                        ],
                 'trn':[
                     #    {'name':'FBP_MU_046_ACE_Freq_Inc',       'kwargs':{'MODELYEAR':'2040'}},
@@ -544,7 +549,6 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    'FBP_SC_043_I280_Mainline_Impr',
                     #    'FBP_CC_018_BRT_Brentwood',
                     #    {'name':'FBP_SF_012_Geneva_Harney_BRT',  'kwargs':{'MODELYEAR':'2040'}},
-                    #    'MAJ_ElCaminoReal_BRT',
                     #    {'name':'FBP_MU_064_SR37_LongTerm',                                                'variants_exclude':['Alt1']},
                     #    'FBP_NP_051_Airport_Junction',
                     #    {'name':'FBP_MU_056_Dumbarton_GRT',                                                'variants_exclude':['Alt2']},
@@ -570,6 +574,8 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    'EXP_Blueprint',
                        ],
                 'trn':[
+                    {'name':'FBP_SM_020_Regional_Express_Buses', 'kwargs':{'PHASE':"'Phase1_4Routes'"}},
+                    {'name':'FBP_SM_020_Regional_Express_Buses',    'kwargs':{'PHASE':"'Phase2_2Routes'"}},
                     #    {'name':'FBP_MU_046_ACE_Freq_Inc',       'kwargs':{'MODELYEAR':'2045'}},
                     #    'FBP_SC_106_VTA_LRT_Modernization',
                        ]

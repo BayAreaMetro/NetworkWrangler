@@ -124,17 +124,20 @@ class HighwayNetwork(Network):
             return
         
         if projectsubdir:
-            applyDir      = os.path.join(parentdir, networkdir, projectsubdir)
-            applyScript   = "apply.s"
-            descfilename  = os.path.join(parentdir, networkdir, projectsubdir, "desc.txt")
-            turnsfilename = os.path.join(parentdir, networkdir, projectsubdir, "turns.pen")
-            tollsfilename = os.path.join(parentdir, networkdir, projectsubdir, "tolls.csv")
+            applyDir            = os.path.join(parentdir, networkdir, projectsubdir)
+            applyScript         = "apply.s"
+            descfilename        = os.path.join(parentdir, networkdir, projectsubdir, "desc.txt")
+            turnsfilename       = os.path.join(parentdir, networkdir, projectsubdir, "turns.pen")
+            tollsfilename       = os.path.join(parentdir, networkdir, projectsubdir, "tolls.csv")
+            deletetollsfilename = os.path.join(parentdir, networkdir, projectsubdir, "tolls_del.csv")
+
         else:
-            applyDir      = os.path.join(parentdir, networkdir)
-            applyScript   = "apply.s"
-            descfilename  = os.path.join(parentdir, networkdir, "desc.txt")
-            turnsfilename = os.path.join(parentdir, networkdir, "turns.pen")
-            tollsfilename = os.path.join(parentdir, networkdir, "tolls.csv")
+            applyDir            = os.path.join(parentdir, networkdir)
+            applyScript         = "apply.s"
+            descfilename        = os.path.join(parentdir, networkdir, "desc.txt")
+            turnsfilename       = os.path.join(parentdir, networkdir, "turns.pen")
+            tollsfilename       = os.path.join(parentdir, networkdir, "tolls.csv")
+            deletetollsfilename = os.path.join(parentdir, networkdir, "tolls_del.csv")
 
         # read the description
         desc = None
@@ -219,7 +222,10 @@ class HighwayNetwork(Network):
 
         # merge tolls.csv
         if os.path.exists(tollsfilename):
-            self.mergeTolls("tolls.csv", tollsfilename)
+            if os.path.exists(deletetollsfilename):
+                self.mergeTolls("tolls.csv", tollsfilename, deletetollsfilename)
+            else:
+                self.mergeTolls("tolls.csv", tollsfilename)
 
         WranglerLogger.debug("")
         WranglerLogger.debug("")
@@ -239,11 +245,11 @@ class HighwayNetwork(Network):
                                projectname=(networkdir + "\\" + projectsubdir if projectsubdir else networkdir),
                                year=year, projectdesc=desc, county=county)
 
-    def mergeTolls(self, tollsfile, newtollsfile):
+    def mergeTolls(self, tollsfile, newtollsfile, deletetollsfile=None):
         """
         Merge the given tolls file with the existing.
         """
-        WranglerLogger.debug("mergeTolls({},{}) called".format(tollsfile, newtollsfile))     
+        WranglerLogger.debug("mergeTolls({},{}) called".format(tollsfile, newtollsfile, deletetollsfile))     
 
         # read the original file -- fac_index is the key
         tolls_config = collections.OrderedDict()
@@ -276,12 +282,22 @@ class HighwayNetwork(Network):
             tolls_config[row_dict["fac_index"]] = row_dict
         newtolls.close()
 
+        delete_fac_index = []
+        if deletetollsfile != None:
+            deletetolls        = open(deletetollsfile, 'r')   
+            newtolls           = open(newtollsfile, 'r')
+            deletetolls_reader = csv.reader(deletetolls, skipinitialspace=True)
+            for row in deletetolls_reader:
+                delete_fac_index.append(row[1])
+
         # write it out
+        # tolls_config_sorted = collections.OrderedDict(sorted(tolls_config.items()))
         tolls = open(tollsfile, mode='w', newline='')  # newline arg passed because of https://docs.python.org/3/library/csv.html#id3
         tolls_writer = csv.writer(tolls)
         tolls_writer.writerow(fieldnames)
         for fac_index, row in tolls_config.items():
-            tolls_writer.writerow(row.values())
+            if not fac_index in delete_fac_index:
+                tolls_writer.writerow(row.values())
         tolls.close()
 
     def validateTurnPens(self, CubeNetFile, turnPenReportFile=None, suggestCorrectLink=True):
