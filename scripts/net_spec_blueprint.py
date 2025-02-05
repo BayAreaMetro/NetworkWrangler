@@ -292,7 +292,6 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
         }),
         (2025, {'hwy':[
                     #    {'name': 'RRSP_Alameda_Point_Transit_Improvements', 'kwargs':{'BUILT':"'unbuilt'"}, 'branch':'PBA50plus_DBP'},
-                    #    'MAJ_MTC050027_Berkeley_Ferry',
                     #    'MAJ_WETA_Service_Frequency_Increase',                       
                     #    {'name':'Transform_SR37_Widening_Interim',                                           'variants_exclude':['Alt1']},
                     #    'MAJ_SF_Congestion_Pricing',
@@ -349,7 +348,6 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    'FBP_AL_001_NewarkFremPDA',
                     #    {'name':'FBP_MU_059_ACTransbay_Freq_Incr',                                         'variants_exclude':['Alt2']},
                     #    {'name': 'RRSP_Alameda_Point_Transit_Improvements',  'kwargs':{'BUILT':"'unbuilt'"},'branch':'PBA50plus_DBP'},
-                    #    'MAJ_MTC050027_Berkeley_Ferry',
                     #    'MAJ_WETA_Service_Frequency_Increase',
                     #    {'name':'FBP_MU_046_ACE_Freq_Inc',       'kwargs':{'MODELYEAR':'2025'}},                       
                     #    {'name':'Transform_SR37_Widening_Interim',                                         'variants_exclude':['Alt1']},
@@ -416,7 +414,6 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    'FBP_SM_027_US101_92',
                     #    'FBP_SM_007_ElCamino_CompleteStreets',
                         'FBP_AL_062_TassajaraWide',
-                        'MAJ_MTC050027_Berkeley_Ferry',
                        ],
                 'trn':[
                         {'name':'BP_PDA_Transit_Enhancements',                                       'branch':'PBA50plus_DBP'},
