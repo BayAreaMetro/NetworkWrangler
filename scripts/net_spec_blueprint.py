@@ -231,14 +231,16 @@ COMMITTED_PROJECTS = collections.OrderedDict([
                'MRN050034_101_MarinSonNarrows_Phase2',
                'EXP_Blueprint_NoProject',
                'EXP_SL030_I80_RedTopRd_to_I505',
-               'EXP_AL025_I680_SR84_to_Alcosta'
+               'EXP_AL025_I680_SR84_to_Alcosta',
+               'FBP_NP_044_Soscol_Junction',
                ],
         'trn':['SF_010028_Caltrain_Modernization',
                'SON090002_SMART_to_Windsor',
                'SON090002_SMART_NorthPetaluma',
                'MAJ_SCL050009_VTA_Eastridge_Extension',
                'MAJ_Geary_BRT_Phase2',
-               'SamTrans_2024_restore_expand_services'
+               'SamTrans_2024_restore_expand_services',
+               'FBP_NP_044_Soscol_Junction',
                ]
     }),
     (2030, {
@@ -305,7 +307,6 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    'FBP_CC_054_CrowCanyonWide',
                     #    'FBP_NP_038_TSP_On_SR29',
                     #    {'name':'FBP_CC_050_SR4_Operation_Improvements_EB',                                  'variants_exclude':['Alt1']},
-                    #    'FBP_NP_044_Soscol_Junction',
                     #    'FBP_SL_033_FairgroundsWide',
                     #    {'name':'MAJ_SOL070020_I80_I680_SR12_Int_2B_7','kwargs':{'PHASE':"'2B'"}},
                     #    {'name':'FBP_CC_040_041_042_I680_SR4_Int_Phases_1_2_4_5', 'kwargs':{'PHASE':"'1'"},  'variants_exclude':['Alt1']},
@@ -361,7 +362,6 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    {'name':'GGT_Service_Imp',                                                         'branch':'PBA50plus_DBP'},
                     #    'FBP_MU_029_ACRapid_2025',
                     #    'RRSP_E14_Mission_Corridor',
-                    #    'FBP_NP_044_Soscol_Junction',
                     #    'MAJ_RedwoodCity_SF_Ferry',
                     #    {'name':'MAJ_SOL070020_I80_I680_SR12_Int_2B_7','kwargs':{'PHASE':"'2B'"}},
                     #    {'name':'FBP_SF_012_Geneva_Harney_BRT',  'kwargs':{'MODELYEAR':'2025'}},
