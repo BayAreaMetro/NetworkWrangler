@@ -58,7 +58,6 @@ COMMITTED_PROJECTS = collections.OrderedDict([
                'ALA050014_SR84_Widening',
                'ALA170011_BayBridge_HOV_Connectors',
                'ALA150047_TelegraphAve_Complete_Streets',
-               'SM_110047_SR92_ElCam_Ramp_Mod',
                'SCL190002_280_Foothill_improvement',
                'SCL190006_101SB_offramp_improvement',
                'I80_AdaptiveRampMetering',
