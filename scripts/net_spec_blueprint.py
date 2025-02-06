@@ -37,7 +37,6 @@ COMMITTED_PROJECTS = collections.OrderedDict([
                'ALA130006_Dublin_Blvd_widening',
                'ALA130014_7th_St_road_diet',
                'ALA130026_Shattuck_Complete_Streets',
-               'ALA170049_Central_AVE_Safety_Improvements',
                'ALA150004_EastBay_BRT',
                'CC_130001_BaileyRd_SR4',
                'CC_130046_I680_SR4_Int_Rec',
@@ -251,6 +250,7 @@ COMMITTED_PROJECTS = collections.OrderedDict([
                'FBP_SC_082_US101_25_Interchang_committed',
                'SOL110006_Jepson_1B_1C',
                'ALA210028_I80_HOV_Bus_Lane_Ext',
+               'ALA170049_Central_AVE_Safety_Improvements',
                ],
         'trn':[{'name':'BART_NoProject',             'branch':'PBA50plus_DBP'},
             ]
