@@ -399,7 +399,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    'FBP_CC_064_CaminoTassajaraWide',
                     #    'FBP_CC_066_CypressWide',
                     #    'FBP_SC_059_SR237EBWide',
-                    #    'FBP_AL_044_I880_Whipple_Imps',
+                       'FBP_AL_044_I880_Whipple_Imps',
                     #    'ALA110002_I880_Industrial_Interchange',
                     #    'FBP_AL_064_UnionCityWide',
                     #    'FBP_SC_074_US101_BuenaVista_Int',
