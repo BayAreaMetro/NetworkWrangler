@@ -250,6 +250,7 @@ COMMITTED_PROJECTS = collections.OrderedDict([
                'FBP_SM_035_Peninsula_101_OnOffRamps',
                'FBP_SC_082_US101_25_Interchang_committed',
                'SOL110006_Jepson_1B_1C',
+               'ALA210028_I80_HOV_Bus_Lane_Ext',
                ],
         'trn':[{'name':'BART_NoProject',             'branch':'PBA50plus_DBP'},
             ]
