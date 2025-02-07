@@ -419,6 +419,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                 'trn':[
                         {'name':'BP_PDA_Transit_Enhancements',                                       'branch':'PBA50plus_DBP'},
                     #    {'name':'FBP_MU_046_ACE_Freq_Inc',       'kwargs':{'MODELYEAR':'2030'}},
+                    #    'MAJ_BRT030001_BART_to_SanJose',
                     #    'BART_Irvington_Infill',
                        'MAJ_REG090037_BART_Core_Cap',
                     #    {'name':'FBP_AL_021_South_Bay_Connect',                                            'variants_exclude':['Alt2']},
@@ -542,7 +543,6 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    'FBP_MU_029_ACRapid_2040',
                     #    {'name':'RRSP_EC_Cap_Imp_ECR_Bus',                                                 'branch':'PBA50plus_DBP'},
                     #    'MAJ_SJC_People_Mover',
-                    #    'MAJ_BRT030001_BART_to_SanJose',
                     #    'FBP_NP_028_NapaVineRegRoutesFrequency',
                     #    'FBP_NP_034_NapaVineRegExpServiceHrs',
                     #    'FBP_NP_029_NapaVineLocExpServiceHrs',
