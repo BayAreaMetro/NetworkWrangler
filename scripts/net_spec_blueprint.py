@@ -232,6 +232,7 @@ COMMITTED_PROJECTS = collections.OrderedDict([
                'EXP_SL030_I80_RedTopRd_to_I505',
                'EXP_AL025_I680_SR84_to_Alcosta',
                'FBP_NP_044_Soscol_Junction',
+               'ALA170011_BayBridge_HOV_Connectors_phase2'
                ],
         'trn':['SF_010028_Caltrain_Modernization',
                'SON090002_SMART_to_Windsor',
@@ -400,7 +401,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    'FBP_CC_066_CypressWide',
                     #    'FBP_SC_059_SR237EBWide',
                        'FBP_AL_044_I880_Whipple_Imps',
-                    #    'ALA110002_I880_Industrial_Interchange',
+                       'ALA110002_I880_Industrial_Interchange',
                     #    'FBP_AL_064_UnionCityWide',
                     #    'FBP_SC_074_US101_BuenaVista_Int',
                     #    'EXP_Blueprint',
