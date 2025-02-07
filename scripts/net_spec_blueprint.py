@@ -376,7 +376,6 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                        ]
         }),
         (2030, {'hwy':[
-                    #    'MAJ_SanPablo_BRT',
                     #    'BP_Tolls_On_Congested_Freeways_2030',
                         'BP_Vision_Zero',
                     #    {'name':'FBP_AL_021_South_Bay_Connect',                                            'variants_exclude':['Alt2']},
@@ -425,7 +424,6 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    {'name':'FBP_AL_021_South_Bay_Connect',                                            'variants_exclude':['Alt2']},
                     #    'FBP_MU_049_Caltrain_8TPHPD',
                     #    'FBP_MU_061_ReX_Green',
-                    #    'MAJ_SanPablo_BRT',
                     #    'FBP_MU_044_Richmond_Ferry_Serv_Incr',
                     #    {'name':'Transform_Valley_Link',                                                   'variants_exclude':['Alt2']},
                     #    'FBP_SF_028_SF_Express_Bus_On_Exp_Lanes',
@@ -447,6 +445,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                        ]
         }),
         (2035, {'hwy':[
+                        'MAJ_SanPablo_BRT',
                     #    {'name':'MAJ_MuniForward_Uncommitted',                                             'branch':'PBA50plus_DBP'},
                     #    'MAJ_Treasure_Island_Congestion_Pricing',
                     #    'BP_Tolls_On_Congested_Freeways_2035',
@@ -472,6 +471,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                 'trn':[
                     #    {'name':'MAJ_MuniForward_Uncommitted',                                             'branch':'PBA50plus_DBP'},
                         'MAJ_AC_Frequency_Improvement',
+                        'MAJ_SanPablo_BRT',
                     #    'RRSP_South_East_Waterfront_Transit_Imp',
                     #    'FBP_MU_062_ReX_Red',
                     #    'Transform_I680_Multimodal_Imp',
