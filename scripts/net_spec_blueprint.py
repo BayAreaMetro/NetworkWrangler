@@ -415,6 +415,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    'FBP_SM_027_US101_92',
                     #    'FBP_SM_007_ElCamino_CompleteStreets',
                         'FBP_AL_062_TassajaraWide',
+                        'Dumbarton_Bridge_Bus_Service',
                        ],
                 'trn':[
                         {'name':'BP_PDA_Transit_Enhancements',                                       'branch':'PBA50plus_DBP'},
@@ -434,14 +435,15 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    'FBP_CC_021_Ant_Mart_Herc_Ferry',
                     #    'FBP_AL_045_Oak_Ala_Access_Pr',
                     #    'FBP_CC_028_Hercules_Station',
-                        'MAJ_MTC050027_Berkeley_Ferry'
+                        'MAJ_MTC050027_Berkeley_Ferry',
                     #    {'name':'FBP_SF_012_Geneva_Harney_BRT',  'kwargs':{'MODELYEAR':'2030'}},
                     #    {'name':'FBP_CC_15_23rd_St_BRT',         'kwargs':{'MODELYEAR':'2030'}},
                     #    'FBP_CC_024_Oakley_PNR_Tri_Delta',
                     #    {'name':'EIR1_Freq_Boosts',              'kwargs':{'MODELYEAR':'2030'},            'variants_include':['Alt1']},
                     #    {'name':'EIR2_HRA_Freq_Incr',            'kwargs':{'MODELYEAR':'2030'},            'variants_include':['Alt2']},
                     #    {'name':'EIR2_PDA_Freq_Incr',            'kwargs':{'MODELYEAR':'2030'},            'variants_include':['Alt2']},
-                    #    {'name':'EIR2_Fix_Alt2',                 'kwargs':{'MODELYEAR':'2030'},            'variants_include':['Alt2']}
+                    #    {'name':'EIR2_Fix_Alt2',                 'kwargs':{'MODELYEAR':'2030'},            'variants_include':['Alt2']},
+                        'Dumbarton_Bridge_Bus_Service',
                        ]
         }),
         (2035, {'hwy':[
