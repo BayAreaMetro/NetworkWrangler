@@ -452,7 +452,6 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    'BP_Tolls_On_Congested_Freeways_2035',
                         {'name': 'NGF_BlueprintSegmented'},
                         'BP_Vision_Zero',
-                        'MAJ_AC_Frequency_Improvement',
                     #    'RRSP_East_West_Connector',
                     #    'Transform_I680_Multimodal_Imp',
                     #    'FBP_SM_022_I380_Widening',
