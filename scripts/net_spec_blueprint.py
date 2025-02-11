@@ -390,7 +390,6 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    {'name':'EXP_uncommitted_all',              'kwargs':{'MODELYEAR':'2030'},         'variants_exclude':['Alt1']},
                     #    {'name':'EXP_uncommitted_noAllLaneTolling', 'kwargs':{'MODELYEAR':'2030'},},
                     #    {'name':'EIR1_EXP_uncommitted_all',         'kwargs':{'MODELYEAR':'2030'},         'variants_include':['Alt1']},
-                    #    'FBP_SC_104_OaklandWide',
                     #    {'name':'FBP_CC_15_23rd_St_BRT',            'kwargs':{'MODELYEAR':'2030'}},
                     #    {'name':'FBP_SF_012_Geneva_Harney_BRT',     'kwargs':{'MODELYEAR':'2030'}},
                     #    {'name':'MAJ_Bay_Area_Forward_all',         'kwargs':{'MODELYEAR':'2030'}},
@@ -535,6 +534,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         'FBP_CC_067_WillowPassWide',
                         'FBP_AL_043_A_StreetWide',
                         'FBP_SL_033_FairgroundsWide',
+                        'FBP_SC_104_OaklandWide',
 
                        ],
                 'trn':[
