@@ -409,7 +409,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    'FBP_CC_024_Oakley_PNR_Tri_Delta',
                     #    'FBP_SC_083_US101_Zanker_Skyport_Interchange',
                     #    'FBP_SL_022_SonomaBlvd_Diet',
-                    #    'FBP_SM_027_US101_92',
+                        'FBP_SM_027_US101_92',
                     #    'FBP_SM_007_ElCamino_CompleteStreets',
                         'FBP_AL_062_TassajaraWide',
                         'Dumbarton_Bridge_Bus_Service',
