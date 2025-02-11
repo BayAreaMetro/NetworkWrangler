@@ -464,6 +464,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    'FBP_NP_079_Trower_Ext',
                     #    'EXP_Blueprint',
                     #    {'name':'EIR1_No_SR37',                                                            'variants_include':['Alt1']},
+                        'FBP_SM_027_US101_92_directConnector'
                        ],
                 'trn':[
                     #    {'name':'MAJ_MuniForward_Uncommitted',                                             'branch':'PBA50plus_DBP'},
