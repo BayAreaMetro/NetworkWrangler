@@ -308,7 +308,6 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    'FBP_CC_054_CrowCanyonWide',
                     #    'FBP_NP_038_TSP_On_SR29',
                     #    {'name':'FBP_CC_050_SR4_Operation_Improvements_EB',                                  'variants_exclude':['Alt1']},
-                    #    'FBP_SL_033_FairgroundsWide',
                     #    {'name':'MAJ_SOL070020_I80_I680_SR12_Int_2B_7','kwargs':{'PHASE':"'2B'"}},
                     #    {'name':'FBP_CC_040_041_042_I680_SR4_Int_Phases_1_2_4_5', 'kwargs':{'PHASE':"'1'"},  'variants_exclude':['Alt1']},
                     #    {'name':'FBP_CC_040_041_042_I680_SR4_Int_Phases_1_2_4_5', 'kwargs':{'PHASE':"'2'"},  'variants_exclude':['Alt1']},
