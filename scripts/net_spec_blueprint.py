@@ -9,7 +9,8 @@ TAG = "HEAD"              # Use this tag if you want NetworkWrangler to use the 
 
 # roadway attributes to include; used by HighwayNetwork.writeShapefile() and HighwayNetwork.reportDiff()
 ADDITONAL_ROADWAY_ATTRS = [
-    'PROJ', # added by PROJ_attributes
+    'PROJ',           # added by PROJ_attributes
+    'PBA2050_RTP_ID', # added by PBA2050_RTP_ID_attributes
 ]
 
 # A project can either be a simple string, or it can be
