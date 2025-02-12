@@ -412,6 +412,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    'FBP_SM_007_ElCamino_CompleteStreets',
                         'FBP_AL_062_TassajaraWide',
                         'Dumbarton_Bridge_Bus_Service',
+                        'SCL210026_Julian_James_Conversion',
                        ],
                 'trn':[
                         {'name':'BP_PDA_Transit_Enhancements',                                       'branch':'PBA50plus_DBP'},
