@@ -22,6 +22,7 @@ ADDITONAL_ROADWAY_ATTRS = [
 COMMITTED_PROJECTS = collections.OrderedDict([
     (2015, {
         'hwy':['PROJ_attributes',  # adds PROJ attributes to NODE and LINK
+               'PBA2050_RTP_ID_attributes', # adds PBA2050_RTP_ID to NODE and LINK
                {'name':'Bridge_Toll_Updates_rtp2025', 'kwargs':{'MODELYEAR':'2015'}}],
         'trn':[]
     }),
