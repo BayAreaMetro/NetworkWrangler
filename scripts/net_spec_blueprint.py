@@ -526,7 +526,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    'FBP_SC_047_I280_Winchester_OffRamp',
                     #    'FBP_SC_076_US101_Taylor_Interchange',
                     #    'FBP_NP_051_Airport_Junction',
-                    #    'FBP_SC_101_BrokawBridgeWide',
+                        'FBP_SC_101_BrokawBridgeWide',
                     #    'FBP_SC_081_US101_SR237',
                     #    'FBP_SC_088_Envision_Expwy',
                     #    {'name':'FBP_MU_056_Dumbarton_GRT',                                                'variants_exclude':['Alt2']},
