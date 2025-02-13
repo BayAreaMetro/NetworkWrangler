@@ -363,7 +363,6 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    {'name':'GGT_Service_Imp',                                                         'branch':'PBA50plus_DBP'},
                     #    'FBP_MU_029_ACRapid_2025',
                     #    'RRSP_E14_Mission_Corridor',
-                    #    'MAJ_RedwoodCity_SF_Ferry',
                     #    {'name':'MAJ_SOL070020_I80_I680_SR12_Int_2B_7','kwargs':{'PHASE':"'2B'"}},
                     #    {'name':'FBP_SF_012_Geneva_Harney_BRT',  'kwargs':{'MODELYEAR':'2025'}},
                     #    {'name':'FBP_CC_15_23rd_St_BRT',         'kwargs':{'MODELYEAR':'2025'}},
@@ -583,6 +582,8 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                 'trn':[
                     {'name':'FBP_SM_020_Regional_Express_Buses', 'kwargs':{'PHASE':"'Phase1_4Routes'"}},
                     {'name':'FBP_SM_020_Regional_Express_Buses',    'kwargs':{'PHASE':"'Phase2_2Routes'"}},
+                        'MAJ_RedwoodCity_SF_Ferry',
+
                     #    {'name':'FBP_MU_046_ACE_Freq_Inc',       'kwargs':{'MODELYEAR':'2045'}},
                     #    'FBP_SC_106_VTA_LRT_Modernization',
                        ]
