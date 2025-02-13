@@ -421,7 +421,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         {'name':'BP_PDA_Transit_Enhancements',                                       'branch':'PBA50plus_DBP'},
                     #    {'name':'FBP_MU_046_ACE_Freq_Inc',       'kwargs':{'MODELYEAR':'2030'}},
                     #    'BART_Irvington_Infill',
-                       'MAJ_REG090037_BART_Core_Cap',
+                    #    'MAJ_REG090037_BART_Core_Cap',
                     #    {'name':'FBP_AL_021_South_Bay_Connect',                                            'variants_exclude':['Alt2']},
                     #    'FBP_MU_049_Caltrain_8TPHPD',
                     #    'FBP_MU_061_ReX_Green',
