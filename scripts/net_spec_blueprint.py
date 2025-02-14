@@ -477,7 +477,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    'FBP_MU_062_ReX_Red',
                     #    'Transform_I680_Multimodal_Imp',
                     #    'Transform_SeamlessTransit',
-                        'MAJ_Treasure_Island_Congestion_Pricing',
+                        'SF_110049_Treasure_Island_Congestion_Pricing',
                     #    'RRSP_East_West_Connector',
                     #    'FBP_NP_079_Trower_Ext',
                     #    {'name':'MAJ_SOL070020_I80_I680_SR12_Int_2B_7', 'kwargs':{'PHASE':"'3'"},          'variants_exclude':['Alt1']},
