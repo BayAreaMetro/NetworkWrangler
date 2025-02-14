@@ -469,7 +469,11 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    'FBP_NP_079_Trower_Ext',
                     #    'EXP_Blueprint',
                     #    {'name':'EIR1_No_SR37',                                                            'variants_include':['Alt1']},
-                        'FBP_SM_027_US101_92_directConnector'
+                        'FBP_SM_027_US101_92_directConnector',
+                         'NGF_r2_EL_to_HOV2',                          # All-Lane-Tolling: Convert EL to HOV2
+                    #     'NGF_HOV3_to_HOV2',                           # All-Lane-Tolling: Convert HOV3 to HOV2
+                         'NGF_r2_ALT_on_All_Fwys',                     # All-Lane-Tolling on All Freeways
+                         'NGF_BlueprintSegmented',                     # All-Lane-Tolling: Assign the congested part of the network with special tollclasses
                        ],
                 'trn':[
                     #    {'name':'MAJ_MuniForward_Uncommitted',                                             'branch':'PBA50plus_DBP'},
