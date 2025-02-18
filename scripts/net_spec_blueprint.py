@@ -417,6 +417,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         'EXP_CC_I680NB_Livorna_to_Arthur',
                         'EXP_SC_US101_I880_to_SR85_Phase6',
                         'EXP_AL025_I680_SR84_to_Alcosta',
+                        'FBP_CC_028_Hercules_Station'
                        ],
                 'trn':[
                         {'name':'BP_PDA_Transit_Enhancements',                                       'branch':'PBA50plus_DBP'},
@@ -435,7 +436,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    'FBP_CC_036_I80_ExpBus_Impr',
                     #    'FBP_CC_021_Ant_Mart_Herc_Ferry',
                     #    'FBP_AL_045_Oak_Ala_Access_Pr',
-                    #    'FBP_CC_028_Hercules_Station',
+                       'FBP_CC_028_Hercules_Station',
                         'MAJ_MTC050027_Berkeley_Ferry',
                     #    {'name':'FBP_SF_012_Geneva_Harney_BRT',  'kwargs':{'MODELYEAR':'2030'}},
                     #    {'name':'FBP_CC_15_23rd_St_BRT',         'kwargs':{'MODELYEAR':'2030'}},
