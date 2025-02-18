@@ -545,7 +545,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         'FBP_AL_043_A_StreetWide',
                         'FBP_SL_033_FairgroundsWide',
                         'FBP_SC_104_OaklandWide',
-                    #    'FBP_CC_064_CaminoTassajaraWide',
+                        'FBP_CC_064_CaminoTassajaraWide',
 
                        ],
                 'trn':[
