@@ -394,7 +394,6 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    {'name':'FBP_CC_15_23rd_St_BRT',            'kwargs':{'MODELYEAR':'2030'}},
                     #    {'name':'FBP_SF_012_Geneva_Harney_BRT',     'kwargs':{'MODELYEAR':'2030'}},
                     #    {'name':'MAJ_Bay_Area_Forward_all',         'kwargs':{'MODELYEAR':'2030'}},
-                    #    'FBP_CC_064_CaminoTassajaraWide',
                     #    'FBP_CC_066_CypressWide',
                     #    'FBP_SC_059_SR237EBWide',
                        'FBP_AL_044_I880_Whipple_Imps',
@@ -546,6 +545,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         'FBP_AL_043_A_StreetWide',
                         'FBP_SL_033_FairgroundsWide',
                         'FBP_SC_104_OaklandWide',
+                    #    'FBP_CC_064_CaminoTassajaraWide',
 
                        ],
                 'trn':[
