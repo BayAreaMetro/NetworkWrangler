@@ -448,7 +448,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
         (2035, {'hwy':[
                         'MAJ_SanPablo_BRT',
                     #    {'name':'MAJ_MuniForward_Uncommitted',                                             'branch':'PBA50plus_DBP'},
-                    #    'MAJ_Treasure_Island_Congestion_Pricing',
+                        'SF_110049_Treasure_Island_Congestion_Pricing',
                     #    'BP_Tolls_On_Congested_Freeways_2035',
                         {'name': 'NGF_BlueprintSegmented'},
                         'BP_Vision_Zero',
