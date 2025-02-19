@@ -419,7 +419,6 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                 'trn':[
                         {'name':'BP_PDA_Transit_Enhancements',                                       'branch':'PBA50plus_DBP'},
                     #    {'name':'FBP_MU_046_ACE_Freq_Inc',       'kwargs':{'MODELYEAR':'2030'}},
-                    #    'BART_Irvington_Infill',
                     #    'MAJ_REG090037_BART_Core_Cap',
                     #    {'name':'FBP_AL_021_South_Bay_Connect',                                            'variants_exclude':['Alt2']},
                     #    'FBP_MU_049_Caltrain_8TPHPD',
@@ -590,7 +589,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     {'name':'FBP_SM_020_Regional_Express_Buses', 'kwargs':{'PHASE':"'Phase1_4Routes'"}},
                     {'name':'FBP_SM_020_Regional_Express_Buses',    'kwargs':{'PHASE':"'Phase2_2Routes'"}},
                         'MAJ_RedwoodCity_SF_Ferry',
-
+                        'BART_Irvington_Infill',
                     #    {'name':'FBP_MU_046_ACE_Freq_Inc',       'kwargs':{'MODELYEAR':'2045'}},
                     #    'FBP_SC_106_VTA_LRT_Modernization',
                        ]
