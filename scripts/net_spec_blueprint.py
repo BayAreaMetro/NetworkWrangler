@@ -307,7 +307,6 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    'FBP_MU_029_ACRapid_2025',
                     #    'RRSP_E14_Mission_Corridor',
                     #    'FBP_MR_026_NovatoWide',
-                    #    'FBP_CC_054_CrowCanyonWide',
                     #    'FBP_NP_038_TSP_On_SR29',
                     #    {'name':'FBP_CC_050_SR4_Operation_Improvements_EB',                                  'variants_exclude':['Alt1']},
                     #    {'name':'MAJ_SOL070020_I80_I680_SR12_Int_2B_7','kwargs':{'PHASE':"'2B'"}},
@@ -414,7 +413,8 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         'EXP_CC_I680NB_Livorna_to_Arthur',
                         'EXP_SC_US101_I880_to_SR85_Phase6',
                         'EXP_AL025_I680_SR84_to_Alcosta',
-                        'FBP_CC_028_Hercules_Station'
+                        'FBP_CC_028_Hercules_Station',
+                        'FBP_CC_054_CrowCanyonWide',
                        ],
                 'trn':[
                         {'name':'BP_PDA_Transit_Enhancements',                                       'branch':'PBA50plus_DBP'},
