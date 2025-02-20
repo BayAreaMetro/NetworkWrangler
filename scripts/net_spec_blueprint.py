@@ -316,7 +316,6 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    {'name':'EIR1_EXP_uncommitted_all',      'kwargs':{'MODELYEAR':'2025'},              'variants_include':['Alt1']},
                     #    {'name':'FBP_SF_012_Geneva_Harney_BRT',  'kwargs':{'MODELYEAR':'2025'}},
                     #    {'name':'FBP_CC_15_23rd_St_BRT',         'kwargs':{'MODELYEAR':'2025'}},
-                    #    'FBP_SC_103_MontagueWide', 
                     #    {'name':'MAJ_Bay_Area_Forward_all',      'kwargs':{'MODELYEAR':'2025'}},
                     #    'FBP_CC_057_LoneTreeWide',
                     #    'FBP_CC_063_BrentwoodWide',
@@ -415,6 +414,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         'EXP_AL025_I680_SR84_to_Alcosta',
                         'FBP_CC_028_Hercules_Station',
                         'FBP_CC_054_CrowCanyonWide',
+                        'FBP_SC_103_MontagueWide', 
                        ],
                 'trn':[
                         {'name':'BP_PDA_Transit_Enhancements',                                       'branch':'PBA50plus_DBP'},
