@@ -43,7 +43,6 @@ COMMITTED_PROJECTS = collections.OrderedDict([
                'CC_130001_BaileyRd_SR4',
                'CC_130046_I680_SR4_Int_Rec',
                'CC_070035_I80_SPDamRd_Int_Phase1',
-               'CC_070011_Brentwood_Blvd_Widening',
                'CC_070075_Kirker_Pass_Truck_Lane',
                'CC_090019_Bollinger_Canyon_Widening',
                'CC_130006_Concord_BART_road_diets',
@@ -414,6 +413,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         'FBP_CC_028_Hercules_Station',
                         'FBP_CC_054_CrowCanyonWide',
                         'FBP_SC_103_MontagueWide', 
+                        'CC_070011_Brentwood_Blvd_Widening',
                        ],
                 'trn':[
                         {'name':'BP_PDA_Transit_Enhancements',                                       'branch':'PBA50plus_DBP'},
