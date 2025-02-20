@@ -553,7 +553,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    'FBP_MU_029_ACRapid_2040',
                     #    {'name':'RRSP_EC_Cap_Imp_ECR_Bus',                                                 'branch':'PBA50plus_DBP'},
                     #    'MAJ_SJC_People_Mover',
-                    #    'MAJ_BRT030001_BART_to_SanJose',
+                        'MAJ_BRT030001_BART_to_SanJose',
                     #    'FBP_NP_028_NapaVineRegRoutesFrequency',
                     #    'FBP_NP_034_NapaVineRegExpServiceHrs',
                     #    'FBP_NP_029_NapaVineLocExpServiceHrs',
