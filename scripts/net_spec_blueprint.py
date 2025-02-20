@@ -243,6 +243,7 @@ COMMITTED_PROJECTS = collections.OrderedDict([
                'MAJ_Geary_BRT_Phase2',
                'SamTrans_2024_restore_expand_services',
                'FBP_NP_044_Soscol_Junction',
+               'MAJ_MissionBay_SF_Ferry',
                ]
     }),
     (2030, {
@@ -340,7 +341,6 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    'FBP_SL_019_BeniciaRoad_Diet',
                     #    'FBP_SL_023_WestTexasRoad_Diet',
                     #    'FBP_SN_012_PetalumaBlvd_Diet',
-                    #    'MAJ_MissionBay_SF_Ferry',
                     #    {'name':'EIR2_Val_Link_ExpressBus',                                                'variants_include':['Alt2']},
                     #    {'name':'EIR2_ReXBlue',                                                            'variants_include':['Alt2']},
                     #    'FBP_SC_072_US101_Trimble_Interchange',
@@ -364,8 +364,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    {'name':'MAJ_SOL070020_I80_I680_SR12_Int_2B_7','kwargs':{'PHASE':"'2B'"}},
                     #    {'name':'FBP_SF_012_Geneva_Harney_BRT',  'kwargs':{'MODELYEAR':'2025'}},
                     #    {'name':'FBP_CC_15_23rd_St_BRT',         'kwargs':{'MODELYEAR':'2025'}},
-                    #    'FBP_CC_030_OakleyAmtrak',
-                    #    'MAJ_MissionBay_SF_Ferry',              
+                    #    'FBP_CC_030_OakleyAmtrak',         
                     #    {'name':'MAJ_Sonoma_Frequency_Increase',                                           'branch':'PBA50plus_DBP'},
                     #    {'name':'EIR1_Freq_Boosts',              'kwargs':{'MODELYEAR':'2025'},            'variants_include':['Alt1']},
                     #    {'name':'EIR2_HRA_Freq_Incr',            'kwargs':{'MODELYEAR':'2025'},            'variants_include':['Alt2']},
