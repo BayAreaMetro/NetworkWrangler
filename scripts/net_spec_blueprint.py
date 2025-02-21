@@ -305,7 +305,6 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
 
                     #    'FBP_MU_044_SouthSF_Ferry_Serv_Incr',
                     #    'FBP_MU_029_ACRapid_2025',
-                    #    'RRSP_E14_Mission_Corridor',
                     #    'FBP_MR_026_NovatoWide',
                     #    'FBP_NP_038_TSP_On_SR29',
                     #    {'name':'FBP_CC_050_SR4_Operation_Improvements_EB',                                  'variants_exclude':['Alt1']},
@@ -357,7 +356,6 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    'FBP_MU_044_SouthSF_Ferry_Serv_Incr',
                     #    {'name':'GGT_Service_Imp',                                                         'branch':'PBA50plus_DBP'},
                     #    'FBP_MU_029_ACRapid_2025',
-                    #    'RRSP_E14_Mission_Corridor',
                     #    {'name':'MAJ_SOL070020_I80_I680_SR12_Int_2B_7','kwargs':{'PHASE':"'2B'"}},
                     #    {'name':'FBP_SF_012_Geneva_Harney_BRT',  'kwargs':{'MODELYEAR':'2025'}},
                     #    {'name':'FBP_CC_15_23rd_St_BRT',         'kwargs':{'MODELYEAR':'2025'}},
@@ -577,7 +575,8 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                        ]
         }),
         (2045, {'hwy':[
-                        'BP_Vision_Zero',
+                        'BP_Vision_Zero',    
+                        'RRSP_E14_Mission_Corridor',
                     #    {'name':'EXP_uncommitted_all',           'kwargs':{'MODELYEAR':'2045'},            'variants_exclude':['Alt1']},
                     #    {'name':'EIR1_EXP_uncommitted_all',      'kwargs':{'MODELYEAR':'2045'},            'variants_include':['Alt1']},
                     #    {'name':'MAJ_Bay_Area_Forward_all',      'kwargs':{'MODELYEAR':'2045'}},
@@ -590,6 +589,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     {'name':'FBP_SM_020_Regional_Express_Buses',    'kwargs':{'PHASE':"'Phase2_2Routes'"}},
                         'MAJ_RedwoodCity_SF_Ferry',
                         'BART_Irvington_Infill',
+                        'RRSP_E14_Mission_Corridor',
                     #    {'name':'FBP_MU_046_ACE_Freq_Inc',       'kwargs':{'MODELYEAR':'2045'}},
                     #    'FBP_SC_106_VTA_LRT_Modernization',
                        ]
