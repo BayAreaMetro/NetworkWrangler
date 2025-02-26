@@ -316,7 +316,6 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    {'name':'FBP_SF_012_Geneva_Harney_BRT',  'kwargs':{'MODELYEAR':'2025'}},
                     #    {'name':'FBP_CC_15_23rd_St_BRT',         'kwargs':{'MODELYEAR':'2025'}},
                     #    {'name':'MAJ_Bay_Area_Forward_all',      'kwargs':{'MODELYEAR':'2025'}},
-                    #    'FBP_CC_063_BrentwoodWide',
                     #    'FBP_CC_065_LaurelWide',
                     #    'FBP_SC_039_SR237WBWide',      
                     #    'FBP_AL_051_7St_Grade_Sep_West',
@@ -360,7 +359,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    {'name':'FBP_SF_012_Geneva_Harney_BRT',  'kwargs':{'MODELYEAR':'2025'}},
                     #    {'name':'FBP_CC_15_23rd_St_BRT',         'kwargs':{'MODELYEAR':'2025'}},
                     #    'FBP_CC_030_OakleyAmtrak',         
-                    #    {'name':'MAJ_Sonoma_Frequency_Increase',                                           'branch':'PBA50plus_DBP'},
+                        'MAJ_Sonoma_Frequency_Increase',
                     #    {'name':'EIR1_Freq_Boosts',              'kwargs':{'MODELYEAR':'2025'},            'variants_include':['Alt1']},
                     #    {'name':'EIR2_HRA_Freq_Incr',            'kwargs':{'MODELYEAR':'2025'},            'variants_include':['Alt2']},
                     #    {'name':'EIR2_PDA_Freq_Incr',            'kwargs':{'MODELYEAR':'2025'},            'variants_include':['Alt2']},
@@ -376,7 +375,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    'FBP_NP_040_VINE_Exp_Bus_Enhancements',
                     #    'FBP_AL_045_Oak_Ala_Access_Pr',
                     #    {'name':'FBP_MR_021_101_580_Direct_Connector',                                     'variants_exclude':['Alt1']},
-                    #    'FBP_MR_018_US101_BOS',
+                        'FBP_MR_018_US101_BOS',
                     #    'FBP_CC_036_I80_ExpBus_Impr',
                     #    {'name':'FBP_CC_040_041_042_I680_SR4_Int_Phases_1_2_4_5','kwargs':{'PHASE':"'4'"}, 'variants_exclude':['Alt1']},
                     #    'FBP_CC_021_Ant_Mart_Herc_Ferry',
@@ -410,7 +409,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         'FBP_CC_028_Hercules_Station',
                         'FBP_CC_054_CrowCanyonWide',
                         'FBP_SC_103_MontagueWide', 
-                        'CC_070011_Brentwood_Blvd_Widening',
+                        'CC_070011_170015_Brentwood_Blvd_Widening',
                        ],
                 'trn':[
                         {'name':'BP_PDA_Transit_Enhancements',                                       'branch':'PBA50plus_DBP'},
@@ -446,7 +445,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    {'name':'MAJ_MuniForward_Uncommitted',                                             'branch':'PBA50plus_DBP'},
                         'SF_110049_Treasure_Island_Congestion_Pricing',
                     #    'BP_Tolls_On_Congested_Freeways_2035',
-                        {'name': 'NGF_BlueprintSegmented'},
+                    #    {'name': 'NGF_BlueprintSegmented'},
                         'BP_Vision_Zero',
                     #    'RRSP_East_West_Connector',
                     #    'FBP_SM_022_I380_Widening',
@@ -524,7 +523,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         'FBP_AL_052_AutoMallWide',
                     #    'FBP_CC_038_SR242_Clayton_OnOffRamps',
                     #    'FBP_SC_047_I280_Winchester_OffRamp',
-                    #    'FBP_SC_076_US101_Taylor_Interchange',
+                        'FBP_SC_076_US101_Taylor_Interchange',
                     #    'FBP_NP_051_Airport_Junction',
                         'FBP_SC_101_BrokawBridgeWide',
                     #    'FBP_SC_081_US101_SR237',
@@ -640,8 +639,8 @@ for YEAR in COMMITTED_PROJECTS.keys():
         for netmode in ['hwy','trn']:
             for project in BLUEPRINT_PROJECTS[YEAR][netmode]:
                 if not isinstance(project, dict): continue
-                if project['name'] in ['NGF_BlueprintSegmented']:
-                    project['tag'] = 'PBA50plus_DBP'
+                #if project['name'] in ['NGF_BlueprintSegmented']:
+                #    project['tag'] = 'PBA50plus_DBP'
         
         NETWORK_PROJECTS[YEAR] = {
             'hwy':COMMITTED_PROJECTS[YEAR]['hwy'] + BLUEPRINT_PROJECTS[YEAR]['hwy'],
