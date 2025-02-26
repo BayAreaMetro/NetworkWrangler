@@ -61,7 +61,6 @@ COMMITTED_PROJECTS = collections.OrderedDict([
                'SCL190006_101SB_offramp_improvement',
                'I80_AdaptiveRampMetering',
                'VAR170021_Freeway_Performance_I880',
-               'SonomaCounty_Transit_NoBuild2050',
                {'name':'SF_MuniForward_Committed', 'kwargs':{'MODELYEAR':'2020'}},  # This applies for multiple years on the roadway side
                'FBP_MU_029_Broadway_Transit_Only_Lanes',
                'EXP_Blueprint_NoProject',
@@ -84,7 +83,6 @@ COMMITTED_PROJECTS = collections.OrderedDict([
                'SF_MuniForward_Committed',
                'VTA_Next',
                'SCL130001_237_101_MAT_Int_Mod',
-               'SonomaCounty_Transit_NoBuild2050',
                'SMART_Novato',
                'Xfare_update_2020',
                'ACTransit_Committed',
