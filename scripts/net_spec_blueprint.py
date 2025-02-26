@@ -445,7 +445,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    {'name':'MAJ_MuniForward_Uncommitted',                                             'branch':'PBA50plus_DBP'},
                     #    'MAJ_Treasure_Island_Congestion_Pricing',
                     #    'BP_Tolls_On_Congested_Freeways_2035',
-                        {'name': 'NGF_BlueprintSegmented'},
+                    #    {'name': 'NGF_BlueprintSegmented'},
                         'BP_Vision_Zero',
                     #    'RRSP_East_West_Connector',
                     #    'FBP_SM_022_I380_Widening',
@@ -639,8 +639,8 @@ for YEAR in COMMITTED_PROJECTS.keys():
         for netmode in ['hwy','trn']:
             for project in BLUEPRINT_PROJECTS[YEAR][netmode]:
                 if not isinstance(project, dict): continue
-                if project['name'] in ['NGF_BlueprintSegmented']:
-                    project['tag'] = 'PBA50plus_DBP'
+                #if project['name'] in ['NGF_BlueprintSegmented']:
+                #    project['tag'] = 'PBA50plus_DBP'
         
         NETWORK_PROJECTS[YEAR] = {
             'hwy':COMMITTED_PROJECTS[YEAR]['hwy'] + BLUEPRINT_PROJECTS[YEAR]['hwy'],
