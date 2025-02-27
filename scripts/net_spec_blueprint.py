@@ -630,15 +630,6 @@ for YEAR in COMMITTED_PROJECTS.keys():
     else:
         # blueprint, alt1, alt2
         if YEAR not in BLUEPRINT_PROJECTS: continue
-
-        # special handling for NGF_BlueprintSegmented -- need to use TAG PBA50plus_DBP
-        # See NGF Round1 All-Lanes Tolling (for DBP)
-        # https://app.asana.com/0/1204959680579890/1207041586456560/f
-        for netmode in ['hwy','trn']:
-            for project in BLUEPRINT_PROJECTS[YEAR][netmode]:
-                if not isinstance(project, dict): continue
-                #if project['name'] in ['NGF_BlueprintSegmented']:
-                #    project['tag'] = 'PBA50plus_DBP'
         
         NETWORK_PROJECTS[YEAR] = {
             'hwy':COMMITTED_PROJECTS[YEAR]['hwy'] + BLUEPRINT_PROJECTS[YEAR]['hwy'],
