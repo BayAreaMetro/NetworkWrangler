@@ -1,6 +1,6 @@
 import os
 # MANDATORY. Set this to be the Project Name.
-# e.g. "RTP2021", "TIP2021", etc
+# e.g. "RTP2021", "TIP2021", "RTP2025_DBP", etc
 PROJECT  = "Blueprint"
 
 # MANDATORY. Set this to be the git tag for checking out network projects.
@@ -463,7 +463,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                          'NGF_r2_EL_to_HOV2',                          # All-Lane-Tolling: Convert EL to HOV2
                     #     'NGF_HOV3_to_HOV2',                           # All-Lane-Tolling: Convert HOV3 to HOV2
                          'NGF_r2_ALT_on_All_Fwys',                     # All-Lane-Tolling on All Freeways
-                         'NGF_BlueprintSegmented',                     # All-Lane-Tolling: Assign the congested part of the network with special tollclasses
+                         {'name': 'NGF_BlueprintSegmented'},           # All-Lane-Tolling: Assign the congested part of the network with special tollclasses
                        ],
                 'trn':[
                     #    {'name':'MAJ_MuniForward_Uncommitted',                                             'branch':'PBA50plus_DBP'},
@@ -637,8 +637,8 @@ for YEAR in COMMITTED_PROJECTS.keys():
         for netmode in ['hwy','trn']:
             for project in BLUEPRINT_PROJECTS[YEAR][netmode]:
                 if not isinstance(project, dict): continue
-                #if project['name'] in ['NGF_BlueprintSegmented']:
-                #    project['tag'] = 'PBA50plus_DBP'
+                if project['name'] in ['NGF_BlueprintSegmented'] and PROJECT=="RTP2025_DBP":
+                    project['tag'] = 'PBA50plus_DBP'
         
         NETWORK_PROJECTS[YEAR] = {
             'hwy':COMMITTED_PROJECTS[YEAR]['hwy'] + BLUEPRINT_PROJECTS[YEAR]['hwy'],
