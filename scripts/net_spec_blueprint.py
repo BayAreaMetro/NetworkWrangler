@@ -229,7 +229,6 @@ COMMITTED_PROJECTS = collections.OrderedDict([
                'MRN050034_101_MarinSonNarrows_Phase2',
                'EXP_Blueprint_NoProject',
                'EXP_SL030_I80_RedTopRd_to_I505',
-               'EXP_AL025_I680_SR84_to_Alcosta',
                'FBP_NP_044_Soscol_Junction',
                'ALA170011_BayBridge_HOV_Connectors_phase2'
                ],
