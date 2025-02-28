@@ -391,7 +391,6 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    'FBP_SC_074_US101_BuenaVista_Int',
                     #    'EXP_Blueprint',
                     #    'FBP_SC_054_SR17_Corridor_Relief',
-                    #    'FBP_CC_061_062_West_Leland_Ext_Phases1_2',
                        'FBP_SM_042_Hwy1_ManorDrive',
                     #    'FBP_CC_024_Oakley_PNR_Tri_Delta',
                     #    'FBP_SC_083_US101_Zanker_Skyport_Interchange',
@@ -539,6 +538,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         'FBP_SC_104_OaklandWide',
                         'FBP_CC_064_CaminoTassajaraWide',
                         'FBP_SL_042_Jepson_2B_2C',
+                        'FBP_CC_061_062_West_Leland_Ext_Phases1_2',
 
                        ],
                 'trn':[
