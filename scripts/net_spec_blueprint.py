@@ -401,6 +401,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         'Dumbarton_Bridge_Bus_Service',
                         'SCL210026_Julian_James_Conversion',
                         'EXP_CC_I680NB_Livorna_to_Arthur',
+                        'EXP_SM_US101_I380_to_SFcounty',
                         'EXP_SC_US101_I880_to_SR85_Phase6',
                         'EXP_AL025_I680_SR84_to_Alcosta',
                         'FBP_CC_028_Hercules_Station',
