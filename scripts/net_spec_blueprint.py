@@ -402,6 +402,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         'SCL210026_Julian_James_Conversion',
                         'EXP_CC_I680NB_Livorna_to_Arthur',
                         'EXP_SM_US101_I380_to_SFcounty',
+                        'EXP_SC_US101_SR237_to_I880_Phase5',
                         'EXP_SC_US101_I880_to_SR85_Phase6',
                         'FBP_CC_028_Hercules_Station',
                         'FBP_CC_054_CrowCanyonWide',
