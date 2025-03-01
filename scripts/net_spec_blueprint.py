@@ -229,6 +229,7 @@ COMMITTED_PROJECTS = collections.OrderedDict([
                'MRN050034_101_MarinSonNarrows_Phase2',
                'EXP_Blueprint_NoProject',
                'EXP_SL030_I80_RedTopRd_to_I505',
+               'EXP_AL025_I680_SR84_to_Alcosta',
                'FBP_NP_044_Soscol_Junction',
                'ALA170011_BayBridge_HOV_Connectors_phase2'
                ],
@@ -402,7 +403,6 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         'EXP_CC_I680NB_Livorna_to_Arthur',
                         'EXP_SM_US101_I380_to_SFcounty',
                         'EXP_SC_US101_I880_to_SR85_Phase6',
-                        'EXP_AL025_I680_SR84_to_Alcosta',
                         'FBP_CC_028_Hercules_Station',
                         'FBP_CC_054_CrowCanyonWide',
                         'FBP_SC_103_MontagueWide', 
