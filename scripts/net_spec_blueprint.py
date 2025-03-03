@@ -329,7 +329,6 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    'FBP_CC_045_SanPabloDam_Interchange_Phase2',
                     #    'FBP_CC_030_OakleyAmtrak',
                     #    'STIP_ProduceAve',
-                    #    'FBP_SM_033_US101_Holly_Interchange',
                     #    'FBP_SM_034_Route92_ElCamino_Interchange',
                     #    'FBP_SL_019_BeniciaRoad_Diet',
                     #    'FBP_SL_023_WestTexasRoad_Diet',
@@ -408,6 +407,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         'FBP_CC_054_CrowCanyonWide',
                         'FBP_SC_103_MontagueWide', 
                         'CC_070011_170015_Brentwood_Blvd_Widening',
+                        'FBP_SM_033_US101_Holly_Interchange',
                        ],
                 'trn':[
                         {'name':'BP_PDA_Transit_Enhancements',                                       'branch':'PBA50plus_DBP'},
