@@ -562,7 +562,8 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    {'name':'Transform_AC_Transbay_Improvements',                                      'variants_include':['Alt2']},
                     #    {'name':'EIR2_ReXGreen',                                                           'variants_include':['Alt2']},
                     #    {'name':'FBP_CC_019_CCCTA_Freq_Increase',                                          'branch':'PBA50plus_DBP'},
-                    #    {'name':'EIR2_Fix_Alt2',                 'kwargs':{'MODELYEAR':'2040'},            'variants_include':['Alt2']}
+                    #    {'name':'EIR2_Fix_Alt2',                 'kwargs':{'MODELYEAR':'2040'},            'variants_include':['Alt2']},
+                        'FBP_SON_Caulfield_Extension',
                        ]
         }),
         (2045, {'hwy':[
