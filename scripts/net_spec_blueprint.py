@@ -406,6 +406,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         'CC_070011_170015_Brentwood_Blvd_Widening',
                         'FBP_SM_033_US101_Holly_Interchange',
                         'FBP_SF_090004_Harney_Wide',
+                        'STIP_17_06_0010_WoodsideRd',
                        ],
                 'trn':[
                         {'name':'BP_PDA_Transit_Enhancements',                                       'branch':'PBA50plus_DBP'},
