@@ -408,6 +408,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         'STIP_17_06_0010_WoodsideRd',
                         'FBP_SC_082_US101_25_Interchange',
                         'SOL110004_Jepson_Walters_Extension',
+                        'FBP_ALA_I800_42nd_High_Interchange',
                        ],
                 'trn':[
                         {'name':'BP_PDA_Transit_Enhancements',                                       'branch':'PBA50plus_DBP'},
