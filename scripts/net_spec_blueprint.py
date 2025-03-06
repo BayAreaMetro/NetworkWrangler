@@ -249,7 +249,6 @@ COMMITTED_PROJECTS = collections.OrderedDict([
                'EXP_Blueprint_NoProject',
                'FBP_SM_035_Peninsula_101_OnOffRamps',
                'FBP_SC_082_US101_25_Interchang_committed',
-               'FBP_SC_082_US101_25_Interchange',
                'SOL110006_Jepson_1B_1C',
                'ALA210028_I80_HOV_Bus_Lane_Ext',
                'ALA170049_Central_AVE_Safety_Improvements',
@@ -407,6 +406,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         'FBP_SM_033_US101_Holly_Interchange',
                         'FBP_SF_090004_Harney_Wide',
                         'STIP_17_06_0010_WoodsideRd',
+                        'FBP_SC_082_US101_25_Interchange',
                        ],
                 'trn':[
                         {'name':'BP_PDA_Transit_Enhancements',                                       'branch':'PBA50plus_DBP'},
