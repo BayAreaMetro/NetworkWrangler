@@ -503,6 +503,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    'FBP_CC_037_680_AuxLanes',
                     #    {'name':'RRSP_EC_Cap_Imp_ECR_Bus',                                                 'branch':'PBA50plus_DBP'},
                     #    {'name':'MAJ_SR_239',                                                              'variants_exclude':['Alt1']},
+                        'MAJ_SR_239',
                     #    'FBP_NP_033_Napa_PNR_Lots',
                         'FBP_CC_018_BRT_Brentwood',
                     #    'FBP_SC_043_I280_Mainline_Impr',
