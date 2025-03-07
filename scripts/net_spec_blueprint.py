@@ -428,7 +428,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    'FBP_CC_036_I80_ExpBus_Impr',
                     #    'FBP_CC_021_Ant_Mart_Herc_Ferry',
                         'FBP_AL_045_Oak_Ala_Access_Pr',
-                       'FBP_CC_028_Hercules_Station',
+                        'FBP_CC_028_Hercules_Station',
                         'MAJ_MTC050027_Berkeley_Ferry',
                     #    {'name':'FBP_CC_15_23rd_St_BRT',         'kwargs':{'MODELYEAR':'2030'}},
                     #    'FBP_CC_024_Oakley_PNR_Tri_Delta',
@@ -438,6 +438,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    {'name':'EIR2_Fix_Alt2',                 'kwargs':{'MODELYEAR':'2030'},            'variants_include':['Alt2']},
                         'Dumbarton_Bridge_Bus_Service',
                         {'name':'MAJ_SC_VTAVisionaryNetwork', 'kwargs':{'MODELYEAR': '2030'}},
+                        'SON_SMART_to_Healdsburg',
                        ]
         }),
         (2035, {'hwy':[
@@ -484,7 +485,8 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    {'name':'EIR1_Freq_Boosts',                     'kwargs':{'MODELYEAR':'2035'},     'variants_include':['Alt1']},
                     #    {'name':'EIR2_VTA_LRT_Orange',                                                     'variants_include':['Alt2']},
                     #    {'name':'EIR2_Fix_Alt2',                        'kwargs':{'MODELYEAR':'2035'},     'variants_include':['Alt2']},
-                    #    {'name':'EIR1_No_SR37',                                                            'variants_include':['Alt1']}
+                    #    {'name':'EIR1_No_SR37',                                                            'variants_include':['Alt1']},
+                        'SON_SMART_to_Cloverdale',
                        ]
         }),
         (2040, {'hwy':[
