@@ -410,6 +410,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         'FBP_SC_082_US101_25_Interchange',
                         'SOL110004_Jepson_Walters_Extension',
                         'FBP_ALA_I800_42nd_High_Interchange',
+                        {'name':'MAJ_SC_VTAVisionaryNetwork', 'kwargs':{'MODELYEAR': '2030'}},
                        ],
                 'trn':[
                         {'name':'BP_PDA_Transit_Enhancements',                                       'branch':'PBA50plus_DBP'},
@@ -437,6 +438,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    {'name':'EIR2_PDA_Freq_Incr',            'kwargs':{'MODELYEAR':'2030'},            'variants_include':['Alt2']},
                     #    {'name':'EIR2_Fix_Alt2',                 'kwargs':{'MODELYEAR':'2030'},            'variants_include':['Alt2']},
                         'Dumbarton_Bridge_Bus_Service',
+                        {'name':'MAJ_SC_VTAVisionaryNetwork', 'kwargs':{'MODELYEAR': '2030'}},
                        ]
         }),
         (2035, {'hwy':[
@@ -582,6 +584,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    'FBP_NP_045_SR29_Gateway_Impr',
                     #    'EXP_Blueprint',
                         'FBP_SF_012_Geneva_Harney_BRT',
+                        {'name':'MAJ_SC_VTAVisionaryNetwork', 'kwargs':{'MODELYEAR': '2045'}},
                        ],
                 'trn':[
                     {'name':'FBP_SM_020_Regional_Express_Buses', 'kwargs':{'PHASE':"'Phase1_4Routes'"}},
@@ -592,6 +595,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    {'name':'FBP_MU_046_ACE_Freq_Inc',       'kwargs':{'MODELYEAR':'2045'}},
                     #    'FBP_SC_106_VTA_LRT_Modernization',
                         'FBP_SF_012_Geneva_Harney_BRT',
+                        {'name':'MAJ_SC_VTAVisionaryNetwork', 'kwargs':{'MODELYEAR': '2045'}},
                        ]
         }),
         (2050, {'hwy':[
