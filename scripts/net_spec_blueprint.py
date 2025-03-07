@@ -326,7 +326,6 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    'FBP_SC_073_BlossomHill_101Wide',
                     #    'FBP_CC_045_SanPabloDam_Interchange_Phase2',
                     #    'FBP_CC_030_OakleyAmtrak',
-                    #    'STIP_ProduceAve',
                     #    'FBP_SM_034_Route92_ElCamino_Interchange',
                     #    'FBP_SL_019_BeniciaRoad_Diet',
                     #    'FBP_SL_023_WestTexasRoad_Diet',
@@ -542,6 +541,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         'FBP_CC_061_062_West_Leland_Ext_Phases1_2',
                         'FBP_SON_Caulfield_Extension',
                         'SCL250204_10thBridge_Ext',
+                        'STIP_ProduceAve',
 
                        ],
                 'trn':[
