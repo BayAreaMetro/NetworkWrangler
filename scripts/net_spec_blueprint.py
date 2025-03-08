@@ -544,7 +544,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         'FBP_CC_061_062_West_Leland_Ext_Phases1_2',
                         'FBP_SON_Caulfield_Extension',
                         'SCL250204_10thBridge_Ext',
-                        'STIP_ProduceAve',
+                        'SM110003_US101_ProduceAve',
 
                        ],
                 'trn':[
