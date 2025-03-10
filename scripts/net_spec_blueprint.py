@@ -347,7 +347,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    'FBP_MU_060_ReX_Blue',
                     #    {'name':'EIR2_ReXBlue',                                                            'variants_include':['Alt2']},                       
                     #    'FBP_MU_044_SouthSF_Ferry_Serv_Incr',
-                    #    {'name':'GGT_Service_Imp',                                                         'branch':'PBA50plus_DBP'},
+                         {'name':'GGT_Service_Imp',                                                         'kwargs':{'MODELYEAR':'2025'}},
                     #    'FBP_MU_029_ACRapid_2025',
                     #    {'name':'MAJ_SOL070020_I80_I680_SR12_Int_2B_7','kwargs':{'PHASE':"'2B'"}},
                     #    {'name':'FBP_CC_15_23rd_St_BRT',         'kwargs':{'MODELYEAR':'2025'}},
@@ -439,6 +439,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         'Dumbarton_Bridge_Bus_Service',
                         {'name':'MAJ_SC_VTAVisionaryNetwork', 'kwargs':{'MODELYEAR': '2030'}},
                         'SON_SMART_to_Healdsburg',
+                        {'name':'GGT_Service_Imp',                                                         'kwargs':{'MODELYEAR':'2030'}},
                        ]
         }),
         (2035, {'hwy':[
@@ -487,6 +488,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    {'name':'EIR2_Fix_Alt2',                        'kwargs':{'MODELYEAR':'2035'},     'variants_include':['Alt2']},
                     #    {'name':'EIR1_No_SR37',                                                            'variants_include':['Alt1']},
                         'SON_SMART_to_Cloverdale',
+                        {'name':'GGT_Service_Imp',                                                         'kwargs':{'MODELYEAR':'2035'}},
                        ]
         }),
         (2040, {'hwy':[
@@ -502,7 +504,6 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    {'name':'FBP_CC_051_SR4_Operation_Improvements_WB',                                'variants_exclude':['Alt1']},
                     #    'FBP_CC_037_680_AuxLanes',
                     #    {'name':'RRSP_EC_Cap_Imp_ECR_Bus',                                                 'branch':'PBA50plus_DBP'},
-                    #    {'name':'MAJ_SR_239',                                                              'variants_exclude':['Alt1']},
                         'MAJ_SR_239',
                     #    'FBP_NP_033_Napa_PNR_Lots',
                         'FBP_CC_018_BRT_Brentwood',
