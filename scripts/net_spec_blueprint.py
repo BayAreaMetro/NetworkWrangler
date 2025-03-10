@@ -443,7 +443,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
         }),
         (2035, {'hwy':[
                         'MAJ_SanPablo_BRT',
-                    #    {'name':'MAJ_MuniForward_Uncommitted',                                             'branch':'PBA50plus_DBP'},
+                        {'name':'MAJ_MuniForward_Uncommitted',                                             'branch':'PBA50plus_DBP'},
                         'SF_110049_Treasure_Island_Congestion_Pricing',
                     #    'BP_Tolls_On_Congested_Freeways_2035',
                     #    {'name': 'NGF_BlueprintSegmented'},
@@ -468,7 +468,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                          'NGF_BlueprintSegmented',                     # All-Lane-Tolling: Assign the congested part of the network with special tollclasses
                        ],
                 'trn':[
-                    #    {'name':'MAJ_MuniForward_Uncommitted',                                             'branch':'PBA50plus_DBP'},
+                        {'name':'MAJ_MuniForward_Uncommitted',                                             'branch':'PBA50plus_DBP'},
                         'MAJ_AC_Frequency_Improvement',
                         'MAJ_SanPablo_BRT',
                     #    'RRSP_South_East_Waterfront_Transit_Imp',
