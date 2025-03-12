@@ -306,7 +306,6 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    'FBP_MR_026_NovatoWide',
                     #    'FBP_NP_038_TSP_On_SR29',
                     #    {'name':'FBP_CC_050_SR4_Operation_Improvements_EB',                                  'variants_exclude':['Alt1']},
-                    #    {'name':'MAJ_SOL070020_I80_I680_SR12_Int_2B_7','kwargs':{'PHASE':"'2B'"}},
                     #    {'name':'FBP_CC_040_041_042_I680_SR4_Int_Phases_1_2_4_5', 'kwargs':{'PHASE':"'1'"},  'variants_exclude':['Alt1']},
                     #    {'name':'FBP_CC_040_041_042_I680_SR4_Int_Phases_1_2_4_5', 'kwargs':{'PHASE':"'2'"},  'variants_exclude':['Alt1']},
                     #    {'name':'EXP_uncommitted_all',           'kwargs':{'MODELYEAR':'2025'},              'variants_exclude':['Alt1']},
@@ -347,9 +346,8 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    'FBP_MU_060_ReX_Blue',
                     #    {'name':'EIR2_ReXBlue',                                                            'variants_include':['Alt2']},                       
                     #    'FBP_MU_044_SouthSF_Ferry_Serv_Incr',
-                    #    {'name':'GGT_Service_Imp',                                                         'branch':'PBA50plus_DBP'},
+                         {'name':'GGT_Service_Imp',                                                         'kwargs':{'MODELYEAR':'2025'}},
                     #    'FBP_MU_029_ACRapid_2025',
-                    #    {'name':'MAJ_SOL070020_I80_I680_SR12_Int_2B_7','kwargs':{'PHASE':"'2B'"}},
                     #    {'name':'FBP_CC_15_23rd_St_BRT',         'kwargs':{'MODELYEAR':'2025'}},
                     #    'FBP_CC_030_OakleyAmtrak',         
                         'MAJ_Sonoma_Frequency_Increase',
@@ -439,6 +437,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         'Dumbarton_Bridge_Bus_Service',
                         {'name':'MAJ_SC_VTAVisionaryNetwork', 'kwargs':{'MODELYEAR': '2030'}},
                         'SON_SMART_to_Healdsburg',
+                        {'name':'GGT_Service_Imp',                                                         'kwargs':{'MODELYEAR':'2030'}},
                        ]
         }),
         (2035, {'hwy':[
@@ -450,9 +449,9 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         'BP_Vision_Zero',
                     #    'RRSP_East_West_Connector',
                     #    'FBP_SM_022_I380_Widening',
-                    #    {'name':'MAJ_SOL070020_I80_I680_SR12_Int_2B_7', 'kwargs':{'PHASE':"'3'"},          'variants_exclude':['Alt1']},
-                    #    {'name':'MAJ_SOL070020_I80_I680_SR12_Int_2B_7', 'kwargs':{'PHASE':"'4'"},          'variants_exclude':['Alt1']},
-                    #    {'name':'MAJ_SOL070020_I80_I680_SR12_Int_2B_7', 'kwargs':{'PHASE':"'5'"},          'variants_exclude':['Alt1']},
+                       {'name':'MAJ_SOL070020_I80_I680_SR12_Int_packages_3_4_5', 'kwargs':{'PHASE':'"3"'}},
+                       {'name':'MAJ_SOL070020_I80_I680_SR12_Int_packages_3_4_5', 'kwargs':{'PHASE':'"4"'}},
+                       {'name':'MAJ_SOL070020_I80_I680_SR12_Int_packages_3_4_5', 'kwargs':{'PHASE':'"5"'}},
                     #    {'name':'EXP_uncommitted_all',                  'kwargs':{'MODELYEAR':'2035'},     'variants_exclude':['Alt1']},
                     #    {'name':'EIR1_EXP_uncommitted_all',             'kwargs':{'MODELYEAR':'2035'},     'variants_include':['Alt1']},
                     #    {'name':'MAJ_Bay_Area_Forward_all',             'kwargs':{'MODELYEAR':'2035'}},
@@ -477,9 +476,9 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         'SF_110049_Treasure_Island_Congestion_Pricing',
                     #    'RRSP_East_West_Connector',
                     #    'FBP_NP_079_Trower_Ext',
-                    #    {'name':'MAJ_SOL070020_I80_I680_SR12_Int_2B_7', 'kwargs':{'PHASE':"'3'"},          'variants_exclude':['Alt1']},
-                    #    {'name':'MAJ_SOL070020_I80_I680_SR12_Int_2B_7', 'kwargs':{'PHASE':"'4'"},          'variants_exclude':['Alt1']},
-                    #    {'name':'MAJ_SOL070020_I80_I680_SR12_Int_2B_7', 'kwargs':{'PHASE':"'5'"},          'variants_exclude':['Alt1']},
+                       {'name':'MAJ_SOL070020_I80_I680_SR12_Int_packages_3_4_5', 'kwargs':{'PHASE':'"3"'}},
+                       {'name':'MAJ_SOL070020_I80_I680_SR12_Int_packages_3_4_5', 'kwargs':{'PHASE':'"4"'}},
+                       {'name':'MAJ_SOL070020_I80_I680_SR12_Int_packages_3_4_5', 'kwargs':{'PHASE':'"5"'}},
                     #    {'name':'FBP_SL_026_SolExpressBus',             'kwargs':{'MODELYEAR':'2035'}},
                     #    'FBP_SL_020_MilitaryWest_Diet',
                     #    {'name':'EIR1_Freq_Boosts',                     'kwargs':{'MODELYEAR':'2035'},     'variants_include':['Alt1']},
@@ -487,6 +486,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    {'name':'EIR2_Fix_Alt2',                        'kwargs':{'MODELYEAR':'2035'},     'variants_include':['Alt2']},
                     #    {'name':'EIR1_No_SR37',                                                            'variants_include':['Alt1']},
                         'SON_SMART_to_Cloverdale',
+                        {'name':'GGT_Service_Imp',                                                         'kwargs':{'MODELYEAR':'2035'}},
                        ]
         }),
         (2040, {'hwy':[
@@ -502,7 +502,6 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    {'name':'FBP_CC_051_SR4_Operation_Improvements_WB',                                'variants_exclude':['Alt1']},
                     #    'FBP_CC_037_680_AuxLanes',
                     #    {'name':'RRSP_EC_Cap_Imp_ECR_Bus',                                                 'branch':'PBA50plus_DBP'},
-                    #    {'name':'MAJ_SR_239',                                                              'variants_exclude':['Alt1']},
                         'MAJ_SR_239',
                     #    'FBP_NP_033_Napa_PNR_Lots',
                         'FBP_CC_018_BRT_Brentwood',
@@ -603,8 +602,6 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
         }),
         (2050, {'hwy':[
                         'BP_Vision_Zero',
-                    #    {'name':'MAJ_SOL070020_I80_I680_SR12_Int_2B_7', 'kwargs':{'PHASE':"'6'"},          'variants_exclude':['Alt1']},
-                    #    {'name':'MAJ_SOL070020_I80_I680_SR12_Int_2B_7', 'kwargs':{'PHASE':"'7'"},          'variants_exclude':['Alt1']},
                     #    'FBP_SC_028_Stevens_Creek_LRT',
                     #    {'name':'MAJ_Bay_Area_Forward_all',             'kwargs':{'MODELYEAR':'2050'}},
                     #    'EXP_Blueprint',
@@ -613,8 +610,6 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    {'name':'BP_Transbay_Crossing',                                                    'variants_exclude':['Alt2']}
                        ],
                 'trn':[
-                    #    {'name':'MAJ_SOL070020_I80_I680_SR12_Int_2B_7', 'kwargs':{'PHASE':"'6'"},          'variants_exclude':['Alt1']},
-                    #    {'name':'MAJ_SOL070020_I80_I680_SR12_Int_2B_7', 'kwargs':{'PHASE':"'7'"},          'variants_exclude':['Alt1']},
                     #    'FBP_SC_028_Stevens_Creek_LRT',
                     #    {'name':'BP_Transbay_Crossing',                                                    'variants_exclude':['Alt2']}
                        ]
