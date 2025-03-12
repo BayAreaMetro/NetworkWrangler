@@ -582,7 +582,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    {'name':'EXP_uncommitted_all',           'kwargs':{'MODELYEAR':'2045'},            'variants_exclude':['Alt1']},
                     #    {'name':'EIR1_EXP_uncommitted_all',      'kwargs':{'MODELYEAR':'2045'},            'variants_include':['Alt1']},
                     #    {'name':'MAJ_Bay_Area_Forward_all',      'kwargs':{'MODELYEAR':'2045'}},
-                    #    {'name':'FBP_AL_048_SR262_Phase1',                                                 'variants_exclude':['Alt1']},
+                        {'name':'FBP_AL_048_SR262_Phase1',                                                 'variants_exclude':['Alt1']},
                     #    'FBP_NP_045_SR29_Gateway_Impr',
                     #    'EXP_Blueprint',
                         'FBP_SF_012_Geneva_Harney_BRT',
