@@ -342,7 +342,6 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    {'name':'Transform_SR37_Widening_Interim',                                         'variants_exclude':['Alt1']},
                         'SF_130017_SF_Congestion_Pricing',
                     #    'FBP_MU_041_Hovercraft_Pilot',
-                    #    'FBP_MU_049_Caltrain_6TPHPD',
                     #    'FBP_MU_060_ReX_Blue',
                     #    {'name':'EIR2_ReXBlue',                                                            'variants_include':['Alt2']},                       
                     #    'FBP_MU_044_SouthSF_Ferry_Serv_Incr',
@@ -415,7 +414,6 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    'BART_Irvington_Infill',
                        'MAJ_REG090037_BART_Core_Cap',
                        'FBP_AL_021_South_Bay_Connect',
-                    #    'FBP_MU_049_Caltrain_8TPHPD',
                     #    'FBP_MU_061_ReX_Green',
                     #    'FBP_MU_044_Richmond_Ferry_Serv_Incr',
                     #    {'name':'Transform_Valley_Link',                                                   'variants_exclude':['Alt2']},
@@ -438,6 +436,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         {'name':'MAJ_SC_VTAVisionaryNetwork', 'kwargs':{'MODELYEAR': '2030'}},
                         'SON_SMART_to_Healdsburg',
                         {'name':'GGT_Service_Imp',                                                         'kwargs':{'MODELYEAR':'2030'}},
+                        'FBP_MU_049_Caltrain_6TPHPD',
                        ]
         }),
         (2035, {'hwy':[
@@ -572,6 +571,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    {'name':'FBP_CC_019_CCCTA_Freq_Increase',                                          'branch':'PBA50plus_DBP'},
                     #    {'name':'EIR2_Fix_Alt2',                 'kwargs':{'MODELYEAR':'2040'},            'variants_include':['Alt2']},
                         'FBP_SON_Caulfield_Extension',
+                        'FBP_MU_049_Caltrain_8TPHPD',
                        ]
         }),
         (2045, {'hwy':[
