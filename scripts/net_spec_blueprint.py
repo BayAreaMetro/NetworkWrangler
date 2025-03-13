@@ -571,6 +571,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    {'name':'FBP_CC_019_CCCTA_Freq_Increase',                                          'branch':'PBA50plus_DBP'},
                     #    {'name':'EIR2_Fix_Alt2',                 'kwargs':{'MODELYEAR':'2040'},            'variants_include':['Alt2']},
                         'FBP_SON_Caulfield_Extension',
+                        'SCL250204_10thBridge_Ext',
                         'FBP_MU_049_Caltrain_8TPHPD',
                         'MAJ_SF_050002_Caltrain_Ext_TransbayTerminal',
                        ]
