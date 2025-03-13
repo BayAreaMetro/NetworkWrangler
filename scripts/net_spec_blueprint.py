@@ -420,7 +420,6 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    'FBP_SF_028_SF_Express_Bus_On_Exp_Lanes',
                     #    {'name':'MAJ_SF_050002_Caltrain_Ext_TransbayTerminal',                             'variants_exclude':['Alt2']},
                     #    {'name':'FBP_SF_024_Historic_Streetcar_Ext',                                       'branch':'PBA50plus_DBP'},
-                    #    {'name':'FBP_MuniForward_Uncommitted_Rail',                                        'branch':'PBA50plus_DBP'},
                     #    'FBP_CC_036_I80_ExpBus_Impr',
                     #    'FBP_CC_021_Ant_Mart_Herc_Ferry',
                         'FBP_AL_045_Oak_Ala_Access_Pr',
@@ -574,6 +573,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         'SCL250204_10thBridge_Ext',
                         'FBP_MU_049_Caltrain_8TPHPD',
                         'MAJ_SF_050002_Caltrain_Ext_TransbayTerminal',
+                        'FBP_MuniForward_Uncommitted_Rail',
                        ]
         }),
         (2045, {'hwy':[
