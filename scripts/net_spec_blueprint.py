@@ -572,6 +572,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    {'name':'EIR2_Fix_Alt2',                 'kwargs':{'MODELYEAR':'2040'},            'variants_include':['Alt2']},
                         'FBP_SON_Caulfield_Extension',
                         'FBP_MU_049_Caltrain_8TPHPD',
+                        'MAJ_SF_050002_Caltrain_Ext_TransbayTerminal',
                        ]
         }),
         (2045, {'hwy':[
