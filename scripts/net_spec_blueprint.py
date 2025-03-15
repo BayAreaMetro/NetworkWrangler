@@ -587,6 +587,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    'EXP_Blueprint',
                         'FBP_SF_012_Geneva_Harney_BRT',
                         {'name':'MAJ_SC_VTAVisionaryNetwork', 'kwargs':{'MODELYEAR': '2045'}},
+                        'FBP_SCL_SR35_BRT_between_US101_SR87',
                        ],
                 'trn':[
                     {'name':'FBP_SM_020_Regional_Express_Buses', 'kwargs':{'PHASE':"'Phase1_4Routes'"}},
@@ -598,6 +599,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    'FBP_SC_106_VTA_LRT_Modernization',
                         'FBP_SF_012_Geneva_Harney_BRT',
                         {'name':'MAJ_SC_VTAVisionaryNetwork', 'kwargs':{'MODELYEAR': '2045'}},
+                        'FBP_SCL_SR35_BRT_between_US101_SR87',
                        ]
         }),
         (2050, {'hwy':[
