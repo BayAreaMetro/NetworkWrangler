@@ -18,6 +18,7 @@ if __name__ == '__main__':
     parser.add_argument("--skip_precheck_requirements", help="Don't precheck network requirements, stale projects, non-HEAD projects, etc", action="store_true", default=True)
     parser.add_argument("--restart_year", help="Pass year to 'restart' building network starting from this rather than from the beginning. e.g., 2025")
     parser.add_argument("--restart_mode", choices=['hwy','trn'], help="If restart_year is passed, this is also required.")
+    parser.add_argument("--create_shapefiles", help="Pass this to automatically convert networks to shapefiles.", action="store_true")
     parser.add_argument("--create_project_diffs", help="Pass this to create project diffs information for EVERY project. NOTE: THIS WILL BE SLOW", action="store_true")
     parser.add_argument("--create_project_diff",  help="Pass a project name to create project diffs information for that project", type=str, default=None)
     parser.add_argument("net_spec", metavar="network_specification.py", help="Script which defines required variables indicating how to build the network")
@@ -134,7 +135,7 @@ if __name__ == '__main__':
         Wrangler.WranglerLogger.info("skip_precheck_requirements passed so skipping preCheckRequirementsForAllProjects()")
     else:
         build_network_mtc.preCheckRequirementsForAllProjects(NETWORK_PROJECTS, TEMP_SUBDIR, networks, args.continue_on_warning)
-
+        
     # create the subdir for SET_CAPCLASS with set_capclass.job as apply.s
     SET_CAPCLASS     = "set_capclass"
     SET_CAPCLASS_DIR = os.path.join(TEMP_SUBDIR, SET_CAPCLASS)
@@ -252,6 +253,22 @@ if __name__ == '__main__':
             Wrangler.TransitNetwork.capacity.writeTransitLineToVehicle(directory = trnpath)
             Wrangler.TransitNetwork.capacity.writeTransitPrefixToVehicle(directory = trnpath)
 
+            if args.create_shapefiles:
+                # don't import because this will also use Wrangler
+                # so invoke as a subprocess instead
+                shapefile_dir = pathlib.Path(hwypath).parent / "shapefiles"
+                os.makedirs(shapefile_dir, exist_ok=True)
+
+                command = "python X:\\travel-model-one-v1.6.1_develop\\utilities\\cube-to-shapefile\\cube_to_shapefile.py"
+                command += f" --linefile {pathlib.Path(trnpath).resolve() / 'transitLines.lin'}"
+                command += f" {pathlib.Path(hwypath).resolve() / 'freeflow.net'}"
+                networks['hwy']._runAndLog(
+                    cmd = command, 
+                    run_dir=shapefile_dir, 
+                    logStdoutAndStderr=True, 
+                    env=os.environ
+                )
+
         # build the Baseline, with Sea Level Rise effects
         if NET_VARIANT=="Baseline" and YEAR>=2035:
 
@@ -342,6 +359,22 @@ if __name__ == '__main__':
             Wrangler.TransitNetwork.capacity.writeTransitVehicleToCapacity(directory = trnpath)
             Wrangler.TransitNetwork.capacity.writeTransitLineToVehicle(directory = trnpath)
             Wrangler.TransitNetwork.capacity.writeTransitPrefixToVehicle(directory = trnpath)
+
+            if args.create_shapefiles:
+                # don't import because this will also use Wrangler
+                # so invoke as a subprocess instead
+                shapefile_dir = pathlib.Path(hwypath).parent / "shapefiles"
+                os.makedirs(shapefile_dir, exist_ok=True)
+
+                command = "python X:\\travel-model-one-v1.6.1_develop\\utilities\\cube-to-shapefile\\cube_to_shapefile.py"
+                command += f" --linefile {pathlib.Path(trnpath).resolve() / 'transitLines.lin'}"
+                command += f" {pathlib.Path(hwypath).resolve() / 'freeflow.net'}"
+                networks['hwy']._runAndLog(
+                    cmd = command, 
+                    run_dir=shapefile_dir, 
+                    logStdoutAndStderr=True, 
+                    env=os.environ
+                )
 
             # revert back to the plus rowadway network without BP_Sea_Level_Rise_Inundation
             networks['hwy'].saveNetworkFiles(suffix="_pre_SLR", to_suffix=False)

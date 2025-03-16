@@ -50,6 +50,9 @@ class Network(object):
         where stdout and stderr are lists of strings.
         """
         myenv = None
+        retcode = None
+        retStdout = []
+        retStderr = []
         if env:
             myenv = copy.deepcopy(os.environ)
             myenv.update(env)
@@ -57,21 +60,21 @@ class Network(object):
 
         try:
             proc = subprocess.Popen( cmd, cwd = run_dir, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True, env=myenv )
-            retStdout = []
-            for line in proc.stdout:
-                if type(line)==bytes: line = line.decode()  # convert to string, not byetes
-                line = line.strip('\r\n')
+
+            stdout, stderr = proc.communicate()
+
+            for line in stdout.decode().splitlines():
                 if logStdoutAndStderr: WranglerLogger.debug("stdout: " + line)
                 retStdout.append(line)
 
-            retStderr = []
-            for line in proc.stderr:
-                if type(line)==bytes: line = line.decode() # convert to string, not byetes
-                line = line.strip('\r\n')
+            for line in stderr.decode().splitlines():
                 if logStdoutAndStderr: WranglerLogger.debug("stderr: " + line)
                 retStderr.append(line)
-            retcode  = proc.wait()
-            WranglerLogger.debug("Received {} from [{}] run in [{}]".format(retcode, cmd, run_dir))
+
+            retcode = proc.returncode
+            WranglerLogger.debug(f"Received {retcode} from [{cmd}] run in [{run_dir}]")
+            # WranglerLogger.debug(f"retStdout: {retStdout}")
+            # WranglerLogger.debug(f"retStderr: {retStderr}")
         
         except Exception as inst:
             WranglerLogger.error('Exception caught')
@@ -392,8 +395,11 @@ class Network(object):
             (retcode, retstdout, retstderr) = self._runAndLog(git_fix_cmd, os.path.join(joinedBaseDir, networkdir))
 
             # and now try again...
-            (retcode, retstdout, retstderr) = self._runAndLog(cmd, joinedTempDir)
-
+            attempt = 2
+            while (retcode == 128) and (attempt < 8):
+                WranglerLogger.debug(f"attempt {attempt} to git clone")
+                (retcode, retstdout, retstderr) = self._runAndLog(cmd, joinedTempDir)
+                retcode += 1
 
         if retcode != 0:
             if not projectsubdir:
@@ -405,7 +411,7 @@ class Network(object):
 
             if not os.path.exists(newtempdir):
                 os.makedirs(newtempdir)
-            cmd = r'git clone  -b "%s" --quiet "%s"' % (branch, os.path.join(joinedBaseDir, networkdir, projectsubdir))
+            cmd = r'git clone -b "%s" --quiet "%s"' % (branch, os.path.join(joinedBaseDir, networkdir, projectsubdir))
             (retcode, retstdout, retstderr) = self._runAndLog(cmd, newtempdir)
 
         if tag != None:
