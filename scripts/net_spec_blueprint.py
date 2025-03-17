@@ -349,7 +349,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         'FBP_MU_029_ACRapid_2025',
                     #    {'name':'FBP_CC_15_23rd_St_BRT',         'kwargs':{'MODELYEAR':'2025'}},
                     #    'FBP_CC_030_OakleyAmtrak',         
-                        'MAJ_Sonoma_Frequency_Increase',
+                        {'name':'MAJ_Sonoma_Frequency_Increase',                                            'kwargs':{'MODELYEAR':'2025'}},
                     #    {'name':'EIR1_Freq_Boosts',              'kwargs':{'MODELYEAR':'2025'},            'variants_include':['Alt1']},
                     #    {'name':'EIR2_HRA_Freq_Incr',            'kwargs':{'MODELYEAR':'2025'},            'variants_include':['Alt2']},
                     #    {'name':'EIR2_PDA_Freq_Incr',            'kwargs':{'MODELYEAR':'2025'},            'variants_include':['Alt2']},
@@ -434,6 +434,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    {'name':'EIR2_Fix_Alt2',                 'kwargs':{'MODELYEAR':'2030'},            'variants_include':['Alt2']},
                         'Dumbarton_Bridge_Bus_Service',
                         {'name':'MAJ_SC_VTAVisionaryNetwork', 'kwargs':{'MODELYEAR': '2030'}},
+                        {'name':'MAJ_Sonoma_Frequency_Increase',                                            'kwargs':{'MODELYEAR':'2030'}},
                         'SON_SMART_to_Healdsburg',
                         {'name':'GGT_Service_Imp',                                                         'kwargs':{'MODELYEAR':'2030'}},
                         'FBP_MU_049_Caltrain_6TPHPD',
@@ -479,6 +480,8 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                        {'name':'MAJ_SOL070020_I80_I680_SR12_Int_packages_3_4_5', 'kwargs':{'PHASE':'"4"'}},
                        {'name':'MAJ_SOL070020_I80_I680_SR12_Int_packages_3_4_5', 'kwargs':{'PHASE':'"5"'}},
                        {'name':'FBP_SL_026_SolExpressBus',             'kwargs':{'MODELYEAR':'2035'}},
+                       {'name':'MAJ_Sonoma_Frequency_Increase',                                            'kwargs':{'MODELYEAR':'2035'}},
+                    #    {'name':'FBP_SL_026_SolExpressBus',             'kwargs':{'MODELYEAR':'2035'}},
                     #    'FBP_SL_020_MilitaryWest_Diet',
                     #    {'name':'EIR1_Freq_Boosts',                     'kwargs':{'MODELYEAR':'2035'},     'variants_include':['Alt1']},
                     #    {'name':'EIR2_VTA_LRT_Orange',                                                     'variants_include':['Alt2']},
@@ -542,6 +545,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         'FBP_SON_Caulfield_Extension',
                         'SCL250204_10thBridge_Ext',
                         'SM110003_US101_ProduceAve',
+                        {'name':'MAJ_Sonoma_Frequency_Increase',                                            'kwargs':{'MODELYEAR':'2040'}},
 
                        ],
                 'trn':[
@@ -575,6 +579,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         'FBP_MU_049_Caltrain_8TPHPD',
                         'MAJ_SF_050002_Caltrain_Ext_TransbayTerminal',
                         'FBP_MuniForward_Uncommitted_Rail',
+                        {'name':'MAJ_Sonoma_Frequency_Increase',                                            'kwargs':{'MODELYEAR':'2040'}},
                        ]
         }),
         (2045, {'hwy':[
