@@ -394,6 +394,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         'EXP_CC_I680NB_Livorna_to_Arthur',
                         'EXP_AL_I680NB_SR84_to_Alcosta',
                         'EXP_SM_US101_I380_to_SFcounty',
+                        'EXP_SC_SR85_SR87_to_US101_Phase4',
                         'EXP_SC_US101_SR237_to_I880_Phase5',
                         'EXP_SC_US101_I880_to_SR85_Phase6',
                         'FBP_CC_028_Hercules_Station',
