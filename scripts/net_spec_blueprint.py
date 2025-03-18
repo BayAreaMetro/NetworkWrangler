@@ -67,7 +67,6 @@ COMMITTED_PROJECTS = collections.OrderedDict([
                'FBP_AL_067_Rte84Wide',
                'FBP_AL_065_Bancroft_Bus_Only',
                'FBP_SM_032_US101_Willow_Interchange',
-               {'name': 'RRSP_Alameda_Point_Transit_Improvements', 'kwargs':{'BUILT':"'built'"},'branch':'PBA50plus_DBP'} # unbuilt portion is in BLUEPRINT_PROJECTS 2025
                ],
         'trn':['ALA050015_BART_to_WarmSprings',
                'ACGo',
@@ -92,7 +91,7 @@ COMMITTED_PROJECTS = collections.OrderedDict([
                'SamTrans_ECR_Rapid',
                'ALA150004_EastBay_BRT',
                {'name':'FBP_SL_026_SolExpressBus', 'kwargs':{'MODELYEAR':'2020'}},
-               {'name': 'RRSP_Alameda_Point_Transit_Improvements', 'kwargs':{'BUILT':"'built'"},'branch':'PBA50plus_DBP'} # unbuilt portion is in BLUEPRINT_PROJECTS 2025
+               {'name': 'RRSP_Alameda_Point_Transit_Improvements', 'kwargs':{'BUILT':"'built'"}} # unbuilt portion is in BLUEPRINT_PROJECTS 2045
                 ],
     }),
     (2023, {
@@ -293,7 +292,6 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                 'trn':[]
         }),
         (2025, {'hwy':[
-                    #    {'name': 'RRSP_Alameda_Point_Transit_Improvements', 'kwargs':{'BUILT':"'unbuilt'"}, 'branch':'PBA50plus_DBP'},
                     #    'MAJ_WETA_Service_Frequency_Increase',                       
                     #    {'name':'Transform_SR37_Widening_Interim',                                           'variants_exclude':['Alt1']},
                         'SF_130017_SF_Congestion_Pricing',
@@ -337,7 +335,6 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                 'trn':[
                     #    'FBP_AL_001_NewarkFremPDA',
                     #    {'name':'FBP_MU_059_ACTransbay_Freq_Incr',                                         'variants_exclude':['Alt2']},
-                    #    {'name': 'RRSP_Alameda_Point_Transit_Improvements',  'kwargs':{'BUILT':"'unbuilt'"},'branch':'PBA50plus_DBP'},
                     #    'MAJ_WETA_Service_Frequency_Increase',
                     #    {'name':'FBP_MU_046_ACE_Freq_Inc',       'kwargs':{'MODELYEAR':'2025'}},                       
                     #    {'name':'Transform_SR37_Widening_Interim',                                         'variants_exclude':['Alt1']},
@@ -605,6 +602,8 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         'FBP_SF_012_Geneva_Harney_BRT',
                         {'name':'MAJ_SC_VTAVisionaryNetwork', 'kwargs':{'MODELYEAR': '2045'}},
                         'FBP_SCL_SR35_BRT_between_US101_SR87',
+                        {'name': 'RRSP_Alameda_Point_Transit_Improvements', 'kwargs':{'BUILT':"'unbuilt'"}},
+                    
                        ]
         }),
         (2050, {'hwy':[
