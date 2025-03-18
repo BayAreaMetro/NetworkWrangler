@@ -540,6 +540,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         'FBP_SON_Caulfield_Extension',
                         'SCL250204_10thBridge_Ext',
                         'SM110003_US101_ProduceAve',
+                        'ALA090020_I880_Industrial_Parkway_AuxLanes',
                        ],
                 'trn':[
                     #    {'name':'FBP_MU_046_ACE_Freq_Inc',       'kwargs':{'MODELYEAR':'2040'}},
