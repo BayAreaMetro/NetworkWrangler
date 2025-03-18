@@ -332,6 +332,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    {'name':'EIR2_Val_Link_ExpressBus',                                                'variants_include':['Alt2']},
                     #    {'name':'EIR2_ReXBlue',                                                            'variants_include':['Alt2']},
                     #    'FBP_SC_072_US101_Trimble_Interchange',
+                        {'name':'MAJ_Sonoma_Frequency_Increase',                                            'kwargs':{'MODELYEAR':'2025'}},
                        ],
                 'trn':[
                     #    'FBP_AL_001_NewarkFremPDA',
@@ -545,8 +546,6 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         'FBP_SON_Caulfield_Extension',
                         'SCL250204_10thBridge_Ext',
                         'SM110003_US101_ProduceAve',
-                        {'name':'MAJ_Sonoma_Frequency_Increase',                                            'kwargs':{'MODELYEAR':'2040'}},
-
                        ],
                 'trn':[
                     #    {'name':'FBP_MU_046_ACE_Freq_Inc',       'kwargs':{'MODELYEAR':'2040'}},
