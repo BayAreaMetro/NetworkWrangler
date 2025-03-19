@@ -494,7 +494,6 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         'FBP_CC_059_PittAntiochWide',
                         'FBP_SL_053_PeabodyWide',
                         'Transform_I680_Multimodal_Imp',
-                    #    {'name':'FBP_CC_051_SR4_Operation_Improvements_WB',                                'variants_exclude':['Alt1']},
                     #    'FBP_CC_037_680_AuxLanes',
                     #    {'name':'RRSP_EC_Cap_Imp_ECR_Bus',                                                 'branch':'PBA50plus_DBP'},
                         'MAJ_SR_239',
@@ -604,6 +603,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
         }),
         (2050, {'hwy':[
                         'BP_Vision_Zero',
+                        'FBP_CC_051_SR4_Operation_Improvements_WB'
                     #    'FBP_SC_028_Stevens_Creek_LRT',
                     #    {'name':'MAJ_Bay_Area_Forward_all',             'kwargs':{'MODELYEAR':'2050'}},
                     #    'EXP_Blueprint',
