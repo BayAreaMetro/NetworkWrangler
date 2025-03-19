@@ -91,7 +91,6 @@ COMMITTED_PROJECTS = collections.OrderedDict([
                'SamTrans_ECR_Rapid',
                'ALA150004_EastBay_BRT',
                {'name':'FBP_SL_026_SolExpressBus', 'kwargs':{'MODELYEAR':'2020'}},
-               {'name': 'RRSP_Alameda_Point_Transit_Improvements', 'kwargs':{'BUILT':"'built'"}} # unbuilt portion is in BLUEPRINT_PROJECTS 2045
                 ],
     }),
     (2023, {
@@ -599,7 +598,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         'FBP_SF_012_Geneva_Harney_BRT',
                         {'name':'MAJ_SC_VTAVisionaryNetwork', 'kwargs':{'MODELYEAR': '2045'}},
                         'FBP_SCL_SR35_BRT_between_US101_SR87',
-                        {'name': 'RRSP_Alameda_Point_Transit_Improvements', 'kwargs':{'BUILT':"'unbuilt'"}},
+                        'RRSP_Alameda_Point_Transit_Improvements',
                     
                        ]
         }),
