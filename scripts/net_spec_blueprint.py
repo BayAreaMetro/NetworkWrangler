@@ -377,7 +377,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    'FBP_AL_064_UnionCityWide',
                     #    'FBP_SC_074_US101_BuenaVista_Int',
                     #    'EXP_Blueprint',
-                    #    'FBP_SC_054_SR17_Corridor_Relief',
+                        'FBP_SC_054_SR17_Corridor_Relief',
                        'FBP_SM_042_Hwy1_ManorDrive',
                     #    'FBP_CC_024_Oakley_PNR_Tri_Delta',
                     #    'FBP_SC_083_US101_Zanker_Skyport_Interchange',
