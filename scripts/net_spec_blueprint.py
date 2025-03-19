@@ -157,9 +157,6 @@ COMMITTED_PROJECTS = collections.OrderedDict([
                           'operator':'"Golden Gate Ferry"'}},
                {'name':'Transit_Frequency_Updates_Using_511', 
                 'kwargs':{'regional_gtfs_zip':'"2023-09.zip"', 
-                          'operator':'"San Francisco Bay Ferry"'}},
-               {'name':'Transit_Frequency_Updates_Using_511', 
-                'kwargs':{'regional_gtfs_zip':'"2023-09.zip"', 
                           'operator':'"AC TRANSIT"'}},
                {'name':'Transit_Frequency_Updates_Using_511', 
                 'kwargs':{'regional_gtfs_zip':'"2023-09.zip"', 
@@ -212,6 +209,8 @@ COMMITTED_PROJECTS = collections.OrderedDict([
                 {'name':'Transit_Frequency_Updates_Using_511',
                 'kwargs':{'regional_gtfs_zip':'"2023-09.zip"',
                           'operator':'"Vacaville City Coach"'}},
+                # San Francisco Bay Ferry is updated via `GTFS2023_SB_SFBayFerry` rather than Sep2023 GTFS default method
+                'GTFS2023_SB_SFBayFerry',
                 # Treasure Island Ferry is added via 'MAJ_Treasure_Island_Ferry' rather than Sep2023 GTFS
                 # https://app.asana.com/0/0/1206560526595918/1208653731926585/f
                 'MAJ_Treasure_Island_Ferry',
