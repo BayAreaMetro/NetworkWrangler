@@ -302,7 +302,6 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         'FBP_MU_029_ACRapid_2025',
                     #    'FBP_MR_026_NovatoWide',
                     #    'FBP_NP_038_TSP_On_SR29',
-                    #    {'name':'FBP_CC_050_SR4_Operation_Improvements_EB',                                  'variants_exclude':['Alt1']},
                     #    {'name':'FBP_CC_040_041_042_I680_SR4_Int_Phases_1_2_4_5', 'kwargs':{'PHASE':"'1'"},  'variants_exclude':['Alt1']},
                     #    {'name':'FBP_CC_040_041_042_I680_SR4_Int_Phases_1_2_4_5', 'kwargs':{'PHASE':"'2'"},  'variants_exclude':['Alt1']},
                     #    {'name':'EXP_uncommitted_all',           'kwargs':{'MODELYEAR':'2025'},              'variants_exclude':['Alt1']},
@@ -404,6 +403,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         'FBP_SC_082_US101_25_Interchange',
                         'SOL110004_Jepson_Walters_Extension',
                         'FBP_ALA_I800_42nd_High_Interchange',
+                        'FBP_CC_050_SR4_Operation_Improvements_EB',
                         {'name':'MAJ_SC_VTAVisionaryNetwork', 'kwargs':{'MODELYEAR': '2030'}},
                        ],
                 'trn':[
