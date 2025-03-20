@@ -586,6 +586,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         {'name':'FBP_CC_15_23rd_St_BRT',         'kwargs':{'PHASE':'3'}},
                         {'name':'MAJ_SC_VTAVisionaryNetwork', 'kwargs':{'MODELYEAR': '2045'}},
                         'FBP_SCL_SR35_BRT_between_US101_SR87',
+                        'RRSP_EC_Cap_Imp_ECR_Bus'
                        ],
                 'trn':[
                     {'name':'FBP_SM_020_Regional_Express_Buses', 'kwargs':{'PHASE':"'Phase1_4Routes'"}},
@@ -601,7 +602,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         {'name':'MAJ_SC_VTAVisionaryNetwork', 'kwargs':{'MODELYEAR': '2045'}},
                         'FBP_SCL_SR35_BRT_between_US101_SR87',
                         'RRSP_Alameda_Point_Transit_Improvements',
-                    
+                        'RRSP_EC_Cap_Imp_ECR_Bus',                
                        ]
         }),
         (2050, {'hwy':[
