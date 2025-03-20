@@ -404,6 +404,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         'FBP_ALA_I800_42nd_High_Interchange',
                         'FBP_CC_050_SR4_Operation_Improvements_EB',
                         {'name':'MAJ_SC_VTAVisionaryNetwork', 'kwargs':{'MODELYEAR': '2030'}},
+                        'SCL230001_SR237_Middlefield_interchange'
                        ],
                 'trn':[
                         {'name':'BP_PDA_Transit_Enhancements',                                       'branch':'PBA50plus_DBP'},
