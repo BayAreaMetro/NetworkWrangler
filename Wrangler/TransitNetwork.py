@@ -1686,7 +1686,9 @@ class TransitNetwork(Network):
                     
                     if found_link: continue
 
-                    WranglerLogger.warn("TransitNetwork.checkValidityOfLinks: (%d, %d) not in the roadway network nor in the off-road links (line %s)" % (a, b, line.name))
+                    error_message = f"TransitNetwork.checkValidityOfLinks: ({a}, {b}) not in the roadway network nor in the off-road links (line {line.name})"
+                    WranglerLogger.fatal(error_message)
+                    raise NetworkException(error_message)
                 
                 last_node = node
 
