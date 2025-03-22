@@ -331,8 +331,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                 'trn':[
                     #    'FBP_AL_001_NewarkFremPDA',
                     #    {'name':'FBP_MU_059_ACTransbay_Freq_Incr',                                         'variants_exclude':['Alt2']},
-                    #    'MAJ_WETA_Service_Frequency_Increase',
-                    #    {'name':'FBP_MU_046_ACE_Freq_Inc',       'kwargs':{'MODELYEAR':'2025'}},                       
+                    #    'MAJ_WETA_Service_Frequency_Increase',                    
                     #    {'name':'Transform_SR37_Widening_Interim',                                         'variants_exclude':['Alt1']},
                         'SF_130017_SF_Congestion_Pricing',
                     #    'FBP_MU_041_Hovercraft_Pilot',
@@ -405,7 +404,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                        ],
                 'trn':[
                         {'name':'BP_PDA_Transit_Enhancements',                                       'branch':'PBA50plus_DBP'},
-                    #    {'name':'FBP_MU_046_ACE_Freq_Inc',       'kwargs':{'MODELYEAR':'2030'}},
+                       {'name':'FBP_MU_046_ACE_Freq_Inc',       'kwargs':{'MODELYEAR':'2030'}},
                     #    'BART_Irvington_Infill',
                        'MAJ_REG090037_BART_Core_Cap',
                        'FBP_AL_021_South_Bay_Connect',
@@ -538,7 +537,6 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         'ALA090020_I880_Industrial_Parkway_AuxLanes',
                        ],
                 'trn':[
-                    #    {'name':'FBP_MU_046_ACE_Freq_Inc',       'kwargs':{'MODELYEAR':'2040'}},
                     #    'MAJ_Vasona_LRT_Extension',
                         'FBP_MU_029_ACRapid_2040',
                     #    {'name':'RRSP_EC_Cap_Imp_ECR_Bus',                                                 'branch':'PBA50plus_DBP'},
@@ -596,7 +594,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         {'name':'FBP_CC_15_23rd_St_BRT',         'kwargs':{'PHASE':'2'}},
                         {'name':'FBP_CC_15_23rd_St_BRT',         'kwargs':{'PHASE':'3'}},
                         'RRSP_E14_Mission_Corridor',
-                    #    {'name':'FBP_MU_046_ACE_Freq_Inc',       'kwargs':{'MODELYEAR':'2045'}},
+                       {'name':'FBP_MU_046_ACE_Freq_Inc',       'kwargs':{'MODELYEAR':'2045'}},
                     #    'FBP_SC_106_VTA_LRT_Modernization',
                         'FBP_SF_012_Geneva_Harney_BRT',
                         {'name':'MAJ_SC_VTAVisionaryNetwork', 'kwargs':{'MODELYEAR': '2045'}},
