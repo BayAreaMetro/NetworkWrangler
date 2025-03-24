@@ -267,8 +267,12 @@ COMMITTED_PROJECTS = collections.OrderedDict([
     }),
     (2045, {
         'hwy':[
-               'EXP_Blueprint_NoProject'],
-        'trn':[]
+               'EXP_Blueprint_NoProject',
+               'FBP_SCL_SR35_BRT_between_US101_SR87',
+               ],
+        'trn':[
+                'FBP_SCL_SR35_BRT_between_US101_SR87',
+        ]
     }),
     (2050, {
         'hwy':[
@@ -583,7 +587,6 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         {'name':'FBP_CC_15_23rd_St_BRT',         'kwargs':{'PHASE':'2'}},
                         {'name':'FBP_CC_15_23rd_St_BRT',         'kwargs':{'PHASE':'3'}},
                         {'name':'MAJ_SC_VTAVisionaryNetwork', 'kwargs':{'MODELYEAR': '2045'}},
-                        'FBP_SCL_SR35_BRT_between_US101_SR87',
                         'RRSP_EC_Cap_Imp_ECR_Bus'
                        ],
                 'trn':[
@@ -598,7 +601,6 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    'FBP_SC_106_VTA_LRT_Modernization',
                         'FBP_SF_012_Geneva_Harney_BRT',
                         {'name':'MAJ_SC_VTAVisionaryNetwork', 'kwargs':{'MODELYEAR': '2045'}},
-                        'FBP_SCL_SR35_BRT_between_US101_SR87',
                         'RRSP_Alameda_Point_Transit_Improvements',
                         'RRSP_EC_Cap_Imp_ECR_Bus',                
                        ]
