@@ -404,7 +404,8 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         'FBP_ALA_I800_42nd_High_Interchange',
                         'FBP_CC_050_SR4_Operation_Improvements_EB',
                         {'name':'MAJ_SC_VTAVisionaryNetwork', 'kwargs':{'MODELYEAR': '2030'}},
-                        'SCL230001_SR237_Middlefield_interchange'
+                        'SCL230001_SR237_Middlefield_interchange',
+                        'FBP_SC_041_Envision_Highway_Minor',
                        ],
                 'trn':[
                         {'name':'BP_PDA_Transit_Enhancements',                                       'branch':'PBA50plus_DBP'},
@@ -611,7 +612,6 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    'FBP_SC_028_Stevens_Creek_LRT',
                     #    {'name':'MAJ_Bay_Area_Forward_all',             'kwargs':{'MODELYEAR':'2050'}},
                     #    'EXP_Blueprint',
-                    #    'FBP_SC_041_Envision_Highway_Minor',
                     #    'STIP_ITS_SM',
                     #    {'name':'BP_Transbay_Crossing',                                                    'variants_exclude':['Alt2']}
                        ],
