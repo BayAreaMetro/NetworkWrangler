@@ -294,8 +294,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                 'trn':[]
         }),
         (2025, {'hwy':[
-                    #    'MAJ_WETA_Service_Frequency_Increase',                       
-                    #    {'name':'Transform_SR37_Widening_Interim',                                           'variants_exclude':['Alt1']},
+                    #    'MAJ_WETA_Service_Frequency_Increase',
                         'SF_130017_SF_Congestion_Pricing',
                     #    'FBP_MU_041_Hovercraft_Pilot',
                         'BP_Vision_Zero',
@@ -333,8 +332,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                 'trn':[
                     #    'FBP_AL_001_NewarkFremPDA',
                     #    {'name':'FBP_MU_059_ACTransbay_Freq_Incr',                                         'variants_exclude':['Alt2']},
-                    #    'MAJ_WETA_Service_Frequency_Increase',                    
-                    #    {'name':'Transform_SR37_Widening_Interim',                                         'variants_exclude':['Alt1']},
+                    #    'MAJ_WETA_Service_Frequency_Increase',
                         'SF_130017_SF_Congestion_Pricing',
                     #    'FBP_MU_041_Hovercraft_Pilot',
                     #    'FBP_MU_060_ReX_Blue',
