@@ -404,7 +404,8 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         'FBP_ALA_I800_42nd_High_Interchange',
                         'FBP_CC_050_SR4_Operation_Improvements_EB',
                         {'name':'MAJ_SC_VTAVisionaryNetwork', 'kwargs':{'MODELYEAR': '2030'}},
-                        'SCL230001_SR237_Middlefield_interchange'
+                        'SCL230001_SR237_Middlefield_interchange',
+                        'Transform_SR37_Widening_Interim',
                        ],
                 'trn':[
                         {'name':'BP_PDA_Transit_Enhancements',                                       'branch':'PBA50plus_DBP'},
@@ -434,6 +435,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         'SON_SMART_to_Healdsburg',
                         {'name':'GGT_Service_Imp',                                                         'kwargs':{'MODELYEAR':'2030'}},
                         'FBP_MU_049_Caltrain_6TPHPD',
+                        'Transform_SR37_Widening_Interim'
                        ]
         }),
         (2035, {'hwy':[
