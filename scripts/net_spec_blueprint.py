@@ -539,6 +539,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         'SCL250204_10thBridge_Ext',
                         'SM110003_US101_ProduceAve',
                         'ALA090020_I880_Industrial_Parkway_AuxLanes',
+                        'SCL190012_US101_SanAntonio_Charleston_Rengstroff_Int'
                        ],
                 'trn':[
                     #    'MAJ_Vasona_LRT_Extension',
