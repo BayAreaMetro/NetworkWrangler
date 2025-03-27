@@ -214,8 +214,10 @@ class TransitLine(object):
             if(allowDowngrades):
                 self.attr[attr_set] = float(freqs[i])
             else:
-                self.attr[attr_set] = min(float(freqs[i]),float(self.attr[attr_set]))
-
+                if float(self.attr[attr_set]) == 0:
+                    self.attr[attr_set] = float(freqs[i])
+                else:
+                    self.attr[attr_set] = min(float(freqs[i]),float(self.attr[attr_set]))
         
     def getFreqs(self):
         """
