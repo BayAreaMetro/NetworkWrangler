@@ -503,7 +503,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    'FBP_SC_043_I280_Mainline_Impr',
                        'MAJ_ElCaminoReal_BRT',
                        {'name':'FBP_CC_15_23rd_St_BRT',         'kwargs':{'PHASE':'1'}},
-                    #    'FBP_AL_042_I680_Stoneridge_Widening',
+                       'FBP_AL_042_I680_Stoneridge_Widening',
                     #    {'name':'EXP_uncommitted_all',                            'kwargs':{'MODELYEAR':'2040'},    'variants_exclude':['Alt1']},
                     #    {'name':'EIR1_EXP_uncommitted_all',                       'kwargs':{'MODELYEAR':'2040'},    'variants_include':['Alt1']},
                     #    {'name':'MAJ_Bay_Area_Forward_all',                       'kwargs':{'MODELYEAR':'2040'}},
