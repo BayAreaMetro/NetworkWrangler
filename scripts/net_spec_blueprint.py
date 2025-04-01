@@ -297,9 +297,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    'MAJ_WETA_Service_Frequency_Increase',
                         'SF_130017_SF_Congestion_Pricing',
                     #    'FBP_MU_041_Hovercraft_Pilot',
-                        'BP_Vision_Zero',
                     #    'EXP_Blueprint',
-
                     #    'FBP_MU_044_SouthSF_Ferry_Serv_Incr',
                         'FBP_MU_029_ACRapid_2025',
                     #    'FBP_MR_026_NovatoWide',
@@ -328,6 +326,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    {'name':'EIR2_ReXBlue',                                                            'variants_include':['Alt2']},
                     #    'FBP_SC_072_US101_Trimble_Interchange',
                         {'name':'MAJ_Sonoma_Frequency_Increase',                                            'kwargs':{'MODELYEAR':'2025'}},
+                        'BP_Vision_Zero',
                        ],
                 'trn':[
                     #    'FBP_AL_001_NewarkFremPDA',
@@ -350,7 +349,6 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
         }),
         (2030, {'hwy':[
                     #    'BP_Tolls_On_Congested_Freeways_2030',
-                        'BP_Vision_Zero',
                         'FBP_AL_021_South_Bay_Connect',
                     #    'FBP_MU_044_Richmond_Ferry_Serv_Incr',
                     #    {'name':'Transform_Valley_Link',                                                   'variants_exclude':['Alt2']},
@@ -405,6 +403,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         'SCL230001_SR237_Middlefield_interchange',
                         'Transform_SR37_Widening_Interim',
                         'FBP_SC_041_Envision_Highway_Minor',
+                        'BP_Vision_Zero',
                        ],
                 'trn':[
                         {'name':'BP_PDA_Transit_Enhancements',                                       'branch':'PBA50plus_DBP'},
@@ -443,7 +442,6 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         'SF_110049_Treasure_Island_Congestion_Pricing',
                     #    'BP_Tolls_On_Congested_Freeways_2035',
                     #    {'name': 'NGF_BlueprintSegmented'},
-                        'BP_Vision_Zero',
                     #    'RRSP_East_West_Connector',
                     #    'FBP_SM_022_I380_Widening',
                        {'name':'MAJ_SOL070020_I80_I680_SR12_Int_packages_3_4_5', 'kwargs':{'PHASE':'"3"'}},
@@ -459,6 +457,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    {'name':'EIR1_No_SR37',                                                            'variants_include':['Alt1']},
                         'FBP_SM_027_US101_92_directConnector',
                         'FBP_T5_All_Lane_Tolling',
+                        'BP_Vision_Zero',
                        ],
                 'trn':[
                         #{'name':'MAJ_MuniForward_Uncommitted',                                             'branch':'PBA50plus_DBP'},
@@ -486,7 +485,6 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                        ]
         }),
         (2040, {'hwy':[
-                        'BP_Vision_Zero',
                         'FBP_AL_055_DubBlvd_NCanyons_Ext',
                     #    'FBP_SC_050_I680_Montague_Int_Imp', 
                         'FBP_MU_029_ACRapid_2040',
@@ -539,7 +537,8 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         'SCL250204_10thBridge_Ext',
                         'SM110003_US101_ProduceAve',
                         'ALA090020_I880_Industrial_Parkway_AuxLanes',
-                        'SCL190012_US101_SanAntonio_Charleston_Rengstroff_Int'
+                        'SCL190012_US101_SanAntonio_Charleston_Rengstroff_Int',
+                        'BP_Vision_Zero',
                        ],
                 'trn':[
                     #    'MAJ_Vasona_LRT_Extension',
@@ -575,8 +574,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         {'name':'MAJ_Sonoma_Frequency_Increase',                                            'kwargs':{'MODELYEAR':'2040'}},
                        ]
         }),
-        (2045, {'hwy':[
-                        'BP_Vision_Zero',    
+        (2045, {'hwy':[ 
                         'RRSP_E14_Mission_Corridor',
                     #    {'name':'EXP_uncommitted_all',           'kwargs':{'MODELYEAR':'2045'},            'variants_exclude':['Alt1']},
                     #    {'name':'EIR1_EXP_uncommitted_all',      'kwargs':{'MODELYEAR':'2045'},            'variants_include':['Alt1']},
@@ -588,7 +586,8 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         {'name':'FBP_CC_15_23rd_St_BRT',         'kwargs':{'PHASE':'2'}},
                         {'name':'FBP_CC_15_23rd_St_BRT',         'kwargs':{'PHASE':'3'}},
                         {'name':'MAJ_SC_VTAVisionaryNetwork', 'kwargs':{'MODELYEAR': '2045'}},
-                        'RRSP_EC_Cap_Imp_ECR_Bus'
+                        'RRSP_EC_Cap_Imp_ECR_Bus',
+                        'BP_Vision_Zero',
                        ],
                 'trn':[
                     {'name':'FBP_SM_020_Regional_Express_Buses', 'kwargs':{'PHASE':"'Phase1_4Routes'"}},
@@ -607,13 +606,13 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                        ]
         }),
         (2050, {'hwy':[
-                        'BP_Vision_Zero',
                         'FBP_CC_051_SR4_Operation_Improvements_WB'
                     #    'FBP_SC_028_Stevens_Creek_LRT',
                     #    {'name':'MAJ_Bay_Area_Forward_all',             'kwargs':{'MODELYEAR':'2050'}},
                     #    'EXP_Blueprint',
                     #    'STIP_ITS_SM',
-                    #    {'name':'BP_Transbay_Crossing',                                                    'variants_exclude':['Alt2']}
+                    #    {'name':'BP_Transbay_Crossing',                                                    'variants_exclude':['Alt2']},
+                        'BP_Vision_Zero',
                        ],
                 'trn':[
                     #    'FBP_SC_028_Stevens_Creek_LRT',
