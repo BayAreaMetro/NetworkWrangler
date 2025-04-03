@@ -406,7 +406,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         'BP_Vision_Zero',
                        ],
                 'trn':[
-                        # {'name':'BP_PDA_Transit_Enhancements',                                       'branch':'PBA50plus_DBP'},
+                       'BP_PDA_Transit_Enhancements',
                        {'name':'FBP_MU_046_ACE_Freq_Inc',       'kwargs':{'MODELYEAR':'2030'}},
                     #    'BART_Irvington_Infill',
                        'MAJ_REG090037_BART_Core_Cap',
