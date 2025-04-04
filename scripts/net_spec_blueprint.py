@@ -465,7 +465,6 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         'MAJ_SanPablo_BRT',
                     #    'RRSP_South_East_Waterfront_Transit_Imp',
                     #    'FBP_MU_062_ReX_Red',
-                    #    'Transform_SeamlessTransit',
                         'SF_110049_Treasure_Island_Congestion_Pricing',
                     #    'RRSP_East_West_Connector',
                     #    'FBP_NP_079_Trower_Ext',
@@ -482,6 +481,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    {'name':'EIR1_No_SR37',                                                            'variants_include':['Alt1']},
                         'SON_SMART_to_Cloverdale',
                         {'name':'GGT_Service_Imp',                                                         'kwargs':{'MODELYEAR':'2035'}},
+                        'Transform_SeamlessTransit',                        
                        ]
         }),
         (2040, {'hwy':[
@@ -617,6 +617,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                 'trn':[
                     #    'FBP_SC_028_Stevens_Creek_LRT',
                     #    {'name':'BP_Transbay_Crossing',                                                    'variants_exclude':['Alt2']}
+                         'Transform_SeamlessTransit',                            
                        ]
         })
     ])
