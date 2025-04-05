@@ -228,7 +228,8 @@ COMMITTED_PROJECTS = collections.OrderedDict([
                'EXP_SL030_I80_RedTopRd_to_I505',
                'EXP_AL025_I680_SR84_to_Alcosta',
                'FBP_NP_044_Soscol_Junction',
-               'ALA170011_BayBridge_HOV_Connectors_phase2'
+               'ALA170011_BayBridge_HOV_Connectors_phase2',
+               'FBP_CC_030_OakleyAmtrak',
                ],
         'trn':['SF_010028_Caltrain_Modernization',
                'SON090002_SMART_to_Windsor',
@@ -238,6 +239,7 @@ COMMITTED_PROJECTS = collections.OrderedDict([
                'SamTrans_2024_restore_expand_services',
                'FBP_NP_044_Soscol_Junction',
                'MAJ_MissionBay_SF_Ferry',
+               'FBP_CC_030_OakleyAmtrak',  
                ]
     }),
     (2030, {
@@ -317,7 +319,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    'FBP_SC_084_10th_BridgeWide',
                     #    'FBP_SC_073_BlossomHill_101Wide',
                     #    'FBP_CC_045_SanPabloDam_Interchange_Phase2',
-                    #    'FBP_CC_030_OakleyAmtrak',
+
                     #    'FBP_SM_034_Route92_ElCamino_Interchange',
                     #    'FBP_SL_019_BeniciaRoad_Diet',
                     #    'FBP_SL_023_WestTexasRoad_Diet',
@@ -338,8 +340,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    {'name':'EIR2_ReXBlue',                                                            'variants_include':['Alt2']},                       
                     #    'FBP_MU_044_SouthSF_Ferry_Serv_Incr',
                          {'name':'GGT_Service_Imp',                                                         'kwargs':{'MODELYEAR':'2025'}},
-                        'FBP_MU_029_ACRapid_2025',
-                    #    'FBP_CC_030_OakleyAmtrak',         
+                        'FBP_MU_029_ACRapid_2025',  
                         {'name':'MAJ_Sonoma_Frequency_Increase',                                            'kwargs':{'MODELYEAR':'2025'}},
                     #    {'name':'EIR1_Freq_Boosts',              'kwargs':{'MODELYEAR':'2025'},            'variants_include':['Alt1']},
                     #    {'name':'EIR2_HRA_Freq_Incr',            'kwargs':{'MODELYEAR':'2025'},            'variants_include':['Alt2']},
