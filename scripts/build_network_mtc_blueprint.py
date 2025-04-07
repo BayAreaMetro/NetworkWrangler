@@ -49,7 +49,7 @@ if __name__ == '__main__':
     ADDITONAL_ROADWAY_ATTRS = []
 
     # Read the configuration
-    NETWORK_CONFIG = args.net_spec
+    NETWORK_CONFIG = pathlib.Path(args.net_spec).resolve()
     NET_VARIANT    = args.netvariant
 
     # networks and log file will be in BlueprintNetworks
@@ -60,6 +60,14 @@ if __name__ == '__main__':
     Wrangler.setupLogging(os.path.join("BlueprintNetworks",LOG_FILENAME),
                           os.path.join("BlueprintNetworks",LOG_FILENAME.replace("info", "debug")))
     Wrangler.WranglerLogger.debug(f"Args: {args}")
+
+    # Create a scratch directory to check out project repos into
+    SCRATCH_SUBDIR = "scratch"
+    TEMP_SUBDIR    = "Wrangler_tmp_" + NOW
+    if not os.path.exists(SCRATCH_SUBDIR): os.mkdir(SCRATCH_SUBDIR)
+    os.chdir(SCRATCH_SUBDIR)
+
+    os.environ["CHAMP_node_names"] = os.path.join(PIVOT_DIR,"Node Description.xls")
 
     exec(open(NETWORK_CONFIG).read())
 
@@ -81,14 +89,6 @@ if __name__ == '__main__':
 
     if TRANSIT_CAPACITY_DIR:
         Wrangler.TransitNetwork.capacity = Wrangler.TransitCapacity(directory=TRANSIT_CAPACITY_DIR)
-
-    # Create a scratch directory to check out project repos into
-    SCRATCH_SUBDIR = "scratch"
-    TEMP_SUBDIR    = "Wrangler_tmp_" + NOW
-    if not os.path.exists(SCRATCH_SUBDIR): os.mkdir(SCRATCH_SUBDIR)
-    os.chdir(SCRATCH_SUBDIR)
-
-    os.environ["CHAMP_node_names"] = os.path.join(PIVOT_DIR,"Node Description.xls")
 
     PIVOT_DIR_HWY = PIVOT_DIR
     PIVOT_DIR_TRN = PIVOT_DIR

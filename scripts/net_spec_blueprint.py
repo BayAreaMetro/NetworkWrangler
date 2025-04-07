@@ -686,16 +686,30 @@ for YEAR in COMMITTED_PROJECTS.keys():
                 NETWORK_PROJECTS[YEAR]['trn'].remove(roadway_pricing)
                 Wrangler.WranglerLogger.info(f"  Removing roadway pricing strategy from transit {roadway_pricing}")
 
-        # check if transit project has a roadway component in BLUEPRINT_PROJECTS
+        # check if transit project has a roadway component in BLUEPRINT_PROJECTS and check the primary network for that project.
+        # For roadway, remove from transit. For transit, add to roadway.
+        roadway_projects_in_transit = []
         for transit_project in NETWORK_PROJECTS[YEAR]['trn']:
             if isinstance(transit_project, dict):
                 transit_project = transit_project['name']
 
-            # assume roadway version is not a dict...
+            # assume roadway version is not a dict... and check if it exists
             if transit_project in BLUEPRINT_PROJECTS[YEAR]['hwy']:
-                Wrangler.WranglerLogger.info(f"  Transit project {transit_project} has roadway component; adding")
-                NETWORK_PROJECTS[YEAR]['hwy'].append(transit_project)
 
+                # this is a roadway project *AND* a transit project -- but which one is it primarily?
+                primary_network = build_network_mtc.getPrimaryNetworkForProject(transit_project, TEMP_SUBDIR)
+                # if it's primarily a hwy network then we should delete from transit
+                if primary_network == 'hwy':
+                    roadway_projects_in_transit.append(transit_project)
+                
+                else:
+                    Wrangler.WranglerLogger.info(f"  Transit project {transit_project} has roadway component and primary_network={primary_network}; adding")
+                    NETWORK_PROJECTS[YEAR]['hwy'].append(transit_project)
+
+        # delete the roadway_projects_in_transit from transit
+        for roadway_project in roadway_projects_in_transit:
+            NETWORK_PROJECTS[YEAR]['trn'].remove(roadway_project)
+            Wrangler.WranglerLogger.info(f"  Roadway project {roadway_project} has transit component and primary_network={primary_network}; removing")
         continue
 
     # NET_VARIANT is one of "BPwithoutRoadwayPricingSafety", "BPwithoutRoadwaySafety", "Blueprint", "Alt1", "Alt2"
@@ -708,7 +722,7 @@ for YEAR in COMMITTED_PROJECTS.keys():
     if NET_VARIANT in ["BPwithoutRoadwayPricingSafety", "BPwithoutRoadwaySafety"]:
         if T10_SAFETY_STRATEGY in NETWORK_PROJECTS[YEAR]['hwy']:
             NETWORK_PROJECTS[YEAR]['hwy'].remove(T10_SAFETY_STRATEGY)
-            Wrangler.WranglerLogger.info(f"  Removing roadway safety strategy from hwy {T10_SAFETY_STRATEGY}")
+            Wrangler.WranglerLogger.info(f"  Removing roadway safety strategy {T10_SAFETY_STRATEGY}")
 
     # remove roadway pricing from hwy and trn
     if NET_VARIANT == "BPwithoutRoadwayPricingSafety":

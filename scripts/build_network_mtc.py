@@ -237,6 +237,52 @@ def getProjectAttributes(project):
 
     return (project_name, project_type, tag, branch, kwargs)
 
+def getPrimaryNetworkForProject(project, TEMP_SUBDIR):
+    """
+    For a given project, clones to the TEMP_SUBDIR and imports to call primaryNetwork()
+    and figure out if the project is primarily a roadway or transit project.
+    Returns None if primaryNetwork() isn't implemented by the project, otherwise
+    returns the result of project.primaryNetwork() (which should be 'trn' or 'hwy' by convention.)
+
+    Implemented to build networks with just transit projects for this task:
+    Model runs to isolate GHG impacts by strategy group
+    (https://app.asana.com/1/11860278793487/project/1203667963226596/task/1209303126356266?focus=true)
+
+    Args:
+        project (string): Project name string
+    """
+    Wrangler.WranglerLogger.debug(f"getPrimaryNetworkForProject({project})")
+
+    # create temporary Network object for this purpose
+    if not hasattr(getPrimaryNetworkForProject, "temp_network"):
+        Wrangler.WranglerLogger.debug(f"{TEMP_SUBDIR=} {NETWORK_BASE_DIR=} {NETWORK_PROJECT_SUBDIR=}")
+        getPrimaryNetworkForProject.temp_network = Wrangler.Network(
+            modelType=Wrangler.Network.MODEL_TYPE_TM1, modelVersion=1.6, 
+            networkBaseDir=NETWORK_BASE_DIR,
+            networkProjectSubdir=NETWORK_PROJECT_SUBDIR)
+    
+    # clone the project
+    cloned_SHA1 = getPrimaryNetworkForProject.temp_network.cloneProject(
+        networkdir=project, 
+        projectsubdir=None,
+        tempdir=TEMP_SUBDIR)
+    Wrangler.WranglerLogger.debug(f"cloned_SHA1: {cloned_SHA1}")
+    
+    primary_network = None
+    try:
+        primary_network = getPrimaryNetworkForProject.temp_network.getAttr(
+            attr_name='primaryNetwork',
+            parentdir=TEMP_SUBDIR, 
+            networkdir=project,
+            gitdir=None
+        )
+        Wrangler.WranglerLogger.debug(f"primary_network: {primary_network}")
+    except Exception as inst:
+        Wrangler.WranglerLogger.debug(f"Exception caught trying to get attribute primaryNetwork() for {project}")
+        Wrangler.WranglerLogger.debug(f"{inst}")
+
+    return primary_network
+
 def preCheckRequirementsForAllProjects(NETWORK_PROJECTS, TEMP_SUBDIR, networks, continue_on_warning, BUILD_MODE=None, TEST_PROJECTS=None):
     PRE_REQS  = {'hwy':{},'trn':{}}
     CO_REQS   = {'hwy':{},'trn':{}}

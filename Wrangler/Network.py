@@ -140,8 +140,8 @@ class Network(object):
         gitdir: the checkout location of the network project
         projectsubdir: the subdir if it exists, None otherwise
         """
-        WranglerLogger.debug(f"Network.getAttr() with {type(self)=} {attr_name=} {parentdir=} {networkdir=} {gitdir=} {projectsubdir=}")
-        if attr_name not in ['year', 'desc', 'modelType', 'modelVersion', 'wranglerVersion', 'prereqs', 'coreqs', 'conflicts', 'networks']:
+        # WranglerLogger.debug(f"Network.getAttr() with {type(self)=} {attr_name=} {parentdir=} {networkdir=} {gitdir=} {projectsubdir=}")
+        if attr_name not in ['year', 'desc', 'modelType', 'modelVersion', 'wranglerVersion', 'prereqs', 'coreqs', 'conflicts', 'networks','primaryNetwork']:
             WranglerLogger.fatal('%s is not a valid attribute type for a network project' % (attr_name))
             return
         
@@ -214,7 +214,7 @@ class Network(object):
             project_model_type = Network.MODEL_TYPE_TM1
             try:
                 project_model_type = self.getAttr("modelType", parentdir=parentdir, networkdir=networkdir, gitdir=gitdir, projectsubdir=projectsubdir)
-                WranglerLogger.debug("Found project_model_type {}".format(project_model_type))
+                # WranglerLogger.debug("Found project_model_type {}".format(project_model_type))
             except ImportError as ie:
                 # consider this fatal
                 sys.exit(2)
@@ -226,8 +226,7 @@ class Network(object):
 
         projVersion = self.getAttr(version, parentdir=parentdir, networkdir=networkdir,
                                    gitdir=gitdir, projectsubdir=projectsubdir)
-        WranglerLogger.debug("Checking %s compatibility of project (%s) with requirement (%s)" % 
-                             (version, projVersion, versions[version]))
+        # WranglerLogger.debug(f"Checking {version} compatibility of project ({projVersion}) with requirement ({versions[version]})")
 
         minVersion = projVersion[0]
         maxVersion = projVersion[1]
@@ -337,10 +336,11 @@ class Network(object):
                     # TODO: just checkout to the new tag
                     raise NetworkException("Conflicting tag requirements - FIXME!")
 
-                self.checkVersion(version='modelVersion',parentdir=joinedTempDir, networkdir=networkdir,
-                                  gitdir=gitdir, projectsubdir=projectsubdir)
-                self.checkVersion(version='wranglerVersion',parentdir=joinedTempDir, networkdir=networkdir,
-                                  gitdir=gitdir, projectsubdir=projectsubdir)
+                # lmz 2025.04.07 - disabling since these aren't useful in practice
+                # self.checkVersion(version='modelVersion',parentdir=joinedTempDir, networkdir=networkdir,
+                #                   gitdir=gitdir, projectsubdir=projectsubdir)
+                # self.checkVersion(version='wranglerVersion',parentdir=joinedTempDir, networkdir=networkdir,
+                #                   gitdir=gitdir, projectsubdir=projectsubdir)
 
                 commitstr = self.getCommit(gitdir)
                 return commitstr
@@ -349,10 +349,11 @@ class Network(object):
                 WranglerLogger.debug("Skipping checkout of %s, %s already exists" % 
                                      (networkdir, os.path.join(joinedTempDir,networkdir)))
 
-                self.checkVersion(version='modelVersion',parentdir=joinedTempDir, networkdir=networkdir,
-                                  gitdir=gitdir, projectsubdir=projectsubdir)
-                self.checkVersion(version='wranglerVersion',parentdir=joinedTempDir, networkdir=networkdir,
-                                  gitdir=gitdir, projectsubdir=projectsubdir)
+                # lmz 2025.04.07 - disabling since these aren't useful in practice
+                # self.checkVersion(version='modelVersion',parentdir=joinedTempDir, networkdir=networkdir,
+                #                   gitdir=gitdir, projectsubdir=projectsubdir)
+                # self.checkVersion(version='wranglerVersion',parentdir=joinedTempDir, networkdir=networkdir,
+                #                   gitdir=gitdir, projectsubdir=projectsubdir)
 
                 # TODO: we should verify we didn't require conflicting tags?
                 commitstr = self.getCommit(gitdir)
@@ -420,10 +421,11 @@ class Network(object):
             if retcode != 0:
                 raise NetworkException("Git checkout failed; see log file")
 
-        self.checkVersion(version='modelVersion',parentdir=joinedTempDir, networkdir=networkdir,
-                          gitdir=gitdir, projectsubdir=projectsubdir)
-        self.checkVersion(version='wranglerVersion',parentdir=joinedTempDir, networkdir=networkdir,
-                          gitdir=gitdir, projectsubdir=projectsubdir)
+        # lmz 2025.04.07 - disabling since these aren't useful in practice
+        # self.checkVersion(version='modelVersion',parentdir=joinedTempDir, networkdir=networkdir,
+        #                   gitdir=gitdir, projectsubdir=projectsubdir)
+        # self.checkVersion(version='wranglerVersion',parentdir=joinedTempDir, networkdir=networkdir,
+        #                   gitdir=gitdir, projectsubdir=projectsubdir)
 
         commitstr = self.getCommit(gitdir)
         return commitstr
