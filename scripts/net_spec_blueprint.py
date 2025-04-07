@@ -252,7 +252,7 @@ COMMITTED_PROJECTS = collections.OrderedDict([
                'ALA210028_I80_HOV_Bus_Lane_Ext',
                'ALA170049_Central_AVE_Safety_Improvements',
                ],
-        'trn':[{'name':'BART_NoProject',             'branch':'PBA50plus_DBP'},
+        'trn':[
             ]
     }),
     (2035, {
