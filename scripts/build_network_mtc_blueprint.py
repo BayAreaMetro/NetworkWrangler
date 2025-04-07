@@ -22,7 +22,18 @@ if __name__ == '__main__':
     parser.add_argument("--create_project_diffs", help="Pass this to create project diffs information for EVERY project. NOTE: THIS WILL BE SLOW", action="store_true")
     parser.add_argument("--create_project_diff",  help="Pass a project name to create project diffs information for that project", type=str, default=None)
     parser.add_argument("net_spec", metavar="network_specification.py", help="Script which defines required variables indicating how to build the network")
-    parser.add_argument("netvariant", choices=["Baseline", "Blueprint", "Alt1", "Alt2", "NextGenFwy","TIP2023", "TIP2025", "NGFNoProject", "NGFNoProjectNoSFCordon", "NGFround2NoProject"], help="Specify which network variant network to create.")
+    parser.add_argument("netvariant", choices=[
+        "Baseline",                          # committed only
+        "BPTransitProjectsOnly",             # committed + Blueprint Transit Projects 
+        "BPTransitProjectsStrategyOnly",     # committed + Blueprint Transit Projects + Transit Strategies (T2/3/4)
+        "BPwithoutRoadwayPricingSafety",     # committed + Blueprint Transit Projects + Transit Strategies (T2/3/4) + Roadway Projects
+        "BPwithoutRoadwaySafety",            # committed + Blueprint Transit Projects + Transit Strategies (T2/3/4) + Roadway Projects + Pricing (T5 ALT, cordons)
+        "Blueprint",                         # committed + Blueprint Transit Projects + Transit Strategies (T2/3/4) + Roadway Projects + Pricing (T5 ALT, cordons) + Safety (T9/10)
+        "Alt1",                              # EIR Alt 1, TBD
+        "Alt2",                              # EIR Alt 2, TBD
+        "NextGenFwy","NGFNoProject", "NGFNoProjectNoSFCordon", "NGFround2NoProject",
+        "TIP2023", "TIP2025",
+    ], help="Specify which network variant network to create.")
     args = parser.parse_args()
 
     NOW              = time.strftime("%Y%b%d.%H%M%S")
@@ -48,16 +59,18 @@ if __name__ == '__main__':
     LOG_FILENAME = "build%snetwork_%s_%s_%s.info.LOG" % ("TEST" if BUILD_MODE=="test" else "", PROJECT, NET_VARIANT, NOW)
     Wrangler.setupLogging(os.path.join("BlueprintNetworks",LOG_FILENAME),
                           os.path.join("BlueprintNetworks",LOG_FILENAME.replace("info", "debug")))
-    Wrangler.WranglerLogger.debug("Args: {}".format(args))
+    Wrangler.WranglerLogger.debug(f"Args: {args}")
 
     exec(open(NETWORK_CONFIG).read())
 
+    # TODO: This should be in the NGF netspec rather than here
     # Use the NGF_NoProject git tag when building a Next Gen Freeways No Project variant
     if NET_VARIANT=="NGFNoProject" or NET_VARIANT=="NGFNoProjectNoSFCordon":
        TAG = "NGF_NoProject"
     if NET_VARIANT=="NGFround2NoProject":
        TAG = "NGF_R2_NoProject"
 
+    Wrangler.WranglerLogger.info("TAG={TAG}")
     # Verify mandatory fields are set
     if TAG==None:
         print("TAG not set in %s" % NETWORK_CONFIG)

@@ -627,50 +627,131 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
 # Put them together for NETWORK_PROJECTS
 NETWORK_PROJECTS   = collections.OrderedDict()
 
-# NOTE: SLR is invoked explicitly in build_network_blueprint.py because it requires special handling
+# NOTE: SLR is invoked explicitly in build_network_mtc_blueprint.py because it requires special handling
 # re: backing up the network
 
-for YEAR in COMMITTED_PROJECTS.keys():
+# NET_VARIANTS
+################
+# "Baseline",                          # committed only
+# "BPTransitProjectsOnly",             # committed + Blueprint Transit Projects 
+# "BPTransitProjectsStrategyOnly",     # committed + Blueprint Transit Projects + Transit Strategies (T2/3/4); (T2/T4 are not network projects)
+# "BPwithoutRoadwayPricingSafety",     # committed + Blueprint Transit Projects + Transit Strategies (T2/3/4) + Roadway Projects
+# "BPwithoutRoadwaySafety",            # committed + Blueprint Transit Projects + Transit Strategies (T2/3/4) + Roadway Projects + Pricing (T5 ALT, cordons)
+# "Blueprint",                         # committed + Blueprint Transit Projects + Transit Strategies (T2/3/4) + Roadway Projects + Pricing (T5 ALT, cordons) + Safety (T9/10)
+# "Alt1",                              # EIR Alt 1, TBD
+# "Alt2",                              # EIR Alt 2, TBD
 
+T3_TRANSIT_STRATEGY = 'Transform_SeamlessTransit'
+ROADWAY_PRICING_STRATEGIES = [
+    'FBP_T5_All_Lane_Tolling',
+    'SF_130017_SF_Congestion_Pricing',
+    'SF_110049_Treasure_Island_Congestion_Pricing'
+]
+T10_SAFETY_STRATEGY = 'BP_Vision_Zero'
+
+for YEAR in COMMITTED_PROJECTS.keys():
     if NET_VARIANT == "Baseline":
         # baseline: just committed
         NETWORK_PROJECTS[YEAR] = {
             'hwy':COMMITTED_PROJECTS[YEAR]['hwy'],
             'trn':COMMITTED_PROJECTS[YEAR]['trn']
         }
+        continue
 
-    else:
-        # blueprint, alt1, alt2
-        if YEAR not in BLUEPRINT_PROJECTS: continue
-        
+    Wrangler.WranglerLogger.info(f"Constructing project list for {YEAR}")
+    # TODO: delete? I don't think this did anything
+    # blueprint, alt1, alt2
+    if YEAR not in BLUEPRINT_PROJECTS: 
+        Wrangler.WranglerLogger.warn(f"YEAR {YEAR} in COMMITTED_PROJECTS.keys() but not BLUEPRINT_PROJECTS")
+        continue
+
+    # For these, we want transit projects only
+    # But some transit projects have a roadway component -- include that as well
+    if NET_VARIANT in ["BPTransitProjectsOnly", "BPTransitProjectsStrategyOnly"]:
+
         NETWORK_PROJECTS[YEAR] = {
-            'hwy':COMMITTED_PROJECTS[YEAR]['hwy'] + BLUEPRINT_PROJECTS[YEAR]['hwy'],
+            'hwy':COMMITTED_PROJECTS[YEAR]['hwy'],
             'trn':COMMITTED_PROJECTS[YEAR]['trn'] + BLUEPRINT_PROJECTS[YEAR]['trn']
         }
 
-        # handle net_remove, nets keywords
-        for netmode in ['hwy','trn']:
+        # for BPTransitProjectsOnly, remove T3 Seamless
+        if NET_VARIANT == "BPTransitProjectsOnly":
+            if T3_TRANSIT_STRATEGY in NETWORK_PROJECTS[YEAR]['trn']:
+                NETWORK_PROJECTS[YEAR]['trn'].remove(T3_TRANSIT_STRATEGY)
+                Wrangler.WranglerLogger.info(f"  Removing transit strategy {T3_TRANSIT_STRATEGY}")
 
-            # iterate backwards via index to delete cleanly
-            for project_idx in range(len(NETWORK_PROJECTS[YEAR][netmode])-1,-1,-1):
-                project = NETWORK_PROJECTS[YEAR][netmode][project_idx]
-                # special handling requires project to be specified as dictionary
-                if not isinstance(project, dict): continue
+        # ROADWAY_PRICING_STRATEGIES may have transit components - remove those
+        for roadway_pricing in ROADWAY_PRICING_STRATEGIES:
+            if roadway_pricing in NETWORK_PROJECTS[YEAR]['trn']:
+                NETWORK_PROJECTS[YEAR]['trn'].remove(roadway_pricing)
+                Wrangler.WranglerLogger.info(f"  Removing roadway pricing strategy from transit {roadway_pricing}")
 
-                # variants_exclude: specifies list of network variants for which this project should be *excluded*
-                if 'variants_exclude' in project.keys() and NET_VARIANT in project['variants_exclude']:
-                    Wrangler.WranglerLogger.info("Removing {} {} {}".format(YEAR, netmode, project))
-                    del NETWORK_PROJECTS[YEAR][netmode][project_idx]
-                    continue
+        # check if transit project has a roadway component in BLUEPRINT_PROJECTS
+        for transit_project in NETWORK_PROJECTS[YEAR]['trn']:
+            if isinstance(transit_project, dict):
+                transit_project = transit_project['name']
 
-                # variants_include: specifies list of network variants for which this project should be *included*
-                # if this keyword is present, then this project is included *only* for variants in this list
-                if 'variants_include' in project.keys() and NET_VARIANT not in project['variants_include']:
-                    Wrangler.WranglerLogger.info("Removing {} {} {}".format(YEAR, netmode, project))
-                    del NETWORK_PROJECTS[YEAR][netmode][project_idx]
-                    continue
+            # assume roadway version is not a dict...
+            if transit_project in BLUEPRINT_PROJECTS[YEAR]['hwy']:
+                Wrangler.WranglerLogger.info(f"  Transit project {transit_project} has roadway component; adding")
+                NETWORK_PROJECTS[YEAR]['hwy'].append(transit_project)
+
+        continue
+
+    # NET_VARIANT is one of "BPwithoutRoadwayPricingSafety", "BPwithoutRoadwaySafety", "Blueprint", "Alt1", "Alt2"
+    NETWORK_PROJECTS[YEAR] = {
+        'hwy':COMMITTED_PROJECTS[YEAR]['hwy'] + BLUEPRINT_PROJECTS[YEAR]['hwy'],
+        'trn':COMMITTED_PROJECTS[YEAR]['trn'] + BLUEPRINT_PROJECTS[YEAR]['trn']
+    }
+
+    # remove roadway safety
+    if NET_VARIANT in ["BPwithoutRoadwayPricingSafety", "BPwithoutRoadwaySafety"]:
+        if T10_SAFETY_STRATEGY in NETWORK_PROJECTS[YEAR]['hwy']:
+            NETWORK_PROJECTS[YEAR]['hwy'].remove(T10_SAFETY_STRATEGY)
+            Wrangler.WranglerLogger.info(f"  Removing roadway safety strategy from hwy {T10_SAFETY_STRATEGY}")
+
+    # remove roadway pricing from hwy and trn
+    if NET_VARIANT == "BPwithoutRoadwayPricingSafety":
+        for roadway_pricing in ROADWAY_PRICING_STRATEGIES:
+            if roadway_pricing in NETWORK_PROJECTS[YEAR]['hwy']:
+                NETWORK_PROJECTS[YEAR]['hwy'].remove(roadway_pricing)
+                Wrangler.WranglerLogger.info(f"  Removing roadway pricing strategy from transit {roadway_pricing}")
+
+            if roadway_pricing in NETWORK_PROJECTS[YEAR]['trn']:
+                NETWORK_PROJECTS[YEAR]['trn'].remove(roadway_pricing)
+                Wrangler.WranglerLogger.info(f"  Removing roadway pricing strategy from transit {roadway_pricing}")
+                       
+    # handle net_remove, nets keywords
+    for netmode in ['hwy','trn']:
+
+        # iterate backwards via index to delete cleanly
+        for project_idx in range(len(NETWORK_PROJECTS[YEAR][netmode])-1,-1,-1):
+            project = NETWORK_PROJECTS[YEAR][netmode][project_idx]
+            # special handling requires project to be specified as dictionary
+            if not isinstance(project, dict): continue
+
+            # variants_exclude: specifies list of network variants for which this project should be *excluded*
+            if 'variants_exclude' in project.keys() and NET_VARIANT in project['variants_exclude']:
+                Wrangler.WranglerLogger.info("Removing {} {} {}".format(YEAR, netmode, project))
+                del NETWORK_PROJECTS[YEAR][netmode][project_idx]
+                continue
+
+            # variants_include: specifies list of network variants for which this project should be *included*
+            # if this keyword is present, then this project is included *only* for variants in this list
+            if 'variants_include' in project.keys() and NET_VARIANT not in project['variants_include']:
+                Wrangler.WranglerLogger.info("Removing {} {} {}".format(YEAR, netmode, project))
+                del NETWORK_PROJECTS[YEAR][netmode][project_idx]
+                continue
 
     # NOTE: SLR is handled in build_network_mtc_blueprint.py
+
+Wrangler.WranglerLogger.info(f"======== NETWORK_PROJECTS for {NET_VARIANT} ========")
+# since this is complicated, log it
+for YEAR in NETWORK_PROJECTS.keys():
+    Wrangler.WranglerLogger.info(f"  {YEAR}")
+    for netmode in ['hwy','trn']:
+        for project in NETWORK_PROJECTS[YEAR][netmode]:
+            Wrangler.WranglerLogger.info(f"        {netmode}: {project}")
 
 #
 # For every year where a project is applied do the following:
