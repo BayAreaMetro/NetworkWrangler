@@ -19,11 +19,12 @@ class Network(object):
     # static variable
     allNetworks = {}
 
-    def __init__(self, modelType, modelVersion, networkBaseDir=None, networkProjectSubdir=None,
+    def __init__(self, modelType, modelVersion, tempdir, networkBaseDir=None, networkProjectSubdir=None,
                  networkSeedSubdir=None, networkPlanSubdir=None, networkName=None):
         """
         *modelType* should be MODEL_TYPE_CHAMP, MODEL_TYPE_TM1, or MODEL_TYPE_TM2
         *modelVersion* should be numeric and is used for compatibility checks.
+        *tempdir* is where projects will be git cloned
 
         Currently this should be 4.3 or newer for CHAMP.
         Pass *networkName* to be added to the Networks dictionary
@@ -37,6 +38,7 @@ class Network(object):
         self.modelVersion = modelVersion
         self.wranglerVersion = self.WRANGLER_VERSION
         self.appliedProjects = {}
+        if tempdir not in sys.path: sys.path.insert(0,tempdir)
         if networkBaseDir: Network.NETWORK_BASE_DIR = networkBaseDir
         if networkProjectSubdir: Network.NETWORK_PROJECT_SUBDIR = networkProjectSubdir
         if networkSeedSubdir: Network.NETWORK_SEED_SUBDIR = networkSeedSubdir
@@ -64,10 +66,12 @@ class Network(object):
             stdout, stderr = proc.communicate()
 
             for line in stdout.decode().splitlines():
+                if len(line) == 0: continue
                 if logStdoutAndStderr: WranglerLogger.debug("stdout: " + line)
                 retStdout.append(line)
 
             for line in stderr.decode().splitlines():
+                if len(line) == 0: continue
                 if logStdoutAndStderr: WranglerLogger.debug("stderr: " + line)
                 retStderr.append(line)
 
@@ -145,12 +149,14 @@ class Network(object):
             WranglerLogger.fatal('%s is not a valid attribute type for a network project' % (attr_name))
             return
         
+        WranglerLogger.debug(f"getAttr({attr_name=},{parentdir=},{networkdir=},{projectsubdir=})")
         if projectsubdir:
             projectname = projectsubdir
-            sys.path.append(os.path.join(os.getcwd(), parentdir, networkdir))
+            # sys.path.append(os.path.join(os.getcwd(), parentdir, networkdir))
         else:
             projectname = networkdir
-            sys.path.append(os.path.join(os.getcwd(), parentdir))
+            # this should already be done
+            # sys.path.append(os.path.join(os.getcwd(), parentdir))
 
         try:
             evalstr = "import %s" % projectname

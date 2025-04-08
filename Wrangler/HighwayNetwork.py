@@ -55,7 +55,7 @@ class HighwayNetwork(Network):
         *hwyspecs*, if passed in, should be an instance of :py:class:`HwySpecsRTP`.  It
         is only used for logging.
         """
-        Network.__init__(self, modelType, modelVersion, networkBaseDir, networkProjectSubdir, networkSeedSubdir,
+        Network.__init__(self, modelType, modelVersion, tempdir, networkBaseDir, networkProjectSubdir, networkSeedSubdir,
                          networkPlanSubdir, networkName)
         
         if isTiered:

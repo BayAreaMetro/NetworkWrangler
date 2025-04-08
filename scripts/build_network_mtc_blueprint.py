@@ -128,6 +128,7 @@ if __name__ == '__main__':
                                        networkName="hwy",
                                        tierNetworkName=HWY_NET_NAME),
         'trn':Wrangler.TransitNetwork( modelType=Wrangler.Network.MODEL_TYPE_TM1, modelVersion=1.0,
+                                       tempdir=TEMP_SUBDIR,
                                        basenetworkpath=os.path.join(PIVOT_DIR_TRN,"trn"),
                                        networkBaseDir=build_network_mtc.NETWORK_BASE_DIR,
                                        networkProjectSubdir=build_network_mtc.NETWORK_PROJECT_SUBDIR,

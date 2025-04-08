@@ -788,14 +788,6 @@ for YEAR in COMMITTED_PROJECTS.keys():
 
     # NOTE: SLR is handled in build_network_mtc_blueprint.py
 
-Wrangler.WranglerLogger.info(f"======== NETWORK_PROJECTS for {NET_VARIANT} ========")
-# since this is complicated, log it
-for YEAR in NETWORK_PROJECTS.keys():
-    Wrangler.WranglerLogger.info(f"  {YEAR}")
-    for netmode in ['hwy','trn']:
-        for project in NETWORK_PROJECTS[YEAR][netmode]:
-            Wrangler.WranglerLogger.info(f"        {netmode}: {project}")
-
 #
 # For every year where a project is applied do the following:
 # Convert all zero-length links to 0.01
@@ -809,6 +801,13 @@ for YEAR in NETWORK_PROJECTS.keys():
     if ((len(NETWORK_PROJECTS[YEAR]['hwy']) > 0) or (len(NETWORK_PROJECTS[YEAR]['trn']) > 0)):
         NETWORK_PROJECTS[YEAR]['trn'].append('Move_buses_to_HOV_EXP_lanes')
 
+Wrangler.WranglerLogger.info(f"======== NETWORK_PROJECTS for {NET_VARIANT} ========")
+# since this is complicated, log it
+for YEAR in NETWORK_PROJECTS.keys():
+    Wrangler.WranglerLogger.info(f"  {YEAR}")
+    for netmode in ['hwy','trn']:
+        for project in NETWORK_PROJECTS[YEAR][netmode]:
+            Wrangler.WranglerLogger.info(f"        {netmode}: {project}")
 
 # OPTIONAL. The default route network project directory is Y:\networks.  If
 # projects are stored in another directory, then use this variable to specify it.

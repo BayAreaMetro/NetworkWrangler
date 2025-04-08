@@ -258,6 +258,7 @@ def getPrimaryNetworkForProject(project, TEMP_SUBDIR):
         Wrangler.WranglerLogger.debug(f"{TEMP_SUBDIR=} {NETWORK_BASE_DIR=} {NETWORK_PROJECT_SUBDIR=}")
         getPrimaryNetworkForProject.temp_network = Wrangler.Network(
             modelType=Wrangler.Network.MODEL_TYPE_TM1, modelVersion=1.6, 
+            tempdir=TEMP_SUBDIR,
             networkBaseDir=NETWORK_BASE_DIR,
             networkProjectSubdir=NETWORK_PROJECT_SUBDIR)
     
@@ -554,6 +555,7 @@ if __name__ == '__main__':
                                        networkName="hwy",
                                        tierNetworkName=HWY_NET_NAME),
         'trn':Wrangler.TransitNetwork( modelType=Wrangler.Network.MODEL_TYPE_TM1, modelVersion=1.0,
+                                    tempdir=TEMP_SUBDIR,
                                        basenetworkpath=os.path.join(PIVOT_DIR,"trn"),
                                        networkBaseDir=NETWORK_BASE_DIR,
                                        networkProjectSubdir=NETWORK_PROJECT_SUBDIR,

@@ -1,4 +1,4 @@
-import copy, glob, inspect, math, os, re, shutil, sys, traceback, xlrd
+import copy, glob, inspect, math, os, pathlib, re, shutil, sys, traceback, xlrd
 from collections import defaultdict
 from .Factor import Factor
 from .Faresystem import Faresystem
@@ -40,13 +40,13 @@ class TransitNetwork(Network):
     # Static reference to a TransitCapacity instance
     capacity = None
 
-    def __init__(self, modelType, modelVersion, basenetworkpath=None, networkBaseDir=None, networkProjectSubdir=None,
+    def __init__(self, modelType, modelVersion, tempdir, basenetworkpath=None, networkBaseDir=None, networkProjectSubdir=None,
                  networkSeedSubdir=None, networkPlanSubdir=None, isTiered=False, networkName=None):
         """
         If *basenetworkpath* is passed and *isTiered* is True, then start by reading the files
         named *networkName*.* in the *basenetworkpath*
         """
-        Network.__init__(self, modelType, modelVersion, networkBaseDir, networkProjectSubdir, networkSeedSubdir,
+        Network.__init__(self, modelType, modelVersion, tempdir, networkBaseDir, networkProjectSubdir, networkSeedSubdir,
                          networkPlanSubdir, networkName)
         self.program      = TransitParser.PROGRAM_TRNBUILD # will be one of PROGRAM_PT or PROGRAM_TRNBUILD
         self.lines        = []
@@ -1706,22 +1706,24 @@ class TransitNetwork(Network):
         else:
             projectname = networkdir
             
-        evalstr = "import %s; %s.apply(self" % (projectname, projectname)
+        evalstr = f"import {projectname}; {projectname}.apply(self"
         for key in kwargs.keys():
-            val = kwargs[key]
-            evalstr += ", %s=%s" % (key, str(val))
+            evalstr += f", {key}={str(kwargs[key])}" 
         evalstr += ")"
         try:
+            # WranglerLogger.debug(f"cwd: {pathlib.Path.cwd()}")
+            # WranglerLogger.debug(f"sys.path: {sys.path}")
+            # WranglerLogger.debug(f"evalstr: {evalstr}")
             exec(evalstr)
         except:
-            print("Failed to exec [%s]".format(evalstr))
+            WranglerLogger.fatal(f"Failed to exec [{evalstr}]")
             raise
                
-        evalstr = "dir(%s)" % projectname
+        evalstr = f"dir({projectname})"
         projectdir = eval(evalstr)
         # WranglerLogger.debug("projectdir = " + str(projectdir))
-        pyear = (eval("%s.year()" % projectname) if 'year' in projectdir else None)
-        pdesc = (eval("%s.desc()" % projectname) if 'desc' in projectdir else None)            
+        pyear = (eval(f"{projectname}.year()") if 'year' in projectdir else None)
+        pdesc = (eval(f"{projectname}.desc()") if 'desc' in projectdir else None)            
         
         # print "projectname=" + str(projectname)
         # print "pyear=" + str(pyear)
