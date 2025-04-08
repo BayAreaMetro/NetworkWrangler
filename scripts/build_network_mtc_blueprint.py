@@ -78,7 +78,7 @@ if __name__ == '__main__':
     if NET_VARIANT=="NGFround2NoProject":
        TAG = "NGF_R2_NoProject"
 
-    Wrangler.WranglerLogger.info("TAG={TAG}")
+    Wrangler.WranglerLogger.info(f"TAG={TAG}")
     # Verify mandatory fields are set
     if TAG==None:
         print("TAG not set in %s" % NETWORK_CONFIG)
