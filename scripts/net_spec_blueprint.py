@@ -689,27 +689,56 @@ for YEAR in COMMITTED_PROJECTS.keys():
         # check if transit project has a roadway component in BLUEPRINT_PROJECTS and check the primary network for that project.
         # For roadway, remove from transit. For transit, add to roadway.
         roadway_projects_in_transit = []
+
+        # for convenience, make a list of the names of roadway projects that are dicts for checking
+        blueprint_roadway_dict_projects = [] 
+        for proj_dict in BLUEPRINT_PROJECTS[YEAR]['hwy']: 
+            if isinstance(proj_dict,dict): blueprint_roadway_dict_projects.append(proj_dict['name'] )
+        Wrangler.WranglerLogger.debug(f"Checking projects in transit AND roadway; {blueprint_roadway_dict_projects=}")
+
         for transit_project in NETWORK_PROJECTS[YEAR]['trn']:
             if isinstance(transit_project, dict):
                 transit_project = transit_project['name']
+            # transit_project is a string
 
-            # assume roadway version is not a dict... and check if it exists
-            if transit_project in BLUEPRINT_PROJECTS[YEAR]['hwy']:
+            # check if this is both roadway AND transit
+            if transit_project in BLUEPRINT_PROJECTS[YEAR]['hwy'] or transit_project in blueprint_roadway_dict_projects:
 
                 # this is a roadway project *AND* a transit project -- but which one is it primarily?
                 primary_network = build_network_mtc.getPrimaryNetworkForProject(transit_project, TEMP_SUBDIR)
+
                 # if it's primarily a hwy network then we should delete from transit
                 if primary_network == 'hwy':
                     roadway_projects_in_transit.append(transit_project)
+                    continue
                 
+                # if it's primarily a transit project then we should add it to roadway
+                Wrangler.WranglerLogger.info(f"  Transit project {transit_project} has roadway component and primary_network={primary_network}; adding")
+                
+                # add dict version
+                if transit_project in blueprint_roadway_dict_projects:
+                    for roadway_project in BLUEPRINT_PROJECTS[YEAR]['hwy']:
+                        if isinstance(roadway_project,dict) and roadway_project['name'] == transit_project: 
+                            NETWORK_PROJECTS[YEAR]['hwy'].append(roadway_project)
                 else:
-                    Wrangler.WranglerLogger.info(f"  Transit project {transit_project} has roadway component and primary_network={primary_network}; adding")
                     NETWORK_PROJECTS[YEAR]['hwy'].append(transit_project)
 
-        # delete the roadway_projects_in_transit from transit
+        # cleanup -- delete the roadway_projects_in_transit from transit
         for roadway_project in roadway_projects_in_transit:
-            NETWORK_PROJECTS[YEAR]['trn'].remove(roadway_project)
             Wrangler.WranglerLogger.info(f"  Roadway project {roadway_project} has transit component and primary_network={primary_network}; removing")
+
+            for project_idx in range(len(NETWORK_PROJECTS[YEAR]['trn'])-1,-1,-1):
+                # check dict version
+                if isinstance(NETWORK_PROJECTS[YEAR]['trn'][project_idx],dict) and NETWORK_PROJECTS[YEAR]['trn'][project_idx]['name'] == roadway_project:
+                    del NETWORK_PROJECTS[YEAR]['trn'][project_idx]
+                    Wrangler.WranglerLogger.info(f"  Roadway project {roadway_project} has transit component and primary_network={primary_network}; removing")
+                    break
+                # just string
+                if NETWORK_PROJECTS[YEAR]['trn'][project_idx] == roadway_project:
+                    del NETWORK_PROJECTS[YEAR]['trn'][project_idx]
+                    Wrangler.WranglerLogger.info(f"  Roadway project {roadway_project} has transit component and primary_network={primary_network}; removing")
+                    break
+                
         continue
 
     # NET_VARIANT is one of "BPwithoutRoadwayPricingSafety", "BPwithoutRoadwaySafety", "Blueprint", "Alt1", "Alt2"
