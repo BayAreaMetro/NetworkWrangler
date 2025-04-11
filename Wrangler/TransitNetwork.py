@@ -829,6 +829,54 @@ class TransitNetwork(Network):
             for linename in covset:
                 WranglerLogger.debug(self.line(linename))
 
+    def removeIrrelevantFareMatrixLines(self):
+        """
+        We started getting mysterious Cube errors when reading fare matrix files where the node number
+        was high but also not used in the transit line (because it was removed by SLR).  This method
+        will remove lines in the transit matrix fare files (*.far) where the fromNode or the toNode aren't used.
+        """
+        # first, figure out which .lin files aren't used
+        all_nodes_set = set()
+        for line in self.line('all'):
+            all_nodes_set.update(line.listNodeIds(ignoreStops=False))
+        WranglerLogger.debug(f"removeIrrelevantFareMatrixLines(): all_nodes_set={all_nodes_set}")
+
+
+        blank_comment_re = re.compile("^(\s*)([;](.*))?$")
+        from_to_fare_re  = re.compile("^\s*(\d+)\s+(\d+)\s+(\d+)\s*([;](.*))?$")
+        for fare_file in self.farefiles.keys():
+            # these aren't faremat files
+            if fare_file in ['farelinks.far','xfare.far','transit_faremat.block']: continue
+
+            WranglerLogger.debug(f"Going through fare_file {fare_file}")
+            # we only understand:
+            # blank lines / comment lines
+            # fromNode toNode fare [comment]
+            for line_idx in range(len(self.farefiles[fare_file])):
+                line = self.farefiles[fare_file][line_idx]
+                # WranglerLogger.debug(f"  line: {line.strip()}")
+
+                match = re.match(blank_comment_re, line.strip())
+                if match:
+                    # Leave it alone
+                    continue
+
+                match = re.match(from_to_fare_re, line.strip())
+                if match:
+                    # comment out if from_node or to_node are not used (e.g. present in all_nodes_set)
+                    from_node = int(match.group(1))
+                    to_node = int(match.group(2))
+                    if (from_node not in all_nodes_set) or (to_node not in all_nodes_set):
+                        WranglerLogger.debug(f"Commenting out line {line.strip()}")
+                        self.farefiles[fare_file][line_idx] = "; node not in use: " + self.farefiles[fare_file][line_idx]
+                    continue
+
+                # if we don't understand it, leave it alone
+                WranglerLogger.warn(f"  => Didn't understand this line: {line.strip()}")
+        return
+
+
+
 
     def write(self, path='.', name='transit', writeEmptyFiles=True, suppressQuery=False, suppressValidation=False,
               cubeNetFileForValidation=None, line_only=False):
