@@ -221,7 +221,7 @@ if __name__ == '__main__':
                     
                     reported_diff_ret = networks[netmode].reportDiff(netmode, other_network=network_without_project, 
                                                  directory=project_diff_folder_with_suffix, project_gitdir=gitdir, 
-                                                 report_description=project_name, additional_roadway_attrs=ADDITONAL_ROADWAY_ATTRS)
+                                                 report_description=project_name, tempdir=TEMP_SUBDIR, additional_roadway_attrs=ADDITONAL_ROADWAY_ATTRS)
                     del network_without_project
 
                     if reported_diff_ret:

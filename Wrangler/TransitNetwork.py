@@ -1795,7 +1795,8 @@ class TransitNetwork(Network):
                                projectname=(networkdir + "\\" + projectsubdir if projectsubdir else networkdir),
                                year=pyear, projectdesc=pdesc)
 
-    def reportDiff(self, netmode, other_network, directory, report_description, project_gitdir, additional_roadway_attrs):
+    def reportDiff(self, netmode, other_network, directory, report_description, project_gitdir, tempdir, additional_roadway_attrs):
+
         """
         Reports the difference ebetween this network and the other_network into the given directory.
 
@@ -1836,7 +1837,7 @@ class TransitNetwork(Network):
             return False
 
         # call parent version to create dir and copy in tableau
-        Network.reportDiff(self, netmode, other_network, directory, report_description, report_description)
+        Network.reportDiff(self, netmode, other_network, directory, report_description, report_description, tempdir)
 
         import pandas
         import geopandas
