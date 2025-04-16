@@ -524,7 +524,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    {'name':'EIR2_Val_Link_ExpressBus',      'kwargs':{'action':"'revert'"},           'variants_include':['Alt2']},
                         'Transform_Valley_Link',
                     #    {'name':'Transform_AC_Transbay_Improvements',                                      'variants_include':['Alt2']},
-                    #    'FBP_SC_042_I280_Downtown_Access_Improvements',
+                        'FBP_SC_042_I280_Downtown_Access_Improvements',
                         'SCL210002_US101_SR152_Interchange',
                         'FBP_CC_067_WillowPassWide',
                         'FBP_AL_043_A_StreetWide',
