@@ -312,7 +312,6 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    'FBP_AL_051_7St_Grade_Sep_West',
                     #    'FBP_SN_017_Arata_Int',
                     #    'FBP_CC_017_Brentwood_Intermodal',
-                    #    'FBP_SF_030_Balboa_Park_Area_2',
                     #    'EXP_Blueprint',
                     #    'FBP_AL_039_I580_Interchange_Imps',
                     #    'FBP_CC_056_LaurelExtension',
@@ -540,6 +539,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         'ALA090020_I880_Industrial_Parkway_AuxLanes',
                         'SCL190012_US101_SanAntonio_Charleston_Rengstroff_Int',
                         'BP_Vision_Zero',
+                        'FBP_SF_030_Balboa_Park_Area_2',                        
                        ],
                 'trn':[
                     #    'MAJ_Vasona_LRT_Extension',
