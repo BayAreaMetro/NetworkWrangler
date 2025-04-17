@@ -514,7 +514,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    'EXP_Blueprint',
                         'FBP_AL_052_AutoMallWide',
                     #    'FBP_CC_038_SR242_Clayton_OnOffRamps',
-                    #    'FBP_SC_047_I280_Winchester_OffRamp',
+                        'FBP_SC_047_I280_Winchester_OffRamp',
                         'FBP_SC_076_US101_Taylor_Interchange',
                         'FBP_NP_051_Airport_Junction',
                         'FBP_SC_101_BrokawBridgeWide',
