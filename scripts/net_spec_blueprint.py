@@ -433,7 +433,8 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         'SON_SMART_to_Healdsburg',
                         {'name':'GGT_Service_Imp',                                                         'kwargs':{'MODELYEAR':'2030'}},
                         'FBP_MU_049_Caltrain_6TPHPD',
-                        'Transform_SR37_Widening_Interim'
+                        'Transform_SR37_Widening_Interim',
+                        'FBP_NP_NapaVine_Serv_Freq_Boost',
                        ]
         }),
         (2035, {'hwy':[
