@@ -112,6 +112,7 @@ COMMITTED_PROJECTS = collections.OrderedDict([
                'FBP_NP_036_SR29_Imola_PNR',
                'ALA170052_Fruitvale_Ave_ped_improvements',
                'SF_070005_VanNess_BRT',
+               {'name':'MAJ_Bay_Area_Forward_all', 'kwargs':{'MODELYEAR':'2023'}},  # Adaptive Ramp Metering in 2023
                {'name':'SF_MuniForward_Committed', 'kwargs':{'MODELYEAR':'2023'}},  # This applies for multiple years on the roadway side
                'EXP_Blueprint_NoProject',
                'EXP_ObservedPrices_2023'
@@ -306,7 +307,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    'FBP_NP_038_TSP_On_SR29',
                     #    {'name':'EXP_uncommitted_all',           'kwargs':{'MODELYEAR':'2025'},              'variants_exclude':['Alt1']},
                     #    {'name':'EIR1_EXP_uncommitted_all',      'kwargs':{'MODELYEAR':'2025'},              'variants_include':['Alt1']},
-                    #    {'name':'MAJ_Bay_Area_Forward_all',      'kwargs':{'MODELYEAR':'2025'}},
+                        {'name':'MAJ_Bay_Area_Forward_all',      'kwargs':{'MODELYEAR':'2025'}},
                     #    'FBP_CC_065_LaurelWide',
                     #    'FBP_SC_039_SR237WBWide',      
                     #    'FBP_AL_051_7St_Grade_Sep_West',
@@ -364,7 +365,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    {'name':'EXP_uncommitted_all',              'kwargs':{'MODELYEAR':'2030'},         'variants_exclude':['Alt1']},
                     #    {'name':'EXP_uncommitted_noAllLaneTolling', 'kwargs':{'MODELYEAR':'2030'},},
                     #    {'name':'EIR1_EXP_uncommitted_all',         'kwargs':{'MODELYEAR':'2030'},         'variants_include':['Alt1']},
-                    #    {'name':'MAJ_Bay_Area_Forward_all',         'kwargs':{'MODELYEAR':'2030'}},
+                        {'name':'MAJ_Bay_Area_Forward_all',         'kwargs':{'MODELYEAR':'2030'}},
                     #    'FBP_CC_066_CypressWide',
                     #    'FBP_SC_059_SR237EBWide',
                        'FBP_AL_044_I880_Whipple_Imps',
@@ -450,7 +451,6 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                        {'name':'MAJ_SOL070020_I80_I680_SR12_Int_packages_3_4_5', 'kwargs':{'PHASE':'"5"'}},
                     #    {'name':'EXP_uncommitted_all',                  'kwargs':{'MODELYEAR':'2035'},     'variants_exclude':['Alt1']},
                     #    {'name':'EIR1_EXP_uncommitted_all',             'kwargs':{'MODELYEAR':'2035'},     'variants_include':['Alt1']},
-                    #    {'name':'MAJ_Bay_Area_Forward_all',             'kwargs':{'MODELYEAR':'2035'}},
                     #    'FBP_AL_076_TelegraphDiet',
                     #    'FBP_SN_018_Cotati_101_RailroadAve_Impr',
                     #    'FBP_NP_079_Trower_Ext',
@@ -504,7 +504,6 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                        'FBP_AL_042_I680_Stoneridge_Widening',
                     #    {'name':'EXP_uncommitted_all',                            'kwargs':{'MODELYEAR':'2040'},    'variants_exclude':['Alt1']},
                     #    {'name':'EIR1_EXP_uncommitted_all',                       'kwargs':{'MODELYEAR':'2040'},    'variants_include':['Alt1']},
-                    #    {'name':'MAJ_Bay_Area_Forward_all',                       'kwargs':{'MODELYEAR':'2040'}},
                     #    'FBP_SC_105_SanTomasWide',
                         'FBP_SC_102_CalaverasWide',
                     #    'FBP_CC_039_Eastbound24Wide',
@@ -579,7 +578,6 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         'RRSP_E14_Mission_Corridor',
                     #    {'name':'EXP_uncommitted_all',           'kwargs':{'MODELYEAR':'2045'},            'variants_exclude':['Alt1']},
                     #    {'name':'EIR1_EXP_uncommitted_all',      'kwargs':{'MODELYEAR':'2045'},            'variants_include':['Alt1']},
-                    #    {'name':'MAJ_Bay_Area_Forward_all',      'kwargs':{'MODELYEAR':'2045'}},
                         {'name':'FBP_AL_048_SR262_Phase1',                                                 'variants_exclude':['Alt1']},
                     #    'FBP_NP_045_SR29_Gateway_Impr',
                     #    'EXP_Blueprint',
@@ -609,7 +607,6 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
         (2050, {'hwy':[
                         'FBP_CC_051_SR4_Operation_Improvements_WB',
                     #    'FBP_SC_028_Stevens_Creek_LRT',
-                    #    {'name':'MAJ_Bay_Area_Forward_all',             'kwargs':{'MODELYEAR':'2050'}},
                     #    'EXP_Blueprint',
                     #    'STIP_ITS_SM',
                     #    {'name':'BP_Transbay_Crossing',                                                    'variants_exclude':['Alt2']},
