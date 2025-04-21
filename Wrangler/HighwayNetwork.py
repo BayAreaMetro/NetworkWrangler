@@ -530,9 +530,7 @@ class HighwayNetwork(Network):
 
         return nodes_dict
 
-
-    def reportDiff(self, netmode, other_network, directory, report_description, project_gitdir, tempdir, additional_roadway_attrs):
-
+    def reportDiff(self, netmode, other_network, directory, report_description, project_gitdir, additional_roadway_attrs):
         """
         Reports the difference ebetween this network and the other_network into the given directory.
 
@@ -544,7 +542,7 @@ class HighwayNetwork(Network):
             f"{report_description=} {project_gitdir=} {additional_roadway_attrs=}")
         
         # call parent version to create dir and copy in tableau
-        Network.reportDiff(self, netmode, other_network, directory, report_description, project_gitdir, tempdir)
+        Network.reportDiff(self, netmode, other_network, directory, report_description, project_gitdir)
         
         # here, other_network is a tempdir with shapefiles
         for suffix in ['shp','shx','cpg','dbf','prj']:

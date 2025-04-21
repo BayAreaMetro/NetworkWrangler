@@ -514,8 +514,7 @@ class Network(object):
         """
         pass
 
-    def reportDiff(self, netmode:str, other_network, directory:pathlib.Path, report_description, project_gitdir, tempdir):
-
+    def reportDiff(self, netmode:str, other_network, directory:pathlib.Path, report_description, project_gitdir):
         """
         Implemented by subclass for the most part.
         Returns True if diffs were reported, false otherwise.
@@ -526,7 +525,7 @@ class Network(object):
         directory.mkdir(parents=True, exist_ok=True)
 
         # copy the tableau file into place
-        TABLEAU_TEMPLATE = pathlib.Path(tempdir, project_gitdir) / f"ProjectMapping_{netmode}.twb"
+        TABLEAU_TEMPLATE = pathlib.Path(project_gitdir) / f"ProjectMapping_{netmode}.twb"
         if TABLEAU_TEMPLATE.exists():
             shutil.copyfile(TABLEAU_TEMPLATE, pathlib.Path(directory) / f"ProjectMapping_{report_description}.twb")
             WranglerLogger.debug(f"Copying project specific tableau from {TABLEAU_TEMPLATE}")
