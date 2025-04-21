@@ -439,7 +439,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
         }),
         (2035, {'hwy':[
                         'MAJ_SanPablo_BRT',
-                        #{'name':'MAJ_MuniForward_Uncommitted',                                             'branch':'PBA50plus_DBP'},
+                        'MAJ_MuniForward_Uncommitted',
                         'SF_110049_Treasure_Island_Congestion_Pricing',
                     #    'BP_Tolls_On_Congested_Freeways_2035',
                     #    {'name': 'NGF_BlueprintSegmented'},
@@ -461,10 +461,9 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         'BP_Vision_Zero',
                        ],
                 'trn':[
-                        #{'name':'MAJ_MuniForward_Uncommitted',                                             'branch':'PBA50plus_DBP'},
+                        'MAJ_MuniForward_Uncommitted',
                         'MAJ_AC_Frequency_Improvement',
                         'MAJ_SanPablo_BRT',
-                    #    'RRSP_South_East_Waterfront_Transit_Imp',
                     #    'FBP_MU_062_ReX_Red',
                         'SF_110049_Treasure_Island_Congestion_Pricing',
                     #    'RRSP_East_West_Connector',
@@ -574,6 +573,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         'MAJ_SF_050002_Caltrain_Ext_TransbayTerminal',
                         'FBP_MuniForward_Uncommitted_Rail',
                         {'name':'MAJ_Sonoma_Frequency_Increase',                                            'kwargs':{'MODELYEAR':'2040'}},
+                       'RRSP_South_East_Waterfront_Transit_Imp',
                        ]
         }),
         (2045, {'hwy':[ 
