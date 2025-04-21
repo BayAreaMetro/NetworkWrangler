@@ -1807,11 +1807,6 @@ class TransitNetwork(Network):
         WranglerLogger.debug(f"TransitNetwork.reportDiff() passed with {other_network=} {directory=} " +
             f"{network_year=} {report_description=} {project_gitdir=}")
 
-        # first check if changes happened
-        added_lines_text = []
-        deleted_lines_text = []
-        modified_lines_text = []
-
         # transit lines -- compare line names
         my_line_names = set(self.lineNames())
         other_line_names = set(other_network.lineNames())
@@ -1827,9 +1822,9 @@ class TransitNetwork(Network):
             other_line = other_network.line(line_name)
             if my_line != other_line: modified_lines.append(line_name)
 
-        WranglerLogger.debug("reportDiff(): Added {} lines: {}".format(len(added_lines), added_lines))
-        WranglerLogger.debug("reportDiff(): Deleted {} lines: {}".format(len(deleted_lines), deleted_lines))
-        WranglerLogger.debug("reportDiff(): Modified {} lines: {}".format(len(modified_lines), modified_lines))
+        WranglerLogger.debug(f"reportDiff(): Added {len(added_lines)} lines: {added_lines}")
+        WranglerLogger.debug(f"reportDiff(): Deleted {len(deleted_lines)} lines: {deleted_lines}")
+        WranglerLogger.debug(f"reportDiff(): Modified {len(modified_lines)} lines: {modified_lines}")
 
         if len(added_lines) + len(deleted_lines) + len(modified_lines) == 0:
             WranglerLogger.info("No project diffs reported")
@@ -1847,11 +1842,6 @@ class TransitNetwork(Network):
         links_gdf = geopandas.GeoDataFrame()
         lines_gdf = geopandas.GeoDataFrame()
 
-        if len(added_lines) == 0:
-            added_lines_text.append("<ACP><BOL>No Added Transit Lines</BOL></ACP>")
-        else:
-            added_lines_text.append("<ACP><BOL>Added {} Transit Lines</BOL></ACP>".format(len(added_lines)))
-
         # create geodataframe rows
         for line_name in added_lines:
             (added_nodes_gdf, added_links_gdf, added_lines_gdf) = self.line(line_name).createGeoDataFrames(nodes_dict)
@@ -1859,18 +1849,9 @@ class TransitNetwork(Network):
             added_links_gdf["change"] = "added line"
             added_lines_gdf["change"] = "added line"
 
-            added_lines_text.append('&#8226; <CLR green="100">{}</CLR> - oneway:{} freq:{}'.format(
-                line_name, self.line(line_name).isOneWay(),
-                self.line(line_name).getFreqs()))
-
             nodes_gdf = pandas.concat([nodes_gdf, added_nodes_gdf])
             links_gdf = pandas.concat([links_gdf, added_links_gdf])
             lines_gdf = pandas.concat([lines_gdf, added_lines_gdf])
-
-        if len(deleted_lines) == 0:
-            deleted_lines_text.append("<ACP><BOL>No Deleted Transit Lines</BOL></ACP>")
-        else:
-            deleted_lines_text.append("<ACP><BOL>Deleted {} Transit Lines</BOL></ACP>".format(len(deleted_lines)))
 
         for line_name in deleted_lines:
             (deleted_nodes_gdf, deleted_links_gdf, deleted_lines_gdf) = other_network.line(line_name).createGeoDataFrames(nodes_dict)
@@ -1878,32 +1859,15 @@ class TransitNetwork(Network):
             deleted_links_gdf["change"] = "deleted line"
             deleted_lines_gdf["change"] = "deleted line"
 
-            deleted_lines_text.append('&#8226; <CLR red="100">{}</CLR> - oneway:{} freq:{}'.format(
-                line_name, other_network.line(line_name).isOneWay(), 
-                other_network.line(line_name).getFreqs()))
-
             nodes_gdf = pandas.concat([nodes_gdf, deleted_nodes_gdf])
             links_gdf = pandas.concat([links_gdf, deleted_links_gdf])
             lines_gdf = pandas.concat([lines_gdf, deleted_lines_gdf])
-
-        if len(modified_lines) == 0:
-            modified_lines_text.append("<ACP><BOL>No Modified Transit Lines</BOL></ACP>")
-        else:
-            modified_lines_text.append("<ACP><BOL>Modified {} Transit Lines</BOL></ACP>".format(len(modified_lines)))
 
         for line_name in sorted(list(lines_in_both)):
             my_line = self.line(line_name)
             other_line = other_network.line(line_name)
             # don"t log linse that haven"t changed
             if my_line == other_line: continue
-
-            modified_lines_text.append('&#8226; <CLR green="130" blue="130">{}</CLR> - oneway:{} freq:{}'.format(
-                line_name, self.line(line_name).isOneWay(), my_line.getFreqs()))
-
-            # did the frequencies change
-            if my_line.getFreqs() != other_line.getFreqs():
-                modified_lines_text.append('  &#8226; freq changed from {}'.format(
-                    other_line.getFreqs()))
             
             my_node_ids = my_line.listNodeIds(ignoreStops=False)
             other_node_ids = other_line.listNodeIds(ignoreStops=False)
@@ -1919,8 +1883,7 @@ class TransitNetwork(Network):
         
             # if rerouted, create previous route shapes
             if my_node_ids != other_node_ids:
-                modified_lines_text.append('  &#8226; route changed')
-                
+               
                 (prev_nodes_gdf, prev_links_gdf, prev_lines_gdf) = other_network.line(line_name).createGeoDataFrames(nodes_dict, line_name_suffix="_prev")
                 prev_nodes_gdf["change"] = "previous line"
                 prev_links_gdf["change"] = "previous line"
