@@ -514,24 +514,41 @@ class Network(object):
         """
         pass
 
-    def reportDiff(self, netmode:str, other_network, directory:pathlib.Path, report_description, project_gitdir):
+    def reportDiff(self, netmode:str, other_network, directory:pathlib.Path, network_year:int, report_description:str, project_gitdir:str):
         """
         Implemented by subclass for the most part.
         Returns True if diffs were reported, false otherwise.
+
+        other_network=WindowsPath('E:/temp/tmp8z_tyxhz') 
+        directory=WindowsPath('E:/GitHub/NetworkWrangler/scripts/BlueprintNetworks/ProjectDiffs_Blueprint/net_2023_hwy_01_MAJ_Bay_Area_Forward_all')
+        report_description='MAJ_Bay_Area_Forward_all'
+        project_gitdir='Wrangler_tmp_2025Apr20.184622\\MAJ_Bay_Area_Forward_all'
+        tempdir='Wrangler_tmp_2025Apr20.184622'
         """
-        WranglerLogger.debug(f"Network.reportDiff() passed with {other_network=} {directory=} {report_description=} {project_gitdir=}")
+        WranglerLogger.debug(f"Network.reportDiff() passed with {other_network=}\n  {directory=}\n  {network_year=}\n  {report_description=}\n  {project_gitdir=}")
         
         # create the report directory
         directory.mkdir(parents=True, exist_ok=True)
 
         # copy the tableau file into place
-        TABLEAU_TEMPLATE = pathlib.Path(project_gitdir) / f"ProjectMapping_{netmode}.twb"
+        # check for project+mode+year-specific version first
+        TABLEAU_TEMPLATE = pathlib.Path(project_gitdir) / f"ProjectMapping_{netmode}_{network_year}.twb"
         if TABLEAU_TEMPLATE.exists():
             shutil.copyfile(TABLEAU_TEMPLATE, pathlib.Path(directory) / f"ProjectMapping_{report_description}.twb")
             WranglerLogger.debug(f"Copying project specific tableau from {TABLEAU_TEMPLATE}")
-        
-        else:
-            TABLEAU_TEMPLATE = pathlib.Path(__file__).parent.parent / "ProjectMapping" / f"ProjectMapping_{netmode}.twb"
+            return True
+
+        # check for project+mode specific next
+        TABLEAU_TEMPLATE = pathlib.Path(project_gitdir) / f"ProjectMapping_{netmode}.twb"
+        WranglerLogger.debug(f"Looking for TABLEAU_TEMPLATE={TABLEAU_TEMPLATE}")
+
+        if TABLEAU_TEMPLATE.exists():
             shutil.copyfile(TABLEAU_TEMPLATE, pathlib.Path(directory) / f"ProjectMapping_{report_description}.twb")
+            WranglerLogger.debug(f"Copying project specific tableau from {TABLEAU_TEMPLATE}")
+            return True
+        
+        # finally, use generic wrangler
+        TABLEAU_TEMPLATE = pathlib.Path(__file__).parent.parent / "ProjectMapping" / f"ProjectMapping_{netmode}.twb"
+        shutil.copyfile(TABLEAU_TEMPLATE, pathlib.Path(directory) / f"ProjectMapping_{report_description}.twb")
 
         return True
