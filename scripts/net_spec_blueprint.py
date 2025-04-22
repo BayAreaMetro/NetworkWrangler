@@ -107,7 +107,6 @@ COMMITTED_PROJECTS = collections.OrderedDict([
                'CC_070009_Slatten_Ranch_Rd_Extension',
                'SF_070004_Geary_BRT_Phase1',
                'SON070004_101_MarinSonNarrows_Phase2',
-               'I880_US101_AdaptiveRampMetering',
                'SOL070020_I80_I680_SR12_Int_1_2A',
                'FBP_NP_036_SR29_Imola_PNR',
                'ALA170052_Fruitvale_Ave_ped_improvements',
@@ -363,6 +362,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    {'name':'EXP_uncommitted_all',              'kwargs':{'MODELYEAR':'2030'},         'variants_exclude':['Alt1']},
                     #    {'name':'EXP_uncommitted_noAllLaneTolling', 'kwargs':{'MODELYEAR':'2030'},},
                     #    {'name':'EIR1_EXP_uncommitted_all',         'kwargs':{'MODELYEAR':'2030'},         'variants_include':['Alt1']},
+                        'I880_US101_AdaptiveRampMetering',          # this is a component of Bay Area Forward
                         {'name':'MAJ_Bay_Area_Forward_all',         'kwargs':{'MODELYEAR':'2030'}},
                     #    'FBP_CC_066_CypressWide',
                     #    'FBP_SC_059_SR237EBWide',
