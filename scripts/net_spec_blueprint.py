@@ -540,6 +540,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         'BP_Vision_Zero',
                         'FBP_SF_030_Balboa_Park_Area_2',                        
                         'ALA230222_I580_Vasco',
+                        'ALA090016_SR92_Clawiter_Whitesell_Int',
                        ],
                 'trn':[
                     #    'MAJ_Vasona_LRT_Extension',
