@@ -297,7 +297,6 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                 'trn':[]
         }),
         (2025, {'hwy':[
-                    #    'MAJ_WETA_Service_Frequency_Increase',
                         'SF_130017_SF_Congestion_Pricing',
                     #    'FBP_MU_041_Hovercraft_Pilot',
                     #    'EXP_Blueprint',
@@ -333,7 +332,6 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                 'trn':[
                     #    'FBP_AL_001_NewarkFremPDA',
                     #    {'name':'FBP_MU_059_ACTransbay_Freq_Incr',                                         'variants_exclude':['Alt2']},
-                    #    'MAJ_WETA_Service_Frequency_Increase',
                         'SF_130017_SF_Congestion_Pricing',
                     #    'FBP_MU_041_Hovercraft_Pilot',
                     #    'FBP_MU_060_ReX_Blue',
@@ -412,6 +410,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    'BART_Irvington_Infill',
                        'MAJ_REG090037_BART_Core_Cap',
                        'FBP_AL_021_South_Bay_Connect',
+                       'MAJ_WETA_Service_Frequency_Increase',
                     #    'FBP_MU_061_ReX_Green',
                     #    'FBP_MU_044_Richmond_Ferry_Serv_Incr',
                     #    {'name':'Transform_Valley_Link',                                                   'variants_exclude':['Alt2']},
