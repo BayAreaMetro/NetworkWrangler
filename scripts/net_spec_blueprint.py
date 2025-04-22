@@ -111,6 +111,7 @@ COMMITTED_PROJECTS = collections.OrderedDict([
                'FBP_NP_036_SR29_Imola_PNR',
                'ALA170052_Fruitvale_Ave_ped_improvements',
                'SF_070005_VanNess_BRT',
+               {'name':'I880_US101_AdaptiveRampMetering', 'kwargs':{'MODELYEAR':'2023'}}, # this is a component of Bay Area Forward
                {'name':'MAJ_Bay_Area_Forward_all', 'kwargs':{'MODELYEAR':'2023'}},  # Adaptive Ramp Metering in 2023
                {'name':'SF_MuniForward_Committed', 'kwargs':{'MODELYEAR':'2023'}},  # This applies for multiple years on the roadway side
                'EXP_Blueprint_NoProject',
@@ -362,7 +363,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    {'name':'EXP_uncommitted_all',              'kwargs':{'MODELYEAR':'2030'},         'variants_exclude':['Alt1']},
                     #    {'name':'EXP_uncommitted_noAllLaneTolling', 'kwargs':{'MODELYEAR':'2030'},},
                     #    {'name':'EIR1_EXP_uncommitted_all',         'kwargs':{'MODELYEAR':'2030'},         'variants_include':['Alt1']},
-                        'I880_US101_AdaptiveRampMetering',          # this is a component of Bay Area Forward
+                        {'name':'I880_US101_AdaptiveRampMetering',  'kwargs':{'MODELYEAR':'2030'}}, # this is a component of Bay Area Forward
                         {'name':'MAJ_Bay_Area_Forward_all',         'kwargs':{'MODELYEAR':'2030'}},
                     #    'FBP_CC_066_CypressWide',
                     #    'FBP_SC_059_SR237EBWide',
