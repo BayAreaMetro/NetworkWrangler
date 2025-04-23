@@ -680,11 +680,7 @@ for YEAR in COMMITTED_PROJECTS.keys():
                 NETWORK_PROJECTS[YEAR]['trn'].remove(T3_TRANSIT_STRATEGY)
                 Wrangler.WranglerLogger.info(f"  Removing transit strategy {T3_TRANSIT_STRATEGY}")
 
-        # ROADWAY_PRICING_STRATEGIES may have transit components - remove those
-        for roadway_pricing in ROADWAY_PRICING_STRATEGIES:
-            if roadway_pricing in NETWORK_PROJECTS[YEAR]['trn']:
-                NETWORK_PROJECTS[YEAR]['trn'].remove(roadway_pricing)
-                Wrangler.WranglerLogger.info(f"  Removing roadway pricing strategy from transit {roadway_pricing}")
+        # ROADWAY_PRICING_STRATEGIES may have transit components - keep those
 
         # check if transit project has a roadway component in BLUEPRINT_PROJECTS and check the primary network for that project.
         # For roadway, remove from transit. For transit, add to roadway.
@@ -710,6 +706,10 @@ for YEAR in COMMITTED_PROJECTS.keys():
                 # if it's primarily a hwy network then we should delete from transit
                 if primary_network == 'hwy':
                     roadway_projects_in_transit.append(transit_project)
+                    continue
+
+                # if it's roadway pricing, then leave in transit ONLY since it's independent
+                if transit_project in ROADWAY_PRICING_STRATEGIES:
                     continue
                 
                 # if it's primarily a transit project then we should add it to roadway
