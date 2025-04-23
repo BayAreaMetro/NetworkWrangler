@@ -349,6 +349,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
         (2030, {'hwy':[
                     #    'BP_Tolls_On_Congested_Freeways_2030',
                         'FBP_AL_021_South_Bay_Connect',
+                        'FBP_SF_Caltrain_Bayview',
                     #    'FBP_MU_044_Richmond_Ferry_Serv_Incr',
                     #    {'name':'Transform_Valley_Link',                                                   'variants_exclude':['Alt2']},
                         'FBP_NP_040_VINE_Exp_Bus_Enhancements',
@@ -435,6 +436,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         'SON_SMART_to_Healdsburg',
                         {'name':'GGT_Service_Imp',                                                         'kwargs':{'MODELYEAR':'2030'}},
                         'FBP_MU_049_Caltrain_6TPHPD',
+                        'FBP_SF_Caltrain_Bayview',
                         'Transform_SR37_Widening_Interim',
                         'FBP_NP_NapaVine_Serv_Freq_Boost',
                        ]
