@@ -19,8 +19,8 @@ if __name__ == '__main__':
     parser.add_argument("--restart_year", help="Pass year to 'restart' building network starting from this rather than from the beginning. e.g., 2025")
     parser.add_argument("--restart_mode", choices=['hwy','trn'], help="If restart_year is passed, this is also required.")
     parser.add_argument("--create_shapefiles", help="Pass this to automatically convert networks to shapefiles.", action="store_true")
-    parser.add_argument("--create_project_diffs", help="Pass this to create project diffs information for EVERY project. NOTE: THIS WILL BE SLOW", action="store_true")
-    parser.add_argument("--create_project_diff",  help="Pass a project name to create project diffs information for that project", type=str, default=None)
+    parser.add_argument("--create_all_project_diffs", help="Pass this to create project diffs information for EVERY project. NOTE: THIS WILL BE SLOW", action="store_true")
+    parser.add_argument("--create_project_diffs",     help="Pass project name(s) to create project diffs information for that project", type=str, nargs='+')
     parser.add_argument("net_spec", metavar="network_specification.py", help="Script which defines required variables indicating how to build the network")
     parser.add_argument("netvariant", choices=[
         "Baseline",                          # committed only
@@ -35,6 +35,7 @@ if __name__ == '__main__':
         "TIP2023", "TIP2025",
     ], help="Specify which network variant network to create.")
     args = parser.parse_args()
+    if not args.create_project_diffs: args.create_project_diffs = []
 
     NOW              = time.strftime("%Y%b%d.%H%M%S")
     BUILD_MODE       = None # regular
@@ -186,7 +187,7 @@ if __name__ == '__main__':
 
                 # save a copy of this network instance for comparison
                 network_without_project = None
-                if (args.create_project_diffs and (project not in build_network_mtc.SKIP_PROJ_DIFFS)) or (args.create_project_diff == project_name):
+                if (args.create_all_project_diffs and (project not in build_network_mtc.SKIP_PROJ_DIFFS)) or (project_name in args.create_project_diffs):
                     if netmode == "trn":
                         network_without_project = copy.deepcopy(networks[netmode])
                     elif netmode == 'hwy':
@@ -204,7 +205,7 @@ if __name__ == '__main__':
                 appliedcount += 1
 
                 # Create difference report for this project
-                if (args.create_project_diffs and (project not in build_network_mtc.SKIP_PROJ_DIFFS)) or (args.create_project_diff == project_name):
+                if (args.create_all_project_diffs and (project not in build_network_mtc.SKIP_PROJ_DIFFS)) or (project_name in args.create_project_diffs):
                     # difference information to be store in network_dir netmode_projectname
                     # e.g. BlueprintNetworks\net_2050_Blueprint\01_trn_BP_Transbay_Crossing
                     project_diff_folder = pathlib.Path.cwd().parent / "BlueprintNetworks" / f"ProjectDiffs_{NET_VARIANT}" / \
@@ -309,7 +310,7 @@ if __name__ == '__main__':
 
                 # save a copy of this network instance for comparison
                 network_without_project = None
-                if (args.create_project_diffs and (project_name not in build_network_mtc.SKIP_PROJ_DIFFS)) or (args.create_project_diff == project_name):
+                if (args.create_all_project_diffs and (project_name not in build_network_mtc.SKIP_PROJ_DIFFS)) or (project_name in args.create_project_diffs):
                     if netmode == "trn":
                         network_without_project = copy.deepcopy(networks_bp_baseline[netmode])
                     elif netmode == 'hwy':
@@ -330,7 +331,7 @@ if __name__ == '__main__':
                 if not os.path.exists(trnpath): os.makedirs(trnpath)
 
                 # Create difference report for this project
-                if (args.create_project_diffs and (project_name not in build_network_mtc.SKIP_PROJ_DIFFS)) or (args.create_project_diff == project_name):
+                if (args.create_all_project_diffs and (project_name not in build_network_mtc.SKIP_PROJ_DIFFS)) or (project_name in args.create_project_diffs):
                     # difference information to be store in network_dir netmode_projectname
                     # e.g. BlueprintNetworks\net_2050_Blueprint\01_trn_BP_Transbay_Crossing
                     project_diff_folder = pathlib.Path.cwd().parent / "BlueprintNetworks" / f"ProjectDiffs_{NET_VARIANT}" / \

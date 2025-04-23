@@ -444,8 +444,8 @@ if __name__ == '__main__':
     parser.add_argument("--configword", help="optional word for network specification script")
     parser.add_argument("--continue_on_warning", help="Don't prompt the user to continue if there are warnings; just warn and continue", action="store_true")
     parser.add_argument("--skip_precheck_requirements", help="Don't precheck network requirements, stale projects, non-HEAD projects, etc", action="store_true", default=True)
-    parser.add_argument("--create_project_diffs", help="Pass this to create project diffs information for EVERY project. NOTE: THIS WILL BE SLOW", action="store_true")
-    parser.add_argument("--create_project_diff",  help="Pass a project name to create project diffs information for that project", type=str, default=None)
+    parser.add_argument("--create_all_project_diffs", help="Pass this to create project diffs information for EVERY project. NOTE: THIS WILL BE SLOW", action="store_true")
+    parser.add_argument("--create_project_diffs",     help="Pass project name(s) to create project diffs information for that project", type=str, nargs='+')
     parser.add_argument("project_name", help="required project name, for example NGF")
     parser.add_argument("--scenario", help="optional SCENARIO name")
     parser.add_argument("net_spec", metavar="network_specification.py", help="Script which defines required variables indicating how to build the network")
@@ -462,6 +462,7 @@ if __name__ == '__main__':
             "R2P8_DualEL_ConversionOnly",                      "R2NP_wFFSreduction"], 
         help="Specify which network variant network to create.")
     args = parser.parse_args()
+    if not args.create_project_diffs: args.create_project_diffs = []
 
     NOW         = time.strftime("%Y%b%d.%H%M%S")
     BUILD_MODE  = None # regular
@@ -625,7 +626,7 @@ if __name__ == '__main__':
 
                 # save a copy of this network instance for comparison
                 network_without_project = None
-                if (args.create_project_diffs and (project_name not in SKIP_PROJ_DIFFS)) or (args.create_project_diff == project_name):
+                if (args.create_all_project_diffs and (project_name not in SKIP_PROJ_DIFFS)) or (project_name in args.create_project_diffs):
                     if netmode == "trn":
                         network_without_project = copy.deepcopy(networks[netmode])
                     elif netmode == 'hwy':
@@ -640,7 +641,7 @@ if __name__ == '__main__':
                 appliedcount += 1
 
                 # Create difference report for this project_name
-                if (args.create_project_diffs and (project not in SKIP_PROJ_DIFFS)) or (args.create_project_diff == project_name):
+                if (args.create_all_project_diffs and (project not in SKIP_PROJ_DIFFS)) or (project_name in args.create_project_diffs):
                     # difference information to be store in network_dir netmode_projectname
                     # e.g. BlueprintNetworks\net_2050_Blueprint\ProjectDiffs\01_trn_BP_Transbay_Crossing
                     project_diff_folder = pathlib.Path.cwd().parent / OUT_DIR.format(YEAR) / f"ProjectDiffs" / \
