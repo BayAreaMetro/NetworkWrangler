@@ -462,6 +462,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                     #    {'name':'EIR1_No_SR37',                                                            'variants_include':['Alt1']},
                         'FBP_SM_027_US101_92_directConnector',
                         'FBP_T5_All_Lane_Tolling',
+                        'FBP_CC_045_SanPabloDam_Interchange_Phase2',
                         'BP_Vision_Zero',
                        ],
                 'trn':[
