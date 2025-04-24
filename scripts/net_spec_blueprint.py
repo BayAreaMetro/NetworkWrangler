@@ -405,6 +405,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         'Transform_SR37_Widening_Interim',
                         'FBP_SC_041_Envision_Highway_Minor',
                         'BP_Vision_Zero',
+                        'ALA170002_I80_Ashby_Int',
                        ],
                 'trn':[
                        'BP_PDA_Transit_Enhancements',
