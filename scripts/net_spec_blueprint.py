@@ -545,6 +545,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         'ALA230222_I580_Vasco',
                         'ALA090016_SR92_Clawiter_Whitesell_Int',
                         'ALA210024_GrandAve_Improvements',
+                        'FBP_AL_039_I580_Interchange_Imps',
                        ],
                 'trn':[
                     #    'MAJ_Vasona_LRT_Extension',
