@@ -550,6 +550,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         'ALA250210_I580_Greenville',
                         'FBP_SCL_050_I680_MontagueExpwy',
                         'BP_Vision_Zero',
+                        'FBP_SC_042_I280_Downtown_Access_Improvements',
                        ],
                 'trn':[
                     #    'MAJ_Vasona_LRT_Extension',
@@ -583,6 +584,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         'FBP_MuniForward_Uncommitted_Rail',
                         {'name':'MAJ_Sonoma_Frequency_Increase',                                            'kwargs':{'MODELYEAR':'2040'}},
                        'RRSP_South_East_Waterfront_Transit_Imp',
+                       'FBP_SC_042_I280_Downtown_Access_Improvements',
                        ]
         }),
         (2045, {'hwy':[ 
