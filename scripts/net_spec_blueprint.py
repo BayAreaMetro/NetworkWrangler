@@ -547,6 +547,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         'ALA090016_SR92_Clawiter_Whitesell_Int',
                         'ALA210024_GrandAve_Improvements',
                         'FBP_AL_039_I580_Interchange_Imps',
+                        'ALA250210_I580_Greenville',
                         'BP_Vision_Zero',
                        ],
                 'trn':[
@@ -581,6 +582,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         'FBP_MuniForward_Uncommitted_Rail',
                         {'name':'MAJ_Sonoma_Frequency_Increase',                                            'kwargs':{'MODELYEAR':'2040'}},
                        'RRSP_South_East_Waterfront_Transit_Imp',
+                       'ALA250210_I580_Greenville',
                        ]
         }),
         (2045, {'hwy':[ 
