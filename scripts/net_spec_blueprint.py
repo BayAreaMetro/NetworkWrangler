@@ -542,7 +542,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         'SM110003_US101_ProduceAve',
                         'ALA090020_I880_Industrial_Parkway_AuxLanes',
                         'SCL190012_US101_SanAntonio_Charleston_Rengstroff_Int',
-                        'FBP_SF_030_Balboa_Park_Area_2',                        
+                    #    'FBP_SF_030_Balboa_Park_Area_2',                        
                         'ALA230222_I580_Vasco',
                         'ALA090016_SR92_Clawiter_Whitesell_Int',
                         'ALA210024_GrandAve_Improvements',
