@@ -1687,6 +1687,7 @@ class TransitNetwork(Network):
                                         exportIfExists=True)
 
         WranglerLogger.debug("checkValidityOfLinks(): using links from {} to check lines".format(cubeNetFile))
+        errors_found = False
         for line in self:
             
             # todo fix this
@@ -1736,9 +1737,10 @@ class TransitNetwork(Network):
 
                     error_message = f"TransitNetwork.checkValidityOfLinks: ({a}, {b}) not in the roadway network nor in the off-road links (line {line.name})"
                     WranglerLogger.fatal(error_message)
-                    raise NetworkException(error_message)
-                
+                    errors_found = True
                 last_node = node
+
+            if errors_found: raise NetworkException("Bad links found")
 
     def applyProject(self, parentdir, networkdir, gitdir, projectsubdir=None, **kwargs):
         """
