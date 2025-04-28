@@ -1,4 +1,4 @@
-import argparse,collections,copy,datetime,os,pandas,pathlib,shutil,sys,tempfile,time
+import argparse,copy,datetime,os,pathlib,socket,shutil,sys,tempfile,time
 import Wrangler
 
 # Based on NetworkWrangler\scripts\build_network.py
@@ -29,6 +29,19 @@ SCENARIO = None
 
 # MANDATORY. Set this to be the git tag for checking out network projects.
 TAG = None
+
+# MANDATORY: The location of the TM1 code directory is needed to invoke certain scripts
+# to ensure that they don't fail. These include:
+# No_missing_tolls network project:
+#     %TM1_CODE_DIR%\utilities\taz-data-csv-to-dbf\taz-data-csv-to-dbf.R
+#     %TM1_CODE_DIR%\model-files\scripts\preprocess\SetTolls.JOB
+fqdn = socket.getfqdn()
+if fqdn.endswith('mtc.ca.gov'):
+    TM1_CODE_DIR = "X:\\travel-model-one-v1.6.1_develop\\"
+else:
+    error_message = f"Set TM1_CODE_DIR variable for fqdn {fqdn}"
+    print(error_message)
+    raise Wrangler.NetworkException(error_message)
 
 # MANDATORY. The network you are buliding on top of.
 # This should be a clone of https://github.com/BayAreaMetro/TM1_2015_Base_Network

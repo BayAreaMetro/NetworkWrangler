@@ -1,4 +1,4 @@
-import os
+import os, pathlib
 # MANDATORY. Set this to be the Project Name.
 # e.g. "RTP2021", "TIP2021", etc
 PROJECT  = "Blueprint"
@@ -803,12 +803,22 @@ for YEAR in COMMITTED_PROJECTS.keys():
 #
 # For every year where a project is applied do the following:
 # Convert all zero-length links to 0.01
+# Check tolls exist for tolls links
 # Move buses to HOV/Express lanes at the end
 #
 for YEAR in NETWORK_PROJECTS.keys():
     # if anything is applied
     if ((len(NETWORK_PROJECTS[YEAR]['hwy']) > 0) or (len(NETWORK_PROJECTS[YEAR]['trn']) > 0)):
         NETWORK_PROJECTS[YEAR]['hwy'].append('No_zero_length_links')
+        # check the tolls file using the same file used in the model
+        NETWORK_PROJECTS[YEAR]['hwy'].append({
+            'name':'No_missing_tolls',
+            'kwargs':{
+                'TM1_CODE_DIR':build_network_mtc.TM1_CODE_DIR,
+                'F_INPUT': '..\\..\\tolls.csv',
+                'F_OUTPUT': 'hwy\\tolls.dbf',
+            }
+        })
 
     if ((len(NETWORK_PROJECTS[YEAR]['hwy']) > 0) or (len(NETWORK_PROJECTS[YEAR]['trn']) > 0)):
         NETWORK_PROJECTS[YEAR]['trn'].append('Move_buses_to_HOV_EXP_lanes')
