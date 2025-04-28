@@ -40,7 +40,7 @@ class TransitNetwork(Network):
     # Static reference to a TransitCapacity instance
     capacity = None
 
-    def __init__(self, modelType, modelVersion, tempdir, basenetworkpath=None, networkBaseDir=None, networkProjectSubdir=None,
+    def __init__(self, modelType, modelVersion, tempdir=None, basenetworkpath=None, networkBaseDir=None, networkProjectSubdir=None,
                  networkSeedSubdir=None, networkPlanSubdir=None, isTiered=False, networkName=None):
         """
         If *basenetworkpath* is passed and *isTiered* is True, then start by reading the files

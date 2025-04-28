@@ -19,7 +19,7 @@ class Network(object):
     # static variable
     allNetworks = {}
 
-    def __init__(self, modelType, modelVersion, tempdir, networkBaseDir=None, networkProjectSubdir=None,
+    def __init__(self, modelType, modelVersion, tempdir=None, networkBaseDir=None, networkProjectSubdir=None,
                  networkSeedSubdir=None, networkPlanSubdir=None, networkName=None):
         """
         *modelType* should be MODEL_TYPE_CHAMP, MODEL_TYPE_TM1, or MODEL_TYPE_TM2
@@ -38,7 +38,7 @@ class Network(object):
         self.modelVersion = modelVersion
         self.wranglerVersion = self.WRANGLER_VERSION
         self.appliedProjects = {}
-        if tempdir not in sys.path: sys.path.insert(0,tempdir)
+        if tempdir and tempdir not in sys.path: sys.path.insert(0,tempdir)
         if networkBaseDir: Network.NETWORK_BASE_DIR = networkBaseDir
         if networkProjectSubdir: Network.NETWORK_PROJECT_SUBDIR = networkProjectSubdir
         if networkSeedSubdir: Network.NETWORK_SEED_SUBDIR = networkSeedSubdir
