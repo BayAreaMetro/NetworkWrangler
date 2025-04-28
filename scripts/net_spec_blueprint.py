@@ -550,6 +550,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         'ALA250210_I580_Greenville',
                         'FBP_SCL_050_I680_MontagueExpwy',
                         'FBP_SC_042_I280_Downtown_Access_Improvements',
+                        'FBP_SC_083_US101_Zanker_Skyport_Interchange',
                         'BP_Vision_Zero',
                        ],
                 'trn':[
