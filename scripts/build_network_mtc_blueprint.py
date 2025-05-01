@@ -31,6 +31,7 @@ if __name__ == '__main__':
         "Blueprint",                         # committed + Blueprint Transit Projects + Transit Strategies (T2/3/4) + Roadway Projects + Pricing (T5 ALT, cordons) + Safety (T9/10)
         "Alt1",                              # EIR Alt 1, TBD
         "Alt2",                              # EIR Alt 2, TBD
+        "BPwithoutTransit",                  # committed + Blueprint Roadway Projects + Pricing (T5 ALT, cordons) + T10 (Vision Zero) for Network Performance Assessment
         "NextGenFwy","NGFNoProject", "NGFNoProjectNoSFCordon", "NGFround2NoProject",
         "TIP2023", "TIP2025",
     ], help="Specify which network variant network to create.")

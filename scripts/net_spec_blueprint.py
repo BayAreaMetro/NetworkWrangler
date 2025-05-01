@@ -604,20 +604,59 @@ for YEAR in COMMITTED_PROJECTS.keys():
 
         # cleanup -- delete the roadway_projects_in_transit from transit
         for roadway_project in roadway_projects_in_transit:
-            Wrangler.WranglerLogger.info(f"  Roadway project {roadway_project} has transit component and primary_network={primary_network}; removing")
+            Wrangler.WranglerLogger.info(f"  Roadway project {roadway_project} has transit component and primary_network='hwy'; removing")
 
             for project_idx in range(len(NETWORK_PROJECTS[YEAR]['trn'])-1,-1,-1):
                 # check dict version
                 if isinstance(NETWORK_PROJECTS[YEAR]['trn'][project_idx],dict) and NETWORK_PROJECTS[YEAR]['trn'][project_idx]['name'] == roadway_project:
                     del NETWORK_PROJECTS[YEAR]['trn'][project_idx]
-                    Wrangler.WranglerLogger.info(f"  Roadway project {roadway_project} has transit component and primary_network={primary_network}; removing")
+                    Wrangler.WranglerLogger.info(f"  Roadway project {roadway_project} has transit component and primary_network='hwy'; removing")
                     break
                 # just string
                 if NETWORK_PROJECTS[YEAR]['trn'][project_idx] == roadway_project:
                     del NETWORK_PROJECTS[YEAR]['trn'][project_idx]
-                    Wrangler.WranglerLogger.info(f"  Roadway project {roadway_project} has transit component and primary_network={primary_network}; removing")
+                    Wrangler.WranglerLogger.info(f"  Roadway project {roadway_project} has transit component and primary_network='hwy'; removing")
                     break
                 
+        continue
+
+    # For this, we want roadway projects only, so diff with Blueprint is Transit.
+    # This is for the Transit 2050+ Network Performance Assessment
+    # For roadway pricing projects with a transit component, we'll drop the transit component
+    if NET_VARIANT == "BPwithoutTransit":
+        # Roadway only
+        NETWORK_PROJECTS[YEAR] = {
+            'hwy':COMMITTED_PROJECTS[YEAR]['hwy'] + BLUEPRINT_PROJECTS[YEAR]['hwy'],
+            'trn':COMMITTED_PROJECTS[YEAR]['trn'] 
+        }
+
+        # are any of these really mainly transit?
+        transit_projects_in_roadway = []
+
+        for roadway_project in BLUEPRINT_PROJECTS[YEAR]['hwy']: 
+            roadway_project_name = roadway_project['name'] if isinstance(roadway_project,dict) else roadway_project
+            primary_network = build_network_mtc.getPrimaryNetworkForProject(roadway_project_name, TEMP_SUBDIR)
+
+            Wrangler.WranglerLogger.debug(f"Checking primary_network of {roadway_project_name}: {primary_network=}")
+
+            if primary_network=='trn':
+                Wrangler.WranglerLogger.info(f"  Roadway project {roadway_project_name} has primary_network={primary_network}; removing")
+                transit_projects_in_roadway.append(roadway_project_name)
+
+        # remove transit_projects_in_roadway
+        for transit_project in transit_projects_in_roadway:
+
+            for project_idx in range(len(NETWORK_PROJECTS[YEAR]['hwy'])-1,-1,-1):
+                # check dict version
+                if isinstance(NETWORK_PROJECTS[YEAR]['hwy'][project_idx],dict) and NETWORK_PROJECTS[YEAR]['hwy'][project_idx]['name'] == transit_project:
+                    del NETWORK_PROJECTS[YEAR]['hwy'][project_idx]
+                    Wrangler.WranglerLogger.info(f"  Roadway project {transit_project} has primary_network='trn'; removing")
+                    break
+                # just string
+                if NETWORK_PROJECTS[YEAR]['hwy'][project_idx] == transit_project:
+                    del NETWORK_PROJECTS[YEAR]['hwy'][project_idx]
+                    Wrangler.WranglerLogger.info(f"  Roadway project {transit_project} has primary_network='trn'; removing")
+                    break
         continue
 
     # NET_VARIANT is one of "BPwithoutRoadwayPricingSafety", "BPwithoutRoadwaySafety", "Blueprint", "Alt1", "Alt2"
