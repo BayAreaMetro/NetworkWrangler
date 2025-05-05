@@ -37,7 +37,7 @@ TAG = None
 #     %TM1_CODE_DIR%\model-files\scripts\preprocess\SetTolls.JOB
 fqdn = socket.getfqdn()
 if fqdn.endswith('mtc.ca.gov'):
-    TM1_CODE_DIR = "X:\\travel-model-one-v1.6.1_develop\\"
+    TM1_CODE_DIR = "X:\\travel-model-one-master\\"
 else:
     error_message = f"Set TM1_CODE_DIR variable for fqdn {fqdn}"
     print(error_message)
