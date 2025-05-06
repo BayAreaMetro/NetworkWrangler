@@ -729,14 +729,13 @@ for YEAR in NETWORK_PROJECTS.keys():
     if ((len(NETWORK_PROJECTS[YEAR]['hwy']) > 0) or (len(NETWORK_PROJECTS[YEAR]['trn']) > 0)):
         NETWORK_PROJECTS[YEAR]['hwy'].append('No_zero_length_links')
         # check the tolls file using the same file used in the model
-        # NETWORK_PROJECTS[YEAR]['hwy'].append({
-        #     'name':'No_missing_tolls',
-        #     'kwargs':{
-        #         'TM1_CODE_DIR':build_network_mtc.TM1_CODE_DIR,
-        #         'F_INPUT': '..\\..\\tolls.csv',
-        #         'F_OUTPUT': 'hwy\\tolls.dbf',
-        #     }
-        # })
+        NETWORK_PROJECTS[YEAR]['hwy'].append({
+            'name':'No_missing_tolls',
+            'kwargs':{
+                'TM1_CODE_DIR':build_network_mtc.TM1_CODE_DIR,
+                'WRANGLER_SCRIPTS_DIR':str(pathlib.Path(__file__).parent),
+            }
+        })
  
     if ((len(NETWORK_PROJECTS[YEAR]['hwy']) > 0) or (len(NETWORK_PROJECTS[YEAR]['trn']) > 0)):
         NETWORK_PROJECTS[YEAR]['trn'].append('Move_buses_to_HOV_EXP_lanes')

@@ -33,7 +33,6 @@ TAG = None
 # MANDATORY: The location of the TM1 code directory is needed to invoke certain scripts
 # to ensure that they don't fail. These include:
 # No_missing_tolls network project:
-#     %TM1_CODE_DIR%\utilities\taz-data-csv-to-dbf\taz-data-csv-to-dbf.R
 #     %TM1_CODE_DIR%\model-files\scripts\preprocess\SetTolls.JOB
 fqdn = socket.getfqdn()
 if fqdn.endswith('mtc.ca.gov'):
