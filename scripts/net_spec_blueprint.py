@@ -519,6 +519,7 @@ NETWORK_PROJECTS   = collections.OrderedDict()
 # "Blueprint",                         # committed + Blueprint Transit Projects + Transit Strategies (T2/3/4) + Roadway Projects + Pricing (T5 ALT, cordons) + Safety (T9/10)
 # "Alt1",                              # EIR Alt 1, TBD
 # "Alt2",                              # EIR Alt 2, TBD
+# "BPwithoutTransit",                  # committed + Blueprint Roadway Projects + Pricing (T5 ALT, cordons) + T10 (Vision Zero) for Network Performance Assessment
 
 T3_TRANSIT_STRATEGY = 'Transform_SeamlessTransit'
 ROADWAY_PRICING_STRATEGIES = [
@@ -561,8 +562,9 @@ for YEAR in COMMITTED_PROJECTS.keys():
 
         # ROADWAY_PRICING_STRATEGIES may have transit components - keep those
 
-        # check if transit project has a roadway component in BLUEPRINT_PROJECTS and check the primary network for that project.
-        # For roadway, remove from transit. For transit, add to roadway.
+        # Check if transit project has a roadway component in BLUEPRINT_PROJECTS and check the primary network for that project.
+        # For roadway projects, remove from transit (so do not apply at all)
+        # For transit projects, add to roadway (so apply both)
         roadway_projects_in_transit = []
 
         # for convenience, make a list of the names of roadway projects that are dicts for checking
@@ -630,18 +632,28 @@ for YEAR in COMMITTED_PROJECTS.keys():
             'trn':COMMITTED_PROJECTS[YEAR]['trn'] 
         }
 
-        # are any of these really mainly transit?
+        # Check if roadway project has a transit component in BLUEPRINT_PROJECTS and check the primary network for that project.
+        # For transit projects, remove from roadway (so do not apply at all)
+        # For roadway projects, add to transit (so apply both)
         transit_projects_in_roadway = []
 
         for roadway_project in BLUEPRINT_PROJECTS[YEAR]['hwy']: 
             roadway_project_name = roadway_project['name'] if isinstance(roadway_project,dict) else roadway_project
-            primary_network = build_network_mtc.getPrimaryNetworkForProject(roadway_project_name, TEMP_SUBDIR)
+            # roadway_project_name is a string
 
-            Wrangler.WranglerLogger.debug(f"Checking primary_network of {roadway_project_name}: {primary_network=}")
+            # check if this is in both transit and roadway
+            if roadway_project in BLUEPRINT_PROJECTS[YEAR]['trn']:
 
-            if primary_network=='trn':
-                Wrangler.WranglerLogger.info(f"  Roadway project {roadway_project_name} has primary_network={primary_network}; removing")
-                transit_projects_in_roadway.append(roadway_project_name)
+                primary_network = build_network_mtc.getPrimaryNetworkForProject(roadway_project_name, TEMP_SUBDIR)
+                Wrangler.WranglerLogger.debug(f"Checking primary_network of {roadway_project_name}: {primary_network=}")
+
+                if primary_network=='trn':
+                    transit_projects_in_roadway.append(roadway_project_name)
+                    continue
+                
+                # if it's primarily a roadway project then we should add it to transit
+                Wrangler.WranglerLogger.info(f"  Roadway project {roadway_project_name} has transit component and primary_network={primary_network}; adding")
+                NETWORK_PROJECTS[YEAR]['trn'].append(roadway_project)
 
         # remove transit_projects_in_roadway
         for transit_project in transit_projects_in_roadway:
