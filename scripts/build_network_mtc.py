@@ -64,7 +64,7 @@ NETWORK_PROJECTS = None
 # MANDATORY. This is the folder where the NetworkProjects (each of which is a
 # local git repo) are stored.
 # As of 2023 July, this is now on Box: https://mtcdrive.box.com/s/cs0dmr987kaasmi83a6irru6ts6g4y1x
-NETWORK_BASE_DIR       =  os.environ['TM1_NetworkProjects']
+NETWORK_BASE_DIR       =  "M:\\Application\\Model One\\NetworkProjects"
 
 # unused & vestigial (I think)
 NETWORK_PROJECT_SUBDIR = None
