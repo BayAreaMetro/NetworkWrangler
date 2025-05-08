@@ -351,7 +351,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         {'name':'Transform_SR37_Widening_Interim',                     'variants_exclude':['Alt1']},
                         'FBP_SC_041_Envision_Highway_Minor',
                         'ALA170002_I80_Ashby_Int',
-                        {'name':'BP_Vision_Zero',                                      'variants_exclude':['Alt1']},
+                        'BP_Vision_Zero',                                    
                        ],
                 'trn':[
                        'BP_PDA_Transit_Enhancements',
@@ -385,7 +385,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         'FBP_SM_027_US101_92_directConnector',
                         'FBP_T5_All_Lane_Tolling',
                         'FBP_CC_045_SanPabloDam_Interchange_Phase2',
-                        {'name':'BP_Vision_Zero',                                      'variants_exclude':['Alt1']},
+                        'BP_Vision_Zero',
                        ],
                 'trn':[
                         'MAJ_MuniForward_Uncommitted',
@@ -399,7 +399,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                        {'name':'MAJ_Sonoma_Frequency_Increase',        'kwargs':{'MODELYEAR':'2035'}},
                         'SON_SMART_to_Cloverdale',
                         {'name':'GGT_Service_Imp',                     'kwargs':{'MODELYEAR':'2035'}},
-                        {'name':'Transform_SeamlessTransit',                           'variants_exclude':['Alt1']},
+                        'Transform_SeamlessTransit',
                        ]
         }),
         (2040, {'hwy':[
@@ -435,7 +435,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         {'name':'FBP_SON_Caulfield_Extension',                         'variants_exclude':['Alt1']},
                         'SCL250204_10thBridge_Ext',
                         'SM110003_US101_ProduceAve',
-                        {'name':'ALA090020_I880_Industrial_Parkway_AuxLanes',          'variants_exclude':['Alt1']},
+                        -{'name':'ALA090020_I880_Industrial_Parkway_AuxLanes',          'variants_exclude':['Alt1']},
                         {'name':'SCL190012_US101_SanAntonio_Charleston_Rengstroff_Int','variants_exclude':['Alt1']},
                         'ALA230222_I580_Vasco',
                         'ALA090016_SR92_Clawiter_Whitesell_Int',
@@ -446,7 +446,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         'FBP_SC_042_I280_Downtown_Access_Improvements',
                         'FBP_SC_083_US101_Zanker_Skyport_Interchange',
                         {'name':'RRSP_East_West_Connector',                            'variants_exclude':['Alt1']},
-                        {'name':'BP_Vision_Zero',                                      'variants_exclude':['Alt1']},
+                        'BP_Vision_Zero',
                        ],
                 'trn':[
                         'FBP_MU_029_ACRapid_2040',
@@ -475,7 +475,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         {'name':'FBP_CC_15_23rd_St_BRT',      'kwargs':{'PHASE':'3'}},
                         {'name':'MAJ_SC_VTAVisionaryNetwork', 'kwargs':{'MODELYEAR': '2045'}},
                         'RRSP_EC_Cap_Imp_ECR_Bus',
-                        {'name':'BP_Vision_Zero',                                      'variants_exclude':['Alt1']},
+                        'BP_Vision_Zero',
                        ],
                 'trn':[
                     {'name':'FBP_SM_020_Regional_Express_Buses', 'kwargs':{'PHASE':"'Phase1_4Routes'"}},
@@ -494,10 +494,10 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
         }),
         (2050, {'hwy':[
                         {'name':'FBP_CC_051_SR4_Operation_Improvements_WB',            'variants_exclude':['Alt1']},
-                        {'name':'BP_Vision_Zero',                                      'variants_exclude':['Alt1']},
+                        'BP_Vision_Zero',
                        ],
                 'trn':[
-                        {'name':'Transform_SeamlessTransit',                           'variants_exclude':['Alt1']},
+                        'Transform_SeamlessTransit',
                        ]
         })
     ])
