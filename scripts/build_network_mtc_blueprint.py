@@ -31,9 +31,14 @@ if __name__ == '__main__':
         "Blueprint",                         # committed + Blueprint Transit Projects + Transit Strategies (T2/3/4) + Roadway Projects + Pricing (T5 ALT, cordons) + Safety (T9/10)
         "Alt1",                              # EIR Alt 1 - Increase transit service, remove some roadway projects
         # "Alt2",                            # EIR Alt 2 - no specific network for PBA50+ as it's the same as Blueprint
-        "BPwithoutTransit",                  # committed + Blueprint Roadway Projects + Pricing (T5 ALT, cordons) + T10 (Vision Zero) for Network Performance Assessment
+        ######## for Network Performance Assessment #####
+        "BPwithoutTransit",                  # Blueprint without Transit Project and Strategies, so: committed + Blueprint Roadway Projects + Pricing (T5 ALT, cordons) + T10 (Vision Zero)
+        "BPwithoutTransitProjects",          # Blueprint without Transit Projects only (leave T2,T3,T4)
+        ######## for Next Gen Freeways #####
         "NextGenFwy","NGFNoProject", "NGFNoProjectNoSFCordon", "NGFround2NoProject",
-        "TIP2023", "TIP2025",
+        ######## for Transportation Improvement Program #####
+        "TIP2023",
+        "TIP2025",
     ], help="Specify which network variant network to create.")
     args = parser.parse_args()
     if not args.create_project_diffs: args.create_project_diffs = []

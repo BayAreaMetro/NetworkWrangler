@@ -435,7 +435,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         {'name':'FBP_SON_Caulfield_Extension',                         'variants_exclude':['Alt1']},
                         'SCL250204_10thBridge_Ext',
                         'SM110003_US101_ProduceAve',
-                        -{'name':'ALA090020_I880_Industrial_Parkway_AuxLanes',          'variants_exclude':['Alt1']},
+                        {'name':'ALA090020_I880_Industrial_Parkway_AuxLanes',          'variants_exclude':['Alt1']},
                         {'name':'SCL190012_US101_SanAntonio_Charleston_Rengstroff_Int','variants_exclude':['Alt1']},
                         'ALA230222_I580_Vasco',
                         'ALA090016_SR92_Clawiter_Whitesell_Int',
@@ -519,7 +519,9 @@ NETWORK_PROJECTS   = collections.OrderedDict()
 # "Blueprint",                         # committed + Blueprint Transit Projects + Transit Strategies (T2/3/4) + Roadway Projects + Pricing (T5 ALT, cordons) + Safety (T9/10)
 # "Alt1",                              # EIR Alt 1 - Increase transit service, remove some roadway projects
 # "Alt2",                              # EIR Alt 2 - no specific network for PBA50+ as it's the same as Blueprint
-# "BPwithoutTransit",                  # committed + Blueprint Roadway Projects + Pricing (T5 ALT, cordons) + T10 (Vision Zero) for Network Performance Assessment
+######## for Network Performance Assessment #####
+# "BPwithoutTransit",                  # Blueprint without Transit Project and Strategies, so: committed + Blueprint Roadway Projects + Pricing (T5 ALT, cordons) + T10 (Vision Zero)
+# "BPwithoutTransitProjects",          # Blueprint without Transit Projects only (leave T2,T3,T4)
 
 T3_TRANSIT_STRATEGY = 'Transform_SeamlessTransit'
 ROADWAY_PRICING_STRATEGIES = [
@@ -626,7 +628,7 @@ for YEAR in COMMITTED_PROJECTS.keys():
     # For this, we want roadway projects only, so diff with Blueprint is Transit.
     # This is for the Transit 2050+ Network Performance Assessment
     # For roadway pricing projects with a transit component, we'll drop the transit component
-    if NET_VARIANT == "BPwithoutTransit":
+    if NET_VARIANT in ["BPwithoutTransit","BPwithoutTransitProjects"]:
         # Roadway only
         NETWORK_PROJECTS[YEAR] = {
             'hwy':COMMITTED_PROJECTS[YEAR]['hwy'] + BLUEPRINT_PROJECTS[YEAR]['hwy'],
@@ -670,6 +672,12 @@ for YEAR in COMMITTED_PROJECTS.keys():
                     del NETWORK_PROJECTS[YEAR]['hwy'][project_idx]
                     Wrangler.WranglerLogger.info(f"  Roadway project {transit_project} has primary_network='trn'; removing")
                     break
+    
+        # for BPwithoutTransitProjects, we do want transit strategy -- that's only T3_TRANSIT_STRATEGY
+        if (NET_VARIANT == "BPwithoutTransitProjects") and (T3_TRANSIT_STRATEGY in BLUEPRINT_PROJECTS[YEAR]['trn']):
+            Wrangler.WranglerLogger.info(f"  For {NET_VARIANT}, adding transit strategy {T3_TRANSIT_STRATEGY}")
+            NETWORK_PROJECTS[YEAR]['trn'] += [T3_TRANSIT_STRATEGY]
+
         continue
 
     # NET_VARIANT is one of "BPwithoutRoadwayPricingSafety", "BPwithoutRoadwaySafety", "Blueprint", "Alt1", "Alt2"
