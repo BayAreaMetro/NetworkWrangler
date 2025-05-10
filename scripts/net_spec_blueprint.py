@@ -371,7 +371,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         {'name':'GGT_Service_Imp',                 'kwargs':{'MODELYEAR':'2030'}},
                         'FBP_MU_049_Caltrain_6TPHPD',
                         'FBP_SF_Caltrain_Bayview',
-                        'Transform_SR37_Widening_Interim',
+                        {'name':'Transform_SR37_Widening_Interim',                 'variants_exclude':['Alt1']},
                         'FBP_NP_NapaVine_Serv_Freq_Boost',
                        ]
         }),
@@ -400,6 +400,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         'SON_SMART_to_Cloverdale',
                         {'name':'GGT_Service_Imp',                     'kwargs':{'MODELYEAR':'2035'}},
                         'Transform_SeamlessTransit',
+                        {'name':'EIR_ALT1_IncreaseTransitService',      'kwargs':{'MODELYEAR':'2035'}, 'variants_include':['Alt1']}
                        ]
         }),
         (2040, {'hwy':[
@@ -498,6 +499,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                        ],
                 'trn':[
                         'Transform_SeamlessTransit',
+                        {'name':'EIR_ALT1_IncreaseTransitService',      'kwargs':{'MODELYEAR':'2050'}, 'variants_include':['Alt1']}
                        ]
         })
     ])
