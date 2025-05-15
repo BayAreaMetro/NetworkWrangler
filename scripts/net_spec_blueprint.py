@@ -400,7 +400,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         'SON_SMART_to_Cloverdale',
                         {'name':'GGT_Service_Imp',                     'kwargs':{'MODELYEAR':'2035'}},
                         'Transform_SeamlessTransit',
-                        {'name':'EIR_ALT1_IncreaseTransitService',      'kwargs':{'MODELYEAR':'2035'}, 'variants_include':['Alt1']}
+                        {'name':'EIR_ALT1_IncreaseTransitService',      'kwargs':{'MODELYEAR':'2035', 'min_load':'0.5', 'freq_min': '15', 'freq_fac': '0.5'}, 'variants_include':['Alt1']}
                        ]
         }),
         (2040, {'hwy':[
@@ -499,7 +499,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                        ],
                 'trn':[
                         'Transform_SeamlessTransit',
-                        {'name':'EIR_ALT1_IncreaseTransitService',      'kwargs':{'MODELYEAR':'2050'}, 'variants_include':['Alt1']}
+                        {'name':'EIR_ALT1_IncreaseTransitService',      'kwargs':{'MODELYEAR':'2050', 'min_load':'0.5', 'freq_min': '15', 'freq_fac': '0.5'}, 'variants_include':['Alt1']}
                        ]
         })
     ])
