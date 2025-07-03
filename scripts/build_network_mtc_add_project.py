@@ -118,6 +118,7 @@ if __name__ == '__main__':
     parser.add_argument("--tag",   dest='tag',   help="tags for project")
     parser.add_argument("project_short_id", help="Short ID of project, to be used for directory")
     parser.add_argument("project", help="Project to add", nargs="+")
+    parser.add_argument("project_year", help="Year of the project, required for --create_project_diffs", nargs="+")
     args = parser.parse_args()
 
     if not args.hwy and not args.trn:
@@ -231,6 +232,7 @@ if __name__ == '__main__':
 
                 # iterate through projects specified, since args.project is a list
                 for my_project in args.project:
+                    my_project_year = args.project_year[args.project.index(my_project)]
 
                     Wrangler.WranglerLogger.info("Applying project [%s] of type [%s]" % (my_project, netmode))
 
@@ -266,7 +268,8 @@ if __name__ == '__main__':
                       Wrangler.WranglerLogger.debug(f"network_without_project: {network_without_project}")
               
                       reported_diff_ret = networks[netmode].reportDiff(netmode, other_network=network_without_project,
-                                                                       directory=project_diff_folder_with_suffix, 
+                                                                       directory=project_diff_folder_with_suffix,
+                                                                       network_year=my_project_year,
                                                                        report_description=my_project, project_gitdir=gitdir,
                                                                        additional_roadway_attrs=ADDITONAL_ROADWAY_ATTRS)
 
