@@ -310,20 +310,18 @@ STIP_PROJECTS = collections.OrderedDict([
     }),
     (2030, {
         'hwy':[
-                'FBP_ALA_I800_42nd_High_Interchange',
                 'FBP_CC_050_SR4_Operation_Improvements_EB',
                 'EXP_SM_US101_I380_to_SFcounty',
-                'FBP_SM_042_Hwy1_ManorDrive',
+                # 'FBP_SM_042_Hwy1_ManorDrive',
                 'FBP_SM_033_US101_Holly_Interchange',
-                'EXP_SC_US101_SR237_to_I880_Phase5',
-                'Transform_SR37_Widening_Interim',                                   
+                # 'EXP_SC_US101_SR237_to_I880_Phase5',
+                'Transform_SR37_Widening_Interim_Package3',
             ],
-        'trn':[
-                'Transform_SR37_Widening_Interim',
-            ]
+        'trn':[]
         }),
         (2035, {
             'hwy':[
+                'FBP_ALA_I800_42nd_High_Interchange',
                 'STIP2024_I680_Sunol_Interchange',
             ],
             'trn':[]
