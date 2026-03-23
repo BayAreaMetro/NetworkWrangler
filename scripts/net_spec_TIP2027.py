@@ -112,7 +112,6 @@ COMMITTED_PROJECTS = collections.OrderedDict([
                'EXP_680F',
                'EXP_85D',
                'EXP_101C',
-               'ALA150001_I680_SR84_Int_Wid', ## check
                'ALA150043_Claremont_road_diet',
                'CC_070009_Slatten_Ranch_Rd_Extension',
                'SF_070004_Geary_BRT_Phase1',
