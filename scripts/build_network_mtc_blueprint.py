@@ -39,6 +39,7 @@ if __name__ == '__main__':
         ######## for Transportation Improvement Program #####
         "TIP2023",
         "TIP2025",
+        "TIP2027",
     ], help="Specify which network variant network to create.")
     args = parser.parse_args()
     if not args.create_project_diffs: args.create_project_diffs = []
