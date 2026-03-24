@@ -386,6 +386,7 @@ TIP_PROJECTS = collections.OrderedDict([
                        ]
         }),
         (2035, {'hwy':[
+                        'FBP_AL_043_A_StreetWide',
                     #     'MAJ_SanPablo_BRT',
                     #     'MAJ_MuniForward_Uncommitted',
                     #     'SF_110049_Treasure_Island_Congestion_Pricing',
@@ -437,7 +438,6 @@ TIP_PROJECTS = collections.OrderedDict([
                         # 'Transform_Valley_Link',
                         # 'SCL210002_US101_SR152_Interchange',
                         # {'name':'FBP_CC_067_WillowPassWide',                           'variants_exclude':['Alt1']},
-                        # {'name':'FBP_AL_043_A_StreetWide',                             'variants_exclude':['Alt1']},
                         # 'FBP_SL_033_FairgroundsWide',
                         # {'name':'FBP_SC_104_OaklandWide',                              'variants_exclude':['Alt1']},
                         # {'name':'FBP_CC_064_CaminoTassajaraWide',                      'variants_exclude':['Alt1']},
