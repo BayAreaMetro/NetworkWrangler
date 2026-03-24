@@ -387,7 +387,7 @@ TIP_PROJECTS = collections.OrderedDict([
         (2035, {'hwy':[
                         'FBP_AL_043_A_StreetWide',
                         'ALA170002_I80_Ashby_Int',
-                        {'name':'FBP_AL_048_SR262_Phase1',                             'variants_exclude':['Alt1']},
+                        'FBP_AL_048_SR262_Phase1',
                     #     'MAJ_SanPablo_BRT',
                     #     'MAJ_MuniForward_Uncommitted',
                     #     'SF_110049_Treasure_Island_Congestion_Pricing',
