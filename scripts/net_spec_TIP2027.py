@@ -444,7 +444,7 @@ TIP_PROJECTS = collections.OrderedDict([
                         # {'name':'FBP_CC_061_062_West_Leland_Ext_Phases1_2',            'variants_exclude':['Alt1']},
                         # {'name':'FBP_SON_Caulfield_Extension',                         'variants_exclude':['Alt1']},
                         # 'SCL250204_10thBridge_Ext',
-                        # 'SM110003_US101_ProduceAve',
+                        'SM110003_US101_ProduceAve',
                         # {'name':'SCL190012_US101_SanAntonio_Charleston_Rengstroff_Int','variants_exclude':['Alt1']},
                         # 'ALA230222_I580_Vasco',
                         # 'ALA090016_SR92_Clawiter_Whitesell_Int',
