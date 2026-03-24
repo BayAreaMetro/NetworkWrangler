@@ -454,7 +454,7 @@ TIP_PROJECTS = collections.OrderedDict([
                         # 'FBP_SCL_050_I680_MontagueExpwy',
                         # 'FBP_SC_042_I280_Downtown_Access_Improvements',
                         # 'FBP_SC_083_US101_Zanker_Skyport_Interchange',
-                        # {'name':'RRSP_East_West_Connector',                            'variants_exclude':['Alt1']},
+                        'RRSP_East_West_Connector',
                         # 'BP_Vision_Zero',
                        ],
                 'trn':[
