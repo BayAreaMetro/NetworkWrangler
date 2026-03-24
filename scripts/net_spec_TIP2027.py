@@ -360,7 +360,6 @@ TIP_PROJECTS = collections.OrderedDict([
                         # 'SCL230001_SR237_Middlefield_interchange',
                         # {'name':'Transform_SR37_Widening_Interim',                     'variants_exclude':['Alt1']},
                         # 'FBP_SC_041_Envision_Highway_Minor',
-                        # 'ALA170002_I80_Ashby_Int',
                         # 'BP_Vision_Zero',                                    
                        ],
                 'trn':[
@@ -387,6 +386,7 @@ TIP_PROJECTS = collections.OrderedDict([
         }),
         (2035, {'hwy':[
                         'FBP_AL_043_A_StreetWide',
+                        'ALA170002_I80_Ashby_Int',
                     #     'MAJ_SanPablo_BRT',
                     #     'MAJ_MuniForward_Uncommitted',
                     #     'SF_110049_Treasure_Island_Congestion_Pricing',
