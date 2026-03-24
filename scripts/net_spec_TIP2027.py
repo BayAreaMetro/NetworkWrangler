@@ -445,7 +445,6 @@ TIP_PROJECTS = collections.OrderedDict([
                         # {'name':'FBP_SON_Caulfield_Extension',                         'variants_exclude':['Alt1']},
                         # 'SCL250204_10thBridge_Ext',
                         # 'SM110003_US101_ProduceAve',
-                        # {'name':'ALA090020_I880_Industrial_Parkway_AuxLanes',          'variants_exclude':['Alt1']},
                         # {'name':'SCL190012_US101_SanAntonio_Charleston_Rengstroff_Int','variants_exclude':['Alt1']},
                         # 'ALA230222_I580_Vasco',
                         # 'ALA090016_SR92_Clawiter_Whitesell_Int',
@@ -504,6 +503,7 @@ TIP_PROJECTS = collections.OrderedDict([
         }),
         (2050, {'hwy':[
                         'MAJ_SR_239',
+                        'ALA090020_I880_Industrial_Parkway_AuxLanes',
                         # {'name':'FBP_CC_051_SR4_Operation_Improvements_WB',            'variants_exclude':['Alt1']},
                         # 'BP_Vision_Zero',
                        ],
