@@ -422,7 +422,6 @@ TIP_PROJECTS = collections.OrderedDict([
                         # {'name':'FBP_CC_059_PittAntiochWide',                          'variants_exclude':['Alt1']},
                         # {'name':'FBP_SL_053_PeabodyWide',                              'variants_exclude':['Alt1']},
                         # 'Transform_I680_Multimodal_Imp',
-                        # {'name':'MAJ_SR_239',                                          'variants_exclude':['Alt1']},
                         # 'FBP_CC_018_BRT_Brentwood',
                         # 'MAJ_ElCaminoReal_BRT',
                         # {'name':'FBP_CC_15_23rd_St_BRT',         'kwargs':{'PHASE':'1'}},
@@ -504,6 +503,7 @@ TIP_PROJECTS = collections.OrderedDict([
                        ]
         }),
         (2050, {'hwy':[
+                        'MAJ_SR_239',
                         # {'name':'FBP_CC_051_SR4_Operation_Improvements_WB',            'variants_exclude':['Alt1']},
                         # 'BP_Vision_Zero',
                        ],
