@@ -387,6 +387,7 @@ TIP_PROJECTS = collections.OrderedDict([
         (2035, {'hwy':[
                         'FBP_AL_043_A_StreetWide',
                         'ALA170002_I80_Ashby_Int',
+                        {'name':'FBP_AL_048_SR262_Phase1',                             'variants_exclude':['Alt1']},
                     #     'MAJ_SanPablo_BRT',
                     #     'MAJ_MuniForward_Uncommitted',
                     #     'SF_110049_Treasure_Island_Congestion_Pricing',
@@ -478,7 +479,6 @@ TIP_PROJECTS = collections.OrderedDict([
         }),
         (2045, {'hwy':[ 
                         # 'RRSP_E14_Mission_Corridor',
-                        # {'name':'FBP_AL_048_SR262_Phase1',                             'variants_exclude':['Alt1']},
                         # 'FBP_SF_012_Geneva_Harney_BRT',
                         # {'name':'FBP_CC_15_23rd_St_BRT',      'kwargs':{'PHASE':'2'}},
                         # {'name':'FBP_CC_15_23rd_St_BRT',      'kwargs':{'PHASE':'3'}},
