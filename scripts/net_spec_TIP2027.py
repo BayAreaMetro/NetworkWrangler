@@ -339,7 +339,7 @@ TIP_PROJECTS = collections.OrderedDict([
                         # {'name':'FBP_AL_062_TassajaraWide',                            'variants_exclude':['Alt1']},
                         # 'Dumbarton_Bridge_Bus_Service',
                         # 'SCL210026_Julian_James_Conversion',
-                        # {'name':'EXP_CC_I680NB_Livorna_to_Arthur',                     'variants_exclude':['Alt1']},
+                        'EXP_CC_I680NB_Livorna_to_Arthur',
                         # {'name':'EXP_AL_I680NB_SR84_to_Alcosta',                       'variants_exclude':['Alt1']},
                         # {'name':'EXP_SM_US101_I380_to_SFcounty',                       'variants_exclude':['Alt1']},
                         # 'EXP_SC_SR85_SR87_to_US101_Phase4',
