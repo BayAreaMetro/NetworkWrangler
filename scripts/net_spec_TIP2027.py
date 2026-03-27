@@ -331,7 +331,6 @@ TIP_PROJECTS = collections.OrderedDict([
                         # {'name':'FBP_CC_040_041_042_I680_SR4_Int_Phases_1_2_4_5', 'kwargs':{'PHASE':"'4'"},  'variants_exclude':['Alt1']},
                         # {'name':'I880_US101_AdaptiveRampMetering',  'kwargs':{'MODELYEAR':'2030'}}, # this is a component of Bay Area Forward
                         # {'name':'MAJ_Bay_Area_Forward_all',         'kwargs':{'MODELYEAR':'2030'}},
-                        # {'name':'FBP_AL_044_I880_Whipple_Imps',                        'variants_exclude':['Alt1']},
                         # {'name':'FBP_SC_054_SR17_Corridor_Relief',                     'variants_exclude':['Alt1']},
                         # 'FBP_SM_042_Hwy1_ManorDrive',
                         # 'FBP_SM_027_US101_92',
@@ -388,6 +387,7 @@ TIP_PROJECTS = collections.OrderedDict([
                         'FBP_SM_033_US101_Holly_Interchange',
                         'ALA110002_I880_Industrial_Interchange',
                         {'name':'EXP_AL_I680NB_SR84_to_Alcosta',                       'variants_exclude':['Alt1']},
+                        {'name':'FBP_AL_044_I880_Whipple_Imps',                        'variants_exclude':['Alt1']},
                     #     'MAJ_SanPablo_BRT',
                     #     'MAJ_MuniForward_Uncommitted',
                     #     'SF_110049_Treasure_Island_Congestion_Pricing',
