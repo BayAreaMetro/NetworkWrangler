@@ -334,7 +334,7 @@ TIP_PROJECTS = collections.OrderedDict([
                         # {'name':'FBP_SC_054_SR17_Corridor_Relief',                     'variants_exclude':['Alt1']},
                         # 'FBP_SM_042_Hwy1_ManorDrive',
                         # 'FBP_SM_027_US101_92',
-                        # {'name':'FBP_AL_062_TassajaraWide',                            'variants_exclude':['Alt1']},
+                        {'name':'FBP_AL_062_TassajaraWide',                            'variants_exclude':['Alt1']},
                         # 'Dumbarton_Bridge_Bus_Service',
                         # 'SCL210026_Julian_James_Conversion',
                         'EXP_CC_I680NB_Livorna_to_Arthur',
