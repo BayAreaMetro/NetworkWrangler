@@ -385,9 +385,9 @@ TIP_PROJECTS = collections.OrderedDict([
                         'ALA170002_I80_Ashby_Int',
                         'FBP_AL_048_SR262_Phase1',
                         'FBP_SM_033_US101_Holly_Interchange',
+                        'FBP_AL_044_I880_Whipple_Imps', # prerequisite of ALA110002_I880_Industrial_Interchange
                         'ALA110002_I880_Industrial_Interchange',
                         {'name':'EXP_AL_I680NB_SR84_to_Alcosta',                       'variants_exclude':['Alt1']},
-                        {'name':'FBP_AL_044_I880_Whipple_Imps',                        'variants_exclude':['Alt1']},
                     #     'MAJ_SanPablo_BRT',
                     #     'MAJ_MuniForward_Uncommitted',
                     #     'SF_110049_Treasure_Island_Congestion_Pricing',
