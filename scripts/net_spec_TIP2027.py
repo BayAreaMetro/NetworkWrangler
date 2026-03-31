@@ -338,6 +338,7 @@ TIP_PROJECTS = collections.OrderedDict([
                         # 'Dumbarton_Bridge_Bus_Service',
                         # 'SCL210026_Julian_James_Conversion',
                         'EXP_CC_I680NB_Livorna_to_Arthur',
+                        'CC230225_Lamorinda_SmartSignalSys',
                         # {'name':'EXP_SM_US101_I380_to_SFcounty',                       'variants_exclude':['Alt1']},
                         # 'EXP_SC_SR85_SR87_to_US101_Phase4',
                         # {'name':'EXP_SC_US101_SR237_to_I880_Phase5',                   'variants_exclude':['Alt1']},
