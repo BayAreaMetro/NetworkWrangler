@@ -460,6 +460,7 @@ TIP_PROJECTS = collections.OrderedDict([
                         # 'FBP_SC_042_I280_Downtown_Access_Improvements',
                         # 'FBP_SC_083_US101_Zanker_Skyport_Interchange',
                         'RRSP_East_West_Connector',
+                        'ALA090020_I880_Industrial_Parkway_AuxLanes',
                         # 'BP_Vision_Zero',
                        ],
                 'trn':[
@@ -507,7 +508,6 @@ TIP_PROJECTS = collections.OrderedDict([
         }),
         (2050, {'hwy':[
                         'MAJ_SR_239',
-                        'ALA090020_I880_Industrial_Parkway_AuxLanes',
                         # {'name':'FBP_CC_051_SR4_Operation_Improvements_WB',            'variants_exclude':['Alt1']},
                         # 'BP_Vision_Zero',
                        ],
