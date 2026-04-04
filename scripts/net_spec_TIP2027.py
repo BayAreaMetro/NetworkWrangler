@@ -361,7 +361,7 @@ TIP_PROJECTS = collections.OrderedDict([
                        ],
                 'trn':[
                     #    'BP_PDA_Transit_Enhancements',
-                    #    {'name':'FBP_MU_046_ACE_Freq_Inc',          'kwargs':{'MODELYEAR':'2030'}},
+                       {'name':'FBP_MU_046_ACE_Freq_Inc',          'kwargs':{'MODELYEAR':'2030'}},
                     #    'MAJ_REG090037_BART_Core_Cap',
                     #    'FBP_AL_021_South_Bay_Connect',
                     #    'MAJ_WETA_Service_Frequency_Increase',
@@ -498,7 +498,7 @@ TIP_PROJECTS = collections.OrderedDict([
                     #     {'name':'FBP_CC_15_23rd_St_BRT',         'kwargs':{'PHASE':'2'}},
                     #     {'name':'FBP_CC_15_23rd_St_BRT',         'kwargs':{'PHASE':'3'}},
                     #     'RRSP_E14_Mission_Corridor',
-                    #    {'name':'FBP_MU_046_ACE_Freq_Inc',       'kwargs':{'MODELYEAR':'2045'}},
+                       {'name':'FBP_MU_046_ACE_Freq_Inc',       'kwargs':{'MODELYEAR':'2045'}},
                     #     'FBP_SF_012_Geneva_Harney_BRT',
                     #     {'name':'MAJ_SC_VTAVisionaryNetwork',   'kwargs':{'MODELYEAR':'2045'}},
                     #     'RRSP_Alameda_Point_Transit_Improvements',
