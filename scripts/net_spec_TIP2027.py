@@ -400,7 +400,7 @@ TIP_PROJECTS = collections.OrderedDict([
                     #    {'name':'MAJ_SOL070020_I80_I680_SR12_Int_packages_3_4_5', 'kwargs':{'PHASE':'"5"'}},
                     #     'FBP_SM_027_US101_92_directConnector',
                     #     'FBP_T5_All_Lane_Tolling',
-                    #     'FBP_CC_045_SanPabloDam_Interchange_Phase2',
+                        'FBP_CC_045_SanPabloDam_Interchange_Phase2',
                         'BP_Vision_Zero',
                        ],
                 'trn':[
