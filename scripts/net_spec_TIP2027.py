@@ -227,9 +227,7 @@ COMMITTED_PROJECTS = collections.OrderedDict([
     }),
     (2025, {
         'hwy':[{'name':'Bridge_Toll_Updates_rtp2025', 'kwargs':{'MODELYEAR':'2025'}},             
-               'ALA150001_I680_SR84_Int_Wid',
                'SCL190008_US101_DLC_Int_Imp',
-               'MAJ_SCL050009_VTA_Eastridge_Extension',
                'MAJ_Geary_BRT_Phase2',
                {'name':'SF_MuniForward_Committed', 'kwargs':{'MODELYEAR':'2025'}},  # This applies for multiple years on the roadway side
                'MRN050034_101_MarinSonNarrows_Phase2',
@@ -237,23 +235,22 @@ COMMITTED_PROJECTS = collections.OrderedDict([
                'EXP_SL030_I80_RedTopRd_to_I505',
                'EXP_AL025_I680_SR84_to_Alcosta',
                'FBP_NP_044_Soscol_Junction',
-               'ALA170011_BayBridge_HOV_Connectors_phase2',
-               'FBP_CC_030_OakleyAmtrak',
                ],
         'trn':['SF_010028_Caltrain_Modernization',
                'SON090002_SMART_to_Windsor',
                'SON090002_SMART_NorthPetaluma',
-               'MAJ_SCL050009_VTA_Eastridge_Extension',
                'MAJ_Geary_BRT_Phase2',
                'SamTrans_2024_restore_expand_services',
                'FBP_NP_044_Soscol_Junction',
-               'MAJ_MissionBay_SF_Ferry',
-               'FBP_CC_030_OakleyAmtrak',  
                ]
     }),
     (2030, {
         'hwy':[{'name':'Bridge_Toll_Updates_rtp2025', 'kwargs':{'MODELYEAR':'2030'}},
                {'name':'SF_MuniForward_Committed', 'kwargs':{'MODELYEAR':'2030'}},  # This applies for multiple years on the roadway side
+               'ALA150001_I680_SR84_Int_Wid',
+               'ALA170011_BayBridge_HOV_Connectors_phase2',
+               'FBP_CC_030_OakleyAmtrak',
+               'MAJ_SCL050009_VTA_Eastridge_Extension',
                'EXP_Blueprint_NoProject',
                'FBP_SM_035_Peninsula_101_OnOffRamps',
                'FBP_SC_082_US101_25_Interchang_committed',
@@ -263,6 +260,9 @@ COMMITTED_PROJECTS = collections.OrderedDict([
                {'name':'I880_US101_AdaptiveRampMetering',  'kwargs':{'MODELYEAR':'2030'}}, # this is a component of Bay Area Forward 
                ],
         'trn':[
+               'FBP_CC_030_OakleyAmtrak',
+               'MAJ_MissionBay_SF_Ferry',
+               'MAJ_SCL050009_VTA_Eastridge_Extension',
             ]
     }),
     (2035, {
