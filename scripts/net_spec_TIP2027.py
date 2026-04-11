@@ -357,7 +357,7 @@ TIP_PROJECTS = collections.OrderedDict([
                         # 'SCL230001_SR237_Middlefield_interchange',
                         # {'name':'Transform_SR37_Widening_Interim',                     'variants_exclude':['Alt1']},
                         # 'FBP_SC_041_Envision_Highway_Minor',
-                        'BP_Vision_Zero',                              
+                        {'name':'BP_Vision_Zero', 'kwargs':{'MODELYEAR':'2030'}},
                        ],
                 'trn':[
                     #    'BP_PDA_Transit_Enhancements',
@@ -401,7 +401,7 @@ TIP_PROJECTS = collections.OrderedDict([
                     #     'FBP_SM_027_US101_92_directConnector',
                     #     'FBP_T5_All_Lane_Tolling',
                         'FBP_CC_045_SanPabloDam_Interchange_Phase2',
-                        'BP_Vision_Zero',
+                        {'name':'BP_Vision_Zero', 'kwargs':{'MODELYEAR':'2035'}},
                        ],
                 'trn':[
                     #     'MAJ_MuniForward_Uncommitted',
@@ -460,7 +460,7 @@ TIP_PROJECTS = collections.OrderedDict([
                         # 'FBP_SC_083_US101_Zanker_Skyport_Interchange',
                         'RRSP_East_West_Connector',
                         'ALA090020_I880_Industrial_Parkway_AuxLanes',
-                        'BP_Vision_Zero',
+                        {'name':'BP_Vision_Zero', 'kwargs':{'MODELYEAR':'2040'}},
                        ],
                 'trn':[
                     #     'FBP_MU_029_ACRapid_2040',
@@ -488,7 +488,7 @@ TIP_PROJECTS = collections.OrderedDict([
                         # {'name':'FBP_CC_15_23rd_St_BRT',      'kwargs':{'PHASE':'3'}},
                         # {'name':'MAJ_SC_VTAVisionaryNetwork', 'kwargs':{'MODELYEAR': '2045'}},
                         # 'RRSP_EC_Cap_Imp_ECR_Bus',
-                        'BP_Vision_Zero',
+                        {'name':'BP_Vision_Zero', 'kwargs':{'MODELYEAR':'2045'}},
                        ],
                 'trn':[
                     # {'name':'FBP_SM_020_Regional_Express_Buses', 'kwargs':{'PHASE':"'Phase1_4Routes'"}},
@@ -508,7 +508,7 @@ TIP_PROJECTS = collections.OrderedDict([
         (2050, {'hwy':[
                         'MAJ_SR_239',
                         # {'name':'FBP_CC_051_SR4_Operation_Improvements_WB',            'variants_exclude':['Alt1']},
-                        'BP_Vision_Zero',
+                        {'name':'BP_Vision_Zero', 'kwargs':{'MODELYEAR':'2050'}},
                        ],
                 'trn':[
                         # 'Transform_SeamlessTransit',

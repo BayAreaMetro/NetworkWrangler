@@ -4,8 +4,7 @@ import os, pathlib
 PROJECT  = "Blueprint"
 
 # MANDATORY. Set this to be the git tag for checking out network projects.
-TAG = "HEAD"              # Use this tag if you want NetworkWrangler to use the latest version in the local repo to build the network
-# TAG = "PBA50_Blueprint"    # This is the default tag since this is the netspec for the Blueprint 
+TAG = "PBA50plus_Blueprint"  # This is the default tag since this is the netspec for the Blueprint 
 
 # roadway attributes to include; used by HighwayNetwork.writeShapefile() and HighwayNetwork.reportDiff()
 ADDITONAL_ROADWAY_ATTRS = [
@@ -301,7 +300,6 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         'FBP_MU_029_ACRapid_2025',
                         {'name':'MAJ_Bay_Area_Forward_all',      'kwargs':{'MODELYEAR':'2025'}},
                         {'name':'MAJ_Sonoma_Frequency_Increase',                                            'kwargs':{'MODELYEAR':'2025'}},
-                        {'name':'BP_Vision_Zero',                'variants_exclude':['Alt1']},
                        ],
                 'trn':[
                         'SF_130017_SF_Congestion_Pricing',
@@ -351,7 +349,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         {'name':'Transform_SR37_Widening_Interim',                     'variants_exclude':['Alt1']},
                         'FBP_SC_041_Envision_Highway_Minor',
                         'ALA170002_I80_Ashby_Int',
-                        'BP_Vision_Zero',                                    
+                        {'name':'BP_Vision_Zero', 'kwargs':{'MODELYEAR':'2030'}},
                        ],
                 'trn':[
                        'BP_PDA_Transit_Enhancements',
@@ -385,7 +383,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         'FBP_SM_027_US101_92_directConnector',
                         'FBP_T5_All_Lane_Tolling',
                         'FBP_CC_045_SanPabloDam_Interchange_Phase2',
-                        'BP_Vision_Zero',
+                        {'name':'BP_Vision_Zero', 'kwargs':{'MODELYEAR':'2035'}},
                        ],
                 'trn':[
                         'MAJ_MuniForward_Uncommitted',
@@ -447,7 +445,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         'FBP_SC_042_I280_Downtown_Access_Improvements',
                         'FBP_SC_083_US101_Zanker_Skyport_Interchange',
                         {'name':'RRSP_East_West_Connector',                            'variants_exclude':['Alt1']},
-                        'BP_Vision_Zero',
+                        {'name':'BP_Vision_Zero', 'kwargs':{'MODELYEAR':'2040'}},
                        ],
                 'trn':[
                         'FBP_MU_029_ACRapid_2040',
@@ -476,7 +474,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         {'name':'FBP_CC_15_23rd_St_BRT',      'kwargs':{'PHASE':'3'}},
                         {'name':'MAJ_SC_VTAVisionaryNetwork', 'kwargs':{'MODELYEAR': '2045'}},
                         'RRSP_EC_Cap_Imp_ECR_Bus',
-                        'BP_Vision_Zero',
+                        {'name':'BP_Vision_Zero', 'kwargs':{'MODELYEAR':'2045'}},
                        ],
                 'trn':[
                     {'name':'FBP_SM_020_Regional_Express_Buses', 'kwargs':{'PHASE':"'Phase1_4Routes'"}},
@@ -495,7 +493,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
         }),
         (2050, {'hwy':[
                         {'name':'FBP_CC_051_SR4_Operation_Improvements_WB',            'variants_exclude':['Alt1']},
-                        'BP_Vision_Zero',
+                        {'name':'BP_Vision_Zero', 'kwargs':{'MODELYEAR':'2050'}},
                        ],
                 'trn':[
                         'Transform_SeamlessTransit',
