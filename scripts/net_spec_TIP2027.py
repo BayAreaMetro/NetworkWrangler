@@ -415,7 +415,7 @@ TIP_PROJECTS = collections.OrderedDict([
                     #    {'name':'MAJ_Sonoma_Frequency_Increase',        'kwargs':{'MODELYEAR':'2035'}},
                     #     'SON_SMART_to_Cloverdale',
                     #     {'name':'GGT_Service_Imp',                     'kwargs':{'MODELYEAR':'2035'}},
-                    #     'Transform_SeamlessTransit',
+                        'Transform_SeamlessTransit',
                     #     {'name':'EIR_ALT1_IncreaseTransitService',      'kwargs':{'MODELYEAR':'2035', 'min_load':'0.5', 'freq_min': '15', 'freq_fac': '0.5'}, 'variants_include':['Alt1']}
                        ]
         }),
@@ -511,7 +511,7 @@ TIP_PROJECTS = collections.OrderedDict([
                         {'name':'BP_Vision_Zero', 'kwargs':{'MODELYEAR':'2050'}},
                        ],
                 'trn':[
-                        # 'Transform_SeamlessTransit',
+                        'Transform_SeamlessTransit',
                         # {'name':'EIR_ALT1_IncreaseTransitService',      'kwargs':{'MODELYEAR':'2050', 'min_load':'0.7', 'freq_min': '15', 'freq_fac': '0.35'}, 'variants_include':['Alt1']}
                        ]
         })
