@@ -18,6 +18,7 @@ if __name__ == '__main__':
     parser.add_argument("--skip_precheck_requirements", help="Don't precheck network requirements, stale projects, non-HEAD projects, etc", action="store_true", default=True)
     parser.add_argument("--restart_year", help="Pass year to 'restart' building network starting from this rather than from the beginning. e.g., 2025")
     parser.add_argument("--restart_mode", choices=['hwy','trn'], help="If restart_year is passed, this is also required.")
+    parser.add_argument("--end_year", help="Pass year to 'end' building network.until this year. e.g., 2040")
     parser.add_argument("--create_shapefiles", help="Pass this to automatically convert networks to shapefiles.", action="store_true")
     parser.add_argument("--create_all_project_diffs", help="Pass this to create project diffs information for EVERY project. NOTE: THIS WILL BE SLOW", action="store_true")
     parser.add_argument("--create_project_diffs",     help="Pass project name(s) to create project diffs information for that project", type=str, nargs='+')
@@ -172,7 +173,9 @@ if __name__ == '__main__':
         if args.restart_year and YEAR < int(args.restart_year):
             Wrangler.WranglerLogger.info("Restart year {} specified; skipping {}".format(args.restart_year, YEAR))
             continue
-
+        if args.end_year and YEAR > int(args.end_year):
+            Wrangler.WranglerLogger.info("End year {} specified; skipping years after {}".format(args.end_year, args.end_year))
+            break
         projects_for_year = NETWORK_PROJECTS[YEAR]
 
         appliedcount = 0
