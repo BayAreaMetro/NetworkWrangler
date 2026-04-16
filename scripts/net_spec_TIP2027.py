@@ -362,7 +362,7 @@ TIP_PROJECTS = collections.OrderedDict([
                 'trn':[
                     #    'BP_PDA_Transit_Enhancements',
                        {'name':'FBP_MU_046_ACE_Freq_Inc',          'kwargs':{'MODELYEAR':'2030'}},
-                    #    'MAJ_REG090037_BART_Core_Cap',
+                        'MAJ_REG090037_BART_Core_Cap',
                     #    'FBP_AL_021_South_Bay_Connect',
                     #    'MAJ_WETA_Service_Frequency_Increase',
                     #    'FBP_NP_040_VINE_Exp_Bus_Enhancements',
