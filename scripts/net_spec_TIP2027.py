@@ -416,6 +416,7 @@ TIP_PROJECTS = collections.OrderedDict([
                     #     'SON_SMART_to_Cloverdale',
                     #     {'name':'GGT_Service_Imp',                     'kwargs':{'MODELYEAR':'2035'}},
                         'Transform_SeamlessTransit',
+                        'BART_Irvington_Infill',
                     #     {'name':'EIR_ALT1_IncreaseTransitService',      'kwargs':{'MODELYEAR':'2035', 'min_load':'0.5', 'freq_min': '15', 'freq_fac': '0.5'}, 'variants_include':['Alt1']}
                        ]
         }),
@@ -494,7 +495,6 @@ TIP_PROJECTS = collections.OrderedDict([
                     # {'name':'FBP_SM_020_Regional_Express_Buses', 'kwargs':{'PHASE':"'Phase1_4Routes'"}},
                     # {'name':'FBP_SM_020_Regional_Express_Buses', 'kwargs':{'PHASE':"'Phase2_2Routes'"}},
                     #     'MAJ_RedwoodCity_SF_Ferry',
-                    #     'BART_Irvington_Infill',
                     #     {'name':'FBP_CC_15_23rd_St_BRT',         'kwargs':{'PHASE':'2'}},
                     #     {'name':'FBP_CC_15_23rd_St_BRT',         'kwargs':{'PHASE':'3'}},
                     #     'RRSP_E14_Mission_Corridor',
