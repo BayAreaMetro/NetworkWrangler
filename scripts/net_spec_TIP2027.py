@@ -475,7 +475,7 @@ TIP_PROJECTS = collections.OrderedDict([
                     #     {'name':'FBP_SON_Caulfield_Extension',                         'variants_exclude':['Alt1']},
                     #     'SCL250204_10thBridge_Ext',
                     #     'FBP_MU_049_Caltrain_8TPHPD',
-                    #     'MAJ_SF_050002_Caltrain_Ext_TransbayTerminal',
+                         'MAJ_SF_050002_Caltrain_Ext_TransbayTerminal',
                     #     'FBP_MuniForward_Uncommitted_Rail',
                     #     {'name':'MAJ_Sonoma_Frequency_Increase',  'kwargs':{'MODELYEAR':'2040'}},
                     #    'RRSP_South_East_Waterfront_Transit_Imp',
