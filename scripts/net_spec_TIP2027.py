@@ -306,13 +306,11 @@ TIP_PROJECTS = collections.OrderedDict([
                 'trn':[]
         }),
         (2025, {'hwy':[
-                        # 'SF_130017_SF_Congestion_Pricing',
                         # 'FBP_MU_029_ACRapid_2025',
                         # {'name':'MAJ_Bay_Area_Forward_all',      'kwargs':{'MODELYEAR':'2025'}},
                         # {'name':'MAJ_Sonoma_Frequency_Increase',                                            'kwargs':{'MODELYEAR':'2025'}},
                        ],
                 'trn':[
-                        # 'SF_130017_SF_Congestion_Pricing',
                         #  {'name':'GGT_Service_Imp',                                                         'kwargs':{'MODELYEAR':'2025'}},
                         # 'FBP_MU_029_ACRapid_2025',  
                         # {'name':'MAJ_Sonoma_Frequency_Increase',                                            'kwargs':{'MODELYEAR':'2025'}},
@@ -392,6 +390,7 @@ TIP_PROJECTS = collections.OrderedDict([
                         'MRN_US101_SR131_E_Blithedale_Tiburon',
                         'ALA090016_SR92_Clawiter_Whitesell_Int',
                         {'name':'FBP_CC_040_041_042_I680_SR4_Int_Phases_1_2_4_5', 'kwargs':{'PHASE':"'1'"},  'variants_exclude':['Alt1']},
+                        'SF_130017_SF_Congestion_Pricing',
                     #     'MAJ_SanPablo_BRT',
                     #     'MAJ_MuniForward_Uncommitted',
                     #     'SF_110049_Treasure_Island_Congestion_Pricing',
@@ -417,6 +416,7 @@ TIP_PROJECTS = collections.OrderedDict([
                     #     {'name':'GGT_Service_Imp',                     'kwargs':{'MODELYEAR':'2035'}},
                         'Transform_SeamlessTransit',
                         'BART_Irvington_Infill',
+                        'SF_130017_SF_Congestion_Pricing',
                     #     {'name':'EIR_ALT1_IncreaseTransitService',      'kwargs':{'MODELYEAR':'2035', 'min_load':'0.5', 'freq_min': '15', 'freq_fac': '0.5'}, 'variants_include':['Alt1']}
                        ]
         }),
