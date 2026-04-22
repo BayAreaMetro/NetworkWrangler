@@ -348,7 +348,6 @@ TIP_PROJECTS = collections.OrderedDict([
                         # 'FBP_SF_090004_Harney_Wide',
                         # 'STIP_17_06_0010_WoodsideRd',
                         # {'name':'SOL110004_Jepson_Walters_Extension',                  'variants_exclude':['Alt1']},
-                        # 'FBP_ALA_I800_42nd_High_Interchange',
                         # {'name':'FBP_CC_050_SR4_Operation_Improvements_EB',            'variants_exclude':['Alt1']},
                         # {'name':'MAJ_SC_VTAVisionaryNetwork', 'kwargs':{'MODELYEAR': '2030'}},
                         # 'SCL230001_SR237_Middlefield_interchange',
@@ -393,7 +392,7 @@ TIP_PROJECTS = collections.OrderedDict([
                         {'name':'FBP_CC_040_041_042_I680_SR4_Int_Phases_1_2_4_5', 'kwargs':{'PHASE':"'1'"},  'variants_exclude':['Alt1']},
                         'SF_130017_SF_Congestion_Pricing',
                         'FBP_SC_082_US101_25_Interchange',
-                        
+                        'FBP_ALA_I800_42nd_High_Interchange',
                     #     'MAJ_SanPablo_BRT',
                     #     'MAJ_MuniForward_Uncommitted',
                     #    {'name':'MAJ_SOL070020_I80_I680_SR12_Int_packages_3_4_5', 'kwargs':{'PHASE':'"3"'}},
