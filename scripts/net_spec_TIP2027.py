@@ -306,13 +306,13 @@ TIP_PROJECTS = collections.OrderedDict([
                 'trn':[]
         }),
         (2025, {'hwy':[
-                        # 'FBP_MU_029_ACRapid_2025',
+                        'FBP_MU_029_ACRapid_2025',
                         # {'name':'MAJ_Bay_Area_Forward_all',      'kwargs':{'MODELYEAR':'2025'}},
                         # {'name':'MAJ_Sonoma_Frequency_Increase',                                            'kwargs':{'MODELYEAR':'2025'}},
                        ],
                 'trn':[
                         #  {'name':'GGT_Service_Imp',                                                         'kwargs':{'MODELYEAR':'2025'}},
-                        # 'FBP_MU_029_ACRapid_2025',  
+                        'FBP_MU_029_ACRapid_2025',  
                         # {'name':'MAJ_Sonoma_Frequency_Increase',                                            'kwargs':{'MODELYEAR':'2025'}},
                        ]
         }),
@@ -476,7 +476,7 @@ TIP_PROJECTS = collections.OrderedDict([
                     #     'SCL250204_10thBridge_Ext',
                     #     'FBP_MU_049_Caltrain_8TPHPD',
                          'MAJ_SF_050002_Caltrain_Ext_TransbayTerminal',
-                    #     'FBP_MuniForward_Uncommitted_Rail',
+                         'FBP_MuniForward_Uncommitted_Rail',
                     #     {'name':'MAJ_Sonoma_Frequency_Increase',  'kwargs':{'MODELYEAR':'2040'}},
                     #    'RRSP_South_East_Waterfront_Transit_Imp',
                     #    'FBP_SC_042_I280_Downtown_Access_Improvements',
