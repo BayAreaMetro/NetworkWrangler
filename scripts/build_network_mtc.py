@@ -43,11 +43,22 @@ else:
     raise Wrangler.NetworkException(error_message)
 
 # MANDATORY. The network you are buliding on top of.
-# This should be a clone of https://github.com/BayAreaMetro/TM1_2015_Base_Network
-PIVOT_DIR = os.environ['TM1_2015_Base_Network']
-
-# OPTIONAL. If PIVOT_DIR is specified, MANDATORY.  Specifies year for PIVOT_DIR.
+# Requires setting two environment variables - "TM1_2015_Base_Network" and "TM1_2023_Base_Network".
+BASE_NETWORK_ENV_VARS = {
+    2015: 'TM1_2015_Base_Network',
+    2023: 'TM1_2023_Base_Network',
+}
+def get_base_network_dir(pivot_year):
+    pivot_year = int(pivot_year)
+    env_var = BASE_NETWORK_ENV_VARS.get(pivot_year)
+    if env_var is None:
+        raise Wrangler.NetworkException(f"No base network environment variable configured for PIVOT_YEAR={pivot_year}")
+    if env_var not in os.environ:
+        raise Wrangler.NetworkException(f"Set {env_var} environment variable for PIVOT_YEAR={pivot_year}")
+    return os.environ[env_var]
+# default behavior uses the 2015 base network unless a different base year is requested
 PIVOT_YEAR = 2015
+PIVOT_DIR = get_base_network_dir(PIVOT_YEAR)
 
 # MANDATORY. Set this to the directory in which to write your outputs. 
 # "hwy" and "trn" subdirectories will be created here.
@@ -498,7 +509,9 @@ if __name__ == '__main__':
         import geopandas
     
     if args.project_name == 'TIP2025':
-        PIVOT_DIR        = r"M:\Application\\Model One\\Networks\\TM1_2015_Base_Network-TIP_2023"
+        PIVOT_YEAR       = 2015
+        PIVOT_DIR        = get_base_network_dir(PIVOT_YEAR)
+        TRN_NET_NAME     = "transitLines"
 
     TRANSIT_CAPACITY_DIR = os.path.join(PIVOT_DIR, "trn")
 

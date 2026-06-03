@@ -3,6 +3,12 @@ import os, pathlib
 # e.g. "RTP2021", "TIP2021", etc
 PROJECT  = "Blueprint"
 
+# OPTIONAL. Base network year for blueprint build script. Supported values are
+# tied to environment variables in build_network_mtc.py (currently 2015, 2023).
+# if 2015, start from 2015 base network and apply all projects from 2015 and onward;
+# if 2023, start from 2023 base network and apply all projects from 2025 and onward.
+PIVOT_YEAR = 2023
+
 # MANDATORY. Set this to be the git tag for checking out network projects.
 TAG = "PBA50plus_Blueprint"  # This is the default tag since this is the netspec for the Blueprint 
 
@@ -532,6 +538,10 @@ ROADWAY_PRICING_STRATEGIES = [
 T10_SAFETY_STRATEGY = 'BP_Vision_Zero'
 
 for YEAR in COMMITTED_PROJECTS.keys():
+    if PIVOT_YEAR == 2023 and YEAR <= PIVOT_YEAR:
+        Wrangler.WranglerLogger.info(f"PIVOT_YEAR={PIVOT_YEAR}; skipping {YEAR} projects in NETWORK_PROJECTS")
+        continue
+
     if NET_VARIANT == "Baseline":
         # baseline: just committed
         NETWORK_PROJECTS[YEAR] = {
