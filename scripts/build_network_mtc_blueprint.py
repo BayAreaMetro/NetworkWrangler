@@ -47,9 +47,10 @@ if __name__ == '__main__':
 
     NOW              = time.strftime("%Y%b%d.%H%M%S")
     BUILD_MODE       = None # regular
-    PIVOT_DIR        = build_network_mtc.PIVOT_DIR
     NETWORK_PROJECTS = build_network_mtc.NETWORK_PROJECTS
-    TRANSIT_CAPACITY_DIR = os.path.join(PIVOT_DIR, "trn")
+    PIVOT_YEAR = build_network_mtc.PIVOT_YEAR
+    PIVOT_DIR = None # to be defined later based on PIVOT_YEAR and environment variables
+    TRANSIT_CAPACITY_DIR = None # to be defined later based on PIVOT_YEAR and environment variables
     TRN_NET_NAME     = "Transit_Lines"
     HWY_NET_NAME     = "freeflow.net"
 
@@ -76,9 +77,19 @@ if __name__ == '__main__':
     if not os.path.exists(SCRATCH_SUBDIR): os.mkdir(SCRATCH_SUBDIR)
     os.chdir(SCRATCH_SUBDIR)
 
+    exec(open(NETWORK_CONFIG).read())
+
+    # PIVOT_YEAR overwritted by net_spec
+    PIVOT_DIR = build_network_mtc.get_base_network_dir(PIVOT_YEAR)
+    if not os.path.exists(PIVOT_DIR):
+        Wrangler.WranglerLogger.fatal(f"Configured PIVOT_YEAR={PIVOT_YEAR} requires an existing base network at {PIVOT_DIR}")
+        sys.exit(-1)
+    if PIVOT_YEAR == 2023:
+        TRN_NET_NAME = "transitLines"
+    TRANSIT_CAPACITY_DIR = os.path.join(PIVOT_DIR, "trn")
     os.environ["CHAMP_node_names"] = os.path.join(PIVOT_DIR,"Node Description.xls")
 
-    exec(open(NETWORK_CONFIG).read())
+    Wrangler.WranglerLogger.info(f"Using PIVOT_YEAR={PIVOT_YEAR}, PIVOT_DIR={PIVOT_DIR}")
 
     # TODO: This should be in the NGF netspec rather than here
     # Use the NGF_NoProject git tag when building a Next Gen Freeways No Project variant
@@ -107,6 +118,11 @@ if __name__ == '__main__':
     #       for restart=2020 hwy, start applying 2020 hwy projects, using 2015 hwy and 2015 transit
     #
     if args.restart_year or args.restart_mode:
+        # restart_year should be larger than base year
+        if int(args.restart_year) <= PIVOT_YEAR:
+            Wrangler.WranglerLogger.fatal("args.restart_year must be larger than PIVOT_YEAR; args={}".format(args))
+            sys.exit(-1)
+
         # both are required
         if not args.restart_year or not args.restart_mode:
             Wrangler.WranglerLogger.fatal("Both args.restart_year and args.restart_mode are required if one is supplied; args={}".format(args))
@@ -169,7 +185,28 @@ if __name__ == '__main__':
     networks_without_earthquake = {}
 
     # Network Loop #2: Now that everything has been checked, build the networks.
+    # copy 2023 pivot network if starting from 2023 PIVOT_YEAR
+    if PIVOT_YEAR == 2023:
+        Wrangler.WranglerLogger.info("Skipping building 2023 PIVOT_YEAR, copy pivot network instead")
+        # create the subdir
+        # copy the hwy and trn files from the pivot directory
+        for netmode in build_network_mtc.NET_MODES:
+            pivot_dir = os.path.join(PIVOT_DIR, netmode)
+            out_dir = os.path.join("..", "BlueprintNetworks", "net_2023_{}".format(NET_VARIANT), netmode)
+            os.makedirs(out_dir, exist_ok=True)
+            for item in os.listdir(pivot_dir):
+                s = os.path.join(pivot_dir, item)
+                d = os.path.join(out_dir, item)
+                if os.path.isdir(s):
+                    shutil.copytree(s, d, dirs_exist_ok=True)
+                else:
+                    shutil.copy2(s, d)
+    # For PIVOT_YEAR=2023, skip 2023 because it was copied from pivot.
+    # For PIVOT_YEAR=2015, build starting from 2015.
     for YEAR in NETWORK_PROJECTS.keys():
+        if YEAR < PIVOT_YEAR or (PIVOT_YEAR == 2023 and YEAR == PIVOT_YEAR):
+            Wrangler.WranglerLogger.info("PIVOT_YEAR {} specified; skipping {}".format(PIVOT_YEAR, YEAR))
+            continue
         if args.restart_year and YEAR < int(args.restart_year):
             Wrangler.WranglerLogger.info("Restart year {} specified; skipping {}".format(args.restart_year, YEAR))
             continue
