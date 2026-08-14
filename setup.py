@@ -35,7 +35,15 @@ setuptools.setup(
     url                             = "https://github.com/BayAreaMetro/NetworkWrangler",
     license                         = "Apache 2",
     platforms                       = "any",
-    packages                        = ["Wrangler"],
+    # `_static` has to ship: Wrangler/__init__.py adds it to sys.path and
+    # TransitAssignmentData.py imports dataTable from it, so leaving it out means
+    # `import Wrangler` fails on any non-editable install.
+    #
+    # Short-term fix.  `_static` is conventionally for build output and static assets,
+    # not source -- dataTable.py and odict.py belong inside Wrangler/ as ordinary
+    # submodules with relative imports.  Promoting them breaks callers that do
+    # `from dataTable import ...`, so it wants coordinating rather than dropping in.
+    packages                        = ["Wrangler", "_static"],
     include_package_data            = True,
     install_requires                = install_requires,
     scripts                         = [
