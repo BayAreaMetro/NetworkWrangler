@@ -337,6 +337,7 @@ TIP_PROJECTS = collections.OrderedDict([
                         'STIP_17_06_0010_WoodsideRd',
                         {'name':'MAJ_SC_VTAVisionaryNetwork', 'kwargs':{'MODELYEAR': '2030'}},
                         'FBP_SC_041_Envision_Highway_Minor',
+                        {'name':'FBP_SL_042_Jepson_2B_2C',                             'variants_exclude':['Alt1']},
                         {'name':'BP_Vision_Zero', 'kwargs':{'MODELYEAR':'2030'}},
                        ],
                 'trn':[
@@ -443,7 +444,6 @@ TIP_PROJECTS = collections.OrderedDict([
                         'FBP_SL_033_FairgroundsWide',
                         {'name':'FBP_SC_104_OaklandWide',                              'variants_exclude':['Alt1']},
                         {'name':'FBP_CC_064_CaminoTassajaraWide',                      'variants_exclude':['Alt1']},
-                        {'name':'FBP_SL_042_Jepson_2B_2C',                             'variants_exclude':['Alt1']},
                         {'name':'FBP_CC_061_062_West_Leland_Ext_Phases1_2',            'variants_exclude':['Alt1']},
                         {'name':'FBP_SON_Caulfield_Extension',                         'variants_exclude':['Alt1']},
                         'SCL250204_10thBridge_Ext',
