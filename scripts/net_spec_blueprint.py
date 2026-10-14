@@ -517,11 +517,20 @@ NETWORK_PROJECTS   = collections.OrderedDict()
 
 # NET_VARIANTS
 ################
-# "Baseline",                          # committed only
-# "BPTransitProjectsOnly",             # committed + Blueprint Transit Projects 
-# "BPTransitProjectsStrategyOnly",     # committed + Blueprint Transit Projects + Transit Strategies (T2/3/4); (T2/T4 are not network projects)
-# "BPwithoutRoadwayPricingSafety",     # committed + Blueprint Transit Projects + Transit Strategies (T2/3/4) + Roadway Projects
-# "BPwithoutRoadwaySafety",            # committed + Blueprint Transit Projects + Transit Strategies (T2/3/4) + Roadway Projects + Pricing (T5 ALT, cordons)
+# "Baseline",                          #                    committed only
+
+# "BPTransitProjectsOnly",             #                    committed + Blueprint Transit Projects (T11/12) 
+# "BPTransitProjectsStrategyOnly",     #                    committed + Blueprint Transit Projects (T11/12) + Transit Strategies (T2/3/4); (T2/T4 are not network projects)
+# "BPwithoutRoadwayPricingSafety",     #                    committed + Blueprint Transit Projects (T11/12) + Transit Strategies (T2/3/4) + Roadway Projects (T6/7/8)
+# "BPwithoutRoadwaySafety",            # aka "BPwithoutT10",committed + Blueprint Transit Projects (T11/12) + Transit Strategies (T2/3/4) + Roadway Projects (T6/7/8) + Pricing (T5 ALT, cordons)
+# "BPwithoutSeamlessTransit",          # aka "BPwithoutT3", committed + Blueprint Transit Projects (T11/12) + Transit Strategies (T2/4) +   Roadway Projects (T6/7/8) + Pricing (T5 ALT, cordons) + Safety (T9/10)
+# "BPwithoutRoadwayPricing",           # aka "BPwithoutT5", committed + Blueprint Transit Projects (T11/12) + Transit Strategies (T2/3/4) + Roadway Projects (T6/7/8) +                             Safety (T9/10)
+# "BPwithoutFreewayModern",            # aka "BPwithoutT6", committed + Blueprint Transit Projects (T11/12) + Transit Strategies (T2/3/4) + Roadway Projects (T7/8) +   Pricing (T5 ALT, cordons) + Safety (T9/10)
+# "BPwithoutFreewayExpansion",         # aka "BPwithoutT7", committed + Blueprint Transit Projects (T11/12) + Transit Strategies (T2/3/4) + Roadway Projects (T6/8) +   Pricing (T5 ALT, cordons) + Safety (T9/10)
+# "BPwithoutLocalRegionalPriority",    # aka "BPwithoutT8", committed + Blueprint Transit Projects (T11/12) + Transit Strategies (T2/3/4) + Roadway Projects (T6/7) +   Pricing (T5 ALT, cordons) + Safety (T9/10)
+# "BPwithoutTransitEnhance",           # aka "BPwithoutT11",committed + Blueprint Transit Projects (T12) +    Transit Strategies (T2/3/4) + Roadway Projects (T6/7/8) + Pricing (T5 ALT, cordons) + Safety (T9/10)
+# "BPwithoutTransitExpansion",         # aka "BPwithoutT12",committed + Blueprint Transit Projects (T11) +    Transit Strategies (T2/3/4) + Roadway Projects (T6/7/8) + Pricing (T5 ALT, cordons) + Safety (T9/10)
+
 # "Blueprint",                         # committed + Blueprint Transit Projects + Transit Strategies (T2/3/4) + Roadway Projects + Pricing (T5 ALT, cordons) + Safety (T9/10)
 # "Alt1",                              # EIR Alt 1 - Increase transit service, remove some roadway projects
 # "Alt2",                              # EIR Alt 2 - no specific network for PBA50+ as it's the same as Blueprint
@@ -536,6 +545,132 @@ ROADWAY_PRICING_STRATEGIES = [
     'SF_110049_Treasure_Island_Congestion_Pricing'
 ]
 T10_SAFETY_STRATEGY = 'BP_Vision_Zero'
+T6_ROADWAY_PROJECTS = [
+    'EXP_SC_SR85_SR87_to_US101_Phase4',
+    'ALA110002_I880_Industrial_Interchange',
+    'ALA170002_I80_Ashby_Int',
+    'FBP_SL_033_FairgroundsWide',
+    'FBP_CC_045_SanPabloDam_Interchange_Phase2',
+    'FBP_SC_042_I280_Downtown_Access_Improvements',
+    'FBP_SC_047_I280_Winchester_OffRamp',
+    'ALA250210_I580_Greenville',
+    'FBP_AL_039_I580_Interchange_Imps',
+    'ALA230222_I580_Vasco',
+    'FBP_SCL_050_I680_MontagueExpwy',
+    'FBP_CC_040_041_042_I680_SR4_Int_Phases_1_2_4_5',
+    'FBP_AL_042_I680_Stoneridge_Widening',
+    'FBP_AL_043_A_StreetWide',
+    'FBP_AL_045_Oak_Ala_Access_Pr',
+    'FBP_AL_044_I880_Whipple_Imps',
+    'FBP_ALA_I880_42nd_High_Interchange',
+    'FBP_SC_076_US101_Taylor_Interchange',
+    'SCL190012_US101_SanAntonio_Charleston_Rengstroff_Int',
+    'FBP_SM_033_US101_Holly_Interchange',
+    'SM110003_US101_ProduceAve',
+    'STIP_17_06_0010_WoodsideRd',
+    'FBP_SM_027_US101_92',
+    'FBP_SM_027_US101_92_directConnector',
+    'SCL210002_US101_SR152_Interchange',
+    'FBP_SC_083_US101_Zanker_Skyport_Interchange',
+    'FBP_SM_042_Hwy1_ManorDrive',
+    'FBP_SC_041_Envision_Highway_Minor',
+    'ALA090016_SR92_Clawiter_Whitesell_Int',
+    'SCL230001_SR237_Middlefield_interchange',
+    'MAJ_Bay_Area_Forward_all',
+    'MAJ_SOL070020_I80_I680_SR12_Int_packages_3_4_5',
+    'FBP_AL_048_SR262_Phase1'
+]
+T7_ROADWAY_PROJECTS = [
+    'EXP_CC_I680NB_Livorna_to_Arthur',
+    'EXP_AL_I680NB_SR84_to_Alcosta',
+    'EXP_SC_US101_SR237_to_I880_Phase5',
+    'EXP_SC_US101_I880_to_SR85_Phase6',
+    'EXP_SM_US101_I380_to_SFcounty',
+    'Transform_SR37_Widening_Interim',
+    'ALA090020_I880_Industrial_Parkway_AuxLanes',
+    'FBP_CC_050_SR4_Operation_Improvements_EB',
+    'FBP_CC_051_SR4_Operation_Improvements_WB',
+    'FBP_SC_054_SR17_Corridor_Relief'
+]
+T8_ROADWAY_PROJECTS = [
+    'SOL110006_Jepson_1B_1C',
+    'FBP_SON_Caulfield_Extension',
+    'FBP_AL_055_DubBlvd_NCanyons_Ext',
+    'SOL110004_Jepson_Walters_Extension',
+    'FBP_NP_066_Newell_Dr',
+    'FBP_SC_082_US101_25_Interchange',
+    'FBP_CC_061_062_West_Leland_Ext_Phases1_2',
+    'FBP_SC_088_Envision_Expwy',
+    'SCL210026_Julian_James_Conversion',
+    'FBP_NP_074_SoscolWide',
+    'FBP_NP_051_Airport_Junction',
+    'FBP_AL_052_AutoMallWide',
+    'CC_070011_170015_Brentwood_Blvd_Widening',
+    'CC_070011_170015_Brentwood_Blvd_Widening',
+    'FBP_SC_101_BrokawBridgeWide',
+    'FBP_SC_102_CalaverasWide',
+    'FBP_CC_064_CaminoTassajaraWide',
+    'FBP_CC_054_CrowCanyonWide',
+    'FBP_SF_090004_Harney_Wide',
+    'FBP_SL_042_Jepson_2B_2C',
+    'FBP_CC_057_LoneTreeWide',
+    'FBP_SC_103_MontagueWide',
+    'FBP_SC_104_OaklandWide',
+    'FBP_SL_053_PeabodyWide',
+    'FBP_CC_059_PittAntiochWide',
+    'FBP_AL_062_TassajaraWide',
+    'SCL250204_10thBridge_Ext',
+    'FBP_CC_067_WillowPassWide',
+    'RRSP_East_West_Connector',
+    'ALA210024_GrandAve_Improvements',
+    'MAJ_SR_239'
+]
+T11_TRANSIT_PROJECTS = [
+    'FBP_MR_018_US101_BOS', # also has strategy_override input
+    'FBP_SF_Caltrain_Bayview',
+    'FBP_NP_NapaVine_Serv_Freq_Boost',
+    'FBP_CC_019_CCCTA_Freq_Increase',
+    'FBP_NP_040_VINE_Exp_Bus_Enhancements', # also has strategy_override input 
+    'FBP_SL_026_SolExpressBus',
+    'FBP_CC_028_Hercules_Station',
+    'FBP_SF_012_Geneva_Harney_BRT',
+    'MAJ_ElCaminoReal_BRT',
+    'FBP_MU_049_Caltrain_6TPHPD',
+    'FBP_MU_049_Caltrain_8TPHPD',
+    'RRSP_Alameda_Point_Transit_Improvements',
+    'MAJ_SC_VTAVisionaryNetwork',
+    'FBP_MU_046_ACE_Freq_Inc',
+    'FBP_MU_029_ACRapid_2025',
+    'FBP_MU_029_ACRapid_2040',
+    'MAJ_MTC050027_Berkeley_Ferry',
+    'MAJ_SanPablo_BRT',
+    'Dumbarton_Bridge_Bus_Service',
+    'MAJ_MuniForward_Uncommitted ',
+    'Transform_I680_Multimodal_Imp',
+    'FBP_SM_020_Regional_Express_Buses',
+    'GGT_Service_Imp',
+    'FBP_AL_021_South_Bay_Connect',
+    'MAJ_RedwoodCity_SF_Ferry',
+    'MAJ_WETA_Service_Frequency_Increase',
+    'FBP_CC_15_23rd_St_BRT',
+    'FBP_CC_018_BRT_Brentwood',
+    'MAJ_Sonoma_Frequency_Increase',
+    'FBP_MuniForward_Uncommitted_Rail',
+    'RRSP_South_East_Waterfront_Transit_Imp',
+    'MAJ_AC_Frequency_Improvement',
+    'RRSP_E14_Mission_Corridor',
+    'RRSP_EC_Cap_Imp_ECR_Bus',
+    'BART_Irvington_Infill',
+    'MAJ_REG090037_BART_Core_Cap'
+]
+T12_TRANSIT_PROJECTS = [
+    'MAJ_SCL050009_VTA_Eastridge_Extension',
+    'SON_SMART_to_Healdsburg',
+    'SON_SMART_to_Cloverdale',
+    'Transform_Valley_Link',
+    'MAJ_BRT030001_BART_to_SanJose',
+    'MAJ_SF_050002_Caltrain_Ext_TransbayTerminal'
+]
 
 for YEAR in COMMITTED_PROJECTS.keys():
     if PIVOT_YEAR == 2023 and YEAR <= PIVOT_YEAR:
@@ -690,7 +825,7 @@ for YEAR in COMMITTED_PROJECTS.keys():
 
         continue
 
-    # NET_VARIANT is one of "BPwithoutRoadwayPricingSafety", "BPwithoutRoadwaySafety", "Blueprint", "Alt1", "Alt2"
+    # NET_VARIANT is one of "Blueprint", "Alt1", "Alt2", or those "BPwithout..." variants
     NETWORK_PROJECTS[YEAR] = {
         'hwy':COMMITTED_PROJECTS[YEAR]['hwy'] + BLUEPRINT_PROJECTS[YEAR]['hwy'],
         'trn':COMMITTED_PROJECTS[YEAR]['trn'] + BLUEPRINT_PROJECTS[YEAR]['trn']
@@ -713,7 +848,60 @@ for YEAR in COMMITTED_PROJECTS.keys():
             if roadway_pricing in NETWORK_PROJECTS[YEAR]['trn']:
                 NETWORK_PROJECTS[YEAR]['trn'].remove(roadway_pricing)
                 Wrangler.WranglerLogger.info(f"  Removing roadway pricing strategy from transit {roadway_pricing}")
-                       
+
+    # for BPwithoutSeamlessTransit, from Blueprint remove T3 Seamless
+    if NET_VARIANT == "BPwithoutSeamlessTransit":
+        for project in NETWORK_PROJECTS[YEAR]['trn'][:]: # iterate over shallow copy
+            if (project == T3_TRANSIT_STRATEGY) or (isinstance(project, dict) and project.get('name')==T3_TRANSIT_STRATEGY):
+                NETWORK_PROJECTS[YEAR]['trn'].remove(project)
+                Wrangler.WranglerLogger.info(f"  Removing transit strategy {project}")
+
+    # for BPwithoutRoadwayPricing, remove T5 roadway pricing strategies from hwy and trn
+    if NET_VARIANT == "BPwithoutRoadwayPricing":
+        for roadway_pricing in ROADWAY_PRICING_STRATEGIES:
+            if roadway_pricing in NETWORK_PROJECTS[YEAR]['hwy']:
+                NETWORK_PROJECTS[YEAR]['hwy'].remove(roadway_pricing)
+                Wrangler.WranglerLogger.info(f"  Removing roadway pricing strategy from transit {roadway_pricing}")
+
+            if roadway_pricing in NETWORK_PROJECTS[YEAR]['trn']:
+                NETWORK_PROJECTS[YEAR]['trn'].remove(roadway_pricing)
+                Wrangler.WranglerLogger.info(f"  Removing roadway pricing strategy from transit {roadway_pricing}")
+
+    # if BPwithoutFreewayModern, remove T6 rodaway projects
+    if NET_VARIANT == "BPwithoutFreewayModern":
+        for project in NETWORK_PROJECTS[YEAR]['hwy'][:]: # iterate over shallow copy
+            if (project == T6_ROADWAY_PROJECTS) or (isinstance(project, dict) and project.get('name')==T6_ROADWAY_PROJECTS):
+                NETWORK_PROJECTS[YEAR]['hwy'].remove(project)
+                Wrangler.WranglerLogger.info(f"  Removing freeway modernization strategy {project}")
+
+    # if BPwithoutFreewayExpansion, remove T7 roadway projects
+    if NET_VARIANT == "BPwithoutFreewayExpansion":
+        for project in NETWORK_PROJECTS[YEAR]['hwy'][:]: # iterate over shallow copy
+            if (project == T7_ROADWAY_PROJECTS) or (isinstance(project, dict) and project.get('name')==T7_ROADWAY_PROJECTS):
+                NETWORK_PROJECTS[YEAR]['hwy'].remove(project)
+                Wrangler.WranglerLogger.info(f"  Removing freeway expansion strategy {project}")
+
+    # if BPwithoutLocalRegionalPriority, remove T8 roadway projects
+    if NET_VARIANT == "BPwithoutLocalRegionalPriority":
+        for project in NETWORK_PROJECTS[YEAR]['hwy'][:]: # iterate over shallow copy
+            if (project == T8_ROADWAY_PROJECTS) or (isinstance(project, dict) and project.get('name')==T8_ROADWAY_PROJECTS):
+                NETWORK_PROJECTS[YEAR]['hwy'].remove(project)
+                Wrangler.WranglerLogger.info(f"  Removing local/regional priority strategy {project}")
+
+    # if BPwithoutTransitEnhance, remove T11 transit projects
+    if NET_VARIANT == "BPwithoutTransitEnhance":
+        for project in NETWORK_PROJECTS[YEAR]['trn'][:]: # iterate over shallow copy
+            if (project == T11_TRANSIT_PROJECTS) or (isinstance(project, dict) and project.get('name')==T11_TRANSIT_PROJECTS):
+                NETWORK_PROJECTS[YEAR]['trn'].remove(project)
+                Wrangler.WranglerLogger.info(f"  Removing transit enhancement strategy {project}")
+
+    # if BPwithoutTransitExpansion, remove T12 transit projects
+    if NET_VARIANT == "BPwithoutTransitExpansion":
+        for project in NETWORK_PROJECTS[YEAR]['trn'][:]: # iterate over shallow copy
+            if (project == T12_TRANSIT_PROJECTS) or (isinstance(project, dict) and project.get('name')==T12_TRANSIT_PROJECTS):
+                NETWORK_PROJECTS[YEAR]['trn'].remove(project)
+                Wrangler.WranglerLogger.info(f"  Removing transit expansion strategy {project}")
+
     # handle net_remove, nets keywords
     for netmode in ['hwy','trn']:
 

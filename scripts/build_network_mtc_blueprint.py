@@ -28,7 +28,14 @@ if __name__ == '__main__':
         "BPTransitProjectsOnly",             # committed + Blueprint Transit Projects 
         "BPTransitProjectsStrategyOnly",     # committed + Blueprint Transit Projects + Transit Strategies (T2/3/4)
         "BPwithoutRoadwayPricingSafety",     # committed + Blueprint Transit Projects + Transit Strategies (T2/3/4) + Roadway Projects
-        "BPwithoutRoadwaySafety",            # committed + Blueprint Transit Projects + Transit Strategies (T2/3/4) + Roadway Projects + Pricing (T5 ALT, cordons)
+        "BPwithoutRoadwaySafety",            # aka "BPwithoutT10",committed + Blueprint Transit Projects + Transit Strategies (T2/3/4) + Roadway Projects + Pricing (T5 ALT, cordons)
+        "BPwithoutSeamlessTransit",          # aka "BPwithoutT3", committed + Blueprint Transit Projects (T11/12) + Transit Strategies (T2/4) +   Roadway Projects (T6/7/8) + Pricing (T5 ALT, cordons) + Safety (T9/10)
+        "BPwithoutRoadwayPricing",           # aka "BPwithoutT5", committed + Blueprint Transit Projects (T11/12) + Transit Strategies (T2/3/4) + Roadway Projects (T6/7/8) +                             Safety (T9/10)
+        "BPwithoutFreewayModern",            # aka "BPwithoutT6", committed + Blueprint Transit Projects (T11/12) + Transit Strategies (T2/3/4) + Roadway Projects (T7/8) +   Pricing (T5 ALT, cordons) + Safety (T9/10)
+        "BPwithoutFreewayExpansion",         # aka "BPwithoutT7", committed + Blueprint Transit Projects (T11/12) + Transit Strategies (T2/3/4) + Roadway Projects (T6/8) +   Pricing (T5 ALT, cordons) + Safety (T9/10)
+        "BPwithoutLocalRegionalPriority",    # aka "BPwithoutT8", committed + Blueprint Transit Projects (T11/12) + Transit Strategies (T2/3/4) + Roadway Projects (T6/7) +   Pricing (T5 ALT, cordons) + Safety (T9/10)
+        "BPwithoutTransitEnhance",           # aka "BPwithoutT11",committed + Blueprint Transit Projects (T12) +    Transit Strategies (T2/3/4) + Roadway Projects (T6/7/8) + Pricing (T5 ALT, cordons) + Safety (T9/10)
+        "BPwithoutTransitExpansion",         # aka "BPwithoutT12",committed + Blueprint Transit Projects (T11) +    Transit Strategies (T2/3/4) + Roadway Projects (T6/7/8) + Pricing (T5 ALT, cordons) + Safety (T9/10)
         "Blueprint",                         # committed + Blueprint Transit Projects + Transit Strategies (T2/3/4) + Roadway Projects + Pricing (T5 ALT, cordons) + Safety (T9/10)
         "Alt1",                              # EIR Alt 1 - Increase transit service, remove some roadway projects
         # "Alt2",                            # EIR Alt 2 - no specific network for PBA50+ as it's the same as Blueprint
