@@ -872,6 +872,10 @@ for YEAR in COMMITTED_PROJECTS.keys():
         for project in NETWORK_PROJECTS[YEAR]['hwy'][:]: # iterate over shallow copy
             if (project in T6_ROADWAY_PROJECTS) or (isinstance(project, dict) and project.get('name') in T6_ROADWAY_PROJECTS):
                 NETWORK_PROJECTS[YEAR]['hwy'].remove(project)
+                # also remove the trn component if it involved rerouting transit due to this roadway project
+                if project in NETWORK_PROJECTS[YEAR]['trn']:
+                    NETWORK_PROJECTS[YEAR]['trn'].remove(project)
+                    Wrangler.WranglerLogger.info(f"  Removing transit reroute due to roadway project {project}")
                 Wrangler.WranglerLogger.info(f"  Removing freeway modernization strategy {project}")
 
     # if BPwithoutFreewayExpansion, remove T7 roadway projects
@@ -879,6 +883,10 @@ for YEAR in COMMITTED_PROJECTS.keys():
         for project in NETWORK_PROJECTS[YEAR]['hwy'][:]: # iterate over shallow copy
             if (project in T7_ROADWAY_PROJECTS) or (isinstance(project, dict) and project.get('name') in T7_ROADWAY_PROJECTS):
                 NETWORK_PROJECTS[YEAR]['hwy'].remove(project)
+                # also revove the trn component if it involved rerouting transit due to this roadway project
+                if project in NETWORK_PROJECTS[YEAR]['trn']:
+                    NETWORK_PROJECTS[YEAR]['trn'].remove(project)
+                    Wrangler.WranglerLogger.info(f"  Removing transit reroute due to roadway project {project}")
                 Wrangler.WranglerLogger.info(f"  Removing freeway expansion strategy {project}")
 
     # if BPwithoutLocalRegionalPriority, remove T8 roadway projects
@@ -886,6 +894,10 @@ for YEAR in COMMITTED_PROJECTS.keys():
         for project in NETWORK_PROJECTS[YEAR]['hwy'][:]: # iterate over shallow copy
             if (project in T8_ROADWAY_PROJECTS) or (isinstance(project, dict) and project.get('name') in T8_ROADWAY_PROJECTS):
                 NETWORK_PROJECTS[YEAR]['hwy'].remove(project)
+                # also remove the trn component if it involved rerouting transit due to this roadway project
+                if project in NETWORK_PROJECTS[YEAR]['trn']:
+                    NETWORK_PROJECTS[YEAR]['trn'].remove(project)
+                    Wrangler.WranglerLogger.info(f"  Removing transit reroute due to roadway project {project}")
                 Wrangler.WranglerLogger.info(f"  Removing local/regional priority strategy {project}")
 
     # if BPwithoutTransitEnhance, remove T11 transit projects
