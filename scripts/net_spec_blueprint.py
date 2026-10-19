@@ -348,7 +348,7 @@ BLUEPRINT_PROJECTS = collections.OrderedDict([
                         'STIP_17_06_0010_WoodsideRd',
                         'FBP_SC_082_US101_25_Interchange',
                         {'name':'SOL110004_Jepson_Walters_Extension',                  'variants_exclude':['Alt1']},
-                        'FBP_ALA_I800_42nd_High_Interchange',
+                        'FBP_ALA_I880_42nd_High_Interchange',
                         {'name':'FBP_CC_050_SR4_Operation_Improvements_EB',            'variants_exclude':['Alt1']},
                         {'name':'MAJ_SC_VTAVisionaryNetwork', 'kwargs':{'MODELYEAR': '2030'}},
                         'SCL230001_SR237_Middlefield_interchange',
