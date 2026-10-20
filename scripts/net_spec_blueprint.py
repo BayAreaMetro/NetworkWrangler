@@ -873,7 +873,7 @@ for YEAR in COMMITTED_PROJECTS.keys():
             if (project in T6_ROADWAY_PROJECTS) or (isinstance(project, dict) and project.get('name') in T6_ROADWAY_PROJECTS):
                 NETWORK_PROJECTS[YEAR]['hwy'].remove(project)
                 # also remove the trn component if it involved rerouting transit due to this roadway project
-                if project in NETWORK_PROJECTS[YEAR]['trn']:
+                if( project in NETWORK_PROJECTS[YEAR]['trn']) or (isinstance(project, dict) and project.get('name') in NETWORK_PROJECTS[YEAR]['trn']):
                     NETWORK_PROJECTS[YEAR]['trn'].remove(project)
                     Wrangler.WranglerLogger.info(f"  Removing transit reroute due to roadway project {project}")
                 Wrangler.WranglerLogger.info(f"  Removing freeway modernization strategy {project}")
@@ -884,7 +884,7 @@ for YEAR in COMMITTED_PROJECTS.keys():
             if (project in T7_ROADWAY_PROJECTS) or (isinstance(project, dict) and project.get('name') in T7_ROADWAY_PROJECTS):
                 NETWORK_PROJECTS[YEAR]['hwy'].remove(project)
                 # also revove the trn component if it involved rerouting transit due to this roadway project
-                if project in NETWORK_PROJECTS[YEAR]['trn']:
+                if (project in NETWORK_PROJECTS[YEAR]['trn']) or (isinstance(project, dict) and project.get('name') in NETWORK_PROJECTS[YEAR]['trn']):
                     NETWORK_PROJECTS[YEAR]['trn'].remove(project)
                     Wrangler.WranglerLogger.info(f"  Removing transit reroute due to roadway project {project}")
                 Wrangler.WranglerLogger.info(f"  Removing freeway expansion strategy {project}")
@@ -895,7 +895,7 @@ for YEAR in COMMITTED_PROJECTS.keys():
             if (project in T8_ROADWAY_PROJECTS) or (isinstance(project, dict) and project.get('name') in T8_ROADWAY_PROJECTS):
                 NETWORK_PROJECTS[YEAR]['hwy'].remove(project)
                 # also remove the trn component if it involved rerouting transit due to this roadway project
-                if project in NETWORK_PROJECTS[YEAR]['trn']:
+                if (project in NETWORK_PROJECTS[YEAR]['trn']) or (isinstance(project, dict) and project.get('name') in NETWORK_PROJECTS[YEAR]['trn']):
                     NETWORK_PROJECTS[YEAR]['trn'].remove(project)
                     Wrangler.WranglerLogger.info(f"  Removing transit reroute due to roadway project {project}")
                 Wrangler.WranglerLogger.info(f"  Removing local/regional priority strategy {project}")
